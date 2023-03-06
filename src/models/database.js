@@ -1,4 +1,6 @@
-//connect to mongodb alts
+const mongoose = require("mongoose");
+
+//Connect to mongodb alts
 mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.MYDBCODE, {
@@ -8,6 +10,6 @@ mongoose
   .then(() => {
     console.log("Connect to mongodb atlas.");
   })
-  .catch(() => {
+  .catch((err) => {
     console.log(err);
   });
