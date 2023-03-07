@@ -1,7 +1,7 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
-const Category = require("./src/models/category");
+const Category = require("./src/models/category_model");
 
 //Connect to mongodb alts
 require("./src/models/database");
