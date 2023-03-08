@@ -2,6 +2,7 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
 const Category = require("./src/models/category_model");
+const User = require("./src/models/user_model");
 
 //Connect to mongodb alts
 require("./src/models/database");
@@ -14,9 +15,7 @@ app.set("view engine", "ejs");
 
 // Middleware of routes
 
-// app.get("/", (req, res) => {
-//   return res.send("hi");
-// });
+app.get("/", (req, res) => {});
 
 app.listen(8080, () => {
   console.log("Server running on port 8080");
