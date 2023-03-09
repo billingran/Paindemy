@@ -21,7 +21,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "baguette.jpg",
         instructor: {
-          $_id: "6408d864e0974f2b66f9390c",
+          _id: "6408d864e0974f2b66f9390c",
           email: "sébastien@gmail.com",
         },
         students: ["123456"],
@@ -44,7 +44,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "pain_de_mie.jpg",
         instructor: {
-          $_id: "6408d864e0974f2b66f9390c",
+          _id: "6408d864e0974f2b66f9390c",
           email: "sébastien@gmail.com",
         },
         students: ["123456"],
@@ -62,7 +62,7 @@ async function insertDymmyRecipeData() {
         ingredients: ["Farine T65", "Eau", "Sel", "Levain"],
         image: "pain_au_levain.jpg",
         instructor: {
-          $_id: "6408d864e0974f2b66f9390d",
+          _id: "6408d864e0974f2b66f9390d",
           email: "christine@gmail.com",
         },
         students: ["123456"],
@@ -87,7 +87,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "nordika.jpg",
         instructor: {
-          $_id: "6408d864e0974f2b66f9390e",
+          _id: "6408d864e0974f2b66f9390e",
           email: "claudine@gmail.com",
         },
         students: ["123456"],
@@ -116,7 +116,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "pain_au_khorazan.jpg",
         instructor: {
-          $_id: "6408d864e0974f2b66f9390c",
+          _id: "6408d864e0974f2b66f9390c",
           email: "sébastien@gmail.com",
         },
         students: ["123456"],
@@ -139,7 +139,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "croissant.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e85e",
+          _id: "6408d89aaf9308838ec8e85e",
           email: "auguste@gmail.com",
         },
         students: ["123456"],
@@ -164,7 +164,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "pain_au_chocolate.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e85e",
+          _id: "6408d89aaf9308838ec8e85e",
           email: "auguste@gmail.com",
         },
         students: ["123456"],
@@ -195,7 +195,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "pain_au_raisins.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e85d",
+          _id: "6408d89aaf9308838ec8e85d",
           email: "emmanuel@gmail.com",
         },
         students: ["123456"],
@@ -218,7 +218,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "brioche.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e85f",
+          _id: "6408d89aaf9308838ec8e85f",
           email: "joséphine@gmail.com",
         },
         students: ["123456"],
@@ -243,7 +243,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "brioche_au_sucre.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e85e",
+          _id: "6408d89aaf9308838ec8e85e",
           email: "auguste@gmail.com",
         },
         students: ["123456"],
@@ -259,7 +259,7 @@ async function insertDymmyRecipeData() {
         Pizza is typically cooked in a wood-fired oven, which gives the crust a crispy texture and imparts a smoky flavor. It can also be cooked in a conventional oven or on a grill. Pizza is often enjoyed with a variety of beverages, such as beer, soda, or wine, and is a popular food for gatherings, parties, and casual dining.`,
         category: "Other",
         ingredients: [
-          "Farine ordinaire",
+          "Farine T65",
           "Farine de seigle noire",
           "Eau",
           "Huile d’olive",
@@ -269,7 +269,7 @@ async function insertDymmyRecipeData() {
         ],
         image: "pizza.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e861",
+          _id: "6408d89aaf9308838ec8e861",
           email: "sophie@gmail.com",
         },
         students: ["123456"],
@@ -284,10 +284,18 @@ async function insertDymmyRecipeData() {
         
         Gua Bao is often served as a street food in Taiwan, and can also be found in restaurants and food stalls around the world. It is a popular snack or light meal, and can be enjoyed as a savory and satisfying treat any time of day. Vegetarian and other variations of Gua Bao are also available, making it a versatile dish suitable for a wide range of tastes and preferences.`,
         category: "Other",
-        ingredients: [],
+        ingredients: [
+          "Farine T65",
+          "Lait",
+          "Sucre",
+          "Levure",
+          "Sel",
+          "Levure chimique",
+          "Eau",
+        ],
         image: "gua_bao.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e861",
+          _id: "6408d89aaf9308838ec8e861",
           email: "sophie@gmail.com",
         },
         students: ["123456"],
@@ -305,10 +313,19 @@ async function insertDymmyRecipeData() {
         
         Naan is a versatile and delicious addition to any meal, and its popularity has made it a widely available and beloved food around the world.`,
         category: "Other",
-        ingredients: [],
+        ingredients: [
+          "Farine T65",
+          "Levure",
+          "Sucre",
+          "Sel",
+          "Lait",
+          "Yaourt",
+          "Beurre",
+          "Oeuf",
+        ],
         image: "nann.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e860",
+          _id: "6408d89aaf9308838ec8e860",
           email: "élise@gmail.com",
         },
         students: ["123456"],
@@ -327,10 +344,16 @@ async function insertDymmyRecipeData() {
         Tortillas are widely available in grocery stores and can also be made at home with a few simple ingredients. They are a delicious and versatile addition to any meal and have become a beloved food around the world.
         `,
         category: "Other",
-        ingredients: [],
+        ingredients: [
+          "Farine T65",
+          "Sel",
+          "Levure chimique",
+          "Eau",
+          "Huile végétale",
+        ],
         image: "tortillas.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e860",
+          _id: "6408d89aaf9308838ec8e860",
           email: "élise@gmail.com",
         },
         students: ["123456"],
@@ -349,10 +372,10 @@ async function insertDymmyRecipeData() {
         
         Dumplings are a versatile and delicious food that can be enjoyed as a snack, appetizer, or main course. They can be served in a variety of ways, such as in soups, stews, or on their own with dipping sauces. Dumplings are a beloved food around the world and have a rich history and cultural significance in many countries.`,
         category: "Other",
-        ingredients: [],
+        ingredients: ["Farine T65", "Eau", "Sel"],
         image: "dumping.jpg",
         instructor: {
-          $_id: "6408d89aaf9308838ec8e861",
+          _id: "6408d89aaf9308838ec8e861",
           email: "sophie@gmail.com",
         },
         students: ["123456"],
