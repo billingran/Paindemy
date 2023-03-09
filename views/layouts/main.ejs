@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- icons -->
+    <!-- head icon -->
+    <link rel="shortcut icon" href="" />
+    <link rel="bookmark" href="" />
+    <!-- iconScount -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <!-- styles -->
+    <!-- style for all -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+
+    <title><%- title %></title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include("../partials/header") %>
+
+      <main><%- body -%></main>
+
+      <%- include("../partials/footer") %>
+    </div>
+
+    <!-- icons -->
+    <!-- iconify icon usage -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <!-- ionicon icon usage -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

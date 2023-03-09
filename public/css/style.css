@@ -1,0 +1,67 @@
+/* google font Poppins*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* google font Poppins*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --C-DCA47D: #dca47d;
+  --C-6E1D0E: #6e1d0e;
+  --C-F3F3F3: #f3f3f3;
+  --C-222222: #222222;
+  --C-565E64: #565e64;
+  --C-B3B3B3: #b3b3b3;
+  --C-6C757D: #6c757d;
+  --C-4683C1: #4683c1;
+}
+
+/* body */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--C-222222);
+}
+
+/* position */
+.central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centralNowrapBtw {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.centralA {
+  display: flex;
+  align-items: center;
+}
+
+/* input*/
+.input_style {
+  font-family: "Rubik", sans-serif;
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* button with border*/
+.btnB {
+  font-family: "Rubik", sans-serif;
+  border: 0.05rem solid var(--C-222222);
+  border-radius: 0.35rem;
+}

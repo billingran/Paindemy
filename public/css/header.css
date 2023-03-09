@@ -1,0 +1,47 @@
+/* header */
+.header {
+  background-color: var(--C-DCA47D);
+  padding: 0.4rem 0 0 0.4rem;
+}
+
+/* logo image */
+.logo {
+  flex: 1 1;
+}
+
+.logo_image {
+  width: 5.4rem;
+  height: 6.1rem;
+}
+
+/* input_header */
+.search {
+  flex: 1 1;
+}
+
+.form_search {
+  height: 2.6rem;
+  padding: 1rem;
+  background-color: var(--C-F3F3F3);
+  border-radius: 5rem;
+}
+
+.icon_search {
+  font-size: 1.4rem;
+  color: var(--C-6C757D);
+}
+
+.input_search {
+  font-size: 1.2rem;
+  color: var(--C-6C757D);
+}
+
+/* nav button */
+.btns_nav {
+  flex: 1 1;
+}
+
+.btn_nav {
+  width: 4.7rem;
+  height: 2.6rem;
+}
