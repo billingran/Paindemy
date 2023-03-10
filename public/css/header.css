@@ -1,17 +1,19 @@
 /* header */
 .header {
   background-color: var(--C-DCA47D);
-  padding: 0.4rem 0 0 0.4rem;
+  padding: 0.4rem 0.4rem 0 0.4rem;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 /* logo image */
-.logo {
+.logo_H {
   flex: 1 1;
 }
 
 .logo_image {
-  width: 5.4rem;
-  height: 6.1rem;
+  width: 4.4rem;
+  height: 5.1rem;
 }
 
 /* input_header */
@@ -20,10 +22,11 @@
 }
 
 .form_search {
+  background-color: var(--C-F3F3F3);
+  opacity: 0.8;
   height: 2.6rem;
   padding: 1rem;
-  background-color: var(--C-F3F3F3);
-  border-radius: 5rem;
+  margin: 0 0.4rem 0 0.4rem;
 }
 
 .icon_search {
@@ -44,4 +47,67 @@
 .btn_nav {
   width: 4.7rem;
   height: 2.6rem;
+}
+
+.ul_btn {
+  justify-content: end;
+}
+
+.login_btn {
+  margin: 0 0.4rem 0 0;
+}
+
+/* menu toggle */
+.nav_switch_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+  text-align: right;
+}
+
+.menuToggle {
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s;
+  /* opacity: 0;
+  visibility: hidden; */
+}
+
+.menuToggle::before {
+  content: "";
+  width: 1.15rem;
+  height: 3px;
+  position: absolute;
+  background: var(--C-F3F3F3);
+  transform: translateY(-6.5px);
+  transition: 0.25s;
+  border-radius: 5rem;
+}
+
+.nav_switch_container.active .menuToggle::before {
+  transform: translate(0px) rotate(45deg);
+}
+
+.nav_switch_container .menuToggle::after {
+  content: "";
+  width: 1.15rem;
+  height: 3px;
+  position: absolute;
+  background: var(--C-F3F3F3);
+  transform: translateY(6.5px);
+  box-shadow: 0 -6.5px 0 var(--C-F3F3F3);
+  transition: 0.25s;
+  border-radius: 5rem;
+}
+
+.nav_switch_container.active .menuToggle::after {
+  transform: translate(0px) rotate(-45deg);
+  box-shadow: 0 0 0 var(--C-F3F3F3);
 }

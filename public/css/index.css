@@ -1,0 +1,30 @@
+.back_image {
+  min-height: 90vh;
+  width: 100%;
+  background-image: url("/images/image_main.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+h3 {
+  font-size: 2.5rem;
+  color: var(--C-F3F3F3);
+}
+
+.filter {
+  background-color: var(--C-222222);
+  opacity: 0.5;
+  min-height: 90vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}

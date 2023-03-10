@@ -1,0 +1,67 @@
+/* footer */
+.footer {
+  background: var(--C-222222);
+  min-height: 30%;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 2rem 0.1rem 1.4rem 0.1rem;
+}
+
+/* general footer */
+.box_footer {
+  color: var(--C-F3F3F3);
+  font-weight: 500;
+  width: 15rem;
+  margin: 1.5rem 0 1.5rem 0;
+  /* border: 1px solid black; */
+}
+
+.line_mid {
+  background: var(--C-6E1D0E);
+  height: 0.18rem;
+  width: 3.5rem;
+  margin: 0.1rem 0 0.85rem 0;
+}
+
+.font_style {
+  text-align: justify;
+  color: var(--C-6C757D);
+}
+
+.font_color {
+  color: var(--C-6C757D);
+}
+
+/* logo footer image */
+.logo_footer {
+  width: 18rem;
+  height: 21rem;
+}
+
+/* about us  */
+.font_about {
+  font-size: 0.85rem;
+}
+
+/*follow us */
+.icon_style {
+  font-size: 2.2rem;
+  width: 12rem;
+  justify-content: space-between;
+}
+
+.pad {
+  padding-top: 0.6rem;
+  margin: 0 0.25rem 0 0.25rem;
+}
+
+/* quick links & contact us */
+.margin_mid {
+  margin: 1.4rem 0 1.4rem 0;
+}
+
+.icon_font_contact {
+  font-size: 2rem;
+  margin: 0 1rem 0 0;
+}
