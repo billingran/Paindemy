@@ -7,6 +7,7 @@
   --C-DCA47D: #dca47d;
   --C-6E1D0E: #6e1d0e;
   --C-F3F3F3: #f3f3f3;
+  --C-DEDEDE: #dedede;
   --C-222222: #222222;
   --C-565E64: #565e64;
   --C-B3B3B3: #b3b3b3;
@@ -24,7 +25,7 @@
 }
 
 body {
-  background-color: var(--C-F3F3F3);
+  background-color: #dedede;
   scroll-behavior: smooth;
 }
 
@@ -58,6 +59,10 @@ a {
   justify-content: center;
 }
 
+.senction_mid {
+  margin: 5rem auto;
+}
+
 /* border radius */
 .radius {
   border-radius: 5rem;
@@ -85,7 +90,6 @@ a {
   font-size: 1.2rem;
   font-weight: 600;
   border-radius: 0.35rem;
-  /* border: #222222 solid 2px; */
 }
 
 /* box shadow */
