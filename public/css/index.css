@@ -1,30 +1,75 @@
+/* Home One */
+
+/* background */
 .back_image {
-  min-height: 90vh;
-  width: 100%;
   background-image: url("/images/image_main.jpg");
   background-size: cover;
   background-position: center;
+
+  min-height: 90vh;
+  width: 100%;
+  padding: 0 0.15rem;
+
   position: relative;
   z-index: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   text-align: center;
-}
-
-h3 {
-  font-size: 2.5rem;
-  color: var(--C-F3F3F3);
 }
 
 .filter {
   background-color: var(--C-222222);
   opacity: 0.5;
+
   min-height: 90vh;
   width: 100%;
+
   position: absolute;
   top: 0;
   z-index: -1;
 }
+
+/* title */
+h3 {
+  font-size: 3.6rem;
+  color: var(--C-F3F3F3);
+}
+
+/* button */
+.btns_homeOne {
+  margin: 1rem;
+}
+
+.ul_btn_homeOne {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.color_btn {
+  color: var(--C-F3F3F3);
+}
+
+.padding_btn {
+  padding: 0.7rem;
+}
+
+.last {
+  background-color: var(--C-6E1D0E);
+  margin: 0 0.5rem 0 0;
+}
+
+.random {
+  background-color: var(--C-DCA47D);
+  margin: 0 0 0 0.5rem;
+}
+
+@media screen and (max-width: 830px) {
+  h3 {
+    font-size: 6.8vw;
+  }
+
+  .btn_NBorder {
+    font-size: 2.5vw;
+  }
+}
+
+/* Home Two */

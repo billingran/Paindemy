@@ -24,11 +24,6 @@
   margin: 0.1rem 0 0.85rem 0;
 }
 
-.font_style {
-  text-align: justify;
-  color: var(--C-6C757D);
-}
-
 .font_color {
   color: var(--C-6C757D);
 }
@@ -42,6 +37,8 @@
 /* about us  */
 .font_about {
   font-size: 0.85rem;
+  text-align: justify;
+  color: var(--C-6C757D);
 }
 
 /*follow us */
@@ -61,7 +58,7 @@
   margin: 1.4rem 0 1.4rem 0;
 }
 
-.icon_font_contact {
+.icon_font {
   font-size: 2rem;
-  margin: 0 1rem 0 0;
+  margin: 0 0.5rem 0 0;
 }
