@@ -75,8 +75,10 @@
 /* Home Three */
 /* section */
 .section_homeThree {
-  width: 80%;
+  border: 2px orange solid;
 
+  width: 85%;
+  height: 150vh;
   flex-wrap: wrap;
 }
 
@@ -86,25 +88,46 @@
 }
 
 .ctn_image {
+  border: 5px solid green;
+
   position: relative;
 }
 
-.image_homeThree {
-  width: 250px;
-  height: 400px;
+.ctn_image_wanted {
   border: 1px solid black;
 }
 
-.test {
-  background-color: orange;
-  border-radius: 5rem 5rem 0 0;
+.image_homeThree {
+  width: 200px;
+  height: 200px;
+}
 
-  width: 250px;
-  height: 400px;
+.ctn_test {
+  border: pink 3px solid;
 
-  position: absolute;
-  top: 0;
   z-index: -1;
+  position: relative;
+}
+
+.test11 {
+  width: 130px;
+  height: 130px;
+
+  transform: translate(-44%, -50%);
+}
+
+.test22 {
+  width: 230px;
+  height: 230px;
+
+  transform: translate(-49.5%, -50%);
+}
+
+.test33 {
+  width: 330px;
+  height: 330px;
+
+  transform: translate(-49.5%, -50%);
 }
 
 /* title, text and btns */

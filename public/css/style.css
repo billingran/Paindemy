@@ -38,7 +38,7 @@ a {
   color: var(--C-222222);
 }
 
-/* position */
+/* position flex*/
 .horizontal {
   display: flex;
 }
@@ -59,8 +59,24 @@ a {
   justify-content: center;
 }
 
+/* position padding, margin */
+
 .senction_mid {
   margin: 5rem auto;
+}
+
+/* position transform */
+.central_T {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.central_WT {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 /* border radius */
