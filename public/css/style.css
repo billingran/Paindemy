@@ -61,8 +61,12 @@ a {
 
 /* position padding, margin */
 
-.senction_mid {
-  margin: 5rem auto;
+.section_mid {
+  margin: 10rem auto;
+}
+
+.element_mid {
+  margin: 2rem auto;
 }
 
 /* position transform */

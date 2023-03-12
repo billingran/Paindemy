@@ -62,78 +62,80 @@
   margin: 0 0 0 0.5rem;
 }
 
-@media screen and (max-width: 830px) {
-  .title_homeOne {
-    font-size: 6.8vw;
-  }
+/* Home Three */
+.box {
+  width: 45vw;
+  height: 45vw;
+}
 
-  .btn_NBorder {
-    font-size: 2.5vw;
+.t1 {
+  transform-origin: center;
+  animation: myanimate 5s infinite linear;
+}
+
+.t2 {
+  transform-origin: center center;
+  animation: myanimate 5s infinite linear reverse;
+}
+
+.t3 {
+  transform-origin: center center;
+  animation: myanimate 5s infinite linear;
+}
+
+.t4 {
+  transform-origin: center center;
+  animation: myanimate 5s infinite linear reverse;
+}
+
+@keyframes myanimate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* Home Three */
 /* section */
 .section_homeThree {
-  border: 2px orange solid;
+  /* border: 2px orange solid; */
 
-  width: 85%;
-  height: 150vh;
+  width: 80%;
+
+  justify-content: space-around;
   flex-wrap: wrap;
+  position: relative;
 }
 
 /* image and background */
-.margin_wanted {
-  margin: 0 6rem;
-}
-
 .ctn_image {
-  border: 5px solid green;
-
   position: relative;
-}
-
-.ctn_image_wanted {
-  border: 1px solid black;
 }
 
 .image_homeThree {
-  width: 200px;
-  height: 200px;
+  width: 339px;
+  height: 512px;
 }
 
-.ctn_test {
-  border: pink 3px solid;
+.test1 {
+  /* border: 2px orange solid; */
+}
 
+.test2 {
+  /* border: 2px green solid; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-44%, -56%);
   z-index: -1;
-  position: relative;
-}
-
-.test11 {
-  width: 130px;
-  height: 130px;
-
-  transform: translate(-44%, -50%);
-}
-
-.test22 {
-  width: 230px;
-  height: 230px;
-
-  transform: translate(-49.5%, -50%);
-}
-
-.test33 {
-  width: 330px;
-  height: 330px;
-
-  transform: translate(-49.5%, -50%);
 }
 
 /* title, text and btns */
 .ctn_text {
-  width: 40%;
-  border: 1px green solid;
+  border: 1px blue solid;
+
+  width: 350px;
 }
 
 .title_homeThree {
@@ -144,6 +146,32 @@
 .text_homeThree {
   color: var(--C-565E64);
   text-align: justify;
+  font-size: 1.1rem;
 
   margin: 1rem 0.5rem;
+}
+
+@media screen and (max-width: 830px) {
+  /* home one */
+  .title_homeOne {
+    font-size: 6.8vw;
+  }
+
+  /* home three */
+  .section_homeThree {
+    width: 100%;
+  }
+
+  .ctn_text {
+    width: 80%;
+  }
+
+  .title_homeThree {
+    font-size: 7vw;
+  }
+
+  /* all */
+  .btn_NBorder {
+    font-size: 2.5vw;
+  }
 }
