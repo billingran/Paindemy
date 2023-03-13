@@ -122,13 +122,26 @@ section div ul li:hover .color_btn {
 /* title course */
 .ctn_title_course {
   border: 2px solid purple;
+  font-weight: 600;
 
   justify-content: space-between;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 
-/* course bakery */
-.course_content {
+.title_course {
+  font-size: 2.5rem;
+  color: var(--C-222222);
+}
+
+/*  content course */
+
+.ctn_content_course {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.box_course {
   width: 20rem;
   height: 40rem;
 
@@ -140,7 +153,8 @@ section div ul li:hover .color_btn {
   height: 20rem;
 }
 
-.box_course {
+.course_content {
+  padding: 0.5rem;
   background: var(--C-222222);
 }
 
