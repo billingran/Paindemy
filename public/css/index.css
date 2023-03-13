@@ -1,12 +1,11 @@
 /* Home One */
-
 /* background */
 .back_image {
   background-image: url("/images/image_main.jpg");
   background-size: cover;
   background-position: center;
 
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100%;
   padding: 0 0.15rem;
 
@@ -20,7 +19,7 @@
   background-color: var(--C-222222);
   opacity: 0.5;
 
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100%;
 
   position: absolute;
@@ -46,6 +45,12 @@
 
 .color_btn {
   color: var(--C-F3F3F3);
+  transition: all 0.3s;
+}
+
+/* hover color of btn of homeOne, homeThree */
+section div ul li:hover .color_btn {
+  color: var(--C-ff0066);
 }
 
 .padding_btn {
@@ -62,30 +67,126 @@
   margin: 0 0 0 0.5rem;
 }
 
+/* /////////////////////////////////////////////// */
+
+/* Home Two */
+.section_homeTwo {
+  border: 2px solid green;
+
+  width: 97%;
+}
+
+.category_course_mid {
+  margin: 0.8rem;
+}
+
+/* category */
+.ctn_categories {
+  border: 2px solid orange;
+
+  margin: 0 auto 7rem;
+
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.size_image_category {
+  width: 20rem;
+  height: 8rem;
+}
+
+.image_category {
+  font-size: 1.5rem;
+  color: var(--C-F3F3F3);
+  background-size: cover;
+  background-position: center;
+}
+
+.title_category {
+  font-weight: 600;
+}
+
+/* hover image, title category */
+.image_category:hover {
+  color: var(--C-ff0066);
+  transform: scale(1.2);
+}
+
+/* course */
+.ctn_courses {
+  margin: 0 auto 4rem;
+
+  flex-direction: column;
+}
+
+/* title course */
+.ctn_title_course {
+  border: 2px solid purple;
+
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* course bakery */
+.course_content {
+  width: 20rem;
+  height: 40rem;
+
+  flex-direction: column;
+}
+
+.size_image_course {
+  width: 20rem;
+  height: 20rem;
+}
+
+.box_course {
+  background: var(--C-222222);
+}
+
+/* /////////////////////////////////////////////// */
+
 /* Home Three */
-.box {
-  width: 45vw;
-  height: 45vw;
+/* section */
+.section_homeThree {
+  /* border: 2px red solid; */
+
+  width: 75%;
+
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-.t1 {
+/* image and background */
+
+.ctn_image_homeThree {
+  /* border: 2px orange solid; */
+
+  top: 32px;
+  left: 45px;
+}
+
+.image_homeThree {
+  width: 339px;
+  height: 512px;
+}
+
+.ctn_instructorSvg {
+  width: 500px;
+  height: 500px;
+}
+
+.trans_origin {
   transform-origin: center;
-  animation: myanimate 5s infinite linear;
 }
 
-.t2 {
-  transform-origin: center center;
-  animation: myanimate 5s infinite linear reverse;
+.ani_ctn_instructorSvg {
+  animation: myanimate 12s infinite linear;
 }
 
-.t3 {
-  transform-origin: center center;
-  animation: myanimate 5s infinite linear;
-}
-
-.t4 {
-  transform-origin: center center;
-  animation: myanimate 5s infinite linear reverse;
+.anir_ctn_instructorSvg {
+  animation: myanimate 12s infinite linear reverse;
 }
 
 @keyframes myanimate {
@@ -97,45 +198,13 @@
   }
 }
 
-/* section */
-.section_homeThree {
-  /* border: 2px orange solid; */
-
-  width: 80%;
-
-  justify-content: space-around;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-/* image and background */
-.ctn_image {
-  position: relative;
-}
-
-.image_homeThree {
-  width: 339px;
-  height: 512px;
-}
-
-.test1 {
-  /* border: 2px orange solid; */
-}
-
-.test2 {
-  /* border: 2px green solid; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-44%, -56%);
-  z-index: -1;
-}
-
 /* title, text and btns */
 .ctn_text {
-  border: 1px blue solid;
+  /* border: 1px blue solid; */
 
-  width: 350px;
+  margin: 6rem auto;
+
+  width: 400px;
 }
 
 .title_homeThree {
@@ -148,11 +217,19 @@
   text-align: justify;
   font-size: 1.1rem;
 
-  margin: 1rem 0.5rem;
+  margin: 1rem 0rem;
 }
 
+/* /////////////////////////////////////////////// */
+
+/* responive */
 @media screen and (max-width: 830px) {
   /* home one */
+  .back_image,
+  .filter {
+    min-height: 50vh;
+  }
+
   .title_homeOne {
     font-size: 6.8vw;
   }
@@ -162,16 +239,41 @@
     width: 100%;
   }
 
+  /* text */
   .ctn_text {
     width: 80%;
   }
 
   .title_homeThree {
-    font-size: 7vw;
+    /* font-size: 8vw; */
   }
 
   /* all */
   .btn_NBorder {
     font-size: 2.5vw;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  /* home three */
+  /* image */
+  .ctn_image_homeThree {
+    top: -11px;
+    left: 16px;
+  }
+
+  .image_homeThree {
+    width: 265px;
+    height: 445px;
+  }
+
+  .ctn_instructorSvg {
+    width: 345px;
+    height: 345px;
+  }
+
+  /* text */
+  .title_homeThree {
+    font-size: 2rem;
   }
 }

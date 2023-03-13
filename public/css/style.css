@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
+  --C-ff0066: #ff0066;
   --C-DCA47D: #dca47d;
   --C-6E1D0E: #6e1d0e;
   --C-F3F3F3: #f3f3f3;
@@ -12,6 +13,7 @@
   --C-565E64: #565e64;
   --C-B3B3B3: #b3b3b3;
   --C-6C757D: #6c757d;
+  --C-6B6D63: #6b6d63;
   --C-4683C1: #4683c1;
 }
 
@@ -36,6 +38,8 @@ ul {
 a {
   text-decoration: none;
   color: var(--C-222222);
+
+  display: inline-block;
 }
 
 /* position flex*/
@@ -62,11 +66,7 @@ a {
 /* position padding, margin */
 
 .section_mid {
-  margin: 10rem auto;
-}
-
-.element_mid {
-  margin: 2rem auto;
+  margin: 7rem auto;
 }
 
 /* position transform */
@@ -77,15 +77,25 @@ a {
   transform: translate(-50%, -50%);
 }
 
-.central_WT {
+.relative {
+  position: relative;
+}
+
+.absolute {
   position: absolute;
-  top: 50%;
-  left: 50%;
+}
+
+.transition {
+  transition: all 0.3s;
 }
 
 /* border radius */
-.radius {
+.radius_rond {
   border-radius: 5rem;
+}
+
+.radius_square {
+  border-radius: 0.55rem;
 }
 
 /* input*/
@@ -115,4 +125,19 @@ a {
 /* box shadow */
 .shadow_box {
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+}
+
+/* ctn overflow */
+.ctn_overflow {
+  overflow: hidden;
+}
+
+/* cursor pointer */
+.cusor {
+  cursor: pointer;
+}
+
+/* underline */
+.underline {
+  text-decoration: underline;
 }

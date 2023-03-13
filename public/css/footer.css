@@ -1,11 +1,16 @@
 /* footer */
 .footer {
   background: var(--C-222222);
-  min-height: 30%;
+  min-height: 25vh;
+
+  padding: 4rem 0.1rem 0.5rem 0.1rem;
+}
+
+/* content footer */
+.ctn_footer {
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 2rem 0.1rem 1.4rem 0.1rem;
 }
 
 /* general footer */
@@ -13,7 +18,7 @@
   color: var(--C-F3F3F3);
   font-weight: 500;
   width: 15rem;
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 2rem 1.5rem 1.5rem 1.5rem;
   /* border: 1px solid black; */
 }
 
@@ -26,6 +31,8 @@
 
 .font_color {
   color: var(--C-6C757D);
+
+  transition: all 0.3s;
 }
 
 /* logo footer image */
@@ -60,5 +67,24 @@
 
 .icon_font {
   font-size: 2rem;
+
   margin: 0 0.5rem 0 0;
+
+  transition: all 0.3s;
+}
+
+/* hover color */
+footer div a:hover .font_color,
+footer div ul li:hover div .font_color,
+footer div ul li:hover div .icon_font {
+  color: var(--C-ff0066);
+}
+
+/* /////////////////////////////////////////////// */
+
+/* copy right footer */
+.ctn_copyRight {
+  text-align: center;
+  color: var(--C-F3F3F3);
+  font-size: 0.65rem;
 }
