@@ -136,8 +136,3 @@ a {
 .cusor {
   cursor: pointer;
 }
-
-/* underline */
-.underline {
-  text-decoration: underline;
-}
