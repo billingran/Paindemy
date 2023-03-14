@@ -50,7 +50,7 @@
 
 /* hover color of btn of homeOne, homeThree */
 section div ul li:hover .color_btn {
-  color: var(--C-ff0066);
+  color: var(--C-FF0066);
 }
 
 .padding_btn {
@@ -100,6 +100,8 @@ section div ul li:hover .color_btn {
   color: var(--C-F3F3F3);
   background-size: cover;
   background-position: center;
+
+  transition: all 0.3s;
 }
 
 .title_category {
@@ -107,8 +109,13 @@ section div ul li:hover .color_btn {
 }
 
 /* hover image, title category */
+.size_image_category:hover {
+  box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
+}
+
 .image_category:hover {
-  color: var(--C-ff0066);
+  color: var(--C-FF0066);
+
   transform: scale(1.2);
 }
 
@@ -154,8 +161,40 @@ section div ul li:hover .color_btn {
 }
 
 .course_content {
-  padding: 0.5rem;
+  padding: 0.8rem;
   background: var(--C-222222);
+}
+
+.font_course_homeTwo {
+  color: var(--C-F3F3F3);
+  font-weight: 600;
+  font-size: 1rem;
+
+  margin: 0 0 0.1rem 0;
+}
+
+.icon_font_homeTwo {
+  margin: 0 0.5rem 0 0;
+
+  font-size: 1.6rem;
+
+  transition: all 0.3s;
+}
+
+.test {
+  width: 80%;
+  margin: 0 0 0 0.5rem;
+}
+
+/* hover title, content course */
+.box_course:hover {
+  box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
+}
+
+section div ul .box_course:hover .image_category {
+  color: var(--C-FF0066);
+
+  transform: scale(1.2);
 }
 
 /* /////////////////////////////////////////////// */
@@ -256,10 +295,6 @@ section div ul li:hover .color_btn {
   /* text */
   .ctn_text {
     width: 80%;
-  }
-
-  .title_homeThree {
-    /* font-size: 8vw; */
   }
 
   /* all */

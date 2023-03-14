@@ -77,7 +77,7 @@
 footer div a:hover .font_color,
 footer div ul li:hover div .font_color,
 footer div ul li:hover div .icon_font {
-  color: var(--C-ff0066);
+  color: var(--C-FF0066);
 }
 
 /* /////////////////////////////////////////////// */
