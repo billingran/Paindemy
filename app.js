@@ -1,10 +1,18 @@
+// dotenv
 const dotenv = require("dotenv").config();
+// express
 const express = require("express");
 const app = express();
+// ejs
 const expressLayouts = require("express-ejs-layouts");
+// models
 const Category = require("./src/models/category_model");
 const User = require("./src/models/user_model");
 const Course = require("./src/models/course_model");
+// routes
+const authRoutes = require("./src/routes/auth_routes");
+const courseRoutes = require("./src/routes/course_routes");
+const profileRoutes = require("./src/routes/profile_route");
 
 //Connect to mongodb alts
 require("./src/models/database");
@@ -20,13 +28,11 @@ app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
 
 // Middleware of routes
+app.use("/auth", authRoutes);
 
+// Home Page
 app.get("/", (req, res) => {
-  res.render("index", { title: "Me" });
-});
-
-app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("index", { title: "Home Page" });
 });
 
 app.listen(8080, () => {

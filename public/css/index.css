@@ -1,12 +1,15 @@
 /* Home One */
 /* background */
-.back_image {
-  background-image: url("/images/image_main.jpg");
+.size_background_homeOne {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.back_image_homeOne {
+  background-image: url("/images/image_main_homeOne.jpg");
   background-size: cover;
   background-position: center;
 
-  min-height: 100vh;
-  width: 100%;
   padding: 0 0.15rem;
 
   position: relative;
@@ -15,12 +18,9 @@
   text-align: center;
 }
 
-.filter {
+.filter_homeOne {
   background-color: var(--C-222222);
   opacity: 0.5;
-
-  min-height: 100vh;
-  width: 100%;
 
   position: absolute;
   top: 0;
@@ -151,6 +151,10 @@ section div ul li:hover .color_btn {
 .ctn_more_title {
   color: var(--C-6E1D0E);
   font-size: 1rem;
+}
+
+.icon_more_title {
+  margin: 0 0 0 0.2rem;
 }
 
 /*  content course */
@@ -329,8 +333,7 @@ section div ul .font_course_homeTwo:hover a,
 /* responive */
 @media screen and (max-width: 830px) {
   /* home one */
-  .back_image,
-  .filter {
+  .size_background_homeOne {
     min-height: 50vh;
   }
 
