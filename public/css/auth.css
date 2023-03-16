@@ -1,4 +1,15 @@
 /*auth */
+/* transition */
+.txt_field_auth i,
+.txt_field_auth label,
+.txt_field_auth span::before,
+input[type="submit"]:hover,
+a[class="google"]:hover,
+.link_auth a,
+.pass_auth {
+  transition: all 0.3s;
+}
+
 /* background auth */
 .size_background_auth {
   min-height: 100vh;
@@ -90,8 +101,6 @@ form .txt_field_auth {
   top: 50%;
   left: 38px;
   transform: translateY(-50%);
-
-  transition: all 0.3s;
 }
 
 .txt_field_auth i {
@@ -110,8 +119,6 @@ form .txt_field_auth {
   position: absolute;
   top: 45px;
   left: 0;
-
-  transition: all 0.3s;
 }
 
 /* animation input */
@@ -165,7 +172,6 @@ input[type="submit"]:hover,
 a[class="google"]:hover {
   border-color: var(--C-6E1D0E);
   color: var(--C-FF0066);
-  transition: all 0.3s;
 }
 
 /* link auth */
@@ -190,7 +196,6 @@ a[class="google"]:hover {
   margin: -5px 0 35px 5px;
   color: var(--C-B3B3B3);
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 /* hover for forgetpassword and link auth */
