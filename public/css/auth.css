@@ -11,19 +11,20 @@ a[class="google"]:hover,
 }
 
 /* background auth */
-.size_background_auth {
+
+.back_image_auth {
+  background-size: cover;
+  background-position: center;
+
   min-height: 100vh;
   width: 100%;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+  padding: 0 7rem;
 
-.back_image_auth {
-  background-image: url("/images/image_main_auth.jpg");
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 
   position: relative;
   z-index: 0;
@@ -33,6 +34,12 @@ a[class="google"]:hover,
   background-color: var(--C-222222);
   opacity: 0.65;
 
+  width: 100%;
+  min-height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: -1;
 }
 
@@ -48,10 +55,7 @@ input[type="submit"] {
 .center_auth {
   width: 32rem;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* border: 3px orange solid; */
 }
 
 .center_auth h2 {
@@ -190,6 +194,14 @@ a[class="google"]:hover {
 
 /* /////////////////////////////////////////////// */
 
+/* sign up */
+/* background image */
+.back_signup_login {
+  background-image: url("/images/image_main_auth.jpg");
+}
+
+/* /////////////////////////////////////////////// */
+
 /* login */
 /* forget password */
 .pass_auth {
@@ -204,10 +216,42 @@ a[class="google"]:hover {
   text-decoration: underline;
   color: var(--C-FF0066);
 }
+/* /////////////////////////////////////////////// */
+
+/* join us */
+/* background image */
+.back_image_joinus {
+  background-image: url("/images/image_main_join_us.jpg");
+}
+
+.ctn_image_joinus {
+  /* border: 1px red solid; */
+  overflow: hidden;
+
+  position: relative;
+
+  align-self: flex-end;
+}
+
+.ctn_image_joinus img {
+  /* border: 2px solid green; */
+  width: 26rem;
+  height: 95vh;
+
+  transform: translateX(-27rem);
+  animation: animateJoinus 5s forwards 2s;
+}
+
+@keyframes animateJoinus {
+  to {
+    transform: translateX(0);
+  }
+}
 
 /* /////////////////////////////////////////////// */
 
 /* responive */
+/* sign up and login */
 @media screen and (max-width: 500px) {
   .center_auth {
     width: 100%;
@@ -215,5 +259,27 @@ a[class="google"]:hover {
 
   .center_auth form {
     padding: 0 0.85rem;
+  }
+}
+
+/* join us */
+@media screen and (max-width: 1160px) {
+  .back_image_auth {
+    min-height: 80vh;
+    padding: 0;
+  }
+
+  .ctn_image_joinus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: -2;
+  }
+
+  .ctn_image_joinus img {
+    width: 20rem;
+    height: 80%;
   }
 }
