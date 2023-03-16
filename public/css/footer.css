@@ -8,6 +8,7 @@
 
 /* content footer */
 .ctn_footer {
+  display: flex;
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -32,6 +33,9 @@
 .font_color {
   color: var(--C-6C757D);
 
+  display: flex;
+  align-items: center;
+
   transition: all 0.3s;
 }
 
@@ -51,13 +55,12 @@
 /*follow us */
 .icon_style {
   font-size: 2.2rem;
-  width: 12rem;
-  justify-content: space-between;
-}
 
-.pad {
-  padding-top: 0.6rem;
-  margin: 0 0.25rem 0 0.25rem;
+  width: 12rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* quick links & contact us */

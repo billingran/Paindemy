@@ -44,7 +44,7 @@ a {
 }
 
 /* position flex*/
-.horizontal {
+.flex {
   display: flex;
 }
 
@@ -78,25 +78,18 @@ a {
   transform: translate(-50%, -50%);
 }
 
+.central_Z {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .relative {
   position: relative;
 }
 
 .absolute {
   position: absolute;
-}
-
-.transition {
-  transition: all 0.3s;
-}
-
-/* border radius */
-.radius_rond {
-  border-radius: 5rem;
-}
-
-.radius_square {
-  border-radius: 0.55rem;
 }
 
 /* input*/
@@ -116,24 +109,17 @@ a {
 }
 
 /* a tag without border*/
-.btn_NBorder {
+.a_NBorder {
   font-family: "Rubik", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
-  border-radius: 0.35rem;
-}
-
-/* box shadow */
-.shadow_box {
-  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
-}
-
-/* ctn overflow */
-.ctn_overflow {
-  overflow: hidden;
-}
-
-/* cursor pointer */
-.cusor {
   cursor: pointer;
+  color: var(--C-F3F3F3);
+
+  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+  border-radius: 0.35rem;
+
+  padding: 0.55rem 0.7rem;
+
+  transition: all 0.3s;
 }

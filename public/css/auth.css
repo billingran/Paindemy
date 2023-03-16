@@ -1,8 +1,12 @@
-/* auth */
+/*auth */
 /* background auth */
 .size_background_auth {
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .back_image_auth {
@@ -18,9 +22,6 @@
   background-color: var(--C-222222);
   opacity: 0.65;
 
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: -1;
 }
 
@@ -34,7 +35,12 @@ input[type="submit"] {
 }
 
 .center_auth {
-  width: 30rem;
+  width: 32rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .center_auth h2 {
@@ -42,17 +48,17 @@ input[type="submit"] {
   text-align: center;
   font-size: 3rem;
 
-  padding: 0 0 15px 0;
+  padding: 0 0 1rem 0;
 }
 
 .center_auth form {
-  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 form .txt_field_auth {
   border-bottom: 2px solid var(--C-B3B3B3);
 
-  margin: 35px 0;
+  margin: 2.5rem 0;
 
   position: relative;
 
@@ -63,7 +69,7 @@ form .txt_field_auth {
 .txt_field_auth input {
   /* border: red solid 2px; */
   color: var(--C-B3B3B3);
-  font-size: 1rem;
+  font-size: 1.3rem;
   background: none;
 
   outline: none;
@@ -71,22 +77,10 @@ form .txt_field_auth {
   padding: 0 5px;
 
   width: 100%;
-  height: 50px;
+  height: 45px;
 }
 
-.txt_field_auth .test {
-  color: var(--C-B3B3B3);
-  font-size: 2.2rem;
-  pointer-events: none;
-
-  position: absolute;
-  top: 50%;
-  left: 0px;
-  transform: translateY(-50%);
-
-  transition: 0.5s;
-}
-
+.txt_field_auth i,
 .txt_field_auth label {
   color: var(--C-B3B3B3);
   font-size: 1rem;
@@ -97,7 +91,13 @@ form .txt_field_auth {
   left: 38px;
   transform: translateY(-50%);
 
-  transition: 0.5s;
+  transition: all 0.3s;
+}
+
+.txt_field_auth i {
+  font-size: 2.2rem;
+
+  left: 0px;
 }
 
 .txt_field_auth span::before {
@@ -108,22 +108,18 @@ form .txt_field_auth {
   height: 2px;
 
   position: absolute;
-  top: 50px;
+  top: 45px;
   left: 0;
 
-  transition: 0.5s;
+  transition: all 0.3s;
 }
 
 /* animation input */
-.txt_field_auth input:focus ~ .test,
-.txt_field_auth input:valid ~ .test {
-  top: -5px;
-  color: var(--C-FF0066);
-}
-
+.txt_field_auth input:focus ~ i,
+.txt_field_auth input:valid ~ i,
 .txt_field_auth input:focus ~ label,
 .txt_field_auth input:valid ~ label {
-  top: -5px;
+  top: -0.5rem;
   color: var(--C-FF0066);
 }
 
@@ -132,27 +128,44 @@ form .txt_field_auth {
   width: 100%;
 }
 
-/* form button */
-input[type="submit"] {
+/* form button and google a tag*/
+input[type="submit"],
+a[class="google"] {
   font-family: "Rubik", sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
   border: 1px solid var(--C-B3B3B3);
   background: var(--C-6E1D0E);
   color: var(--C-F7F8EE);
   cursor: pointer;
+  text-align: center;
 
   border-radius: 25px;
   outline: none;
 
   width: 100%;
-  height: 50px;
+
+  padding: 14px 0;
 }
 
-/* hover for form button */
-input[type="submit"]:hover {
+a[class="google"] {
+  margin: 35px 0 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a[class="google"] ion-icon {
+  font-size: 1.2rem;
+  margin: 0 0.5rem 0 0;
+}
+
+/* hover for form button and google a tag */
+input[type="submit"]:hover,
+a[class="google"]:hover {
   border-color: var(--C-6E1D0E);
   color: var(--C-FF0066);
-  transition: 0.5s;
+  transition: all 0.3s;
 }
 
 /* link auth */
@@ -166,13 +179,18 @@ input[type="submit"]:hover {
 .link_auth a {
   color: var(--C-4683C1);
   text-decoration: none;
+  transition: all 0.3s;
 }
 
-/* login forget password */
+/* /////////////////////////////////////////////// */
+
+/* login */
+/* forget password */
 .pass_auth {
   margin: -5px 0 35px 5px;
   color: var(--C-B3B3B3);
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 /* hover for forgetpassword and link auth */
@@ -180,4 +198,17 @@ input[type="submit"]:hover {
 .link_auth a:hover {
   text-decoration: underline;
   color: var(--C-FF0066);
+}
+
+/* /////////////////////////////////////////////// */
+
+/* responive */
+@media screen and (max-width: 500px) {
+  .center_auth {
+    width: 100%;
+  }
+
+  .center_auth form {
+    padding: 0 0.85rem;
+  }
 }

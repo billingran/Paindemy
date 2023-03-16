@@ -3,6 +3,10 @@
 .size_background_homeOne {
   min-height: 90vh;
   width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .back_image_homeOne {
@@ -38,32 +42,26 @@
 }
 
 .ul_btn_homeOne {
+  display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
 }
 
-.color_btn {
-  color: var(--C-F3F3F3);
-  transition: all 0.3s;
-}
-
 /* hover color of btn of homeOne, homeThree */
-section div ul li:hover .color_btn {
+section div .a_NBorder:hover {
   color: var(--C-FF0066);
-}
-
-.padding_btn {
-  padding: 0.45rem 0.7rem;
 }
 
 .last {
   background-color: var(--C-6E1D0E);
   margin: 0 0.5rem 0 0;
+  border-radius: 0.35rem;
 }
 
 .random {
   background-color: var(--C-DCA47D);
   margin: 0 0 0 0.5rem;
+  border-radius: 0.35rem;
 }
 
 /* /////////////////////////////////////////////// */
@@ -79,17 +77,33 @@ section div ul li:hover .color_btn {
   margin: 0.8rem;
 }
 
+.image_category,
+.ctn_more_title,
+.font_course_homeTwo,
+.font_course_homeTwo a,
+.icon_font_homeTwo,
+.ctn_plus_homeTwo a,
+.ctn_more_homeTwo a {
+  transition: all 0.3s;
+}
+
 /* category */
 .ctn_categories {
   /* border: 2px solid orange; */
 
   margin: 0 auto 7rem;
 
+  display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.size_image_category {
+.size_image_category,
+.image_category {
+  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+  overflow: hidden;
+  border-radius: 0.55rem;
+
   width: 20.5rem;
   height: 8rem;
 }
@@ -99,12 +113,18 @@ section div ul li:hover .color_btn {
   color: var(--C-F3F3F3);
   background-size: cover;
   background-position: center;
+  border-radius: 0.55rem 0.55rem 0 0;
 
-  transition: all 0.3s;
+  position: relative;
 }
 
 .title_category {
   font-weight: 600;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* hover image, title category */
@@ -122,6 +142,7 @@ section div ul li:hover .color_btn {
 .ctn_courses {
   margin: 0 auto 4rem;
 
+  display: flex;
   flex-direction: column;
 }
 
@@ -133,6 +154,8 @@ section div ul li:hover .color_btn {
   margin: 0 0 2.5rem 0;
   padding: 0 0.8rem 0 0.55rem;
 
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -150,6 +173,10 @@ section div ul li:hover .color_btn {
 .ctn_more_title {
   color: var(--C-6E1D0E);
   font-size: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon_more_title {
@@ -159,18 +186,31 @@ section div ul li:hover .color_btn {
 /*  content course */
 
 .ctn_content_course {
+  display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .box_course {
+  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+  overflow: hidden;
+  border-radius: 0.55rem;
+
   width: 20.5rem;
   min-height: 35rem;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
 .size_image_course {
+  overflow: hidden;
+}
+
+.size_image_course,
+.size_image_course .image_category {
   width: 20.5rem;
   height: 22rem;
 }
@@ -190,17 +230,17 @@ section div ul li:hover .color_btn {
   color: var(--C-F3F3F3);
   font-weight: 600;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .icon_font_homeTwo {
   margin: 0 0.5rem 0 0;
 
   font-size: 1.6rem;
-
-  transition: all 0.3s;
 }
 
 .ctn_address_homeTwo {
+  display: flex;
   align-items: flex-start;
 }
 
@@ -212,25 +252,34 @@ section div ul li:hover .color_btn {
 .ctn_plus_more {
   width: 100%;
 
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
 }
 
 .plus_more_style {
+  border-radius: 5rem;
+
   width: 1.5rem;
   height: 1.5rem;
 
   margin: 0 0 0 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus_more_style a {
+  color: var(--C-F3F3F3);
 }
 
 .ctn_plus_homeTwo {
   background: var(--C-6E1D0E);
 }
+
 .ctn_more_homeTwo {
   background: var(--C-DCA47D);
-}
-
-.plus_more_style a {
-  color: var(--C-F3F3F3);
 }
 
 /* hover title, content course */
@@ -260,8 +309,11 @@ section div ul .font_course_homeTwo:hover a,
 
   width: 75%;
 
+  display: flex;
+  align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+
   position: relative;
 }
 
@@ -270,6 +322,7 @@ section div ul .font_course_homeTwo:hover a,
 .ctn_image_homeThree {
   /* border: 2px orange solid; */
 
+  position: absolute;
   top: 32px;
   left: 45px;
 }
@@ -351,7 +404,7 @@ section div ul .font_course_homeTwo:hover a,
   }
 
   /* all */
-  .btn_NBorder {
+  .a_NBorder {
     font-size: 2.5vw;
   }
 }
@@ -365,8 +418,10 @@ section div ul .font_course_homeTwo:hover a,
 
   /* category and course */
   .size_image_category,
+  .image_category,
   .box_course,
   .size_image_course,
+  .size_image_course .image_category,
   .size_content_course {
     width: 340px;
   }
