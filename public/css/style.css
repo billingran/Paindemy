@@ -12,6 +12,7 @@
   --C-222222: #222222;
   --C-565E64: #565e64;
   --C-B3B3B3: #b3b3b3;
+  --C-F7F8EE: #f7f8ee;
   --C-6C757D: #6c757d;
   --C-6B6D63: #6b6d63;
   --C-4683C1: #4683c1;
@@ -107,14 +108,14 @@ a {
   outline: none;
 }
 
-/* button with border*/
+/* a tag with border*/
 .btn_Border {
   font-family: "Rubik", sans-serif;
   border: 0.05rem solid var(--C-222222);
   border-radius: 0.35rem;
 }
 
-/* button without border*/
+/* a tag without border*/
 .btn_NBorder {
   font-family: "Rubik", sans-serif;
   font-size: 1.2rem;

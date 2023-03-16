@@ -1,7 +1,7 @@
 /* Home One */
 /* background */
 .size_background_homeOne {
-  min-height: 100vh;
+  min-height: 90vh;
   width: 100%;
 }
 
@@ -9,8 +9,6 @@
   background-image: url("/images/image_main_homeOne.jpg");
   background-size: cover;
   background-position: center;
-
-  padding: 0 0.15rem;
 
   position: relative;
   z-index: 0;
@@ -20,10 +18,11 @@
 
 .filter_homeOne {
   background-color: var(--C-222222);
-  opacity: 0.5;
+  opacity: 0.65;
 
   position: absolute;
   top: 0;
+  left: 0;
   z-index: -1;
 }
 

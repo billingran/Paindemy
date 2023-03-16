@@ -1,9 +1,9 @@
 /* footer */
 .footer {
   background: var(--C-222222);
-  min-height: 25vh;
+  min-height: 20vh;
 
-  padding: 4rem 0.1rem 0.5rem 0.1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
 }
 
 /* content footer */

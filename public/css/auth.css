@@ -10,19 +10,174 @@
   background-size: cover;
   background-position: center;
 
-  padding: 0 0.15rem;
-
   position: relative;
   z-index: 0;
-  flex-direction: column;
-  text-align: center;
 }
 
 .filter_auth {
   background-color: var(--C-222222);
-  opacity: 0.5;
+  opacity: 0.65;
 
   position: absolute;
   top: 0;
+  left: 0;
   z-index: -1;
+}
+
+/* form */
+/* font weight */
+.center_auth h2,
+.center_auth form,
+.txt_field_auth input,
+input[type="submit"] {
+  font-weight: 600;
+}
+
+.center_auth {
+  width: 30rem;
+}
+
+.center_auth h2 {
+  color: var(--C-F3F3F3);
+  text-align: center;
+  font-size: 3rem;
+
+  padding: 0 0 15px 0;
+}
+
+.center_auth form {
+  padding: 0 40px;
+}
+
+form .txt_field_auth {
+  border-bottom: 2px solid var(--C-B3B3B3);
+
+  margin: 35px 0;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.txt_field_auth input {
+  /* border: red solid 2px; */
+  color: var(--C-B3B3B3);
+  font-size: 1rem;
+  background: none;
+
+  outline: none;
+  border: none;
+  padding: 0 5px;
+
+  width: 100%;
+  height: 50px;
+}
+
+.txt_field_auth .test {
+  color: var(--C-B3B3B3);
+  font-size: 2.2rem;
+  pointer-events: none;
+
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+
+  transition: 0.5s;
+}
+
+.txt_field_auth label {
+  color: var(--C-B3B3B3);
+  font-size: 1rem;
+  pointer-events: none;
+
+  position: absolute;
+  top: 50%;
+  left: 38px;
+  transform: translateY(-50%);
+
+  transition: 0.5s;
+}
+
+.txt_field_auth span::before {
+  content: "";
+  background: var(--C-FF0066);
+
+  width: 0%;
+  height: 2px;
+
+  position: absolute;
+  top: 50px;
+  left: 0;
+
+  transition: 0.5s;
+}
+
+/* animation input */
+.txt_field_auth input:focus ~ .test,
+.txt_field_auth input:valid ~ .test {
+  top: -5px;
+  color: var(--C-FF0066);
+}
+
+.txt_field_auth input:focus ~ label,
+.txt_field_auth input:valid ~ label {
+  top: -5px;
+  color: var(--C-FF0066);
+}
+
+.txt_field_auth input:focus ~ span::before,
+.txt_field_auth input:valid ~ span::before {
+  width: 100%;
+}
+
+/* form button */
+input[type="submit"] {
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  border: 1px solid var(--C-B3B3B3);
+  background: var(--C-6E1D0E);
+  color: var(--C-F7F8EE);
+  cursor: pointer;
+
+  border-radius: 25px;
+  outline: none;
+
+  width: 100%;
+  height: 50px;
+}
+
+/* hover for form button */
+input[type="submit"]:hover {
+  border-color: var(--C-6E1D0E);
+  color: var(--C-FF0066);
+  transition: 0.5s;
+}
+
+/* link auth */
+.link_auth {
+  margin: 35px 0;
+  text-align: center;
+  font-size: 16px;
+  color: var(--C-B3B3B3);
+}
+
+.link_auth a {
+  color: var(--C-4683C1);
+  text-decoration: none;
+}
+
+/* login forget password */
+.pass_auth {
+  margin: -5px 0 35px 5px;
+  color: var(--C-B3B3B3);
+  cursor: pointer;
+}
+
+/* hover for forgetpassword and link auth */
+.pass_auth:hover,
+.link_auth a:hover {
+  text-decoration: underline;
+  color: var(--C-FF0066);
 }
