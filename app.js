@@ -29,6 +29,7 @@ app.set("view engine", "ejs");
 
 // Middleware of routes
 app.use("/auth", authRoutes);
+app.use("/course", courseRoutes);
 
 // Home Page
 app.get("/", (req, res) => {
