@@ -48,7 +48,8 @@
 }
 
 /* hover color of btn of homeOne, homeThree */
-section div .a_NBorder:hover {
+section div .a_NBorder:hover,
+section div .a_NBorder:hover i {
   color: var(--C-FF0066);
 }
 
