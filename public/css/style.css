@@ -43,6 +43,10 @@ a {
   display: inline-block;
 }
 
+i {
+  pointer-events: none;
+}
+
 /* position flex*/
 .flex {
   display: flex;

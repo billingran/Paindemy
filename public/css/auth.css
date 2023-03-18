@@ -98,20 +98,53 @@ form .txt_field_auth {
 }
 
 .txt_field_auth i,
-.txt_field_auth label {
+.txt_field_auth label,
+.txt_field_auth .dlt_ingredients_btn {
   color: var(--C-B3B3B3);
   font-size: 1rem;
 
   position: absolute;
   top: 50%;
-  left: 38px;
   transform: translateY(-50%);
+}
+
+.txt_field_auth label {
+  left: 38px;
 }
 
 .txt_field_auth i {
   font-size: 2.2rem;
 
-  left: 0px;
+  left: 0;
+}
+
+/* delete ingredients */
+.txt_field_auth .dlt_ingredients_btn {
+  background-color: var(--C-6E1D0E);
+
+  height: 2.2rem;
+  width: 2.2rem;
+
+  right: 0;
+  transform: translateY(-56%);
+}
+
+/* image upload */
+input[type="file"] {
+  opacity: 0;
+  font-size: 1.3rem;
+}
+
+.txt_field_auth .upload_joinus {
+  text-align: center;
+  background-color: rgba(220, 164, 125, 0.7);
+
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+
+  transform: translateY(-56%);
 }
 
 .txt_field_auth span::before {
@@ -137,23 +170,9 @@ form .txt_field_auth {
   min-height: 39px;
 }
 
-/* image upload */
-input[type="file"] {
-  opacity: 0;
-  font-size: 1.3rem;
-}
-
-.txt_field_auth .upload_joinus {
-  text-align: center;
-  background-color: rgba(220, 164, 125, 0.7);
-
-  width: 100%;
-
-  position: absolute;
-  left: 0;
-}
-
 /* animation input */
+.txt_field_auth input:focus ~ .dlt_ingredients_btn,
+.txt_field_auth input:valid ~ .dlt_ingredients_btn,
 .txt_field_auth input:focus ~ i.up_joinus,
 .txt_field_auth input:valid ~ i.up_joinus,
 .txt_field_auth input:focus ~ label.up_joinus,
