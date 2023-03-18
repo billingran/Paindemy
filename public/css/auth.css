@@ -1,5 +1,6 @@
 /*auth */
 /* transition */
+.txt_field_auth,
 .txt_field_auth i,
 .txt_field_auth label,
 .txt_field_auth span::before,
@@ -64,7 +65,7 @@ input[type="submit"] {
   text-align: center;
   font-size: 3rem;
 
-  padding: 1.5rem 0 0rem 0;
+  padding: 5.5rem 0 0rem 0;
 }
 
 .center_auth form {
@@ -74,7 +75,7 @@ input[type="submit"] {
 form .txt_field_auth {
   border-bottom: 2px solid var(--C-B3B3B3);
 
-  margin: 2.5rem 0;
+  margin: 2.8rem 0;
 
   position: relative;
 
@@ -129,6 +130,21 @@ form .txt_field_auth {
   transform: translateY(-56%);
 }
 
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
+  }
+}
+
 /* image upload */
 input[type="file"] {
   opacity: 0;
@@ -163,6 +179,8 @@ input[type="file"] {
 .add_ingredients_btn {
   font-size: 0.8rem;
   background-color: rgba(220, 164, 125, 0.7);
+
+  justify-content: flex-end;
 }
 
 /* texarea */

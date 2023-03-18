@@ -8,67 +8,87 @@
 //   //   navigationContent.classList.toggle("show-menu");
 // });
 
-// + ingredient
 let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
 let ingredientList = document.querySelector(".ingredient_list");
-// let ingredientDiv = document.querySelectorAll(".ingredient_div")[0];
+let ingredientDiv = document.querySelectorAll(".ingredient_div");
+
+//func animateIngredient
+function animateIngredients(dltIngredient) {
+  dltIngredient.target.remove();
+
+  // reset ingredient numbers
+  function getnumbers(item) {
+    return item.tagName == "DIV";
+  }
+
+  let NumberIngredients = Array.from(ingredientList.childNodes).filter(
+    getnumbers
+  );
+
+  NumberIngredients.forEach((item, index) => {
+    item.getElementsByTagName(
+      "label"
+    )[0].innerHTML = `Ingredient <span style="color:#72B955;">${index}</span>`;
+  });
+}
+
+//func -ingredient
+function deleteIngredients(e) {
+  e.preventDefault();
+
+  let dltIngredient = e.target.parentElement;
+
+  dltIngredient.addEventListener("animationend", animateIngredients);
+
+  dltIngredient.style.animation = "scaleDown 0.3s forwards";
+}
 
 function addIngredients(e) {
-  e.target.preventDefault;
-  //ctn input
-  let ctnInput = document.createElement("div");
-  ctnInput.classList.add("txt_field_auth");
-  ctnInput.classList.add("ingredient_div");
+  e.preventDefault();
 
-  // input
-  let input = document.createElement("input");
-  input.setAttribute("id", "ingredient");
-  input.setAttribute("type", "text");
-  input.setAttribute("name", "ingredient");
-  input.setAttribute("required", "");
+  // clone input
+  let newIngredients = ingredientDiv[0].cloneNode(true);
 
-  // span
-  let span = document.createElement("span");
+  // get ingredient numbers
+  function getnumbers(item) {
+    return item.tagName == "DIV";
+  }
 
-  // icon input
-  let iconInput = document.createElement("i");
-  iconInput.classList.add("up_joinus");
-  iconInput.innerHTML = '<iconify-icon icon="lucide:wheat"></iconify-icon>';
+  let NumberIngredients = Array.from(ingredientList.childNodes).filter(
+    getnumbers
+  );
 
-  // label
-  let label = document.createElement("label");
-  label.setAttribute("for", "ingredient");
-  label.classList.add("up_joinus");
-  label.innerHTML = "Ingredient";
+  //set ingredient numbers
+  function setnumbers(item, index) {
+    newIngredients.getElementsByTagName(
+      "label"
+    )[0].innerHTML = `Ingredient <span style="color:#72B955;">${
+      index + 1
+    }</span>`;
+  }
 
-  //delet button
+  NumberIngredients.forEach(setnumbers);
+
+  //create delet button
   let deleteBtn = document.createElement("button");
   deleteBtn.setAttribute("type", "button");
   deleteBtn.classList.add("dlt_ingredients_btn");
   deleteBtn.classList.add("a_NBorder");
   deleteBtn.innerHTML = '<i class="uil uil-times up_joinus"></i>';
 
-  ctnInput.appendChild(input);
-  ctnInput.appendChild(span);
-  ctnInput.appendChild(iconInput);
-  ctnInput.appendChild(label);
-  ctnInput.appendChild(deleteBtn);
+  // clear input value
+  let input = newIngredients.getElementsByTagName("input")[0];
+  input.value = "";
 
-  ingredientList.appendChild(ctnInput);
+  // delete eventListener
+  deleteBtn.addEventListener("click", deleteIngredients);
 
-  // x ingredient
-  let deleteIngredientsBtn = document.querySelector(".txt_field_auth button");
+  // append tags
+  newIngredients.appendChild(deleteBtn);
+  ingredientList.appendChild(newIngredients);
 
-  //addevenlistner on red trash can to delete todo from brrowser
-  deleteIngredientsBtn.addEventListener("click", (e) => {
-    let todoItem = e.target.parentElement;
-
-    todoItem.remove();
-
-    todoItem.style.animation = "scaleDown 0.3s forwards";
-  });
-
-  // deleteIngredientsBtn.addEventListener("click", deleteIngredients);
+  newIngredients.style.animation = "scaleUp 0.3s forwards";
 }
 
+// +ingredient
 addIngredientsBtn.addEventListener("click", addIngredients);
