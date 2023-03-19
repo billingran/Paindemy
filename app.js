@@ -12,7 +12,8 @@ const Course = require("./src/models/course_model");
 // routes
 const authRoutes = require("./src/routes/auth_routes");
 const courseRoutes = require("./src/routes/course_routes");
-const profileRoutes = require("./src/routes/profile_route");
+const instructorRoutes = require("./src/routes/instructor_routes");
+const studentRoutes = require("./src/routes/student_routes");
 
 //Connect to mongodb alts
 require("./src/models/database");
@@ -30,6 +31,8 @@ app.set("view engine", "ejs");
 // Middleware of routes
 app.use("/auth", authRoutes);
 app.use("/course", courseRoutes);
+app.use("/instructor", instructorRoutes);
+app.use("/student", studentRoutes);
 
 // Home Page
 app.get("/", (req, res) => {
