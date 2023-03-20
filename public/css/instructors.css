@@ -1,4 +1,41 @@
 /* /////////////////////////////////////////////// */
+/* carousel */
+.section_carousel {
+  margin: 4rem auto 7rem;
+
+  width: 94%;
+}
+
+.ctn_carousel_instructors {
+  overflow: hidden;
+  background: var(--C-B3B3B3);
+
+  border-radius: 0.55rem;
+  border: 2px orange solid;
+
+  display: flex;
+}
+
+.left_instructors {
+  border: 3px red solid;
+  /* background: var(--C-6E1D0E); */
+
+  width: 50%;
+  /* height: 60vh; */
+}
+
+.right_instructors {
+  border: 3px blue solid;
+
+  /* background: green; */
+
+  width: 50%;
+  /* height: 60vh; */
+
+  /* position: relative; */
+}
+
+/* /////////////////////////////////////////////// */
 /* display.css */
 
 /* /////////////////////////////////////////////// */

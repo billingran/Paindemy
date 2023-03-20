@@ -42,7 +42,8 @@
   </head>
   <body>
     <div class="wrapper">
-      <%if (title == 'Home Page') {%> <%- include("../partials/header") %> <%}%>
+      <%if (title == 'Home Page' || title == 'Instructors') {%> <%-
+      include("../partials/header") %> <%}%>
 
       <main><%- body -%></main>
 
