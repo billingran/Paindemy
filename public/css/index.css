@@ -69,6 +69,7 @@
   height: 8rem;
 }
 
+/* hover */
 .size_image_category:hover {
   box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
 }
@@ -85,6 +86,7 @@
   transition: all 0.3s;
 }
 
+/* hover */
 .image_category:hover {
   color: var(--C-FF0066);
 
@@ -182,8 +184,8 @@
 }
 
 /* /////////////////////////////////////////////// */
-
 /* responive */
+
 @media screen and (max-width: 830px) {
   /* /////////////////////////////////////////////// */
   /* home one */

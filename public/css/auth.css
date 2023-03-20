@@ -1,12 +1,9 @@
 /*auth */
 
 /* background auth */
-
 .back_image_auth {
   background-size: cover;
   background-position: center;
-
-  /* padding: 0 7rem; */
 
   display: flex;
   justify-content: space-around;
@@ -28,10 +25,6 @@
 }
 
 /* form */
-
-.center_auth {
-  width: 32rem;
-}
 
 .center_auth h2 {
   color: var(--C-F3F3F3);
@@ -114,8 +107,6 @@ form .txt_field_auth {
 }
 
 /* animation input */
-.txt_field_auth input:focus ~ .dlt_ingredients_btn,
-.txt_field_auth input:valid ~ .dlt_ingredients_btn,
 .txt_field_auth input:focus ~ i.up_joinus,
 .txt_field_auth input:valid ~ i.up_joinus,
 .txt_field_auth input:focus ~ label.up_joinus,
@@ -176,18 +167,4 @@ input[type="submit"]:hover {
 .link_auth a:hover {
   text-decoration: underline;
   color: var(--C-FF0066);
-}
-
-/* /////////////////////////////////////////////// */
-
-/* responive */
-/* auth */
-@media screen and (max-width: 500px) {
-  .center_auth {
-    width: 100%;
-  }
-
-  .center_auth form {
-    padding: 0 0.85rem;
-  }
 }

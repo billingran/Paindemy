@@ -90,7 +90,7 @@ a {
 }
 
 i,
-label {
+label.up_joinus {
   pointer-events: none;
 }
 
@@ -141,7 +141,9 @@ h2 {
   border-radius: 0.35rem;
 }
 
+/* /////////////////////////////////////////////// */
 /* a tag without border*/
+
 .a_NBorder {
   font-family: "Rubik", sans-serif;
   font-size: 1.2rem;
@@ -159,6 +161,7 @@ h2 {
   transition: all 0.3s;
 }
 
+/* hover */
 .a_NBorder:hover {
   color: var(--C-FF0066);
 }
@@ -168,5 +171,3 @@ h2 {
     font-size: 2.5vw;
   }
 }
-
-/* input */

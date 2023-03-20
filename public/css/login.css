@@ -1,18 +1,21 @@
 /* /////////////////////////////////////////////// */
 /* login */
+
 /* background image */
 .back_image_login {
   background-image: url("/images/image_main_auth.jpg");
-
-  padding: 0 7rem;
 
   min-height: 100vh;
   width: 100%;
 }
 
 .filter_login {
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
+}
+
+.center_login {
+  width: 34rem;
 }
 
 /* forget password */
@@ -24,7 +27,7 @@
   transition: all 0.3s;
 }
 
-/* hover for forgetpassword and link auth */
+/* hover */
 .pass_auth:hover {
   text-decoration: underline;
   color: var(--C-FF0066);
@@ -62,9 +65,28 @@ a[class="google"] ion-icon {
   margin: 0 0.5rem 0 0;
 }
 
+/* hover */
 a[class="google"]:hover {
   border-color: var(--C-6E1D0E);
   color: var(--C-FF0066);
 
   transition: all 0.3s;
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 500px) {
+  .back_image_login,
+  .filter_login {
+    min-height: 80vh;
+  }
+
+  .center_login {
+    width: 100%;
+  }
+
+  .center_auth form {
+    padding: 0 0.85rem;
+  }
 }
