@@ -12,7 +12,7 @@
 }
 
 .center_newclass {
-  width: 65%;
+  width: 55rem;
   padding: 5.5rem 0 2rem 0;
 }
 
@@ -72,7 +72,7 @@
 /* /////////////////////////////////////////////// */
 /* responive */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 500px) {
   .center_newclass {
     width: 95%;
   }

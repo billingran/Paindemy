@@ -10,7 +10,7 @@
 }
 
 .filter_login {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
 }
 
@@ -83,10 +83,6 @@ a[class="google"]:hover {
   }
 
   .center_login {
-    width: 100%;
-  }
-
-  .center_auth form {
-    padding: 0 0.85rem;
+    width: 95%;
   }
 }
