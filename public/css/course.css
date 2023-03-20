@@ -1,0 +1,155 @@
+.ul_course {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.ctn_course {
+  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+  overflow: hidden;
+  border-radius: 0.55rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transition: all 0.3s;
+}
+
+.ctn_course:hover {
+  box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
+}
+
+.mid_course {
+  margin: 0.8rem;
+}
+
+/* image course */
+.ctn_image_course {
+  overflow: hidden;
+}
+
+.image_course {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.55rem 0.55rem 0 0;
+
+  transition: all 0.3s;
+}
+
+.ctn_image_course,
+.ctn_image_course .image_course {
+  width: 16.2rem;
+  height: 15.5rem;
+}
+
+.ctn_course:hover .image_course {
+  color: var(--C-FF0066);
+
+  transform: scale(1.2);
+}
+
+/* content course */
+.ctn_content_course {
+  padding: 0.1rem 0.35rem 0.35rem;
+  background: var(--C-222222);
+
+  width: 16.2rem;
+  height: 11rem;
+}
+
+.content_course {
+  display: flex;
+  align-items: center;
+}
+
+.content_course div:nth-child(2) {
+  width: 68%;
+}
+
+.icon_content_course {
+  margin: 0 0.5rem 0 0;
+
+  font-size: 1.35rem;
+
+  transition: all 0.3s;
+}
+
+.content_course,
+.content_course a {
+  color: var(--C-F3F3F3);
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.content_course:hover .icon_content_course,
+.content_course:hover div a {
+  color: var(--C-FF0066);
+}
+
+.address_course {
+  display: flex;
+  align-items: flex-start;
+}
+
+.address_course div:nth-child(2) {
+  height: 3.3rem;
+
+  overflow: auto;
+}
+
+/* btns course */
+.ctn_btns_course {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btns_course {
+  border-radius: 5rem;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  margin: 0 0 0 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns_course a {
+  color: var(--C-F3F3F3);
+  transition: all 0.3s;
+}
+
+.btns_course:hover a {
+  color: var(--C-FF0066);
+}
+
+.icon_plus_course {
+  background: var(--C-6E1D0E);
+}
+
+.icon_more_course {
+  background: var(--C-DCA47D);
+}
+
+@media screen and (max-width: 530px) {
+  /* image course */
+  .ctn_image_course,
+  .ctn_image_course .image_course {
+    width: 300px;
+  }
+
+  /* content course */
+  .ctn_content_course {
+    width: 300px;
+  }
+}

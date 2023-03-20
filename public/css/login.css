@@ -1,0 +1,70 @@
+/* /////////////////////////////////////////////// */
+/* login */
+/* background image */
+.back_image_login {
+  background-image: url("/images/image_main_auth.jpg");
+
+  padding: 0 7rem;
+
+  min-height: 100vh;
+  width: 100%;
+}
+
+.filter_login {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* forget password */
+.pass_auth {
+  margin: -5px 0 35px 5px;
+  color: var(--C-B3B3B3);
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+/* hover for forgetpassword and link auth */
+.pass_auth:hover {
+  text-decoration: underline;
+  color: var(--C-FF0066);
+}
+
+/* google login */
+a[class="google"] {
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  border: 1px solid var(--C-B3B3B3);
+  background: var(--C-6E1D0E);
+  color: var(--C-F7F8EE);
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+
+  border-radius: 25px;
+  outline: none;
+
+  width: 100%;
+
+  padding: 14px 0;
+}
+
+a[class="google"] {
+  margin: 2.5rem 0 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a[class="google"] ion-icon {
+  font-size: 1.2rem;
+  margin: 0 0.5rem 0 0;
+}
+
+a[class="google"]:hover {
+  border-color: var(--C-6E1D0E);
+  color: var(--C-FF0066);
+
+  transition: all 0.3s;
+}

@@ -1,0 +1,56 @@
+/* /////////////////////////////////////////////// */
+/* new class */
+
+.back_image_newclass {
+  background-image: url("/images/image_new_class.jpg");
+}
+
+.txt_field_auth .dlt_ingredients_btn {
+  color: var(--C-B3B3B3);
+  font-size: 1rem;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* delete ingredients */
+.txt_field_auth .dlt_ingredients_btn {
+  background-color: var(--C-6E1D0E);
+
+  height: 2.2rem;
+  width: 2.2rem;
+
+  right: 0;
+  transform: translateY(-56%);
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
+  }
+}
+
+/* ingredient */
+.add_ingredients_btn {
+  font-size: 0.8rem;
+  background-color: rgba(220, 164, 125, 0.7);
+
+  justify-content: flex-end;
+}
+
+/* animation input */
+.txt_field_auth input:focus ~ .dlt_ingredients_btn,
+.txt_field_auth input:valid ~ .dlt_ingredients_btn {
+  top: -1rem;
+  color: var(--C-FF0066);
+}

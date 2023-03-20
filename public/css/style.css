@@ -3,6 +3,50 @@
 /* google font Poppins*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
+/* scroll bar setting */
+/* For webkit-based browsers */
+::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--C-222222); /* color of the track  */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--C-6E1D0E); /* color of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--C-FF0066); /* color of the thumb on hover */
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+::-moz-scrollbar-track {
+  background: var(--C-222222); /* color of the track */
+}
+
+::-moz-scrollbar-thumb {
+  background: var(--C-6E1D0E); /* color of the thumb */
+}
+
+::-moz-scrollbar-thumb:hover {
+  background: var(--C-FF0066); /* color of the thumb on hover */
+}
+
+::-moz-scrollbar-corner {
+  display: none;
+}
+
+/* color box */
 :root {
   --C-FF0066: #ff0066;
   --C-DCA47D: #dca47d;
@@ -35,6 +79,7 @@ body {
 
 ul {
   list-style: none;
+  padding-left: 0;
 }
 
 a {
@@ -44,8 +89,13 @@ a {
   display: inline-block;
 }
 
-i {
+i,
+label {
   pointer-events: none;
+}
+
+h2 {
+  font-weight: 650;
 }
 
 /* position flex*/
@@ -73,28 +123,6 @@ i {
 
 .section_mid {
   margin: 7rem auto;
-}
-
-/* position transform */
-.central_T {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.central_Z {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
 }
 
 /* input*/
@@ -130,3 +158,15 @@ i {
 
   transition: all 0.3s;
 }
+
+.a_NBorder:hover {
+  color: var(--C-FF0066);
+}
+
+@media screen and (max-width: 830px) {
+  .a_NBorder {
+    font-size: 2.5vw;
+  }
+}
+
+/* input */

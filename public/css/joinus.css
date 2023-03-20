@@ -1,0 +1,112 @@
+/* /////////////////////////////////////////////// */
+/* join us */
+
+/* background image */
+.back_image_joinus {
+  background-image: url("/images/image_main_join_us.jpg");
+}
+
+.filter_joinus {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.ctn_image_joinus {
+  /* border: 1px red solid; */
+  overflow: hidden;
+
+  position: relative;
+
+  align-self: flex-end;
+}
+
+.ctn_image_joinus img {
+  /* border: 2px solid green; */
+  width: 26rem;
+  height: 100vh;
+
+  transform: translateX(-27rem);
+  animation: animateJoinus 5s forwards 1.5s;
+}
+
+@keyframes animateJoinus {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* textarea */
+.txt_field_auth textarea {
+  color: var(--C-B3B3B3);
+  font-size: 1.3rem;
+  background: none;
+  font-weight: 600;
+
+  outline: none;
+  border: none;
+  padding: 0 5px;
+
+  min-width: 100%;
+  height: 39px;
+}
+
+/* texarea */
+.txt_field_auth textarea {
+  min-height: 39px;
+}
+
+/* animation input */
+.txt_field_auth textarea:focus ~ i.up_joinus,
+.txt_field_auth textarea:valid ~ i.up_joinus,
+.txt_field_auth textarea:focus ~ label.up_joinus,
+.txt_field_auth textarea:valid ~ label.up_joinus {
+  top: -1rem;
+  color: var(--C-FF0066);
+}
+
+.txt_field_auth input:focus ~ label i,
+.txt_field_auth input:valid ~ label i,
+.txt_field_auth input:focus ~ label,
+.txt_field_auth input:valid ~ label {
+  color: var(--C-FF0066);
+}
+
+/* image upload */
+input[type="file"] {
+  opacity: 0;
+  font-size: 1.3rem;
+}
+
+.txt_field_auth .upload_joinus {
+  text-align: center;
+  background-color: rgba(220, 164, 125, 0.7);
+
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+
+  transform: translateY(-56%);
+}
+
+/* join us */
+@media screen and (max-width: 1190px) {
+  .back_image_auth {
+    min-height: 80vh;
+    padding: 0;
+  }
+
+  .ctn_image_joinus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: -2;
+  }
+
+  .ctn_image_joinus img {
+    width: 20rem;
+    height: 100%;
+  }
+}

@@ -1,15 +1,4 @@
 /*auth */
-/* transition */
-.txt_field_auth,
-.txt_field_auth i,
-.txt_field_auth label,
-.txt_field_auth span::before,
-input[type="submit"]:hover,
-a[class="google"]:hover,
-.link_auth a,
-.pass_auth {
-  transition: all 0.3s;
-}
 
 /* background auth */
 
@@ -17,10 +6,7 @@ a[class="google"]:hover,
   background-size: cover;
   background-position: center;
 
-  min-height: 100vh;
-  width: 100%;
-
-  padding: 0 7rem;
+  /* padding: 0 7rem; */
 
   display: flex;
   justify-content: space-around;
@@ -35,9 +21,6 @@ a[class="google"]:hover,
   background-color: var(--C-222222);
   opacity: 0.65;
 
-  width: 100%;
-  min-height: 100%;
-
   position: absolute;
   top: 0;
   left: 0;
@@ -45,30 +28,23 @@ a[class="google"]:hover,
 }
 
 /* form */
-/* font weight */
-.center_auth h2,
-.center_auth form,
-.txt_field_auth input,
-.txt_field_auth textarea,
-input[type="submit"] {
-  font-weight: 600;
-}
 
 .center_auth {
   width: 32rem;
-
-  /* border: 3px orange solid; */
 }
 
 .center_auth h2 {
   color: var(--C-F3F3F3);
   text-align: center;
   font-size: 3rem;
+  font-weight: 600;
 
   padding: 1.5rem 0 0 0;
 }
 
 .center_auth form {
+  font-weight: 600;
+
   padding: 0 2.5rem;
 }
 
@@ -81,14 +57,15 @@ form .txt_field_auth {
 
   display: flex;
   align-items: center;
+
+  transition: all 0.3s;
 }
 
-.txt_field_auth input,
-.txt_field_auth textarea {
-  /* border: red solid 2px; */
+.txt_field_auth input {
   color: var(--C-B3B3B3);
   font-size: 1.3rem;
   background: none;
+  font-weight: 600;
 
   outline: none;
   border: none;
@@ -99,8 +76,7 @@ form .txt_field_auth {
 }
 
 .txt_field_auth i,
-.txt_field_auth label,
-.txt_field_auth .dlt_ingredients_btn {
+.txt_field_auth label {
   color: var(--C-B3B3B3);
   font-size: 1rem;
 
@@ -111,56 +87,16 @@ form .txt_field_auth {
 
 .txt_field_auth label {
   left: 38px;
+
+  transition: all 0.3s;
 }
 
 .txt_field_auth i {
   font-size: 2.2rem;
 
   left: 0;
-}
 
-/* delete ingredients */
-.txt_field_auth .dlt_ingredients_btn {
-  background-color: var(--C-6E1D0E);
-
-  height: 2.2rem;
-  width: 2.2rem;
-
-  right: 0;
-  transform: translateY(-56%);
-}
-
-@keyframes scaleUp {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleDown {
-  to {
-    transform: scale(0);
-  }
-}
-
-/* image upload */
-input[type="file"] {
-  opacity: 0;
-  font-size: 1.3rem;
-}
-
-.txt_field_auth .upload_joinus {
-  text-align: center;
-  background-color: rgba(220, 164, 125, 0.7);
-
-  width: 100%;
-
-  position: absolute;
-  left: 0;
-
-  transform: translateY(-56%);
+  transition: all 0.3s;
 }
 
 .txt_field_auth span::before {
@@ -173,19 +109,8 @@ input[type="file"] {
   position: absolute;
   top: 100%;
   left: 0;
-}
 
-/* ingredient */
-.add_ingredients_btn {
-  font-size: 0.8rem;
-  background-color: rgba(220, 164, 125, 0.7);
-
-  justify-content: flex-end;
-}
-
-/* texarea */
-.txt_field_auth textarea {
-  min-height: 39px;
+  transition: all 0.3s;
 }
 
 /* animation input */
@@ -194,19 +119,8 @@ input[type="file"] {
 .txt_field_auth input:focus ~ i.up_joinus,
 .txt_field_auth input:valid ~ i.up_joinus,
 .txt_field_auth input:focus ~ label.up_joinus,
-.txt_field_auth input:valid ~ label.up_joinus,
-.txt_field_auth textarea:focus ~ i.up_joinus,
-.txt_field_auth textarea:valid ~ i.up_joinus,
-.txt_field_auth textarea:focus ~ label.up_joinus,
-.txt_field_auth textarea:valid ~ label.up_joinus {
+.txt_field_auth input:valid ~ label.up_joinus {
   top: -1rem;
-  color: var(--C-FF0066);
-}
-
-.txt_field_auth input:focus ~ label i,
-.txt_field_auth input:valid ~ label i,
-.txt_field_auth input:focus ~ label,
-.txt_field_auth input:valid ~ label {
   color: var(--C-FF0066);
 }
 
@@ -218,8 +132,7 @@ input[type="file"] {
 }
 
 /* form button and google a tag*/
-input[type="submit"],
-a[class="google"] {
+input[type="submit"] {
   font-family: "Rubik", sans-serif;
   font-size: 1rem;
   border: 1px solid var(--C-B3B3B3);
@@ -227,6 +140,7 @@ a[class="google"] {
   color: var(--C-F7F8EE);
   cursor: pointer;
   text-align: center;
+  font-weight: 600;
 
   border-radius: 25px;
   outline: none;
@@ -236,24 +150,12 @@ a[class="google"] {
   padding: 14px 0;
 }
 
-a[class="google"] {
-  margin: 2.5rem 0 0 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-a[class="google"] ion-icon {
-  font-size: 1.2rem;
-  margin: 0 0.5rem 0 0;
-}
-
 /* hover for form button and google a tag */
-input[type="submit"]:hover,
-a[class="google"]:hover {
+input[type="submit"]:hover {
   border-color: var(--C-6E1D0E);
   color: var(--C-FF0066);
+
+  transition: all 0.3s;
 }
 
 /* link auth */
@@ -267,74 +169,19 @@ a[class="google"]:hover {
 .link_auth a {
   color: var(--C-4683C1);
   text-decoration: none;
+
+  transition: all 0.3s;
 }
 
-/* /////////////////////////////////////////////// */
-
-/* sign up */
-/* background image */
-.back_signup_login {
-  background-image: url("/images/image_main_auth.jpg");
-}
-
-/* /////////////////////////////////////////////// */
-
-/* login */
-/* forget password */
-.pass_auth {
-  margin: -5px 0 35px 5px;
-  color: var(--C-B3B3B3);
-  cursor: pointer;
-}
-
-/* hover for forgetpassword and link auth */
-.pass_auth:hover,
 .link_auth a:hover {
   text-decoration: underline;
   color: var(--C-FF0066);
-}
-/* /////////////////////////////////////////////// */
-
-/* join us */
-/* background image */
-.back_image_joinus {
-  background-image: url("/images/image_main_join_us.jpg");
-}
-
-.ctn_image_joinus {
-  /* border: 1px red solid; */
-  overflow: hidden;
-
-  position: relative;
-
-  align-self: flex-end;
-}
-
-.ctn_image_joinus img {
-  /* border: 2px solid green; */
-  width: 26rem;
-  height: 100vh;
-
-  transform: translateX(-27rem);
-  animation: animateJoinus 5s forwards 1.5s;
-}
-
-@keyframes animateJoinus {
-  to {
-    transform: translateX(0);
-  }
-}
-/* /////////////////////////////////////////////// */
-
-/* new class */
-.back_image_newclass {
-  background-image: url("/images/image_new_class.jpg");
 }
 
 /* /////////////////////////////////////////////// */
 
 /* responive */
-/* sign up and login */
+/* auth */
 @media screen and (max-width: 500px) {
   .center_auth {
     width: 100%;
@@ -342,27 +189,5 @@ a[class="google"]:hover {
 
   .center_auth form {
     padding: 0 0.85rem;
-  }
-}
-
-/* join us */
-@media screen and (max-width: 1190px) {
-  .back_image_auth {
-    min-height: 80vh;
-    padding: 0;
-  }
-
-  .ctn_image_joinus {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    z-index: -2;
-  }
-
-  .ctn_image_joinus img {
-    width: 20rem;
-    height: 100%;
   }
 }

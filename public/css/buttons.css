@@ -1,0 +1,17 @@
+/* buttons */
+.ul_btns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.left_btns {
+  background-color: var(--C-6E1D0E);
+  margin: 0 1rem 0 0;
+  border-radius: 0.35rem;
+}
+
+.right_btns {
+  background-color: var(--C-DCA47D);
+  border-radius: 0.35rem;
+}
