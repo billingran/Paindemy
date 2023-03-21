@@ -15,20 +15,15 @@
 }
 
 .left_instructors {
-  border: 3px red solid;
+  /* border: 3px red solid; */
 
-  width: 38rem;
-  height: 35vh;
+  width: 55%;
+  height: 50%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
-
-  position: absolute;
-  top: 50%;
-  left: 3%;
-  transform: translateY(-50%);
 }
 
 .carousels .left_instructors h2 {
@@ -36,14 +31,17 @@
   font-weight: 500;
   font-size: 2.5rem;
   line-height: 6rem;
+
+  width: 38rem;
 }
 
 .carousels .left_instructors a {
+  width: 38rem;
   font-weight: 500;
   color: var(--C-F3F3F3);
   cursor: pointer;
 
-  align-self: flex-end;
+  justify-content: flex-end;
 
   transition: all 0.3s;
 }
@@ -54,15 +52,21 @@
 }
 
 .carousels .right_instructors {
-  border: 3px blue solid;
+  /* border: 3px blue solid; */
 
+  width: 45%;
+  height: 100%;
+
+  position: relative;
+}
+
+.carousels .right_instructors img {
   height: 135%;
 
   position: absolute;
-  top: 49%;
-  left: 79%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
 }
 
 /* /////////////////////////////////////////////// */
@@ -152,33 +156,30 @@
   /* /////////////////////////////////////////////// */
   /* carousel */
 
-  .filter_instructors {
-    background-color: var(--C-222222);
-    opacity: 0.3;
+  .carousels .left_instructors {
+    width: 100%;
+
+    z-index: 2;
+  }
+
+  .carousels .right_instructors {
+    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     z-index: 0;
   }
 
-  .carousels .left_instructors {
-    height: 25vh;
+  .filter_instructors {
+    opacity: 0.3;
 
-    justify-content: space-around;
-
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .carousels .left_instructors a {
-    align-self: center;
-  }
-
-  .carousels .right_instructors {
-    top: 50%;
-    left: 50%;
+    z-index: 1;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 670px) {
   /* /////////////////////////////////////////////// */
   /* image instructors */
 
@@ -190,17 +191,25 @@
   /* /////////////////////////////////////////////// */
   /* carousel */
 
-  .carousels .left_instructors {
-    width: 100%;
-    height: 36vh;
+  .left_instructors {
+    justify-content: center;
 
-    padding: 0 0.5rem;
+    padding: 0 0.3rem;
+  }
+
+  .carousels .left_instructors h2 {
+    font-size: 1.4rem;
+    line-height: 3.5rem;
+    width: 100%;
+  }
+
+  .carousels .left_instructors a {
+    width: 100%;
 
     justify-content: center;
   }
 
-  .carousels .left_instructors h2 {
-    font-size: 1.35rem;
-    line-height: 3.5rem;
+  .carousels .right_instructors img {
+    height: 120%;
   }
 }
