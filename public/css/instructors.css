@@ -109,7 +109,7 @@
   flex-wrap: wrap;
 }
 
-.size_image_instructor,
+.ctn_image_instructor,
 .image_instructor {
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
   overflow: hidden;
@@ -126,7 +126,7 @@
 }
 
 /* hover */
-.size_image_instructor:hover {
+.ctn_image_instructor:hover {
   box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
 }
 
@@ -139,7 +139,7 @@
 }
 
 /* hover */
-.size_image_instructor:hover .image_instructor {
+.ctn_image_instructor:hover .image_instructor {
   transform: scale(1.2);
 }
 
@@ -161,7 +161,7 @@
 }
 
 /* hover */
-.size_image_instructor:hover .title_instructor {
+.ctn_image_instructor:hover .title_instructor {
   animation: animatetitle_instructor 0.4s forwards 0.3s;
 
   left: 0;

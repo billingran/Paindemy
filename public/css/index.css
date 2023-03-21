@@ -59,7 +59,7 @@
   margin: 0.8rem;
 }
 
-.size_image_category,
+.ctn_image_category,
 .image_category {
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
   overflow: hidden;
@@ -70,7 +70,7 @@
 }
 
 /* hover */
-.size_image_category:hover {
+.ctn_image_category:hover {
   box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
 }
 
@@ -214,7 +214,7 @@
   /* home Two */
 
   /* category */
-  .size_image_category,
+  .ctn_image_category,
   .image_category {
     width: 300px;
   }

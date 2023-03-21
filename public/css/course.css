@@ -44,6 +44,7 @@
   height: 15.5rem;
 }
 
+/* hover */
 .ctn_course:hover .image_course {
   color: var(--C-FF0066);
 
