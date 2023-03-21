@@ -1,32 +1,6 @@
 /* /////////////////////////////////////////////// */
 /* carousel */
 
-.section_carousel {
-  width: 80%;
-}
-
-.ctn_carousel_instructors {
-  border-radius: 0.55rem;
-  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
-
-  /* border: 2px orange solid; */
-}
-
-.carousel_instructors {
-  text-align: center;
-  overflow: hidden;
-  color: var(--C-F3F3F3);
-
-  /* border: 3px pink solid; */
-
-  width: 100%;
-  height: 65vh;
-
-  position: relative;
-
-  z-index: 0;
-}
-
 .filter_instructors {
   background-color: var(--C-222222);
   opacity: 0;
@@ -41,7 +15,7 @@
 }
 
 .left_instructors {
-  /* border: 3px red solid; */
+  border: 3px red solid;
 
   width: 38rem;
   height: 35vh;
@@ -57,13 +31,14 @@
   transform: translateY(-50%);
 }
 
-.carousel_instructors h2 {
+.carousels h2 {
+  color: var(--C-F3F3F3);
   font-weight: 500;
   font-size: 2.5rem;
   line-height: 6rem;
 }
 
-.carousel_instructors a {
+.carousels a {
   font-weight: 500;
   color: var(--C-F3F3F3);
   cursor: pointer;
@@ -73,7 +48,7 @@
   transition: all 0.3s;
 }
 
-.carousel_instructors a:hover {
+.carousels a:hover {
   color: var(--C-FF0066);
 }
 
@@ -82,7 +57,7 @@
 }
 
 .right_instructors {
-  /* border: 3px blue solid; */
+  border: 3px blue solid;
 
   height: 135%;
 
@@ -176,22 +151,15 @@
 /* /////////////////////////////////////////////// */
 /* responive */
 
-@media screen and (max-width: 1300px) {
-  /* /////////////////////////////////////////////// */
-  /* carousel */
-
-  .section_carousel {
-    width: 94%;
-  }
-}
-
 @media screen and (max-width: 1100px) {
   /* /////////////////////////////////////////////// */
   /* carousel */
 
   .filter_instructors {
     background-color: var(--C-222222);
-    opacity: 0.2;
+    opacity: 0.3;
+
+    z-index: 0;
   }
 
   .left_instructors {
@@ -203,7 +171,7 @@
     transform: translate(-50%, -50%);
   }
 
-  .carousel_instructors a {
+  .carousels a {
     align-self: center;
   }
 
@@ -227,11 +195,14 @@
 
   .left_instructors {
     width: 100%;
+    height: 36vh;
 
     padding: 0 0.5rem;
+
+    justify-content: center;
   }
 
-  .carousel_instructors h2 {
+  .carousels h2 {
     font-size: 1.35rem;
     line-height: 3.5rem;
   }
