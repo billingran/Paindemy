@@ -1,3 +1,6 @@
+/* /////////////////////////////////////////////// */
+/* display */
+
 /* section display*/
 .section_display {
   width: 94%;
@@ -34,6 +37,8 @@
 .title_display {
   font-size: 2.5rem;
   color: var(--C-222222);
+
+  margin: 0 0 0 0.5rem;
 }
 
 /* vice title display */
@@ -55,6 +60,9 @@
 .icon_viceTitle_display {
   margin: 0 0 0 0.2rem;
 }
+
+/* /////////////////////////////////////////////// */
+/* responive */
 
 @media screen and (max-width: 530px) {
   /* section display*/

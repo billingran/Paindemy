@@ -1,3 +1,6 @@
+/* /////////////////////////////////////////////// */
+/* course */
+
 .ul_course {
   display: flex;
   justify-content: space-around;
@@ -141,6 +144,9 @@
 .icon_more_course {
   background: var(--C-DCA47D);
 }
+
+/* /////////////////////////////////////////////// */
+/* responive */
 
 @media screen and (max-width: 530px) {
   /* image course */

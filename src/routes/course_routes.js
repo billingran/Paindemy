@@ -5,4 +5,7 @@ const courseController = require("../controllers/course_controller");
 //instructors
 router.get("/instructors", courseController.getAllinstructors);
 
+//courses
+router.get("/courses", courseController.getAllcourses);
+
 module.exports = router;

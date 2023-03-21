@@ -1,4 +1,6 @@
+/* /////////////////////////////////////////////// */
 /* footer */
+
 .footer {
   background: var(--C-222222);
   min-height: 20vh;
@@ -82,8 +84,6 @@ footer div ul li:hover div .font_color,
 footer div ul li:hover div .icon_font {
   color: var(--C-FF0066);
 }
-
-/* /////////////////////////////////////////////// */
 
 /* copy right footer */
 .ctn_copyRight {

@@ -31,14 +31,14 @@
   transform: translateY(-50%);
 }
 
-.carousels h2 {
+.carousels .left_instructors h2 {
   color: var(--C-F3F3F3);
   font-weight: 500;
   font-size: 2.5rem;
   line-height: 6rem;
 }
 
-.carousels a {
+.carousels .left_instructors a {
   font-weight: 500;
   color: var(--C-F3F3F3);
   cursor: pointer;
@@ -48,15 +48,12 @@
   transition: all 0.3s;
 }
 
-.carousels a:hover {
+/* hover */
+.carousels .left_instructors a:hover {
   color: var(--C-FF0066);
 }
 
-.icon_author_instructors {
-  margin: 0 0 0 0.2rem;
-}
-
-.right_instructors {
+.carousels .right_instructors {
   border: 3px blue solid;
 
   height: 135%;
@@ -69,7 +66,7 @@
 }
 
 /* /////////////////////////////////////////////// */
-/* display.css */
+/* include display.css */
 
 /* /////////////////////////////////////////////// */
 /* image instructors */
@@ -162,7 +159,7 @@
     z-index: 0;
   }
 
-  .left_instructors {
+  .carousels .left_instructors {
     height: 25vh;
 
     justify-content: space-around;
@@ -171,11 +168,11 @@
     transform: translate(-50%, -50%);
   }
 
-  .carousels a {
+  .carousels .left_instructors a {
     align-self: center;
   }
 
-  .right_instructors {
+  .carousels .right_instructors {
     top: 50%;
     left: 50%;
   }
@@ -193,7 +190,7 @@
   /* /////////////////////////////////////////////// */
   /* carousel */
 
-  .left_instructors {
+  .carousels .left_instructors {
     width: 100%;
     height: 36vh;
 
@@ -202,7 +199,7 @@
     justify-content: center;
   }
 
-  .carousels h2 {
+  .carousels .left_instructors h2 {
     font-size: 1.35rem;
     line-height: 3.5rem;
   }

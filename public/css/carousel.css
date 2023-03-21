@@ -1,3 +1,6 @@
+/* /////////////////////////////////////////////// */
+/* carousel */
+
 .section_carousel {
   width: 80%;
 }
@@ -16,6 +19,10 @@
   position: relative;
 
   z-index: 0;
+}
+
+.icon_carousels {
+  margin: 0 0 0 rem;
 }
 
 /* /////////////////////////////////////////////// */
