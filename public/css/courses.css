@@ -2,35 +2,45 @@
 /* carousel */
 
 .left_courses {
-  border: 3px red solid;
+  /* border: 3px red solid; */
 
-  width: 55%;
-  height: 50%;
+  height: 70%;
+
+  padding: 0 1rem;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  flex: 0.5 1 650px;
 }
 
 .carousels .left_courses h2 {
   color: var(--C-F3F3F3);
-  font-weight: 500;
-  font-size: 2.5rem;
-  line-height: 6rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  text-align: justify;
+  line-height: 2.8rem;
 
-  width: 38rem;
+  margin: 0 0 2rem 0;
+
+  width: 33rem;
 }
 
 .carousels .left_courses a {
-  width: 38rem;
-  font-weight: 500;
   color: var(--C-F3F3F3);
   cursor: pointer;
+  font-weight: 500;
 
-  justify-content: flex-end;
+  display: inline-flex;
+  align-items: center;
 
   transition: all 0.3s;
+}
+
+.carousels .left_courses .ctn_icon_carousels {
+  width: 100%;
+  justify-content: flex-end;
 }
 
 /* hover */
@@ -39,11 +49,11 @@
 }
 
 .carousels .right_courses {
-  border: 3px blue solid;
-  overflow: hidden;
+  /* border: 3px blue solid; */
 
-  width: 45%;
-  height: 100%;
+  height: 50vh;
+
+  flex: 1 1 300px;
 
   position: relative;
 }
@@ -51,18 +61,43 @@
 .carousels .right_courses .ctn_mainImg_courses {
   /* border: 2px solid green; */
   overflow: hidden;
-  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
   border-radius: 0.55rem;
 
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-60%, -50%);
 }
 
 .carousels .right_courses img {
-  width: 18rem;
-  height: 17.3rem;
+  width: 19.1rem;
+  height: 20.5rem;
 
   border-radius: 0.55rem;
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 1080px) {
+  /* /////////////////////////////////////////////// */
+  /* carousel */
+
+  .left_courses {
+    height: 100%;
+
+    padding: 1rem;
+  }
+
+  .carousels .left_courses h2 {
+    line-height: 2rem;
+
+    margin: 0 0 2rem 0;
+
+    width: 100%;
+  }
+
+  .carousels .right_courses .ctn_mainImg_courses {
+    transform: translate(-50%, -50%);
+  }
 }

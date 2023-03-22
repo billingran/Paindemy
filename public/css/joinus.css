@@ -72,7 +72,7 @@
 
 /* image upload */
 input[type="file"] {
-  opacity: 0;
+  opacity: 1;
   font-size: 1.3rem;
 }
 

@@ -118,7 +118,7 @@
 }
 
 /* image and background */
-.ctn_svg {
+.ctn_svgs {
   position: relative;
 }
 
@@ -133,7 +133,7 @@
   height: 512px;
 }
 
-.ctn_instructorSvg {
+.ctn_mid_svgs {
   width: 500px;
   height: 500px;
 }
@@ -142,11 +142,11 @@
   transform-origin: center;
 }
 
-.ani_ctn_instructorSvg {
+.ani_ctn_svg {
   animation: myanimate 12s infinite linear;
 }
 
-.anir_ctn_instructorSvg {
+.anir_ctn_svg {
   animation: myanimate 12s infinite linear reverse;
 }
 
@@ -232,7 +232,7 @@
     height: 445px;
   }
 
-  .ctn_instructorSvg {
+  .ctn_mid_svgs {
     width: 345px;
     height: 345px;
   }
