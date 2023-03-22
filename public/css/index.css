@@ -47,7 +47,7 @@
 /* Home Two */
 
 /* category */
-.ctn_categories {
+.ul_categories {
   margin: 0 auto 7rem;
 
   display: flex;
@@ -55,35 +55,17 @@
   flex-wrap: wrap;
 }
 
-.mid_category {
-  margin: 0.8rem;
-}
-
 .ctn_image_category,
 .image_category {
-  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
-  overflow: hidden;
-  border-radius: 0.55rem;
-
   width: 20.5rem;
   height: 8rem;
-}
-
-/* hover */
-.ctn_image_category:hover {
-  box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
 }
 
 .image_category {
   font-size: 1.5rem;
   color: var(--C-F3F3F3);
-  background-size: cover;
-  background-position: center;
-  border-radius: 0.55rem 0.55rem 0 0;
 
   position: relative;
-
-  transition: all 0.3s;
 }
 
 /* hover */

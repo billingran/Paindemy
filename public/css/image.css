@@ -1,0 +1,23 @@
+/* /////////////////////////////////////////////// */
+/* image */
+.mid_image {
+  margin: 0.8rem;
+}
+
+.ctn_image {
+  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+  overflow: hidden;
+  border-radius: 0.55rem;
+}
+
+/* hover */
+.ctn_image:hover {
+  box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
+}
+
+.image {
+  background-size: cover;
+  background-position: center;
+
+  transition: all 0.3s;
+}

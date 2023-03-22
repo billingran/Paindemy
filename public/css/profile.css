@@ -1,0 +1,15 @@
+/* /////////////////////////////////////////////// */
+/* profile */
+
+.ctn_profile {
+  display: flex;
+  border: 2px solid blue;
+}
+
+.ctn_image_profile {
+  border: 2px solid orange;
+}
+
+.ctn_info_profile {
+  border: 2px solid green;
+}
