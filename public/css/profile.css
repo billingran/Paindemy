@@ -68,6 +68,10 @@
   height: 100%;
 }
 
+.changeCtn_title_display {
+  flex-direction: column;
+}
+
 .style_number {
   font-family: "Rubik", sans-serif;
   font-size: 1.4rem;
