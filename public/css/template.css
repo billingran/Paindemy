@@ -43,8 +43,8 @@
 
 .ctn_image_template,
 .ctn_image_template .image_template {
-  width: 16.2rem;
-  height: 15.5rem;
+  width: 15.5rem;
+  height: 15rem;
 }
 
 /* hover */
@@ -59,7 +59,7 @@
   padding: 0.15rem 0.55rem 0.35rem;
   background: var(--C-222222);
 
-  width: 16.2rem;
+  width: 15.5rem;
   height: 11rem;
 }
 
@@ -104,6 +104,8 @@
   height: 3.3rem;
 
   overflow: auto;
+
+  scrollbar-width: thin;
 }
 
 /* btns template */

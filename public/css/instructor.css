@@ -1,0 +1,19 @@
+/* /////////////////////////////////////////////// */
+/* instructor */
+
+.ctn_image_instructor,
+.image_instructor {
+  width: 25rem;
+  height: 100%;
+}
+
+.ctn_image_instructor {
+}
+
+.image_instructor {
+}
+
+/* hover */
+.image_instructor:hover {
+  transform: scale(1.2);
+}

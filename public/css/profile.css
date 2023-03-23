@@ -1,15 +1,53 @@
 /* /////////////////////////////////////////////// */
 /* profile */
 
+.section_profile {
+  margin: 2rem auto;
+
+  width: 90%;
+}
+
 .ctn_profile {
+  /* border: 2px solid blue; */
+
+  min-height: 80vh;
+
   display: flex;
-  border: 2px solid blue;
 }
 
 .ctn_image_profile {
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
+
+  height: 80vh;
+  width: 30%;
+
+  position: relative;
+}
+
+.ctn_image_instructor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ctn_info_profile {
-  border: 2px solid green;
+  /* border: 2px solid green; */
+
+  width: 70%;
+
+  padding: 0 0 0 5rem;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ctn_info_profile p {
+  text-align: justify;
+  line-height: 2rem;
+  /* padding: 0 0 0 4.25rem; */
+  width: 84%;
 }
