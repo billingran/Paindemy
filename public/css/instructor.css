@@ -3,14 +3,15 @@
 
 .ctn_image_instructor,
 .image_instructor {
-  width: 25rem;
-  height: 100%;
+  width: 21rem;
+  height: 65vh;
 }
 
 .ctn_image_instructor {
-}
-
-.image_instructor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* hover */
