@@ -10,10 +10,11 @@
 /* For webkit-based browsers */
 ::-webkit-scrollbar {
   width: 8px; /* width of the scrollbar */
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--C-222222); /* color of the track  */
+  background-color: var(--C-565E64); /* color of the track  */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -25,7 +26,8 @@
 }
 
 ::-webkit-scrollbar-corner {
-  display: none;
+  /* display: none; */
+  background-color: var(--C-565E64); /* color of the track  */
 }
 
 /* For Firefox */
@@ -69,6 +71,7 @@ body {
 ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 a {
@@ -160,6 +163,6 @@ h2 {
 
 @media screen and (max-width: 830px) {
   .a_NBorder {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
 }
