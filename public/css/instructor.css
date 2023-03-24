@@ -68,19 +68,19 @@
   height: 100%;
 }
 
+/* display instructor */
 .ctn_title_displayInstructor {
   margin: 0 0 1.5rem;
 }
 
 .change_mid_displayInstructor {
-  margin: 0.8rem 0;
+  margin: 0.8rem 0.5rem;
 }
 
 .style_number {
   font-family: "Rubik", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
-  cursor: pointer;
   color: var(--C-222222);
 }
 
@@ -92,6 +92,7 @@
   margin: 0 0.5rem;
 }
 
+/* intro */
 .ctn_intro_instructor {
   margin: 0 0 1rem 0.6rem;
   padding: 0 0.5rem 0 0;

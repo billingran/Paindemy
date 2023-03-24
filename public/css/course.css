@@ -10,7 +10,7 @@
 
 /* ctn course */
 .ctn_course {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   background: rgba(243, 243, 243, 0.5);
   border-radius: 0.55rem;
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
@@ -68,12 +68,19 @@
   /* border: 2px green solid; */
 
   width: 100%;
-  min-height: 6rem;
+  min-height: 6.1rem;
 
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+}
+
+.ctn_imagedate_course {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .ctn_imageAddress_course {
@@ -95,18 +102,6 @@
   flex-direction: column;
 }
 
-.icon_imageCategory_course {
-  font-size: 2.9rem;
-  color: var(--C-6E1D0E);
-}
-
-.icon_imageContent_course {
-  font-size: 1.4rem;
-  color: var(--C-6E1D0E);
-
-  margin: 0 0.25rem 0 0;
-}
-
 .ul_imageContent_course {
   /* border: 2px solid firebrick; */
 
@@ -120,24 +115,72 @@
 
 .midLine_imageContent_course {
   border: 1px solid var(--C-565E64);
-  height: 6vh;
+  height: 7.5vh;
 }
 
-/* .change_ul_btnsCourse {
-  width: 100%;
+.icon_imageCategory_course {
+  font-size: 2.9rem;
+  color: var(--C-6E1D0E);
 }
 
-.change_midBtns_course {
-  width: 48%;
-}
+.icon_imageContent_course {
+  font-size: 1.4rem;
+  color: var(--C-6E1D0E);
 
-.change_a_NBorder_course {
-  width: 100%;
-  text-align: center;
-} */
+  margin: 0 0.25rem 0 0;
+}
 
 /* middle line instructor */
 .midLine_course {
   border: 1px solid var(--C-565E64);
   height: 32.5vh;
+}
+
+/* info course*/
+.ctn_info_course {
+  border: 2px solid green;
+
+  width: 40rem;
+  height: 100%;
+}
+
+/* display course */
+.ctn_title_displayCourse {
+  margin: 0;
+}
+
+.icon_title_displayCourse {
+  font-size: 2.8rem;
+}
+
+.mid_display_course {
+  margin: 0 0.5rem;
+}
+
+.a_NBorder_course {
+  margin: 0;
+  width: 6rem;
+}
+
+/* intro */
+.ctn_intro_course {
+  margin: 0 0 1rem 0.6rem;
+  padding: 0 0.5rem 0 0;
+
+  max-height: 10.2rem;
+
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.ctn_intro_course {
+  text-align: justify;
+  line-height: 2.8rem;
+  color: var(--C-565E64);
+}
+
+.ctn_intro_course li {
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 3px solid var(--C-565E64);
 }
