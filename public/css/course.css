@@ -3,19 +3,19 @@
 
 /* section course*/
 .section_course {
-  margin: 2rem auto;
+  margin: 1.5rem auto;
 
   width: 90%;
 }
 
 /* ctn course */
 .ctn_course {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   background: rgba(243, 243, 243, 0.5);
   border-radius: 0.55rem;
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
 
-  padding: 2.5rem;
+  padding: 1.5rem;
 
   min-height: 70vh;
 
@@ -29,7 +29,7 @@
 
 /* image course */
 .ctn_midimage_course {
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
 
   height: 70vh;
 
@@ -52,7 +52,7 @@
 .ctn_image_course,
 .image_course {
   width: 27rem;
-  height: 47.5vh;
+  height: 20.5rem;
 }
 
 /* hover */
@@ -64,7 +64,7 @@
 .ul_imageAddress_course {
   font-size: 1rem;
 
-  border: 2px green solid;
+  /* border: 2px green solid; */
 
   width: 100%;
   min-height: 6.1rem;
@@ -102,7 +102,7 @@
 }
 
 .ul_imageContent_course {
-  border: 2px solid firebrick;
+  /* border: 2px solid firebrick; */
 
   height: 3.8rem;
   width: 100%;
@@ -137,7 +137,7 @@
 
 /* info course*/
 .ctn_info_course {
-  border: 2px solid green;
+  /* border: 2px solid green; */
 
   width: 40rem;
   height: 100%;
@@ -148,9 +148,15 @@
   margin: 0;
 }
 
+/* /////////////////////////// */
 .icon_title_displayCourse {
   font-size: 2.8rem;
 }
+
+.icon_problem_course {
+  height: 88.8px;
+}
+/* /////////////////////////// */
 
 .mid_display_course {
   margin: 0 0.5rem;
@@ -224,8 +230,15 @@
   }
 
   .ctn_title_displayCourse {
-    flex-direction: column;
     margin: 0 0 1.5rem;
+    flex-direction: column;
+  }
+
+  .ctn_intro_course {
+    margin: 0 0 1rem 0rem;
+    padding: 0;
+
+    max-height: 25rem;
   }
 }
 
