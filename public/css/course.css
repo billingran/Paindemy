@@ -3,14 +3,14 @@
 
 /* section course*/
 .section_course {
-  margin: 2.5rem auto;
+  margin: 2rem auto;
 
   width: 90%;
 }
 
 /* ctn course */
 .ctn_course {
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
   background: rgba(243, 243, 243, 0.5);
   border-radius: 0.55rem;
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
@@ -29,9 +29,8 @@
 
 /* image course */
 .ctn_midimage_course {
-  /* border: 2px solid orange; */
+  border: 2px solid orange;
 
-  width: 27rem;
   height: 70vh;
 
   position: relative;
@@ -65,7 +64,7 @@
 .ul_imageAddress_course {
   font-size: 1rem;
 
-  /* border: 2px green solid; */
+  border: 2px green solid;
 
   width: 100%;
   min-height: 6.1rem;
@@ -103,7 +102,7 @@
 }
 
 .ul_imageContent_course {
-  /* border: 2px solid firebrick; */
+  border: 2px solid firebrick;
 
   height: 3.8rem;
   width: 100%;
@@ -115,7 +114,7 @@
 
 .midLine_imageContent_course {
   border: 1px solid var(--C-565E64);
-  height: 7.5vh;
+  height: 5.7vh;
 }
 
 .icon_imageCategory_course {
@@ -158,8 +157,11 @@
 }
 
 .a_NBorder_course {
+  text-align: center;
+
   margin: 0;
-  width: 6rem;
+
+  min-width: 6rem;
 }
 
 /* intro */
@@ -167,7 +169,7 @@
   margin: 0 0 1rem 0.6rem;
   padding: 0 0.5rem 0 0;
 
-  max-height: 10.2rem;
+  max-height: 10.9rem;
 
   overflow: auto;
   scrollbar-width: thin;
@@ -182,5 +184,56 @@
 .ctn_intro_course li {
   text-align: center;
   font-weight: 600;
-  border-bottom: 3px solid var(--C-565E64);
+  border-bottom: 2px solid var(--C-565E64);
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 1350px) {
+  /* section course*/
+  .section_course {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  /* ctn course */
+  .ctn_course {
+    background: rgba(243, 243, 243, 0);
+    box-shadow: 0 3px 10px rgb(34 34 34 / 0);
+
+    padding: 0;
+
+    flex-direction: column;
+  }
+
+  /* middle line course */
+  .midLine_course {
+    border: 1px solid var(--C-565E64);
+
+    width: 13rem;
+    height: 0;
+
+    margin: 2.5rem 0;
+  }
+
+  /* info instructor*/
+  .ctn_info_course {
+    width: 100%;
+  }
+
+  .ctn_title_displayCourse {
+    flex-direction: column;
+    margin: 0 0 1.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* image */
+  .ctn_image_course,
+  .image_course {
+    width: 19rem;
+    height: 37vh;
+  }
 }
