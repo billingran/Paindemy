@@ -1,20 +1,28 @@
+/* /////////////////////////////////////////////// */
+/* header */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ctn_header {
   border-bottom: 2px solid var(--C-B3B3B3);
 
   margin: 0 auto 1.5rem;
-  padding: 1rem 0;
 
   width: 91%;
   min-height: 5rem;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
 }
 
 /* title header */
 .title_header {
   font-size: 2.8rem;
+  color: var(--C-222222);
 }
 
 /* menu toggle */
@@ -28,13 +36,17 @@
 }
 
 .burger {
-  width: 2.2rem;
-  height: 2.2rem;
   /* border: 1px solid black; */
+
+  width: 2rem;
+  height: 2rem;
+
   position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   transition: 0.3s;
   /* opacity: 0;
     visibility: hidden; */
@@ -42,13 +54,17 @@
 
 .burger::before {
   content: "";
-  width: 2.2rem;
-  height: 5px;
-  position: absolute;
   background: var(--C-6E1D0E);
+
+  border-radius: 5rem;
+
+  width: 2rem;
+  height: 5px;
+
+  position: absolute;
+
   transform: translateY(-10px);
   transition: 0.25s;
-  border-radius: 5rem;
 }
 
 .ctn_burger.active .burger::before {
@@ -57,14 +73,18 @@
 
 .ctn_burger .burger::after {
   content: "";
-  width: 2.2rem;
-  height: 5px;
-  position: absolute;
   background: var(--C-6E1D0E);
-  transform: translateY(10px);
+
   box-shadow: 0 -9.5px 0 var(--C-6E1D0E);
-  transition: 0.25s;
   border-radius: 5rem;
+
+  width: 2rem;
+  height: 5px;
+
+  position: absolute;
+
+  transform: translateY(10px);
+  transition: 0.25s;
 }
 
 .ctn_burger.active .burger::after {
@@ -84,6 +104,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  transition: all 0.3s;
 }
 
 .input_homeOne,
@@ -91,6 +113,8 @@ label {
   color: var(--C-565E64);
   font-weight: 600;
   cursor: pointer;
+
+  transition: all 0.3s;
 }
 
 .icon_search_homeOne {
@@ -106,4 +130,61 @@ label {
   border: none;
 
   width: 90%;
+}
+
+/* /////////////////////////////////////////////// */
+/* side bar header */
+
+.side_bar_header {
+  background: var(--C-222222);
+
+  padding: 0.45rem 0.5rem;
+
+  width: 17rem;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 1;
+
+  transition: all 0.4s;
+}
+
+/* show side bar header */
+.show_side_bar {
+  right: 0;
+}
+
+.ul_sideBar_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ul_sideBar_header li {
+  margin: 1rem 0;
+}
+
+/* burger side bar */
+.ul_sideBar_header li:nth-child(1) {
+  align-self: flex-start;
+}
+
+/* img side bar */
+.ul_sideBar_header img {
+  width: 6rem;
+  height: 7rem;
+}
+
+/* font style side bar */
+.ul_sideBar_header li a {
+  color: var(--C-6C757D);
+  font-weight: 600;
+}
+
+.icon_sideBar_header {
+  font-size: 2rem;
+  margin: 0 0.25rem 0 0;
 }

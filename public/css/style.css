@@ -69,6 +69,8 @@
 body {
   background-color: var(--C-DEDEDE);
   scroll-behavior: smooth;
+
+  position: relative;
 }
 
 ul {

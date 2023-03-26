@@ -1,13 +1,4 @@
-// menutoggle;
-let menuToggle = document.querySelector(".burger");
-let navigation = document.querySelector(".ctn_burger");
-// let navigationContent = document.querySelector(".nav_content_container");
-
-menuToggle.addEventListener("click", (e) => {
-  navigation.classList.toggle("active");
-  //   navigationContent.classList.toggle("show-menu");
-});
-
+//add ingredients
 let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
 let ingredientList = document.querySelector(".ingredient_list");
 let ingredientDiv = document.querySelectorAll(".ingredient_div");
