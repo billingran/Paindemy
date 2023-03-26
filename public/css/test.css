@@ -1,0 +1,109 @@
+.header {
+  border-bottom: 2px solid var(--C-B3B3B3);
+
+  margin: 0 auto 1.5rem;
+  padding: 1rem 0;
+
+  width: 91%;
+  min-height: 5rem;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* title header */
+.title_header {
+  font-size: 2.8rem;
+}
+
+/* menu toggle */
+.ctn_burger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex: 1; */
+  cursor: pointer;
+  /* text-align: right; */
+}
+
+.burger {
+  width: 2.2rem;
+  height: 2.2rem;
+  /* border: 1px solid black; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  /* opacity: 0;
+    visibility: hidden; */
+}
+
+.burger::before {
+  content: "";
+  width: 2.2rem;
+  height: 5px;
+  position: absolute;
+  background: var(--C-6E1D0E);
+  transform: translateY(-10px);
+  transition: 0.25s;
+  border-radius: 5rem;
+}
+
+.ctn_burger.active .burger::before {
+  transform: translate(0px) rotate(45deg);
+}
+
+.ctn_burger .burger::after {
+  content: "";
+  width: 2.2rem;
+  height: 5px;
+  position: absolute;
+  background: var(--C-6E1D0E);
+  transform: translateY(10px);
+  box-shadow: 0 -9.5px 0 var(--C-6E1D0E);
+  transition: 0.25s;
+  border-radius: 5rem;
+}
+
+.ctn_burger.active .burger::after {
+  transform: translate(0px) rotate(-45deg);
+  box-shadow: 0 0 0 var(--C-6E1D0E);
+}
+
+/* input_header */
+.form_homeOne {
+  border-radius: 5rem;
+  border: 1px solid var(--C-565E64);
+
+  padding: 0 0.5rem;
+
+  width: 21rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.input_homeOne,
+label {
+  color: var(--C-565E64);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.icon_search_homeOne {
+  font-size: 1.7rem;
+}
+
+.input_homeOne {
+  font-family: "Rubik", sans-serif;
+  background: none;
+  font-size: 1.2rem;
+
+  outline: none;
+  border: none;
+
+  width: 90%;
+}

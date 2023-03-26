@@ -2,7 +2,6 @@
 /* Home One */
 
 /* background */
-
 .back_image_homeOne {
   background-image: url("/images/image_main_homeOne.jpg");
   background-size: cover;
@@ -47,44 +46,6 @@
 
   margin: 2.5rem auto;
 }
-
-/* input_header */
-/* .form_homeOne {
-  background: rgba(243, 243, 243, 0.5);
-  border-radius: 5rem;
-
-  margin: 2rem auto;
-  padding: 0.2rem 0.5rem;
-
-  width: 34rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.input_homeOne,
-label {
-  color: var(--C-565E64);
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.icon_search_homeOne {
-  font-size: 2rem;
-}
-
-.input_homeOne {
-  border: 2px solid blue;
-  font-family: "Rubik", sans-serif;
-  font-size: 1.5rem;
-  background: none;
-
-  outline: none;
-  border: none;
-
-  width: 90%;
-} */
 
 /* /////////////////////////////////////////////// */
 /* Home Two */

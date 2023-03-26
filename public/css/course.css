@@ -124,7 +124,7 @@
 
 /* middle line instructor */
 .midLine_course {
-  border: 1px solid var(--C-565E64);
+  border: 1px solid var(--C-B3B3B3);
   height: 32.5vh;
 }
 
@@ -183,7 +183,7 @@
 .ctn_intro_course li {
   text-align: center;
   font-weight: 600;
-  border-bottom: 2px solid var(--C-565E64);
+  border-bottom: 2px solid var(--C-B3B3B3);
 }
 
 /* /////////////////////////////////////////////// */

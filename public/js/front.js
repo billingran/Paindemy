@@ -1,12 +1,12 @@
-// menutoggle
-// let menuToggle = document.querySelector(".menuToggle");
-// let navigation = document.querySelector(".nav_switch_container");
-// // let navigationContent = document.querySelector(".nav_content_container");
+// menutoggle;
+let menuToggle = document.querySelector(".burger");
+let navigation = document.querySelector(".ctn_burger");
+// let navigationContent = document.querySelector(".nav_content_container");
 
-// menuToggle.addEventListener("click", (e) => {
-//   navigation.classList.toggle("active");
-//   //   navigationContent.classList.toggle("show-menu");
-// });
+menuToggle.addEventListener("click", (e) => {
+  navigation.classList.toggle("active");
+  //   navigationContent.classList.toggle("show-menu");
+});
 
 let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
 let ingredientList = document.querySelector(".ingredient_list");
