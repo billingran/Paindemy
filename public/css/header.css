@@ -32,29 +32,6 @@
   height: 4rem;
 }
 
-/* input_header */
-.search {
-  flex: 1 1;
-}
-
-.form_search {
-  background-color: var(--C-F3F3F3);
-  opacity: 0.8;
-  height: 2.6rem;
-  padding: 1rem;
-  margin: 0 0.4rem 0 0.4rem;
-}
-
-.icon_search {
-  font-size: 1.4rem;
-  color: var(--C-6C757D);
-}
-
-.input_search {
-  font-size: 1.2rem;
-  color: var(--C-6C757D);
-}
-
 /* nav button */
 .btns_nav {
   flex: 1 1;

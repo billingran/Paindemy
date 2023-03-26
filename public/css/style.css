@@ -47,10 +47,13 @@
   --C-222222: #222222;
   --C-565E64: #565e64;
   --C-B3B3B3: #b3b3b3;
+  /* submit btns */
   --C-F7F8EE: #f7f8ee;
+  /* footer */
   --C-6C757D: #6c757d;
-  --C-6B6D63: #6b6d63;
+  /* auth link */
   --C-4683C1: #4683c1;
+  /* ingredient */
   --C-72B955: #72b955;
 }
 
@@ -64,7 +67,7 @@
 }
 
 body {
-  background-color: #dedede;
+  background-color: var(--C-DEDEDE);
   scroll-behavior: smooth;
 }
 
@@ -93,6 +96,7 @@ label.up_joinus {
 
 h2 {
   font-weight: 650;
+  margin: 0;
 }
 
 /* position flex*/
@@ -120,15 +124,6 @@ h2 {
 
 .section_mid {
   margin: 7rem auto;
-}
-
-/* input*/
-.input_style {
-  font-family: "Rubik", sans-serif;
-  width: 100%;
-  background: none;
-  border: none;
-  outline: none;
 }
 
 /* a tag with border*/
@@ -168,6 +163,6 @@ h2 {
 
 @media screen and (max-width: 830px) {
   .a_NBorder {
-    font-size: 3.5vw;
+    font-size: 2.8vw;
   }
 }

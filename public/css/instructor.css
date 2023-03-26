@@ -135,8 +135,12 @@
   }
 
   /* image instructor */
-  .ctn_midimage_instructor {
+  .ctn_image_instructor,
+  .image_instructor {
     margin: 0;
+
+    width: 18rem;
+    height: 28.5rem;
   }
 
   /* middle line instructor */
@@ -172,11 +176,5 @@
   .ctn_midimage_instructor {
     width: 100%;
     height: 100%;
-  }
-
-  .ctn_image_instructor,
-  .image_instructor {
-    width: 18rem;
-    height: 55vh;
   }
 }

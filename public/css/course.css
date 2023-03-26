@@ -5,7 +5,7 @@
 .section_course {
   margin: 1.5rem auto;
 
-  width: 90%;
+  width: 91%;
 }
 
 /* ctn course */
@@ -71,18 +71,11 @@
 
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
 }
 
 .ctn_imagedate_course {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.ctn_imageAddress_course {
   margin: 0.5rem 0 0 0;
 }
 
@@ -224,9 +217,9 @@
     margin: 2.5rem 0;
   }
 
-  /* info instructor*/
+  /* info course*/
   .ctn_info_course {
-    width: 100%;
+    width: 91%;
   }
 
   .ctn_title_displayCourse {
@@ -247,6 +240,10 @@
   .ctn_image_course,
   .image_course {
     width: 19rem;
-    height: 37vh;
+    height: 19.5rem;
+  }
+
+  .ul_imageAddress_course {
+    width: 19rem;
   }
 }
