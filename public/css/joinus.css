@@ -44,6 +44,13 @@
   }
 }
 
+/* input */
+.center_joinus form div:nth-child(1) .txt_field_auth,
+.center_joinus form div:nth-child(2) .txt_field_auth {
+  margin: 2.8rem 0 0;
+  width: 50%;
+}
+
 /* textarea */
 .txt_field_auth textarea {
   color: var(--C-B3B3B3);

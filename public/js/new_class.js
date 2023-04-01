@@ -1,22 +1,25 @@
+/* /////////////////////////////////////////////// */
 //add ingredients
-let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
+
 let ingredientList = document.querySelector(".ingredient_list");
+let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
 let ingredientDiv = document.querySelectorAll(".ingredient_div");
 
-//func animateIngredient
+//func remove and reset numbers of ingredient
 function animateIngredients(dltIngredient) {
   dltIngredient.target.remove();
 
-  // reset ingredient numbers
-  function getnumbers(item) {
+  // get ingredient numbers
+  function getIngreidnetsnumbers(item) {
     return item.tagName == "DIV";
   }
 
-  let NumberIngredients = Array.from(ingredientList.childNodes).filter(
-    getnumbers
+  let numberIngredients = Array.from(ingredientList.childNodes).filter(
+    getIngreidnetsnumbers
   );
 
-  NumberIngredients.forEach((item, index) => {
+  // reset ingredient numbers
+  numberIngredients.forEach((item, index) => {
     item.getElementsByTagName(
       "label"
     )[0].innerHTML = `Ingredient <span style="color:#72B955;">${index}</span>`;
@@ -37,20 +40,21 @@ function deleteIngredients(e) {
 function addIngredients(e) {
   e.preventDefault();
 
-  // clone input
+  // clone ctn ingredient
   let newIngredients = ingredientDiv[0].cloneNode(true);
 
-  // get ingredient numbers
-  function getnumbers(item) {
+  // get ingredient amounts
+  function getIngreidnetsnumbers(item) {
     return item.tagName == "DIV";
   }
 
-  let NumberIngredients = Array.from(ingredientList.childNodes).filter(
-    getnumbers
+  // return only ctn ingredient
+  let numberIngredients = Array.from(ingredientList.childNodes).filter(
+    getIngreidnetsnumbers
   );
 
-  //set ingredient numbers
-  function setnumbers(item, index) {
+  //set ingredient numbers into label of ingredient
+  function setIngredientsnumbers(item, index) {
     newIngredients.getElementsByTagName(
       "label"
     )[0].innerHTML = `Ingredient <span style="color:#72B955;">${
@@ -58,24 +62,25 @@ function addIngredients(e) {
     }</span>`;
   }
 
-  NumberIngredients.forEach(setnumbers);
+  numberIngredients.forEach(setIngredientsnumbers);
 
-  //create delet button
-  let deleteBtn = document.createElement("button");
-  deleteBtn.setAttribute("type", "button");
-  deleteBtn.classList.add("dlt_ingredients_btn");
-  deleteBtn.classList.add("a_NBorder");
-  deleteBtn.innerHTML = '<i class="uil uil-times up_joinus"></i>';
+  //create delet button of ingredients
+  let deleteIngredientBtn = document.createElement("button");
+  deleteIngredientBtn.setAttribute("type", "button");
+  deleteIngredientBtn.classList.add("dlt_ingredients_btn");
+  deleteIngredientBtn.classList.add("minus_btn");
+  deleteIngredientBtn.classList.add("a_NBorder");
+  deleteIngredientBtn.innerHTML = '<i class="uil uil-times up_joinus"></i>';
 
-  // clear input value
-  let input = newIngredients.getElementsByTagName("input")[0];
-  input.value = "";
+  // clear input value of ingredient
+  let inputIngredient = newIngredients.getElementsByTagName("input")[0];
+  inputIngredient.value = "";
 
-  // delete eventListener
-  deleteBtn.addEventListener("click", deleteIngredients);
+  // delete ingredient eventListener
+  deleteIngredientBtn.addEventListener("click", deleteIngredients);
 
-  // append tags
-  newIngredients.appendChild(deleteBtn);
+  // append dlt bun of ingredient and ctn ingredient into list of ingredient
+  newIngredients.appendChild(deleteIngredientBtn);
   ingredientList.appendChild(newIngredients);
 
   newIngredients.style.animation = "scaleUp 0.3s forwards";
@@ -83,3 +88,29 @@ function addIngredients(e) {
 
 // +ingredient
 addIngredientsBtn.addEventListener("click", addIngredients);
+
+/* /////////////////////////////////////////////// */
+//add img class
+
+let imgClasslist = document.querySelector(".img_class_list");
+let addImgclassBtn = document.querySelector(".add_imgClass_btn");
+let imgClassdiv = document.querySelectorAll(".imgClass_div");
+
+function addImgclass(e) {
+  e.preventDefault(imgClassdiv);
+
+  let ctnImguploaded = imgClassdiv[0].childNodes[1].files;
+
+  let imgUploaded = document.createElement("div");
+
+  for (let i = 0; i < ctnImguploaded.length; i++) {
+    imgUploaded.innerHTML += `<p style="color:white;">${ctnImguploaded[i].name}<p/>`;
+  }
+
+  imgClasslist.appendChild(imgUploaded);
+
+  imgUploaded.style.animation = "scaleUp 0.3s forwards";
+}
+
+// +img class
+addImgclassBtn.addEventListener("click", addImgclass);
