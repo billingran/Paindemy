@@ -59,6 +59,33 @@
   color: var(--C-FF0066);
 }
 
+/* delete img btn */
+.img_minus_btn {
+  font-family: "Rubik", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--C-F3F3F3);
+  background: none;
+
+  box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
+  border-radius: 0.35rem;
+  outline: none;
+  border: none;
+
+  transition: all 0.3s;
+}
+
+.img_minus {
+  font-size: 1rem;
+  color: var(--C-F3F3F3);
+}
+
+/* hover */
+.img_minus_btn:hover {
+  color: var(--C-FF0066);
+}
+
 @keyframes scaleUp {
   from {
     transform: scale(0);

@@ -1,5 +1,5 @@
 /* /////////////////////////////////////////////// */
-//add ingredients
+//add and delete ingredients
 
 let ingredientList = document.querySelector(".ingredient_list");
 let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
@@ -90,26 +90,60 @@ function addIngredients(e) {
 addIngredientsBtn.addEventListener("click", addIngredients);
 
 /* /////////////////////////////////////////////// */
-//add img class
+//add and delete img class
 
 let imgClasslist = document.querySelector(".img_class_list");
 let addImgclassBtn = document.querySelector(".add_imgClass_btn");
-let imgClassdiv = document.querySelectorAll(".imgClass_div");
+let imgClassdiv = document.querySelector(".imgClass_div");
 
 function addImgclass(e) {
   e.preventDefault(imgClassdiv);
 
-  let ctnImguploaded = imgClassdiv[0].childNodes[1].files;
+  // get all img uploaded
+  let ctnImgClassuploaded = imgClassdiv.childNodes[1].files;
+  console.log(typeof Array.from(ctnImgClassuploaded));
+  console.log(ctnImgClassuploaded);
 
-  let imgUploaded = document.createElement("div");
+  for (let i = 0; i < ctnImgClassuploaded.length; i++) {
+    //create ctn img uploaded
+    let midCtnimgClass = document.createElement("div");
+    midCtnimgClass.classList.add("centralA");
 
-  for (let i = 0; i < ctnImguploaded.length; i++) {
-    imgUploaded.innerHTML += `<p style="color:white;">${ctnImguploaded[i].name}<p/>`;
+    //create delet button of ingredients
+    let deleteImgClasstBtn = document.createElement("button");
+    deleteImgClasstBtn.setAttribute("type", "button");
+    deleteImgClasstBtn.classList.add("dlt_imgClass_btn");
+    deleteImgClasstBtn.classList.add("img_minus_btn");
+    deleteImgClasstBtn.setAttribute("id", i);
+    deleteImgClasstBtn.innerHTML = '<i class="uil uil-times"></i>';
+
+    //create ctn img uploaded
+    let imgClassuploaded = document.createElement("span");
+    imgClassuploaded.classList.add("img_minus");
+    imgClassuploaded.innerHTML = ctnImgClassuploaded[i].name;
+
+    midCtnimgClass.appendChild(deleteImgClasstBtn);
+    midCtnimgClass.appendChild(imgClassuploaded);
+    imgClasslist.appendChild(midCtnimgClass);
+
+    // delete img class
+    deleteImgClasstBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      e.target.parentElement.remove();
+
+      let numberImgClass = e.target.id;
+      const ctnFilesImgClass = Array.from(ctnImgClassuploaded);
+
+      let updateCtnFilesImgClass = ctnFilesImgClass.filter(
+        (imgClass) => i != numberImgClass
+      );
+
+      console.log(updateCtnFilesImgClass);
+    });
+
+    midCtnimgClass.style.animation = "scaleUp 0.3s forwards";
   }
-
-  imgClasslist.appendChild(imgUploaded);
-
-  imgUploaded.style.animation = "scaleUp 0.3s forwards";
 }
 
 // +img class
