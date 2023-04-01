@@ -61,7 +61,7 @@
   max-height: 10rem;
 }
 
-/* animation textarea */
+/* focus and valid textarea */
 .txt_field_auth textarea:focus ~ i.up_joinus,
 .txt_field_auth textarea:valid ~ i.up_joinus,
 .txt_field_auth textarea:focus ~ label.up_joinus,
@@ -88,7 +88,7 @@ input[type="file"] {
   transform: translateY(-56%);
 }
 
-/* animation textarea image upload*/
+/* focus and valid textarea image upload*/
 .txt_field_auth input:focus ~ label i,
 .txt_field_auth input:valid ~ label i,
 .txt_field_auth input:focus ~ label,

@@ -47,7 +47,7 @@
   color: var(--C-FF0066);
 }
 
-/* animation delete ingredient button */
+/* focus and valid delete ingredient button */
 .txt_field_auth input:focus ~ .dlt_ingredients_btn,
 .txt_field_auth input:valid ~ .dlt_ingredients_btn {
   top: -1rem;

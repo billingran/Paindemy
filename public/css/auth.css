@@ -107,7 +107,7 @@ form .txt_field_auth {
   transition: all 0.3s;
 }
 
-/* animation input */
+/* focus and valid input*/
 .txt_field_auth input:focus ~ i.up_joinus,
 .txt_field_auth input:valid ~ i.up_joinus,
 .txt_field_auth input:focus ~ label.up_joinus,
