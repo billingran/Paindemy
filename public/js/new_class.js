@@ -5,21 +5,36 @@ let ingredientList = document.querySelector(".ingredient_list");
 let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
 let ingredientDiv = document.querySelectorAll(".ingredient_div");
 
-//func remove and reset numbers of ingredient
+function dltIngredientBtn() {
+  //create delet button of ingredients
+  let deleteIngredientBtn = document.createElement("button");
+  deleteIngredientBtn.setAttribute("type", "button");
+  deleteIngredientBtn.classList.add("dlt_ingredients_btn");
+  deleteIngredientBtn.classList.add("minus_btn");
+  deleteIngredientBtn.classList.add("a_NBorder");
+  deleteIngredientBtn.innerHTML = '<i class="uil uil-times up_joinus"></i>';
+
+  return deleteIngredientBtn;
+}
+
+// get ingredient amounts
+function getIngreidnetsNumbers() {
+  let numberIngredients = Array.from(ingredientList.childNodes).filter(
+    (item) => item.tagName == "DIV"
+  );
+
+  return numberIngredients;
+}
+
+//func remove, reset numbers of ingredient
 function animateIngredients(dltIngredient) {
   // remove ingredient
   dltIngredient.target.remove();
 
   //- ingredient number///////////////////////////////////////////
 
-  // get ingredient numbers
-  function getIngreidnetsNumbers(item) {
-    return item.tagName == "DIV";
-  }
-
-  let numberIngredients = Array.from(ingredientList.childNodes).filter(
-    getIngreidnetsNumbers
-  );
+  // get ingredient amounts
+  let numberIngredients = getIngreidnetsNumbers();
 
   // reset ingredient numbers
   numberIngredients.forEach((item, index) => {
@@ -66,16 +81,9 @@ function addIngredients(e) {
   //+ ingredient number///////////////////////////////////////////
 
   // get ingredient amounts
-  function getIngreidnetsNumbers(item) {
-    return item.tagName == "DIV";
-  }
+  let numberIngredients = getIngreidnetsNumbers();
 
-  // return only ctn ingredient for ingreident number
-  let numberIngredients = Array.from(ingredientList.childNodes).filter(
-    getIngreidnetsNumbers
-  );
-
-  //set ingredient numbers into label of ingredient
+  //func set ingredient numbers into label of ingredient
   function setIngredientsNumbers(item, index) {
     newIngredients.getElementsByTagName(
       "label"
@@ -84,22 +92,14 @@ function addIngredients(e) {
     }</span>`;
   }
 
+  // set ingredients numbers
   numberIngredients.forEach(setIngredientsNumbers);
 
+  // clear input value of new ingredient
+  newIngredients.getElementsByTagName("input")[0].value = "";
+
   //create delet button of ingredients
-  let deleteIngredientBtn = document.createElement("button");
-  deleteIngredientBtn.setAttribute("type", "button");
-  deleteIngredientBtn.classList.add("dlt_ingredients_btn");
-  deleteIngredientBtn.classList.add("minus_btn");
-  deleteIngredientBtn.classList.add("a_NBorder");
-  deleteIngredientBtn.innerHTML = '<i class="uil uil-times up_joinus"></i>';
-
-  // clear input value of ingredient
-  let inputIngredient = newIngredients.getElementsByTagName("input")[0];
-  inputIngredient.value = "";
-
-  // -ingredient///////////////////////////////////////////
-  deleteIngredientBtn.addEventListener("click", deleteIngredients);
+  let deleteIngredientBtn = dltIngredientBtn();
 
   // append dlt bun of ingredient and ctn ingredient into list of ingredient
   newIngredients.appendChild(deleteIngredientBtn);
@@ -107,17 +107,18 @@ function addIngredients(e) {
 
   newIngredients.style.animation = "scaleUp 0.3s forwards";
 
+  // -ingredient///////////////////////////////////////////
+  deleteIngredientBtn.addEventListener("click", deleteIngredients);
+
   //+ localStorage///////////////////////////////////////////
 
   // return only ctn ingredient for ingreident value and number
-  numberIngredients = Array.from(ingredientList.childNodes).filter(
-    getIngreidnetsNumbers
-  );
+  numberIngredients = getIngreidnetsNumbers();
 
   // ctn ingredient for localsotrage
   let ctnmyIngredientsList = [];
 
-  //get ingredient value of ingredients
+  //func get ingredient value of ingredients
   function getIngredientsValue(item, index) {
     // generate random code
     let randomIngredientNumber = Math.random().toFixed(10);
@@ -162,11 +163,22 @@ addIngredientsBtn.addEventListener("click", addIngredients);
 //load and delete ingredients form localsotrage'
 
 loadIngredients();
+
 function loadIngredients() {
   let myIngredientsList = localStorage.getItem("myIngredientsList");
 
-  if (myList !== null) {
-    myIngredientsList.forEach((item) => {});
+  if (myIngredientsList !== null) {
+    // add ingredient to ingredient 0
+    let myParsedIngredientsList = JSON.parse(myIngredientsList);
+
+    ingredientDiv[0].childNodes[1].value =
+      myParsedIngredientsList[0].ingredient;
+
+    // add ingredient to other ingredients
+    myParsedIngredientsList.slice(1).forEach((item, index) => {
+      // clone ctn ingredient
+      let newIngredients = ingredientDiv[0].cloneNode(true);
+    });
   }
 }
 
