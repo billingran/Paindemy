@@ -159,6 +159,18 @@ function addIngredients(e) {
 addIngredientsBtn.addEventListener("click", addIngredients);
 
 /* /////////////////////////////////////////////// */
+//load and delete ingredients form localsotrage'
+
+loadIngredients();
+function loadIngredients() {
+  let myIngredientsList = localStorage.getItem("myIngredientsList");
+
+  if (myList !== null) {
+    myIngredientsList.forEach((item) => {});
+  }
+}
+
+/* /////////////////////////////////////////////// */
 //add and delete img class
 
 let imgClassList = document.querySelector(".img_list");
