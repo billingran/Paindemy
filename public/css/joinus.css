@@ -103,6 +103,32 @@ input[type="file"] {
   color: var(--C-FF0066);
 }
 
+/* show img uploaded */
+.img_list {
+  overflow: auto;
+  scrollbar-width: thin;
+
+  margin: 1rem 0;
+
+  max-height: 10rem;
+}
+
+.img_minus_btn {
+  font-size: 2.2rem;
+  color: var(--C-F3F3F3);
+
+  margin: 0 0.5rem 0 0;
+
+  transition: all 0.3s;
+}
+
+.img_minus {
+  font-size: 1rem;
+  color: var(--C-F3F3F3);
+
+  transition: all 0.3s;
+}
+
 /* /////////////////////////////////////////////// */
 /* responive */
 

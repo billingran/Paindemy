@@ -92,59 +92,39 @@ addIngredientsBtn.addEventListener("click", addIngredients);
 /* /////////////////////////////////////////////// */
 //add and delete img class
 
-let imgClasslist = document.querySelector(".img_class_list");
-let addImgclassBtn = document.querySelector(".add_imgClass_btn");
-let imgClassdiv = document.querySelector(".imgClass_div");
+let imgClassList = document.querySelector(".img_list");
+let inputImgClass = document.querySelector('input[name="image_newClass"]');
+let imgClassDiv = document.querySelector(".imgClass_div");
 
-function addImgclass(e) {
-  e.preventDefault(imgClassdiv);
-
+function addImgclass() {
   // get all img uploaded
-  let ctnImgClassuploaded = imgClassdiv.childNodes[1].files;
-  console.log(typeof Array.from(ctnImgClassuploaded));
-  console.log(ctnImgClassuploaded);
+  let ctnImgClassUploaded = Array.from(imgClassDiv.childNodes[1].files);
 
-  for (let i = 0; i < ctnImgClassuploaded.length; i++) {
+  imgClassList.innerHTML = "";
+
+  ctnImgClassUploaded.forEach((item, index) => {
     //create ctn img uploaded
-    let midCtnimgClass = document.createElement("div");
-    midCtnimgClass.classList.add("centralA");
+    let midCtnImgClass = document.createElement("div");
+    midCtnImgClass.classList.add("centralA");
 
     //create delet button of ingredients
-    let deleteImgClasstBtn = document.createElement("button");
-    deleteImgClasstBtn.setAttribute("type", "button");
-    deleteImgClasstBtn.classList.add("dlt_imgClass_btn");
-    deleteImgClasstBtn.classList.add("img_minus_btn");
-    deleteImgClasstBtn.setAttribute("id", i);
-    deleteImgClasstBtn.innerHTML = '<i class="uil uil-times"></i>';
+    let iconImgClass = document.createElement("div");
+    iconImgClass.classList.add("img_minus_btn");
+    iconImgClass.innerHTML = '<i class="uil uil-image"></i>';
 
     //create ctn img uploaded
-    let imgClassuploaded = document.createElement("span");
-    imgClassuploaded.classList.add("img_minus");
-    imgClassuploaded.innerHTML = ctnImgClassuploaded[i].name;
+    let imgClassUploaded = document.createElement("span");
+    imgClassUploaded.classList.add("img_minus");
+    imgClassUploaded.innerHTML = item.name;
 
-    midCtnimgClass.appendChild(deleteImgClasstBtn);
-    midCtnimgClass.appendChild(imgClassuploaded);
-    imgClasslist.appendChild(midCtnimgClass);
+    midCtnImgClass.appendChild(iconImgClass);
+    midCtnImgClass.appendChild(imgClassUploaded);
 
-    // delete img class
-    deleteImgClasstBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+    imgClassList.appendChild(midCtnImgClass);
 
-      e.target.parentElement.remove();
-
-      let numberImgClass = e.target.id;
-      const ctnFilesImgClass = Array.from(ctnImgClassuploaded);
-
-      let updateCtnFilesImgClass = ctnFilesImgClass.filter(
-        (imgClass) => i != numberImgClass
-      );
-
-      console.log(updateCtnFilesImgClass);
-    });
-
-    midCtnimgClass.style.animation = "scaleUp 0.3s forwards";
-  }
+    midCtnImgClass.style.animation = "scaleUp 0.3s forwards";
+  });
 }
 
 // +img class
-addImgclassBtn.addEventListener("click", addImgclass);
+inputImgClass.addEventListener("change", addImgclass);
