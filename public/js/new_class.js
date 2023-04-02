@@ -7,15 +7,18 @@ let ingredientDiv = document.querySelectorAll(".ingredient_div");
 
 //func remove and reset numbers of ingredient
 function animateIngredients(dltIngredient) {
+  // remove ingredient
   dltIngredient.target.remove();
 
+  //- ingredient number///////////////////////////////////////////
+
   // get ingredient numbers
-  function getIngreidnetsnumbers(item) {
+  function getIngreidnetsNumbers(item) {
     return item.tagName == "DIV";
   }
 
   let numberIngredients = Array.from(ingredientList.childNodes).filter(
-    getIngreidnetsnumbers
+    getIngreidnetsNumbers
   );
 
   // reset ingredient numbers
@@ -35,26 +38,45 @@ function deleteIngredients(e) {
   dltIngredient.addEventListener("animationend", animateIngredients);
 
   dltIngredient.style.animation = "scaleDown 0.3s forwards";
+
+  //- localStorage///////////////////////////////////////////
+
+  let numberDltIngredient = e.target.parentElement.id;
+  let myParsedIngredientsList = JSON.parse(
+    localStorage.getItem("myIngredientsList")
+  );
+  myParsedIngredientsList.forEach((item, index) => {
+    if (item.code == numberDltIngredient) {
+      myParsedIngredientsList.splice(index, 1);
+      localStorage.setItem(
+        "myIngredientsList",
+        JSON.stringify(myParsedIngredientsList)
+      );
+    }
+  });
 }
 
+//func +ingredient
 function addIngredients(e) {
   e.preventDefault();
 
   // clone ctn ingredient
   let newIngredients = ingredientDiv[0].cloneNode(true);
 
+  //+ ingredient number///////////////////////////////////////////
+
   // get ingredient amounts
-  function getIngreidnetsnumbers(item) {
+  function getIngreidnetsNumbers(item) {
     return item.tagName == "DIV";
   }
 
-  // return only ctn ingredient
+  // return only ctn ingredient for ingreident number
   let numberIngredients = Array.from(ingredientList.childNodes).filter(
-    getIngreidnetsnumbers
+    getIngreidnetsNumbers
   );
 
   //set ingredient numbers into label of ingredient
-  function setIngredientsnumbers(item, index) {
+  function setIngredientsNumbers(item, index) {
     newIngredients.getElementsByTagName(
       "label"
     )[0].innerHTML = `Ingredient <span style="color:#72B955;">${
@@ -62,7 +84,7 @@ function addIngredients(e) {
     }</span>`;
   }
 
-  numberIngredients.forEach(setIngredientsnumbers);
+  numberIngredients.forEach(setIngredientsNumbers);
 
   //create delet button of ingredients
   let deleteIngredientBtn = document.createElement("button");
@@ -76,7 +98,7 @@ function addIngredients(e) {
   let inputIngredient = newIngredients.getElementsByTagName("input")[0];
   inputIngredient.value = "";
 
-  // delete ingredient eventListener
+  // -ingredient///////////////////////////////////////////
   deleteIngredientBtn.addEventListener("click", deleteIngredients);
 
   // append dlt bun of ingredient and ctn ingredient into list of ingredient
@@ -84,6 +106,53 @@ function addIngredients(e) {
   ingredientList.appendChild(newIngredients);
 
   newIngredients.style.animation = "scaleUp 0.3s forwards";
+
+  //+ localStorage///////////////////////////////////////////
+
+  // return only ctn ingredient for ingreident value and number
+  numberIngredients = Array.from(ingredientList.childNodes).filter(
+    getIngreidnetsNumbers
+  );
+
+  // ctn ingredient for localsotrage
+  let ctnmyIngredientsList = [];
+
+  //get ingredient value of ingredients
+  function getIngredientsValue(item, index) {
+    // generate random code
+    let randomIngredientNumber = Math.random().toFixed(10);
+    deleteIngredientBtn.setAttribute("id", randomIngredientNumber);
+
+    // input ramdon code into each ctn ingredient
+    item.setAttribute("id", randomIngredientNumber);
+
+    // data ingredient for localStorage
+    let myIngredient = {
+      ingredient: item.childNodes[1].value,
+      code: item.id,
+    };
+
+    // ctn ingredient for localsotrage
+    ctnmyIngredientsList.push(myIngredient);
+  }
+
+  numberIngredients.forEach(getIngredientsValue);
+
+  // store ingredients into localstorage
+  let myIngredientsList = localStorage.getItem("myIngredientsList");
+  if (myIngredientsList == null) {
+    localStorage.setItem(
+      "myIngredientsList",
+      JSON.stringify(ctnmyIngredientsList)
+    );
+  } else {
+    let myParsedIngredientsList = JSON.parse(myIngredientsList);
+    myParsedIngredientsList = ctnmyIngredientsList;
+    localStorage.setItem(
+      "myIngredientsList",
+      JSON.stringify(myParsedIngredientsList)
+    );
+  }
 }
 
 // +ingredient
