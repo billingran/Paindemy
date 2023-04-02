@@ -178,6 +178,38 @@ function loadIngredients() {
     myParsedIngredientsList.slice(1).forEach((item, index) => {
       // clone ctn ingredient
       let newIngredients = ingredientDiv[0].cloneNode(true);
+
+      //+ ingredient number///////////////////////////////////////////
+
+      // get ingredient amounts
+      let numberIngredients = getIngreidnetsNumbers();
+
+      //func set ingredient numbers into label of ingredient
+      function setIngredientsNumbers(item, index) {
+        newIngredients.getElementsByTagName(
+          "label"
+        )[0].innerHTML = `Ingredient <span style="color:#72B955;">${
+          index + 1
+        }</span>`;
+      }
+
+      // set ingredients numbers
+      numberIngredients.forEach(setIngredientsNumbers);
+
+      // clear input value of new ingredient
+      newIngredients.getElementsByTagName("input")[0].value = item.ingredient;
+
+      //create delet button of ingredients
+      let deleteIngredientBtn = dltIngredientBtn();
+
+      // append dlt bun of ingredient and ctn ingredient into list of ingredient
+      newIngredients.appendChild(deleteIngredientBtn);
+      ingredientList.appendChild(newIngredients);
+
+      newIngredients.style.animation = "scaleUp 0.3s forwards";
+
+      // -ingredient///////////////////////////////////////////
+      deleteIngredientBtn.addEventListener("click", deleteIngredients);
     });
   }
 }
