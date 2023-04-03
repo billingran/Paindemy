@@ -1,13 +1,21 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const categorySchema = new mongoose.Schema({
-  name: {
+  nameCategory: {
     type: String,
-    required: "This field is required.",
+    required: true,
+    maxlength: 255,
   },
-  image: {
+  imageCategory: {
     type: String,
-    required: "This field is required.",
+    required: true,
+    maxlength: 255,
+  },
+  iconCategory: {
+    type: String,
+    required: true,
+    maxlength: 255,
   },
 });
 

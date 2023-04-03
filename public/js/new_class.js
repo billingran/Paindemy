@@ -5,6 +5,7 @@ let ingredientList = document.querySelector(".ingredient_list");
 let addIngredientsBtn = document.querySelector(".add_ingredients_btn");
 let ingredientDiv = document.querySelectorAll(".ingredient_div");
 
+// func generate dlt ingredient btn
 function dltIngredientBtn() {
   //create delet button of ingredients
   let deleteIngredientBtn = document.createElement("button");
@@ -17,7 +18,7 @@ function dltIngredientBtn() {
   return deleteIngredientBtn;
 }
 
-// get ingredient amounts
+//func get ingredient amounts
 function getIngreidnetsNumbers() {
   let numberIngredients = Array.from(ingredientList.childNodes).filter(
     (item) => item.tagName == "DIV"
@@ -215,29 +216,30 @@ function loadIngredients() {
 }
 
 /* /////////////////////////////////////////////// */
-//add and delete img class
+//add and delete img new class
 
 let imgClassList = document.querySelector(".img_list");
 let inputImgClass = document.querySelector('input[name="image_newClass"]');
 let imgClassDiv = document.querySelector(".imgClass_div");
 
+//func + img new class
 function addImgclass() {
-  // get all img uploaded
+  // get all img new class uploaded
   let ctnImgClassUploaded = Array.from(imgClassDiv.childNodes[1].files);
 
   imgClassList.innerHTML = "";
 
   ctnImgClassUploaded.forEach((item, index) => {
-    //create ctn img uploaded
+    //create ctn img new class uploaded
     let midCtnImgClass = document.createElement("div");
     midCtnImgClass.classList.add("centralA");
 
-    //create delet button of ingredients
+    //create icon of new classe
     let iconImgClass = document.createElement("div");
     iconImgClass.classList.add("img_minus_btn");
     iconImgClass.innerHTML = '<i class="uil uil-image"></i>';
 
-    //create ctn img uploaded
+    //create img new class uploaded
     let imgClassUploaded = document.createElement("span");
     imgClassUploaded.classList.add("img_minus");
     imgClassUploaded.innerHTML = item.name;
@@ -251,5 +253,5 @@ function addImgclass() {
   });
 }
 
-// +img class
+// +img new class
 inputImgClass.addEventListener("change", addImgclass);

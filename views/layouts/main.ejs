@@ -14,8 +14,9 @@
 
     <!-- icons -->
     <!-- head icon -->
-    <link rel="shortcut icon" href="" />
-    <link rel="bookmark" href="" />
+    <link rel="shortcut icon" href="/images/logo_footer.png" />
+    <link rel="bookmark" href="/images/logo_footer.png" />
+
     <!-- iconScount -->
     <link
       rel="stylesheet"
@@ -31,7 +32,7 @@
     <link rel="stylesheet" href="/css/template.css" />
     <link rel="stylesheet" href="/css/carousel.css" />
     <link rel="stylesheet" href="/css/auth.css" />
-    <link rel="stylesheet" href="/css/test.css" />
+    <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/sign_up.css" />
     <link rel="stylesheet" href="/css/login.css" />
@@ -47,9 +48,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <%if (title == 'Home Page' || title == 'Instructor' || title == 'Course'
-      || title == 'Courses' || title == 'Instructors') {%> <%-
-      include("../partials/header") %> <%}%>
+      <%- include("../partials/header") %>
 
       <main><%- body -%></main>
 

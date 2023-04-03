@@ -14,6 +14,7 @@ const authRoutes = require("./src/routes/auth_routes");
 const courseRoutes = require("./src/routes/course_routes");
 const instructorRoutes = require("./src/routes/instructor_routes");
 const studentRoutes = require("./src/routes/student_routes");
+const homePage = require("./src/routes/home_routes");
 
 //Connect to mongodb alts
 require("./src/models/database");
@@ -34,10 +35,8 @@ app.use("/course", courseRoutes);
 app.use("/instructor", instructorRoutes);
 app.use("/student", studentRoutes);
 
-// Home Page
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home Page" });
-});
+// Middleware of home page
+app.use("/", homePage);
 
 app.listen(8080, () => {
   console.log("Server running on port 8080");

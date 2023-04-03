@@ -3,6 +3,7 @@ let headerBackground = document.querySelector(".header");
 let ctnHeader = document.querySelector(".ctn_header");
 let formHomeOne = document.querySelector(".form_homeOne");
 let iconSearchHomeOne = document.querySelector(".icon_search_homeOne");
+let midTextHome = document.querySelector(".title_header rect");
 
 function turnNavColor() {
   if (window.pageYOffset) {
@@ -11,11 +12,13 @@ function turnNavColor() {
     ctnHeader.style = "border: none";
     formHomeOne.style = "background: rgba(243,243,243,0.7) ";
     iconSearchHomeOne.style = "color:var(--C-6E1D0E)";
+    midTextHome.classList.add("midText_titme_homeOne");
   } else {
     headerBackground.style = "";
     ctnHeader.style = "";
     formHomeOne.style = "";
     iconSearchHomeOne.style = "";
+    midTextHome.classList.remove("midText_titme_homeOne");
   }
 }
 

@@ -1,42 +1,59 @@
 const mongoose = require("mongoose");
 
 const courseSchema = new mongoose.Schema({
-  classname: {
+  nameCourse: {
     type: String,
     required: true,
+    maxlength: 255,
   },
-  date: {
-    type: Date,
+  dateCourse: {
+    type: String,
     require: true,
+    maxlength: 255,
   },
-  address: {
+  timeCourse: {
+    type: String,
+    require: true,
+    maxlength: 255,
+  },
+  addressCourse: {
+    type: String,
+    required: true,
+    maxlength: 255,
+  },
+  descriptionCourse: {
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  category: {
+  categoryCourse: {
     type: String,
     enum: ["Bakery", "Pastry", "Other"],
     required: true,
   },
-  ingredients: {
+  caloriesCourse: {
+    type: Number,
+    required: true,
+  },
+  ingredientsCourse: {
     type: Array,
     required: true,
   },
-  image: {
+  imageCourse: {
     type: String,
     required: true,
+    maxlength: 255,
   },
-  instructor: {
+  instructorCourse: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  students: {
+  studentsCourse: {
     type: [String],
     default: [],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

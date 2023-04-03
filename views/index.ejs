@@ -24,58 +24,24 @@
   <!-- categories -->
   <div>
     <ul class="ul_categories">
+      <% if(categories != '') { %> <% categories.forEach((category,index) => {
+      %>
       <li class="mid_image">
-        <a href="#">
+        <a href="/course/courses/<%- category.nameCategory %>">
           <div class="ctn_image ctn_image_category">
             <div
               loading="lazy"
               class="image image_category"
-              style="background-image: url('/images/bakery.jpg')"
+              style="
+                background-image: url('/images/<%- category.imageCategory %>');
+              "
             >
-              <h3 class="title_category">Bakery</h3>
+              <h3 class="title_category"><%- category.nameCategory %></h3>
             </div>
           </div>
         </a>
       </li>
-      <li class="mid_image">
-        <a href="#">
-          <div class="ctn_image ctn_image_category">
-            <div
-              loading="lazy"
-              class="image image_category"
-              style="background-image: url('/images/pastry.jpg')"
-            >
-              <h3 class="title_category">Pastry</h3>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="mid_image">
-        <a href="#">
-          <div class="ctn_image ctn_image_category">
-            <div
-              loading="lazy"
-              class="image image_category"
-              style="background-image: url('/images/other.jpg')"
-            >
-              <h3 class="title_category">Others</h3>
-            </div>
-          </div>
-        </a>
-      </li>
-      <li class="mid_image">
-        <a href="#">
-          <div class="ctn_image ctn_image_category">
-            <div
-              loading="lazy"
-              class="image image_category"
-              style="background-image: url('/images/view_all.jpg')"
-            >
-              <h3 class="title_category">View All</h3>
-            </div>
-          </div>
-        </a>
-      </li>
+      <% }) %> <% } %>
     </ul>
   </div>
 

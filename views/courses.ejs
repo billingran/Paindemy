@@ -120,14 +120,16 @@
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA">
-        <i class="uil uil-book-alt icon_title_display"></i>
-        <h2 class="title_display">All courses</h2>
+        <%- oneCategory[0].iconCategory %>
+        <h2 class="title_display">
+          <%- oneCategory[0].nameCategory %> Courses
+        </h2>
       </div>
       <div class="mid_display">
         <a href="#" class="ctn_viceTitle_display"
-          >View More
+          >Show Ramdon
           <iconify-icon
-            icon="mdi:more-circle"
+            icon="fa:random"
             class="icon_viceTitle_display"
           ></iconify-icon>
         </a>
