@@ -21,7 +21,7 @@
   text-align: center;
   overflow: hidden;
   width: 100%;
-  min-height: 65vh;
+  min-height: 83vh;
 
   position: relative;
 
@@ -42,7 +42,7 @@
   /* /////////////////////////////////////////////// */
   /* carousel */
 
-  .section_carousel {
+  .section_carousels {
     width: 91%;
   }
 }

@@ -138,13 +138,17 @@
   </div>
   <div>
     <ul class="ul_template">
+      <% if(typeof manyCourses !== 'undefined' && manyCourses.length > 0) { %>
+      <% manyCourses.forEach(function(course){ %>
       <li class="ctn_template mid_template">
         <a href="#">
           <div class="ctn_image_template">
             <div
               loading="lazy"
               class="image_template"
-              style="background-image: url('/uploads/baguette.jpg')"
+              style="
+                background-image: url('/uploads/<%= course.imageCourse %>');
+              "
             ></div>
           </div>
         </a>
@@ -155,7 +159,7 @@
                 <i class="uil uil-book-alt icon_content_template"></i>
               </div>
               <div>
-                <a href="#">Baguette</a>
+                <a href="#"><%= course.nameCourse %></a>
               </div>
             </li>
 
@@ -167,7 +171,10 @@
                 ></iconify-icon>
               </div>
               <div>
-                <a href="#">Jasmin Dupre</a>
+                <a href="#"
+                  ><%= course.instructorCourse.firstname %> <%=
+                  course.instructorCourse.lastname %></a
+                >
               </div>
             </li>
 
@@ -176,7 +183,9 @@
                 <i class="uil uil-calender icon_content_template"></i>
               </div>
               <div>
-                <a href="#">3/4/2023</a>
+                <a href="#"
+                  ><%= course.dateCourse %> / <%= course.timeCourse %></a
+                >
               </div>
             </li>
 
@@ -185,7 +194,7 @@
                 <i class="uil uil-map-marker icon_content_template"></i>
               </div>
               <div>
-                <a href="#"> 8 avenue de Carthage, 13100 Aix en-provence </a>
+                <a href="#"> <%= course.addressCourse %> </a>
               </div>
             </li>
 
@@ -204,6 +213,12 @@
           </ul>
         </div>
       </li>
+      <% }) %> <% } else { %>
+      <p>
+        Sorry, we currently don't have any <%- oneCategory[0].nameCategory %>
+        Courses
+      </p>
+      <% } %>
     </ul>
   </div>
 </section>

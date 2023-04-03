@@ -5,13 +5,13 @@ const courseController = require("../controllers/course_controller");
 //instructors
 router.get("/instructors", courseController.getAllinstructors);
 
-//courses
-router.get("/courses/:nameCategory", courseController.getAllcourses);
+//courses of categories
+router.get("/courses/:name_category", courseController.getCoursesCategory);
 
 //instructor
 router.get("/instructor", courseController.getOneinstructor);
 
 //course
-router.get("/course", courseController.getOnecourse);
+router.get("/course/:request_course", courseController.getOnecourse);
 
 module.exports = router;

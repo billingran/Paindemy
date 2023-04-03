@@ -8,10 +8,14 @@
   <div class="ctn_btns_homeOne">
     <ul class="ul_btns">
       <li>
-        <a href="#" class="left_btns a_NBorder">Latest Course</a>
+        <a href="/course/course/latest" class="left_btns a_NBorder"
+          >Latest Course</a
+        >
       </li>
       <li>
-        <a href="#" class="right_btns a_NBorder">Show Random</a>
+        <a href="/course/course/random" class="right_btns a_NBorder"
+          >Show Random</a
+        >
       </li>
     </ul>
   </div>
@@ -24,19 +28,19 @@
   <!-- categories -->
   <div>
     <ul class="ul_categories">
-      <% if(categories != '') { %> <% categories.forEach((category,index) => {
-      %>
+      <% if(typeof categories !== 'undefined' && categories.length > 0) { %> <%
+      categories.forEach((category) => { %>
       <li class="mid_image">
-        <a href="/course/courses/<%- category.nameCategory %>">
+        <a href="/course/courses/<%= category.nameCategory %>">
           <div class="ctn_image ctn_image_category">
             <div
               loading="lazy"
               class="image image_category"
               style="
-                background-image: url('/images/<%- category.imageCategory %>');
+                background-image: url('/images/<%= category.imageCategory %>');
               "
             >
-              <h3 class="title_category"><%- category.nameCategory %></h3>
+              <h3 class="title_category"><%= category.nameCategory %></h3>
             </div>
           </div>
         </a>
@@ -49,14 +53,13 @@
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA">
-        <iconify-icon
-          icon="mdi:bread"
-          class="icon_title_display"
-        ></iconify-icon>
-        <h2 class="title_display">Bakery Courses</h2>
+        <%- categories[0].iconCategory %>
+        <h2 class="title_display"><%= categories[0].nameCategory %> Courses</h2>
       </div>
       <div class="mid_display">
-        <a href="#" class="ctn_viceTitle_display"
+        <a
+          href="/course/courses/<%= categories[0].nameCategory %>"
+          class="ctn_viceTitle_display"
           >View More
           <iconify-icon
             icon="mdi:more-circle"
@@ -67,13 +70,17 @@
     </div>
     <div>
       <ul class="ul_template">
+        <% if(typeof coursesOne !== 'undefined' && coursesOne.length > 0) { %>
+        <% coursesOne.forEach(function(courseOne){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
                 class="image_template"
-                style="background-image: url('/uploads/baguette.jpg')"
+                style="
+                  background-image: url('/uploads/<%= courseOne.imageCourse %>');
+                "
               ></div>
             </div>
           </a>
@@ -84,7 +91,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">Baguette</a>
+                  <a href="#"><%= courseOne.nameCourse %></a>
                 </div>
               </li>
 
@@ -96,7 +103,10 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#">Jasmin Dupre</a>
+                  <a href="#">
+                    <%= courseOne.instructorCourse.firstname %> <%=
+                    courseOne.instructorCourse.lastname %>
+                  </a>
                 </div>
               </li>
 
@@ -105,7 +115,9 @@
                   <i class="uil uil-calender icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">3/4/2023</a>
+                  <a href="#">
+                    <%= courseOne.dateCourse %> / <%= courseOne.timeCourse %>
+                  </a>
                 </div>
               </li>
 
@@ -114,7 +126,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> 8 avenue de Carthage, 13100 Aix en-provence</a>
+                  <a href="#"> <%= courseOne.addressCourse %> </a>
                 </div>
               </li>
 
@@ -133,6 +145,12 @@
             </ul>
           </div>
         </li>
+        <% }) %> <% } else { %>
+        <p>
+          Sorry, we currently don't have any <%= categories[0].nameCategory %>
+          Courses
+        </p>
+        <% } %>
       </ul>
     </div>
   </div>
@@ -141,12 +159,13 @@
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA">
-        <iconify-icon icon="mdi:food-croissant" class="icon_title_display">
-        </iconify-icon>
-        <h2 class="title_display">Pastry Courses</h2>
+        <%- categories[1].iconCategory %>
+        <h2 class="title_display"><%= categories[1].nameCategory %> Courses</h2>
       </div>
       <div class="mid_display">
-        <a href="#" class="ctn_viceTitle_display"
+        <a
+          href="/course/courses/<%= categories[1].nameCategory %>"
+          class="ctn_viceTitle_display"
           >View More
           <iconify-icon
             icon="mdi:more-circle"
@@ -157,13 +176,17 @@
     </div>
     <div>
       <ul class="ul_template">
+        <% if(typeof coursesTwo !== 'undefined' && coursesTwo.length > 0) { %>
+        <% coursesTwo.forEach(function(courseTwo){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
                 class="image_template"
-                style="background-image: url('/uploads/baguette.jpg')"
+                style="
+                  background-image: url('/uploads/<%= courseTwo.imageCourse %>');
+                "
               ></div>
             </div>
           </a>
@@ -174,7 +197,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">Baguette</a>
+                  <a href="#"><%= courseTwo.nameCourse %></a>
                 </div>
               </li>
 
@@ -186,7 +209,10 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#">Jasmin Dupre</a>
+                  <a href="#"
+                    ><%= courseTwo.instructorCourse.firstname %> <%=
+                    courseTwo.instructorCourse.lastname %>
+                  </a>
                 </div>
               </li>
 
@@ -195,7 +221,9 @@
                   <i class="uil uil-calender icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">3/4/2023</a>
+                  <a href="#"
+                    ><%= courseTwo.dateCourse %> / <%= courseTwo.timeCourse %>
+                  </a>
                 </div>
               </li>
 
@@ -204,7 +232,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> 8 avenue de Carthage, 13100 Aix en-provence </a>
+                  <a href="#"> <%= courseTwo.addressCourse %> </a>
                 </div>
               </li>
 
@@ -223,6 +251,12 @@
             </ul>
           </div>
         </li>
+        <% }) %> <% } else { %>
+        <p>
+          Sorry, we currently don't have any <%= categories[1].nameCategory %>
+          Courses
+        </p>
+        <% } %>
       </ul>
     </div>
   </div>
@@ -231,14 +265,13 @@
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA">
-        <iconify-icon
-          icon="ion:pizza"
-          class="icon_title_display"
-        ></iconify-icon>
-        <h2 class="title_display">Other Courses</h2>
+        <%- categories[2].iconCategory %>
+        <h2 class="title_display"><%= categories[2].nameCategory %> Courses</h2>
       </div>
       <div class="mid_display">
-        <a href="#" class="ctn_viceTitle_display"
+        <a
+          href="/course/courses/<%= categories[2].nameCategory %>"
+          class="ctn_viceTitle_display"
           >View More
           <iconify-icon
             icon="mdi:more-circle"
@@ -249,13 +282,17 @@
     </div>
     <div>
       <ul class="ul_template">
+        <% if(typeof coursesThree !== 'undefined' && coursesThree.length > 0) {
+        %> <% coursesThree.forEach(function(courseThree){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
                 class="image_template"
-                style="background-image: url('/uploads/baguette.jpg')"
+                style="
+                  background-image: url('/uploads/<%= courseThree.imageCourse %>');
+                "
               ></div>
             </div>
           </a>
@@ -266,7 +303,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">Baguette</a>
+                  <a href="#"><%= courseThree.nameCourse %></a>
                 </div>
               </li>
 
@@ -278,7 +315,10 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#">Jasmin Dupre</a>
+                  <a href="#"
+                    ><%= courseThree.instructorCourse.firstname %> <%=
+                    courseThree.instructorCourse.lastname %>
+                  </a>
                 </div>
               </li>
 
@@ -287,7 +327,10 @@
                   <i class="uil uil-calender icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">3/4/2023</a>
+                  <a href="#"
+                    ><%= courseThree.dateCourse %> / <%= courseThree.timeCourse
+                    %>
+                  </a>
                 </div>
               </li>
 
@@ -296,7 +339,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> 8 avenue de Carthage, 13100 Aix en-provence </a>
+                  <a href="#"> <%= courseThree.addressCourse %> </a>
                 </div>
               </li>
 
@@ -315,6 +358,12 @@
             </ul>
           </div>
         </li>
+        <% }) %> <% } else { %>
+        <p>
+          Sorry, we currently don't have any <%= categories[2].nameCategory %>
+          Courses
+        </p>
+        <% } %>
       </ul>
     </div>
   </div>
