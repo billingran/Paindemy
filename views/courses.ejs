@@ -120,13 +120,11 @@
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
-        <%- oneCategory[0].iconCategory %>
-        <h2 class="title_display">
-          <%- oneCategory[0].nameCategory %> Courses
-        </h2>
+        <%- oneCategory.iconCategory %>
+        <h2 class="title_display"><%- oneCategory.nameCategory %> Courses</h2>
       </div>
       <div class="mid_display">
-        <a href="#" class="ctn_viceTitle_display"
+        <a href="/course/course/random" class="ctn_viceTitle_display"
           >Show Ramdon
           <iconify-icon
             icon="fa:random"
@@ -215,7 +213,7 @@
       </li>
       <% }) %> <% } else { %>
       <p>
-        Sorry, we currently don't have <%- oneCategory[0].nameCategory %> Course
+        Sorry, we currently don't have <%- oneCategory.nameCategory %> Course
       </p>
       <% } %>
     </ul>

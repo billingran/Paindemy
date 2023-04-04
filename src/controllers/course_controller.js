@@ -13,27 +13,30 @@ module.exports.getCoursesCategory = async (req, res) => {
     // get one category icon
     const nameCategory = req.params;
 
-    const oneCategory = await Category.find({
+    let oneCategory = await Category.find({
       nameCategory: nameCategory.name_category,
     });
+    oneCategory = oneCategory[0];
 
     // find courses with one category or all courses
     let manyCourses;
 
     if (nameCategory.name_category != "All") {
+      // get category courses
       manyCourses = await Course.find({
         categoryCourse: nameCategory.name_category,
       })
         .populate("instructorCourse", ["firstname", "lastname", "email"])
         .exec();
     } else {
+      // get all courses
       manyCourses = await Course.find({})
         .populate("instructorCourse", ["firstname", "lastname", "email"])
         .exec();
     }
 
     res.render("courses", {
-      title: `${nameCategory.nameCategory} Courses`,
+      title: `${nameCategory.name_category} Courses`,
       oneCategory,
       manyCourses,
     });
