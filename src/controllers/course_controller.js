@@ -53,11 +53,17 @@ module.exports.getOnecourse = async (req, res) => {
   try {
     // find latest, random or one course according req.params
     let requestCourse = req.params;
+
+    // turn first letter of req.params to upperCase
+    requestCourse = `${requestCourse.request_course
+      .charAt(0)
+      .toUpperCase()}${requestCourse.request_course.slice(1)}`;
+
+    // get latest, random or one course
     const limitNumberCourse = 1;
     let oneCourse;
-    let iconOneCourse;
 
-    if (requestCourse.request_course == "latest") {
+    if (requestCourse == "Latest") {
       // get latest course and icon category
       oneCourse = await Course.find({})
         .sort({ _id: -1 })
@@ -65,15 +71,44 @@ module.exports.getOnecourse = async (req, res) => {
         .populate("instructorCourse", ["firstname", "lastname", "email"])
         .exec();
 
-      iconOneCourse = await Category.find({
-        nameCategory: oneCourse[0].categoryCourse,
-      });
-    } else if (requestCourse.request_course == "random") {
+      oneCourse = oneCourse[0];
+    } else if (requestCourse == "Random") {
+      // get random course and icon category
+      let countCourse = await Course.find({}).countDocuments();
+      let numberRandomCourse = Math.floor(Math.random() * countCourse);
+      oneCourse = await Course.findOne({})
+        .skip(numberRandomCourse)
+        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .exec();
+    } else {
+      // get one course and icon category
+      oneCourse = await Course.findOne({
+        nameCourse: requestCourse,
+      })
+        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .exec();
     }
 
-    console.log(iconOneCourse);
+    // get icon category
+    let iconOneCourse = await Category.find({
+      nameCategory: oneCourse.categoryCourse,
+    });
+    iconOneCourse = iconOneCourse[0];
 
-    res.render("course", { title: "Course", oneCourse, iconOneCourse });
+    // get related courses
+    let relatedCourses = await Course.find({
+      categoryCourse: oneCourse.categoryCourse,
+    })
+      .populate("instructorCourse", ["firstname", "lastname", "email"])
+      .exec();
+
+    res.render("course", {
+      title: `${requestCourse} Course`,
+      requestCourse,
+      iconOneCourse,
+      oneCourse,
+      relatedCourses,
+    });
   } catch (error) {
     res.status(500).send(error);
     console.log(error);

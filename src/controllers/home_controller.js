@@ -8,8 +8,9 @@ module.exports.homePage = async (req, res) => {
     const limitNumberCategories = 4;
     const categories = await Category.find({}).limit(limitNumberCategories);
 
-    // find first 5 courses of each category
+    // find last 5 courses of each category
     const limitNumberCourses = 5;
+
     const coursesOne = await Course.find({
       categoryCourse: categories[0].nameCategory,
     })

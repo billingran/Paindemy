@@ -17,7 +17,7 @@
 
   padding: 1.5rem;
 
-  min-height: 70vh;
+  min-height: 83vh;
 
   display: flex;
   justify-content: space-around;
@@ -31,7 +31,7 @@
 .ctn_midimage_course {
   /* border: 2px solid orange; */
 
-  height: 70vh;
+  min-height: 100%;
 
   position: relative;
 
@@ -65,9 +65,10 @@
   font-size: 1rem;
 
   /* border: 2px green solid; */
+  margin: 1rem 0 1rem 0;
 
-  width: 100%;
-  min-height: 6.1rem;
+  width: 27rem;
+  min-height: 8.3rem;
 
   display: flex;
   align-items: flex-start;
@@ -101,13 +102,13 @@
   width: 100%;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
 .midLine_imageContent_course {
   border: 1px solid var(--C-565E64);
-  height: 5.7vh;
+  height: 8.6vh;
 }
 
 .icon_imageCategory_course {
@@ -165,6 +166,10 @@
 
 /* intro */
 .ctn_intro_course {
+  text-align: justify;
+  line-height: 2.8rem;
+  color: var(--C-565E64);
+
   margin: 0 0 1rem 0.6rem;
   padding: 0 0.5rem 0 0;
 
@@ -172,12 +177,6 @@
 
   overflow: auto;
   scrollbar-width: thin;
-}
-
-.ctn_intro_course {
-  text-align: justify;
-  line-height: 2.8rem;
-  color: var(--C-565E64);
 }
 
 .ctn_intro_course li {
@@ -219,7 +218,7 @@
 
   /* info course*/
   .ctn_info_course {
-    width: 91%;
+    width: 100%;
   }
 
   .ctn_title_displayCourse {

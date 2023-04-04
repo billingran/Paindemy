@@ -28,8 +28,8 @@
   <!-- categories -->
   <div>
     <ul class="ul_categories">
-      <% if(typeof categories !== 'undefined' && categories.length > 0) { %> <%
-      categories.forEach((category) => { %>
+      <% if(typeof categories !== 'undefined' && categories != null &&
+      categories.length > 0) { %> <% categories.forEach((category) => { %>
       <li class="mid_image">
         <a href="/course/courses/<%= category.nameCategory %>">
           <div class="ctn_image ctn_image_category">
@@ -45,14 +45,16 @@
           </div>
         </a>
       </li>
-      <% }) %> <% } %>
+      <% }) %> <% } else { %>
+      <p>Sorry, we currently don't have category</p>
+      <% } %>
     </ul>
   </div>
 
   <!-- Bakery display and template -->
   <div class="ctn_display">
     <div class="ctn_title_display">
-      <div class="centralA">
+      <div class="centralA icon_title_display">
         <%- categories[0].iconCategory %>
         <h2 class="title_display"><%= categories[0].nameCategory %> Courses</h2>
       </div>
@@ -70,8 +72,9 @@
     </div>
     <div>
       <ul class="ul_template">
-        <% if(typeof coursesOne !== 'undefined' && coursesOne.length > 0) { %>
-        <% coursesOne.forEach(function(courseOne){ %>
+        <% if(typeof coursesOne !== 'undefined' && categories != null &&
+        coursesOne.length > 0) { %> <% coursesOne.forEach(function(courseOne){
+        %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
@@ -137,7 +140,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="#">
+                  <a href="/course/course/<%= courseOne.nameCourse %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -147,8 +150,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have any <%= categories[0].nameCategory %>
-          Courses
+          Sorry, we currently don't have <%= categories[0].nameCategory %>
+          Course
         </p>
         <% } %>
       </ul>
@@ -158,7 +161,7 @@
   <!-- Pastry display and template -->
   <div class="ctn_display">
     <div class="ctn_title_display">
-      <div class="centralA">
+      <div class="centralA icon_title_display">
         <%- categories[1].iconCategory %>
         <h2 class="title_display"><%= categories[1].nameCategory %> Courses</h2>
       </div>
@@ -176,8 +179,9 @@
     </div>
     <div>
       <ul class="ul_template">
-        <% if(typeof coursesTwo !== 'undefined' && coursesTwo.length > 0) { %>
-        <% coursesTwo.forEach(function(courseTwo){ %>
+        <% if(typeof coursesTwo !== 'undefined' && categories != null &&
+        coursesTwo.length > 0) { %> <% coursesTwo.forEach(function(courseTwo){
+        %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
@@ -243,7 +247,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="#">
+                  <a href="/course/course/<%= courseTwo.nameCourse %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -253,8 +257,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have any <%= categories[1].nameCategory %>
-          Courses
+          Sorry, we currently don't have <%= categories[1].nameCategory %>
+          Course
         </p>
         <% } %>
       </ul>
@@ -264,7 +268,7 @@
   <!-- Other display and template -->
   <div class="ctn_display">
     <div class="ctn_title_display">
-      <div class="centralA">
+      <div class="centralA icon_title_display">
         <%- categories[2].iconCategory %>
         <h2 class="title_display"><%= categories[2].nameCategory %> Courses</h2>
       </div>
@@ -282,8 +286,9 @@
     </div>
     <div>
       <ul class="ul_template">
-        <% if(typeof coursesThree !== 'undefined' && coursesThree.length > 0) {
-        %> <% coursesThree.forEach(function(courseThree){ %>
+        <% if(typeof coursesThree !== 'undefined' && categories != null &&
+        coursesThree.length > 0) { %> <%
+        coursesThree.forEach(function(courseThree){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
@@ -350,7 +355,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="#">
+                  <a href="/course/course/<%= courseThree.nameCourse %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -360,8 +365,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have any <%= categories[2].nameCategory %>
-          Courses
+          Sorry, we currently don't have <%= categories[2].nameCategory %>
+          Course
         </p>
         <% } %>
       </ul>

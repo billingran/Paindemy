@@ -418,29 +418,29 @@
 
 // insertDymmyRecipeData();
 
-// category
+// category;
 // async function insertDymmyCategoryData() {
 //   try {
 //     await Category.insertMany([
 //       {
 //         nameCategory: "Bakery",
 //         imageCategory: "bakery.jpg",
-//         iconCategory: `<iconify-icon icon="mdi:bread" class="icon_title_display"></iconify-icon>`,
+//         iconCategory: `<iconify-icon icon="mdi:bread"></iconify-icon>`,
 //       },
 //       {
 //         nameCategory: "Pastry",
 //         imageCategory: "pastry.jpg",
-//         iconCategory: `<iconify-icon icon="mdi:food-croissant" class="icon_title_display"></iconify-icon>`,
+//         iconCategory: `<iconify-icon icon="mdi:food-croissant"></iconify-icon>`,
 //       },
 //       {
 //         nameCategory: "Other",
 //         imageCategory: "other.jpg",
-//         iconCategory: `<iconify-icon icon="ion:pizza" class="icon_title_display"></iconify-icon>`,
+//         iconCategory: `<iconify-icon icon="ion:pizza"></iconify-icon>`,
 //       },
 //       {
 //         nameCategory: "All",
 //         imageCategory: "view_all.jpg",
-//         iconCategory: `<i class="uil uil-book-alt icon_title_display"></i>`,
+//         iconCategory: `<i class="uil uil-book-alt"></i>`,
 //       },
 //     ]);
 //   } catch (error) {
