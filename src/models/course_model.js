@@ -45,9 +45,8 @@ const courseSchema = new mongoose.Schema({
     required: true,
   },
   imageCourse: {
-    type: String,
+    type: Array,
     required: true,
-    minlength: 1,
   },
   instructorCourse: {
     type: mongoose.Schema.Types.ObjectId,

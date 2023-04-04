@@ -449,3 +449,145 @@
 // }
 
 // insertDymmyCategoryData();
+
+user;
+async function insertDymmyCategoryData() {
+  try {
+    await User.insertMany([
+      {
+        firstnameUser: "Auguste",
+        lastnameUser: "Lefebvre",
+        themeColorUser: "#b3b3b3",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "augustelefebvre@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Auguste_Lefebvre.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Christine",
+        lastnameUser: "Leconte",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "christineleconte@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Christine_Leconte.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Claudine",
+        lastnameUser: "Lefort",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "claudinelefort@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Claudine_Lefort.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Emmanuel",
+        lastnameUser: "Brunel",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "emmanuelbrunel@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Emmanuel_Brunel.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Joséphine",
+        lastnameUser: "Fabre",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "joséphinefabre@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Joséphine_Fabret.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Sophie",
+        lastnameUser: "Ferrand",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "sophieferrand@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Sophie_Ferrand.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Sébastien ",
+        lastnameUser: "Paul",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "sébastienpaul@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Sébastien_Paul.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Élise",
+        lastnameUser: "Maillot",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "elisemaillot@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["Élise_Maillot.jpg", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "",
+        lastnameUser: "",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "billingran@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["", ""],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "",
+        lastnameUser: "",
+        themeColorUser: "",
+        fathUser: "I beleive baking can have infinite possibilities.",
+        emailUser: "billingran@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
+        googleIDUser: "123",
+        imageUser: ["", ""],
+        roleUser: "instructor",
+      },
+    ]);
+  } catch (error) {
+    console.log("err", +error);
+  }
+}
+
+// insertDymmyCategoryData();
