@@ -1,40 +1,58 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  firstname: {
+  firstnameUser: {
     type: String,
     require: true,
-    minlength: 3,
+    minlength: 1,
     maxlength: 50,
   },
-  lastname: {
+  lastnameUser: {
     type: String,
-    minlength: 3,
+    require: true,
+    minlength: 1,
     maxlength: 50,
   },
-  googleID: {
+  themeColorUser: {
     type: String,
+    minlength: 1,
+    maxlength: 50,
+    default: "#b3b3b3",
   },
-  image: {
+  fathUser: {
     type: String,
+    minlength: 1,
+    maxlength: 100,
+    default: "Bonjour, Je suis",
   },
-  email: {
+  emailUser: {
     type: String,
     required: true,
     minlength: 6,
-    maxlength: 50,
+    maxlength: 100,
   },
-  password: {
+  passwordUser: {
     type: String,
     minLength: 8,
     maxLength: 1024,
   },
-  role: {
+  introductionUser: {
+    type: String,
+    required: true,
+    minlength: 1,
+  },
+  googleIDUser: {
+    type: String,
+  },
+  imageUser: {
+    type: String,
+  },
+  roleUser: {
     type: String,
     enum: ["student", "instructor"],
     required: true,
   },
-  date: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },

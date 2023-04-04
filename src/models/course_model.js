@@ -4,26 +4,31 @@ const courseSchema = new mongoose.Schema({
   nameCourse: {
     type: String,
     required: true,
+    minlength: 1,
     maxlength: 255,
   },
   dateCourse: {
     type: String,
     require: true,
+    minlength: 1,
     maxlength: 255,
   },
   timeCourse: {
     type: String,
     require: true,
+    minlength: 1,
     maxlength: 255,
   },
   addressCourse: {
     type: String,
     required: true,
+    minlength: 1,
     maxlength: 255,
   },
   descriptionCourse: {
     type: String,
     required: true,
+    minlength: 1,
   },
   categoryCourse: {
     type: String,
@@ -33,6 +38,7 @@ const courseSchema = new mongoose.Schema({
   caloriesCourse: {
     type: Number,
     required: true,
+    minlength: 1,
   },
   ingredientsCourse: {
     type: Array,
@@ -41,7 +47,7 @@ const courseSchema = new mongoose.Schema({
   imageCourse: {
     type: String,
     required: true,
-    maxlength: 255,
+    minlength: 1,
   },
   instructorCourse: {
     type: mongoose.Schema.Types.ObjectId,

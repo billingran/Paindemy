@@ -75,12 +75,26 @@ module.exports.getOnecourse = async (req, res) => {
         .exec();
 
       oneCourse = oneCourse[0];
-    } else if (requestCourse == "Random") {
+    } else if (requestCourse == "Random" || requestCourse == "All") {
       // get random course and icon category
       let countCourse = await Course.find({}).countDocuments();
       let numberRandomCourse = Math.floor(Math.random() * countCourse);
       oneCourse = await Course.findOne({})
         .skip(numberRandomCourse)
+        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .exec();
+    } else if (
+      requestCourse == "Bakery" ||
+      requestCourse == "Pastry" ||
+      requestCourse == "Other"
+    ) {
+      // get category course
+      let countCourseCategory = await Course.find({
+        categoryCourse: requestCourse,
+      }).countDocuments();
+      let nbrdCourseCategory = Math.floor(Math.random() * countCourseCategory);
+      oneCourse = await Course.findOne({ categoryCourse: requestCourse })
+        .skip(nbrdCourseCategory)
         .populate("instructorCourse", ["firstname", "lastname", "email"])
         .exec();
     } else {
