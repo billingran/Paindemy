@@ -37,7 +37,7 @@
           </div>
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
-              <img src="/images/baguette_R.png" class="d-block" alt="..." />
+              <img src="/uploads/baguette_R.png" class="d-block" alt="..." />
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
           </div>
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
-              <img src="/images/croissant_R.png" class="d-block" alt="..." />
+              <img src="/uploads/croissant_R.png" class="d-block" alt="..." />
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
           </div>
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
-              <img src="/images/gua_bao_R.png" class="d-block" alt="..." />
+              <img src="/uploads/gua_bao_R.png" class="d-block" alt="..." />
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@
               loading="lazy"
               class="image_template"
               style="
-                background-image: url('/uploads/<%= course.imageCourse %>');
+                background-image: url('/uploads/<%= course.imageCourse[0] %>');
               "
             ></div>
           </div>
@@ -172,8 +172,8 @@
               </div>
               <div>
                 <a href="#"
-                  ><%= course.instructorCourse.firstname %> <%=
-                  course.instructorCourse.lastname %>
+                  ><%= course.instructorCourse.firstnameUser %> <%=
+                  course.instructorCourse.lastnameUser %>
                 </a>
               </div>
             </li>

@@ -26,12 +26,20 @@ module.exports.getCoursesCategory = async (req, res) => {
       manyCourses = await Course.find({
         categoryCourse: nameCategory.name_category,
       })
-        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
         .exec();
     } else {
       // get all courses
       manyCourses = await Course.find({})
-        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
         .exec();
     }
 
@@ -71,7 +79,11 @@ module.exports.getOnecourse = async (req, res) => {
       oneCourse = await Course.find({})
         .sort({ _id: -1 })
         .limit(limitNumberCourse)
-        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
         .exec();
 
       oneCourse = oneCourse[0];
@@ -81,7 +93,11 @@ module.exports.getOnecourse = async (req, res) => {
       let numberRandomCourse = Math.floor(Math.random() * countCourse);
       oneCourse = await Course.findOne({})
         .skip(numberRandomCourse)
-        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
         .exec();
     } else if (
       requestCourse == "Bakery" ||
@@ -95,14 +111,22 @@ module.exports.getOnecourse = async (req, res) => {
       let nbrdCourseCategory = Math.floor(Math.random() * countCourseCategory);
       oneCourse = await Course.findOne({ categoryCourse: requestCourse })
         .skip(nbrdCourseCategory)
-        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
         .exec();
     } else {
       // get one course and icon category
       oneCourse = await Course.findOne({
         nameCourse: requestCourse,
       })
-        .populate("instructorCourse", ["firstname", "lastname", "email"])
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
         .exec();
     }
 
@@ -116,7 +140,11 @@ module.exports.getOnecourse = async (req, res) => {
     let relatedCourses = await Course.find({
       categoryCourse: oneCourse.categoryCourse,
     })
-      .populate("instructorCourse", ["firstname", "lastname", "email"])
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
       .exec();
 
     res.render("course", {

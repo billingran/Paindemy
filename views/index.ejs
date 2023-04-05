@@ -82,7 +82,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= courseOne.imageCourse %>');
+                  background-image: url('/uploads/<%= courseOne.imageCourse[0] %>');
                 "
               ></div>
             </div>
@@ -107,8 +107,8 @@
                 </div>
                 <div>
                   <a href="#">
-                    <%= courseOne.instructorCourse.firstname %> <%=
-                    courseOne.instructorCourse.lastname %>
+                    <%= courseOne.instructorCourse.firstnameUser %> <%=
+                    courseOne.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -189,7 +189,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= courseTwo.imageCourse %>');
+                  background-image: url('/uploads/<%= courseTwo.imageCourse[0] %>');
                 "
               ></div>
             </div>
@@ -214,8 +214,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseTwo.instructorCourse.firstname %> <%=
-                    courseTwo.instructorCourse.lastname %>
+                    ><%= courseTwo.instructorCourse.firstnameUser %> <%=
+                    courseTwo.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -296,7 +296,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= courseThree.imageCourse %>');
+                  background-image: url('/uploads/<%= courseThree.imageCourse[0] %>');
                 "
               ></div>
             </div>
@@ -321,8 +321,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseThree.instructorCourse.firstname %> <%=
-                    courseThree.instructorCourse.lastname %>
+                    ><%= courseThree.instructorCourse.firstnameUser %> <%=
+                    courseThree.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>

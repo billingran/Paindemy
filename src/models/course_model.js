@@ -10,13 +10,11 @@ const courseSchema = new mongoose.Schema({
   dateCourse: {
     type: String,
     require: true,
-    minlength: 1,
     maxlength: 255,
   },
   timeCourse: {
     type: String,
     require: true,
-    minlength: 1,
     maxlength: 255,
   },
   addressCourse: {

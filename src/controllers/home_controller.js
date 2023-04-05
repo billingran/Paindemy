@@ -1,5 +1,6 @@
 const Category = require("../models/category_model");
 const Course = require("../models/course_model");
+const User = require("../models/user_model");
 
 // Home page
 module.exports.homePage = async (req, res) => {
@@ -16,7 +17,11 @@ module.exports.homePage = async (req, res) => {
     })
       .sort({ _id: -1 })
       .limit(limitNumberCourses)
-      .populate("instructorCourse", ["firstname", "lastname", "email"])
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
       .exec();
 
     const coursesTwo = await Course.find({
@@ -24,7 +29,11 @@ module.exports.homePage = async (req, res) => {
     })
       .sort({ _id: -1 })
       .limit(limitNumberCourses)
-      .populate("instructorCourse", ["firstname", "lastname", "email"])
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
       .exec();
 
     const coursesThree = await Course.find({
@@ -32,7 +41,11 @@ module.exports.homePage = async (req, res) => {
     })
       .sort({ _id: -1 })
       .limit(limitNumberCourses)
-      .populate("instructorCourse", ["firstname", "lastname", "email"])
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
       .exec();
 
     res.render("index", {

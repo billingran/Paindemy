@@ -11,7 +11,7 @@
             loading="lazy"
             class="image image_course"
             style="
-              background-image: url('/uploads/<%- oneCourse.imageCourse %>');
+              background-image: url('/uploads/<%- oneCourse.imageCourse[0] %>');
             "
           ></div>
         </div>
@@ -25,8 +25,8 @@
               class="icon_imageContent_course"
             ></iconify-icon>
             <div>
-              <%- oneCourse.instructorCourse.firstname %> <%-
-              oneCourse.instructorCourse.lastname %>
+              <%- oneCourse.instructorCourse.firstnameUser %> <%-
+              oneCourse.instructorCourse.lastnameUser %>
             </div>
           </div>
         </li>
@@ -176,7 +176,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= relatedCourse.imageCourse %>');
+                  background-image: url('/uploads/<%= relatedCourse.imageCourse[0] %>');
                 "
               ></div>
             </div>
@@ -201,8 +201,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= relatedCourse.instructorCourse.firstname %> <%=
-                    relatedCourse.instructorCourse.lastname %>
+                    ><%= relatedCourse.instructorCourse.firstnameUser %> <%=
+                    relatedCourse.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
