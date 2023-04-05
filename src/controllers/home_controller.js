@@ -1,52 +1,36 @@
-const Category = require("../models/category_model");
-const Course = require("../models/course_model");
-const User = require("../models/user_model");
+// Class Services
+const CourseService = require("../services/Course_service");
+const CategoryService = require("../services/Category_service");
 
 // Home page
 module.exports.homePage = async (req, res) => {
   try {
     // find first 4 categories
     const limitNumberCategories = 4;
-    const categories = await Category.find({}).limit(limitNumberCategories);
+    const categories = await CategoryService.getAllCategoriesLimit(
+      limitNumberCategories
+    );
 
     // find last 5 courses of each category
     const limitNumberCourses = 5;
+    const courseTypeOne = `categoryCourse: ${categories[0].nameCategory}`;
+    const courseTypeTwo = `categoryCourse: ${categories[1].nameCategory}`;
+    const courseTypeThree = `categoryCourse: ${categories[2].nameCategory}`;
 
-    const coursesOne = await Course.find({
-      categoryCourse: categories[0].nameCategory,
-    })
-      .sort({ _id: -1 })
-      .limit(limitNumberCourses)
-      .populate("instructorCourse", [
-        "firstnameUser",
-        "lastnameUser",
-        "emailUser",
-      ])
-      .exec();
+    const coursesOne = await CourseService.getAllLastCoursesLimitPU(
+      courseTypeOne,
+      limitNumberCourses
+    );
 
-    const coursesTwo = await Course.find({
-      categoryCourse: categories[1].nameCategory,
-    })
-      .sort({ _id: -1 })
-      .limit(limitNumberCourses)
-      .populate("instructorCourse", [
-        "firstnameUser",
-        "lastnameUser",
-        "emailUser",
-      ])
-      .exec();
+    const coursesTwo = await CourseService.getAllLastCoursesLimitPU(
+      courseTypeTwo,
+      limitNumberCourses
+    );
 
-    const coursesThree = await Course.find({
-      categoryCourse: categories[2].nameCategory,
-    })
-      .sort({ _id: -1 })
-      .limit(limitNumberCourses)
-      .populate("instructorCourse", [
-        "firstnameUser",
-        "lastnameUser",
-        "emailUser",
-      ])
-      .exec();
+    const coursesThree = await CourseService.getAllLastCoursesLimitPU(
+      courseTypeThree,
+      limitNumberCourses
+    );
 
     res.render("index", {
       title: "Home Page",

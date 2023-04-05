@@ -533,7 +533,7 @@
 //         roleUser: "instructor",
 //       },
 //       {
-//         firstnameUser: "Sébastien ",
+//         firstnameUser: "Sébastien",
 //         lastnameUser: "Paul",
 //         themeColorUser: "#6e1d0e",
 //         fathUser: "I beleive baking can have infinite possibilities.",
