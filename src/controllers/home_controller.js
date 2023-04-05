@@ -12,23 +12,27 @@ module.exports.homePage = async (req, res) => {
     );
 
     // find last 5 courses of each category
+    const sortNumberCourses = -1;
     const limitNumberCourses = 5;
-    const courseTypeOne = `categoryCourse: ${categories[0].nameCategory}`;
-    const courseTypeTwo = `categoryCourse: ${categories[1].nameCategory}`;
-    const courseTypeThree = `categoryCourse: ${categories[2].nameCategory}`;
+    const courseTypeOne = { categoryCourse: categories[0].nameCategory };
+    const courseTypeTwo = { categoryCourse: categories[1].nameCategory };
+    const courseTypeThree = { categoryCourse: categories[2].nameCategory };
 
-    const coursesOne = await CourseService.getAllLastCoursesLimitPU(
+    const coursesOne = await CourseService.getAllCoursesSortLimit(
       courseTypeOne,
+      sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesTwo = await CourseService.getAllLastCoursesLimitPU(
+    const coursesTwo = await CourseService.getAllCoursesSortLimit(
       courseTypeTwo,
+      sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesThree = await CourseService.getAllLastCoursesLimitPU(
+    const coursesThree = await CourseService.getAllCoursesSortLimit(
       courseTypeThree,
+      sortNumberCourses,
       limitNumberCourses
     );
 

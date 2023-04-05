@@ -3,10 +3,10 @@ class CourseService {
     this.Course = require("../models/course_model");
   }
 
-  // get all last courses, limit, populate users
-  async getAllLastCoursesLimitPU(courseType, limitNumber) {
-    const categoriesLimit = await this.Course.find({ courseType })
-      .sort({ _id: -1 })
+  // get all courses sort, limit
+  async getAllCoursesSortLimit(courseType, sortNumber, limitNumber) {
+    const lastLimitPuCourses = await this.Course.find(courseType)
+      .sort({ _id: sortNumber })
       .limit(limitNumber)
       .populate("instructorCourse", [
         "firstnameUser",
@@ -14,7 +14,8 @@ class CourseService {
         "emailUser",
       ])
       .exec();
-    return categoriesLimit;
+
+    return lastLimitPuCourses;
   }
 
   //   async getAllCourses() {

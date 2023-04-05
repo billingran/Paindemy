@@ -1,5 +1,6 @@
-// models
-const Category = require("../models/category_model");
+// Class Services
+const CourseService = require("../services/Course_service");
+const CategoryService = require("../services/Category_service");
 const Course = require("../models/course_model");
 
 // instrutors
@@ -10,12 +11,12 @@ module.exports.getAllinstructors = (req, res) => {
 //courses of categories
 module.exports.getCoursesCategory = async (req, res) => {
   try {
-    // get one category icon
+    // req.params
     const nameCategory = req.params;
 
-    let oneCategory = await Category.find({
-      nameCategory: nameCategory.name_category,
-    });
+    // get one category icon
+    const categoryType = { nameCategory: nameCategory.name_category };
+    let oneCategory = await CategoryService.getOneCategory(categoryType);
     oneCategory = oneCategory[0];
 
     // find courses with one category or all courses

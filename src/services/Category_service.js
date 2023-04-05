@@ -6,7 +6,15 @@ class CategoryService {
   // get all categories limit
   async getAllCategoriesLimit(limitNumber) {
     const categoriesLimit = await this.Category.find({}).limit(limitNumber);
+
     return categoriesLimit;
+  }
+
+  // get one category
+  async getOneCategory(categoryType) {
+    const category = await this.Category.find(categoryType);
+
+    return category;
   }
 
   //   async getAllCourses() {
