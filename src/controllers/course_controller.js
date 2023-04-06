@@ -1,6 +1,7 @@
 // Class Services
-// const ReadService = require("../services/Read_service");
-// const Course = require("../models/Course_model");
+const ReadService = require("../services/Read_service");
+const readService = new ReadService();
+const Course = require("../models/Course_model");
 
 // instrutors
 module.exports.getAllinstructors = (req, res) => {
@@ -10,38 +11,38 @@ module.exports.getAllinstructors = (req, res) => {
 //courses of categories
 module.exports.getCoursesCategory = async (req, res) => {
   try {
-    //   // req.params
-    //   const nameCategory = req.params;
+    // req.params
+    const nameCategory = req.params;
 
-    //   // get one category icon
-    //   const categoryType = { nameCategory: nameCategory.name_category };
-    //   let oneCategory = await ReadService.getOneCategory(categoryType);
-    //   oneCategory = oneCategory[0];
+    // get one category icon
+    const categoryType = { nameCategory: nameCategory.name_category };
+    let oneCategory = await ReadService.getOneCategory(categoryType);
+    oneCategory = oneCategory[0];
 
-    //   // find courses with one category or all courses
-    //   let manyCourses;
+    // find courses with one category or all courses
+    let manyCourses;
 
-    //   if (nameCategory.name_category != "All") {
-    //     // get category courses
-    //     manyCourses = await Course.find({
-    //       categoryCourse: nameCategory.name_category,
-    //     })
-    //       .populate("instructorCourse", [
-    //         "firstnameUser",
-    //         "lastnameUser",
-    //         "emailUser",
-    //       ])
-    //       .exec();
-    //   } else {
-    //     // get all courses
-    //     manyCourses = await Course.find({})
-    //       .populate("instructorCourse", [
-    //         "firstnameUser",
-    //         "lastnameUser",
-    //         "emailUser",
-    //       ])
-    //       .exec();
-    //   }
+    if (nameCategory.name_category != "All") {
+      // get category courses
+      manyCourses = await Course.find({
+        categoryCourse: nameCategory.name_category,
+      })
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
+        .exec();
+    } else {
+      // get all courses
+      manyCourses = await Course.find({})
+        .populate("instructorCourse", [
+          "firstnameUser",
+          "lastnameUser",
+          "emailUser",
+        ])
+        .exec();
+    }
 
     res.render("courses", {
       title: `${nameCategory.name_category} Courses`,

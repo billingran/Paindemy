@@ -14,8 +14,8 @@ class CourseEntity {
     this.createdAt = new Date();
 
     for (let prop in course) {
-      if (this.hasOwnProperty(`_${prop}`)) {
-        this[`_${prop}`] = course[prop];
+      if (this.hasOwnProperty(prop)) {
+        this[prop] = course[prop];
       }
     }
   }

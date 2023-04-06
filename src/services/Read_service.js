@@ -1,5 +1,6 @@
 const DbService = require("../services/Db_service");
 const CategoryEntity = require("../entities/Category_entity");
+const CourseEntity = require("../entities/Course_entity");
 
 class ReadService extends DbService {
   constructor() {
@@ -41,7 +42,14 @@ class ReadService extends DbService {
       ])
       .exec();
 
-    return lastLimitPuCourses;
+    let courses = [];
+
+    lastLimitPuCourses.forEach((course) => {
+      const courseEntity = new CourseEntity(course);
+      courses.push(courseEntity);
+    });
+
+    return courses;
   }
 
   //   async getAllCourses() {

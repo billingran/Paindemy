@@ -14,24 +14,24 @@ module.exports.homePage = async (req, res) => {
     // find last 5 courses of each category
     const sortNumberCourses = -1;
     const limitNumberCourses = 5;
-    const courseTypeOne = { categoryCourse: categories[0].nameCategory };
-    const courseTypeTwo = { categoryCourse: categories[1].nameCategory };
-    const courseTypeThree = { categoryCourse: categories[2].nameCategory };
+    const courseTypeB = { categoryCourse: categories[0].nameCategory };
+    const courseTypeP = { categoryCourse: categories[1].nameCategory };
+    const courseTypeO = { categoryCourse: categories[2].nameCategory };
 
-    const coursesOne = await readService.getAllCoursesSortLimit(
-      courseTypeOne,
+    const coursesB = await readService.getAllCoursesSortLimit(
+      courseTypeB,
       sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesTwo = await readService.getAllCoursesSortLimit(
-      courseTypeTwo,
+    const coursesP = await readService.getAllCoursesSortLimit(
+      courseTypeP,
       sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesThree = await readService.getAllCoursesSortLimit(
-      courseTypeThree,
+    const coursesO = await readService.getAllCoursesSortLimit(
+      courseTypeO,
       sortNumberCourses,
       limitNumberCourses
     );
@@ -39,9 +39,9 @@ module.exports.homePage = async (req, res) => {
     res.render("index", {
       title: "Home Page",
       categories,
-      coursesOne,
-      coursesTwo,
-      coursesThree,
+      coursesB,
+      coursesP,
+      coursesO,
     });
   } catch (error) {
     res.status(500).send(error);
