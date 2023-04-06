@@ -11,6 +11,7 @@ class CourseEntity {
     this.ingredientsCourse = [];
     this.imageCourse = [];
     this.instructorCourse = null;
+    this.studentsCourse = [];
     this.createdAt = new Date();
 
     for (let prop in course) {
@@ -106,6 +107,14 @@ class CourseEntity {
 
   setInstructorCourse(instructorCourse) {
     this.instructorCourse = instructorCourse;
+  }
+
+  getStudentsCourse() {
+    return this.studentsCourse;
+  }
+
+  setStudentsCourse(studentsCourse) {
+    this.studentsCourse = studentsCourse;
   }
 
   getCreatedAt() {

@@ -14,24 +14,24 @@ module.exports.homePage = async (req, res) => {
     // find last 5 courses of each category
     const sortNumberCourses = -1;
     const limitNumberCourses = 5;
-    const courseTypeB = { categoryCourse: categories[0].nameCategory };
-    const courseTypeP = { categoryCourse: categories[1].nameCategory };
-    const courseTypeO = { categoryCourse: categories[2].nameCategory };
+    const coursesTypeB = { categoryCourse: categories[0].nameCategory };
+    const coursesTypeP = { categoryCourse: categories[1].nameCategory };
+    const coursesTypeO = { categoryCourse: categories[2].nameCategory };
 
     const coursesB = await readService.getAllCoursesSortLimit(
-      courseTypeB,
+      coursesTypeB,
       sortNumberCourses,
       limitNumberCourses
     );
 
     const coursesP = await readService.getAllCoursesSortLimit(
-      courseTypeP,
+      coursesTypeP,
       sortNumberCourses,
       limitNumberCourses
     );
 
     const coursesO = await readService.getAllCoursesSortLimit(
-      courseTypeO,
+      coursesTypeO,
       sortNumberCourses,
       limitNumberCourses
     );

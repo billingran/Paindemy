@@ -14,9 +14,8 @@ module.exports.getCoursesCategory = async (req, res) => {
     let { nameCategory } = req.params;
 
     // get one category icon
-    const categoryType = { nameCategory: nameCategory };
+    const categoryType = { nameCategory };
     let iconCategory = await readService.getOneCategory(categoryType);
-    iconCategory = iconCategory[0];
 
     // find courses with one category or all courses
 
@@ -25,9 +24,10 @@ module.exports.getCoursesCategory = async (req, res) => {
 
     if (nameCategory != "All") {
       // get category courses
-      const courseType = { categoryCourse: nameCategory };
 
-      manyCourses = await readService.getAllCourses(courseType);
+      const coursesType = { categoryCourse: nameCategory };
+
+      manyCourses = await readService.getAllCourses(coursesType);
     }
 
     res.render("courses", {
@@ -50,94 +50,62 @@ module.exports.getOneinstructor = (req, res) => {
 module.exports.getOnecourse = async (req, res) => {
   try {
     // find latest, random or one course according req.params
-    let requestCourse = req.params;
+    let { requestCourse } = req.params;
 
     // turn first letter of req.params to upperCase
-    requestCourse = `${requestCourse.request_course
+    requestCourse = `${requestCourse
       .charAt(0)
-      .toUpperCase()}${requestCourse.request_course.slice(1)}`;
+      .toUpperCase()}${requestCourse.slice(1)}`;
 
     // get latest, random or one course
-    const limitNumberCourse = 1;
-    let oneCourse;
+
+    // get one course
+    const courseType = { nameCourse: requestCourse };
+    let oneCourse = await readService.getOneCourse(courseType);
 
     if (requestCourse == "Latest") {
-      // get latest course and icon category
-      oneCourse = await Course.find({})
-        .sort({ _id: -1 })
-        .limit(limitNumberCourse)
-        .populate("instructorCourse", [
-          "firstnameUser",
-          "lastnameUser",
-          "emailUser",
-        ])
-        .exec();
+      // get latest course
+      const sortNumberLatest = -1;
+      const limitNumberLatest = 1;
+
+      oneCourse = await readService.getAllCoursesSortLimit(
+        {},
+        sortNumberLatest,
+        limitNumberLatest
+      );
 
       oneCourse = oneCourse[0];
     } else if (requestCourse == "Random" || requestCourse == "All") {
-      // get random course and icon category
-      let countCourse = await Course.find({}).countDocuments();
-      let numberRandomCourse = Math.floor(Math.random() * countCourse);
-      oneCourse = await Course.findOne({})
-        .skip(numberRandomCourse)
-        .populate("instructorCourse", [
-          "firstnameUser",
-          "lastnameUser",
-          "emailUser",
-        ])
-        .exec();
+      // get random course
+      oneCourse = await readService.getOneCourseCountSkip({});
     } else if (
       requestCourse == "Bakery" ||
       requestCourse == "Pastry" ||
       requestCourse == "Other"
     ) {
       // get category course
-      let countCourseCategory = await Course.find({
-        categoryCourse: requestCourse,
-      }).countDocuments();
-      let nbrdCourseCategory = Math.floor(Math.random() * countCourseCategory);
-      oneCourse = await Course.findOne({ categoryCourse: requestCourse })
-        .skip(nbrdCourseCategory)
-        .populate("instructorCourse", [
-          "firstnameUser",
-          "lastnameUser",
-          "emailUser",
-        ])
-        .exec();
-    } else {
-      // get one course and icon category
-      oneCourse = await Course.findOne({
-        nameCourse: requestCourse,
-      })
-        .populate("instructorCourse", [
-          "firstnameUser",
-          "lastnameUser",
-          "emailUser",
-        ])
-        .exec();
+      const coursesType = { categoryCourse: requestCourse };
+      oneCourse = await readService.getOneCourseCountSkip(coursesType);
     }
 
     // get icon category
-    let iconOneCourse = await Category.find({
-      nameCategory: oneCourse.categoryCourse,
-    });
-    iconOneCourse = iconOneCourse[0];
+    const categoryType = { nameCategory: oneCourse.categoryCourse };
+    let iconCategory = await readService.getOneCategory(categoryType);
 
     // get related courses
-    let relatedCourses = await Course.find({
-      categoryCourse: oneCourse.categoryCourse,
-    })
-      .populate("instructorCourse", [
-        "firstnameUser",
-        "lastnameUser",
-        "emailUser",
-      ])
-      .exec();
+    const coursesTypeRelated = { categoryCourse: oneCourse.categoryCourse };
+    const sortNumberRelated = -1;
+    const limitNumberRelated = 5;
+    let relatedCourses = await readService.getAllCoursesSortLimit(
+      coursesTypeRelated,
+      sortNumberRelated,
+      limitNumberRelated
+    );
 
     res.render("course", {
       title: `${requestCourse} Course`,
       requestCourse,
-      iconOneCourse,
+      iconCategory,
       oneCourse,
       relatedCourses,
     });

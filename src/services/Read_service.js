@@ -8,14 +8,14 @@ class ReadService extends DbService {
   }
 
   // Category//////////////////////////////////////////////////
-  // get one category
+  // get one category (icon Category,)
   async getOneCategory(categoryType) {
-    const category = await this.Category.find(categoryType);
+    const category = await this.Category.findOne(categoryType);
 
-    return category;
+    return new CategoryEntity(category);
   }
 
-  // get all categories limit
+  // get all categories limit (categories)
   async getAllCategoriesLimit(limitNumber) {
     const categoriesLimit = await this.Category.find({}).limit(limitNumber);
 
@@ -30,9 +30,39 @@ class ReadService extends DbService {
   }
 
   // Course//////////////////////////////////////////////////
-  // get all courses
-  async getAllCourses(courseType) {
-    const allCourses = await this.Course.find(courseType)
+  // get one course (one course)
+  async getOneCourse(courseType) {
+    const course = await this.Course.findOne(courseType)
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
+      .exec();
+
+    return new CourseEntity(course);
+  }
+
+  // get one course count skip (random, show random one, show random all)
+  async getOneCourseCountSkip(coursesType) {
+    let countCourses = await this.Course.find(coursesType).countDocuments();
+    let numberCourses = Math.floor(Math.random() * countCourses);
+
+    const course = await this.Course.findOne(coursesType)
+      .skip(numberCourses)
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
+      .exec();
+
+    return new CourseEntity(course);
+  }
+
+  // get all courses (all courses, courses category)
+  async getAllCourses(coursesType) {
+    const allCourses = await this.Course.find(coursesType)
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
@@ -50,9 +80,9 @@ class ReadService extends DbService {
     return courses;
   }
 
-  // get all courses sort, limit
-  async getAllCoursesSortLimit(courseType, sortNumber, limitNumber) {
-    const coursesSortLimit = await this.Course.find(courseType)
+  // get all courses sort, limit (courses template, latest course, relates courses)
+  async getAllCoursesSortLimit(coursesType, sortNumber, limitNumber) {
+    const coursesSortLimit = await this.Course.find(coursesType)
       .sort({ _id: sortNumber })
       .limit(limitNumber)
       .populate("instructorCourse", [
