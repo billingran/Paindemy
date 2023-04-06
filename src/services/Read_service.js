@@ -30,9 +30,29 @@ class ReadService extends DbService {
   }
 
   // Course//////////////////////////////////////////////////
+  // get all courses
+  async getAllCourses(courseType) {
+    const allCourses = await this.Course.find(courseType)
+      .populate("instructorCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
+      .exec();
+
+    let courses = [];
+
+    allCourses.forEach((course) => {
+      const courseEntity = new CourseEntity(course);
+      courses.push(courseEntity);
+    });
+
+    return courses;
+  }
+
   // get all courses sort, limit
   async getAllCoursesSortLimit(courseType, sortNumber, limitNumber) {
-    const lastLimitPuCourses = await this.Course.find(courseType)
+    const coursesSortLimit = await this.Course.find(courseType)
       .sort({ _id: sortNumber })
       .limit(limitNumber)
       .populate("instructorCourse", [
@@ -44,7 +64,7 @@ class ReadService extends DbService {
 
     let courses = [];
 
-    lastLimitPuCourses.forEach((course) => {
+    coursesSortLimit.forEach((course) => {
       const courseEntity = new CourseEntity(course);
       courses.push(courseEntity);
     });
