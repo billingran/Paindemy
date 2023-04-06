@@ -6,7 +6,7 @@ const courseController = require("../controllers/course_controller");
 router.get("/instructors", courseController.getAllinstructors);
 
 //courses of categories
-router.get("/courses/:name_category", courseController.getCoursesCategory);
+router.get("/courses/:nameCategory", courseController.getCoursesCategory);
 
 //instructor
 router.get("/instructor", courseController.getOneinstructor);

@@ -12,7 +12,7 @@ module.exports.getAllinstructors = (req, res) => {
 module.exports.getCoursesCategory = async (req, res) => {
   try {
     // req.params
-    const nameCategory = req.params;
+    let { nameCategory } = req.params;
 
     // get one category icon
     const categoryType = { nameCategory: nameCategory.name_category };
