@@ -1,21 +1,6 @@
 class CourseService {
   constructor() {
-    this.Course = require("../models/course_model");
-  }
-
-  // get all courses sort, limit
-  async getAllCoursesSortLimit(courseType, sortNumber, limitNumber) {
-    const lastLimitPuCourses = await this.Course.find(courseType)
-      .sort({ _id: sortNumber })
-      .limit(limitNumber)
-      .populate("instructorCourse", [
-        "firstnameUser",
-        "lastnameUser",
-        "emailUser",
-      ])
-      .exec();
-
-    return lastLimitPuCourses;
+    this.Course = require("../models/Course_model");
   }
 
   //   async getAllCourses() {

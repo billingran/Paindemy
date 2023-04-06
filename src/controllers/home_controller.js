@@ -1,13 +1,13 @@
 // Class Services
-const CourseService = require("../services/Course_service");
-const CategoryService = require("../services/Category_service");
+const ReadService = require("../services/Read_service");
+const readService = new ReadService();
 
 // Home page
 module.exports.homePage = async (req, res) => {
   try {
     // find first 4 categories
     const limitNumberCategories = 4;
-    const categories = await CategoryService.getAllCategoriesLimit(
+    const categories = await readService.getAllCategoriesLimit(
       limitNumberCategories
     );
 
@@ -18,19 +18,19 @@ module.exports.homePage = async (req, res) => {
     const courseTypeTwo = { categoryCourse: categories[1].nameCategory };
     const courseTypeThree = { categoryCourse: categories[2].nameCategory };
 
-    const coursesOne = await CourseService.getAllCoursesSortLimit(
+    const coursesOne = await readService.getAllCoursesSortLimit(
       courseTypeOne,
       sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesTwo = await CourseService.getAllCoursesSortLimit(
+    const coursesTwo = await readService.getAllCoursesSortLimit(
       courseTypeTwo,
       sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesThree = await CourseService.getAllCoursesSortLimit(
+    const coursesThree = await readService.getAllCoursesSortLimit(
       courseTypeThree,
       sortNumberCourses,
       limitNumberCourses

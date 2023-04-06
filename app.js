@@ -1,14 +1,18 @@
 // dotenv
 const dotenv = require("dotenv").config();
+
 // express
 const express = require("express");
 const app = express();
+
 // ejs
 const expressLayouts = require("express-ejs-layouts");
+
 // models
-const Category = require("./src/models/category_model");
+const Category = require("./src/models/Category_model");
 const User = require("./src/models/user_model");
-const Course = require("./src/models/course_model");
+const Course = require("./src/models/Course_model");
+
 // routes
 const authRoutes = require("./src/routes/auth_routes");
 const courseRoutes = require("./src/routes/course_routes");
