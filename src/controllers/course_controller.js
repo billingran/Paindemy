@@ -58,18 +58,36 @@ module.exports.getCoursesCategory = async (req, res) => {
 };
 
 // instrutor
-module.exports.getOneinstructor = (req, res) => {
+module.exports.getOneinstructor = async (req, res) => {
   try {
     let { requestIntructor } = req.params;
-    requestIntructor = res.locals.getBackUrl(requestIntructor);
 
     ////////////////////////////////////////////////////
-    // find instructor according req.params
+    // find instructor or random according req.params
 
-    // const userTypeInstructor = { roleUser: "instructor" };
-    // let oneInstructors = await readService.getAllUser(userTypeAllInstructors);
+    const userTypeInstructor = { _id: requestIntructor };
+    let oneInstructor = await readService.getOneInstructor(userTypeInstructor);
 
-    res.render("instructor", { title: "Instructor" });
+    ////////////////////////////////////////////////////
+    // find all instructor courses
+
+    const coursesTypeOneInstructor = { instructorCourse: requestIntructor };
+    let coursesInstructor = await readService.getAllCourses(
+      coursesTypeOneInstructor
+    );
+
+    // get all students number
+    let numberStudentOneInstructor = 0;
+    coursesInstructor.forEach((course) => {
+      numberStudentOneInstructor += course.studentsCourse.length;
+    });
+
+    res.render("instructor", {
+      title: "Instructor",
+      oneInstructor,
+      coursesInstructor,
+      numberStudentOneInstructor,
+    });
   } catch (error) {
     res.status(500).send(error);
     console.log(error);

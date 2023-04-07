@@ -8,14 +8,10 @@
   <div class="ctn_btns_homeOne">
     <ul class="ul_btns">
       <li>
-        <a href="/course/course/latest" class="left_btns a_NBorder"
-          >Latest course</a
-        >
+        <a href="/course/latest" class="left_btns a_NBorder">Latest course</a>
       </li>
       <li>
-        <a href="/course/course/random" class="right_btns a_NBorder"
-          >Show random</a
-        >
+        <a href="/course/random" class="right_btns a_NBorder">Show random</a>
       </li>
     </ul>
   </div>
@@ -77,7 +73,7 @@
         <% if(typeof coursesB !== 'undefined' && coursesB != null &&
         coursesB.length > 0) { %> <% coursesB.forEach(function(courseB){ %>
         <li class="ctn_template mid_template">
-          <a href="#">
+          <a href="/course/<%= courseB._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -95,7 +91,9 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= courseB.getNameCourse() %></a>
+                  <a href="/course/<%= courseB._id %>"
+                    ><%= courseB.getNameCourse() %>
+                  </a>
                 </div>
               </li>
 
@@ -107,7 +105,9 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#">
+                  <a
+                    href="/course/instructor/<%= courseB.instructorCourse._id %>"
+                  >
                     <%= getBackUrl(courseB.instructorCourse.firstnameUser) %>
                     <%= getBackUrl(courseB.instructorCourse.lastnameUser) %>
                   </a>
@@ -141,7 +141,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= courseB._id %>">
+                  <a href="/course/<%= courseB._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -185,7 +185,7 @@
         <% if(typeof coursesP !== 'undefined' && coursesP != null &&
         coursesP.length > 0) { %> <% coursesP.forEach(function(courseP){ %>
         <li class="ctn_template mid_template">
-          <a href="#">
+          <a href="/course/<%= courseP._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -203,7 +203,9 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= courseP.getNameCourse() %></a>
+                  <a href="/course/<%= courseP._id %>"
+                    ><%= courseP.getNameCourse() %>
+                  </a>
                 </div>
               </li>
 
@@ -215,7 +217,8 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="/course/instructor/<%= courseP.instructorCourse._id %>"
                     ><%= getBackUrl(courseP.instructorCourse.firstnameUser) %>
                     <%= getBackUrl(courseP.instructorCourse.lastnameUser) %>
                   </a>
@@ -249,7 +252,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= courseP._id %>">
+                  <a href="/course/<%= courseP._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -293,7 +296,7 @@
         <% if(typeof coursesO !== 'undefined' && coursesO != null &&
         coursesO.length > 0) { %> <% coursesO.forEach(function(courseO){ %>
         <li class="ctn_template mid_template">
-          <a href="#">
+          <a href="/course/<%= courseO._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -311,7 +314,9 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= courseO.getNameCourse() %></a>
+                  <a href="/course/<%= courseO._id %>"
+                    ><%= courseO.getNameCourse() %>
+                  </a>
                 </div>
               </li>
 
@@ -323,7 +328,8 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="/course/instructor/<%= courseO.instructorCourse._id %>"
                     ><%= getBackUrl(courseO.instructorCourse.firstnameUser) %>
                     <%= getBackUrl(courseO.instructorCourse.lastnameUser) %>
                   </a>
@@ -357,7 +363,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= courseO._id %>">
+                  <a href="/course/<%= courseO._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>

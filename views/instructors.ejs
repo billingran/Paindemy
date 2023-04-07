@@ -17,7 +17,7 @@
           <div class="left_instructors">
             <h2>“ <%= getBackUrl(allinstructors[0].fathUser) %> ”</h2>
             <a
-              href="course/instructor/<%= allinstructors[0]._id %>"
+              href="/course/instructor/<%= allinstructors[0]._id %>"
               class="central"
             >
               -- <%= getBackUrl(allinstructors[0].firstnameUser) %> <%=
@@ -51,10 +51,7 @@
 
           <div class="left_instructors">
             <h2>“ <%= getBackUrl(instructor.fathUser) %> ”</h2>
-            <a
-              href="course/instructor/<%= urlParsed(instructor.firstnameUser) %>"
-              class="central"
-            >
+            <a href="/course/instructor/<%= instructor._id %>" class="central">
               -- <%= getBackUrl(instructor.firstnameUser) %> <%=
               getBackUrl(instructor.lastnameUser) %>
               <iconify-icon
@@ -88,10 +85,10 @@
           icon="tabler:chef-hat"
           class="icon_title_display"
         ></iconify-icon>
-        <h2 class="title_display">Instructors</h2>
+        <h2 class="title_display">Our instructors</h2>
       </div>
       <div class="mid_display">
-        <a href="#" class="ctn_viceTitle_display"
+        <a href="/course/instructor/random" class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
             icon="fa:random"
@@ -106,7 +103,7 @@
         allinstructors.length > 0) { %> <% allinstructors.forEach(instructor =>
         { %>
         <li class="mid_image">
-          <a href="#">
+          <a href="/course/instructor/<%= instructor._id %>">
             <div class="ctn_image ctn_image_instructors">
               <div
                 loading="lazy"

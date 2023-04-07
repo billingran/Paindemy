@@ -85,11 +85,11 @@
   color: var(--C-F3F3F3);
   font-weight: 600;
   font-size: 0.75rem;
-  cursor: pointer;
 
   transition: all 0.3s;
 }
 
+/* hover */
 .content_template:hover .icon_content_template,
 .content_template:hover div a {
   color: var(--C-FF0066);
@@ -137,6 +137,7 @@
   transition: all 0.3s;
 }
 
+/* hover */
 .btns_template:hover a {
   color: var(--C-FF0066);
 }

@@ -108,6 +108,12 @@ class ReadService extends DbService {
   }
 
   // User//////////////////////////////////////////////////
+  async getOneInstructor(instructor) {
+    const user = await this.User.findOne(instructor);
+
+    return new UserEntity(user);
+  }
+
   // get all users (all instructors)
   async getAllUser(usersType) {
     const allUsers = await this.User.find(usersType).exec();

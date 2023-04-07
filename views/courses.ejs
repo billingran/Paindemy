@@ -20,7 +20,7 @@
             <h2>
               “ <%= getBackUrl(allCourses[0].descriptionCourse.slice(0, 480)) %>
               ...
-              <a href="/course/course/<%= allCourses[0]._id %>">
+              <a href="/course/<%= allCourses[0]._id %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -30,7 +30,7 @@
               ”
             </h2>
             <a
-              href="course/instructor/<%= allCourses[0].instructorCourse._id %>"
+              href="/course/instructor/<%= allCourses[0].instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
               -- <%= getBackUrl(allCourses[0].instructorCourse.firstnameUser) %>
@@ -66,7 +66,7 @@
           <div class="left_courses">
             <h2>
               “ <%= getBackUrl(course.descriptionCourse.slice(0, 480)) %> ...
-              <a href="/course/course/<%= urlParsed(course.nameCourse) %>">
+              <a href="/course/<%= course._id %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -76,7 +76,7 @@
               ”
             </h2>
             <a
-              href="course/instructor/<%= urlParsed(course.instructorCourse.firstnameUser) %>"
+              href="/course/instructor/<%= course.instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
               -- <%= getBackUrl(course.instructorCourse.firstnameUser) %> <%-
@@ -116,7 +116,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/course/<%= urlParsed(iconCategory.nameCategory) %>"
+          href="/course/<%= urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
@@ -132,7 +132,7 @@
       <% if(typeof manyCourses !== 'undefined' && manyCourses != null &&
       manyCourses.length > 0) { %> <% manyCourses.forEach(function(course){ %>
       <li class="ctn_template mid_template">
-        <a href="#">
+        <a href="/course/<%= course._id %>">
           <div class="ctn_image_template">
             <div
               loading="lazy"
@@ -150,7 +150,9 @@
                 <i class="uil uil-book-alt icon_content_template"></i>
               </div>
               <div>
-                <a href="#"><%= course.getNameCourse() %></a>
+                <a href="/course/<%= course._id %>"
+                  ><%= course.getNameCourse() %>
+                </a>
               </div>
             </li>
 
@@ -162,7 +164,7 @@
                 ></iconify-icon>
               </div>
               <div>
-                <a href="#"
+                <a href="/course/instructor/<%= course.instructorCourse._id %>"
                   ><%= course.instructorCourse.firstnameUser %> <%=
                   course.instructorCourse.lastnameUser %>
                 </a>
@@ -196,7 +198,7 @@
                 </a>
               </div>
               <div class="btns_template icon_more_template">
-                <a href="/course/course/<%= course._id %>">
+                <a href="/course/<%= course._id %>">
                   <i class="uil uil-ellipsis-h"></i>
                 </a>
               </div>

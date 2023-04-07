@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const courseController = require("../controllers/course_controller");
 
 //instructors
@@ -12,6 +11,6 @@ router.get("/courses/:nameCategory", courseController.getCoursesCategory);
 router.get("/instructor/:requestIntructor", courseController.getOneinstructor);
 
 //course
-router.get("/course/:requestCourse", courseController.getOnecourse);
+router.get("/:requestCourse", courseController.getOnecourse);
 
 module.exports = router;

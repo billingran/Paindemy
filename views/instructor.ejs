@@ -9,7 +9,9 @@
           <div
             loading="lazy"
             class="image image_instructor"
-            style="background-image: url('/uploads/Emmanuel_Brunel.jpg')"
+            style="
+              background-image: url('/uploads/<%= oneInstructor.imageUser[0] %>.png');
+            "
           ></div>
         </div>
       </a>
@@ -24,13 +26,16 @@
             icon="tabler:chef-hat"
             class="icon_title_display"
           ></iconify-icon>
-          <h2 class="title_display">Jasmin Dupre</h2>
+          <h2 class="title_display">
+            <%= oneInstructor.firstnameUser %> <%= oneInstructor.lastnameUser %>
+          </h2>
         </div>
         <div class="mid_display change_mid_displayInstructor">
           <ul class="ul_btns">
             <li class="">
               <div class="style_number">
-                <i class="uil uil-book-alt icon_number"></i> 12
+                <i class="uil uil-book-alt icon_number"></i> <%=
+                coursesInstructor.length %>
               </div>
             </li>
             <li class="mid_number">
@@ -39,7 +44,7 @@
             <li class="centralA">
               <div class="style_number">
                 <i class="uil uil-graduation-cap icon_number"></i>
-                36
+                <%= coursesInstructor.length %>
               </div>
             </li>
           </ul>
@@ -47,16 +52,7 @@
       </div>
 
       <div class="ctn_intro_instructor">
-        <p>
-          Hello, my name is Lily and I am a professional baker with 5 years of
-          experience. I have a passion for baking and creating unique and
-          delicious treats. What I love most about baking is the opportunity to
-          share my knowledge and skills with others. I believe that anyone can
-          learn how to bake, and I enjoy teaching others through workshops and
-          sharing my recipes online. If you're looking for a baker who is
-          passionate about their craft and loves to share their skills with
-          others, then I'm your girl
-        </p>
+        <p><%= oneInstructor.introductionUser %></p>
       </div>
 
       <ul class="ul_btns change_ul_btnsInstructor">
@@ -87,7 +83,7 @@
       </div>
       <div class="mid_display">
         <a href="#" class="ctn_viceTitle_display"
-          >Show Ramdon
+          >Show ramdon
           <iconify-icon
             icon="fa:random"
             class="icon_viceTitle_display"
@@ -96,14 +92,19 @@
       </div>
     </div>
     <div>
-      <ul class="ul_template">
+      <ul class="ul_template" style="justify-content: flex-start">
+        <% if(typeof coursesInstructor !== 'undefined' && coursesInstructor !=
+        null && coursesInstructor.length > 0) { %> <%
+        coursesInstructor.forEach((course) => { %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
                 class="image_template"
-                style="background-image: url('/uploads/baguette.jpg')"
+                style="
+                  background-image: url('/uploads/<%= course.imageCourse[0] %>.png');
+                "
               ></div>
             </div>
           </a>
@@ -114,7 +115,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">Baguette</a>
+                  <a href="#"> <%= course.getNameCourse() %> </a>
                 </div>
               </li>
 
@@ -126,7 +127,10 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#">Jasmin Dupre</a>
+                  <a href="#"
+                    ><%= getBackUrl(course.instructorCourse.firstnameUser) %>
+                    <%= getBackUrl(course.instructorCourse.lastnameUser) %>
+                  </a>
                 </div>
               </li>
 
@@ -135,7 +139,9 @@
                   <i class="uil uil-calender icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">3/4/2023</a>
+                  <a href="#">
+                    <%= course.dateCourse %> / <%= course.timeCourse %>
+                  </a>
                 </div>
               </li>
 
@@ -144,7 +150,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> 8 avenue de Carthage, 13100 Aix en-provence </a>
+                  <a href="#"> <%= course.addressCourse %> </a>
                 </div>
               </li>
 
@@ -155,7 +161,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="#">
+                  <a href="/course/<%= course._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -163,6 +169,9 @@
             </ul>
           </div>
         </li>
+        <% }) %> <% } else { %>
+        <p>Sorry, we currently don't have category</p>
+        <% } %>
       </ul>
     </div>
   </div>
