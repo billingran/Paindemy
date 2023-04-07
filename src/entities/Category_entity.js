@@ -21,7 +21,11 @@ class CategoryEntity {
   }
 
   getNameCategory() {
-    return this.nameCategory;
+    this.nameCategory.replace(/-/g, " ");
+
+    return `${this.nameCategory.charAt(0).toUpperCase()}${this.nameCategory
+      .slice(1)
+      .toLowerCase()}`;
   }
 
   setNameCategory(nameCategory) {

@@ -93,7 +93,7 @@
       <div class="ctn_title_display ctn_title_displayCourse">
         <div class="centralA icon_title_display">
           <i class="uil uil-book-alt"></i>
-          <h2 class="title_display"><%- oneCourse.nameCourse %></h2>
+          <h2 class="title_display"><%- oneCourse.getNameCourse() %></h2>
         </div>
         <div class="mid_display mid_display_course">
           <a href="#" class="a_NBorder a_NBorder_course left_btns">
@@ -103,7 +103,7 @@
       </div>
 
       <div class="ctn_intro_course">
-        <p><%- oneCourse.descriptionCourse %></p>
+        <p><%- oneCourse.getDescriptionCourse() %></p>
       </div>
 
       <div class="ctn_title_display ctn_title_displayCourse">
@@ -126,7 +126,7 @@
           oneCourse.ingredientsCourse != null &&
           oneCourse.ingredientsCourse.length > 0) { %> <%
           oneCourse.ingredientsCourse.forEach((course) => { %>
-          <li><%- course %></li>
+          <li><%- getBackUrl(course); %></li>
           <% }) %> <% } else { %>
           <p>No ingredient</p>
           <% } %>
@@ -137,7 +137,7 @@
 
   <% } else { %>
 
-  <p>Sorry, we can't find the <%- requestCourse %> Course</p>
+  <p>Sorry, we can't find the <%- getBackUrl(requestCourse) %> course</p>
 
   <% } %>
 </section>
@@ -150,13 +150,15 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
-        <h2 class="title_display"><%- iconCategory.nameCategory %> Courses</h2>
+        <h2 class="title_display">
+          <%- iconCategory.getNameCategory() %> courses
+        </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/course/<%- iconCategory.nameCategory %>"
+          href="/course/course/<%- urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
-          >Show Ramdon
+          >Show ramdon
           <iconify-icon
             icon="fa:random"
             class="icon_viceTitle_display"
@@ -188,7 +190,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= relatedCourse.nameCourse %></a>
+                  <a href="#"><%= relatedCourse.getNameCourse() %></a>
                 </div>
               </li>
 
@@ -235,7 +237,9 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= relatedCourse.nameCourse %>">
+                  <a
+                    href="/course/course/<%= urlParsed(relatedCourse.nameCourse) %>"
+                  >
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -245,8 +249,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have <%- iconOneCourse.nameCategory %>
-          Course
+          Sorry, we currently don't have <%- iconCategory.getNameCategory() %>
+          course
         </p>
         <% } %>
       </ul>

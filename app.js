@@ -5,6 +5,9 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
 
+// functions
+const myFunctions = require("./lib/functions");
+
 // ejs
 const expressLayouts = require("express-ejs-layouts");
 
@@ -22,6 +25,13 @@ const homePage = require("./src/routes/home_routes");
 
 //Connect to mongodb alts
 require("./src/models/database");
+
+// Middleware functions customized
+app.use((req, res, next) => {
+  res.locals.urlParsed = myFunctions.urlParsed;
+  res.locals.getBackUrl = myFunctions.getBackUrl;
+  next();
+});
 
 //Middleware
 app.use(express.static("public"));

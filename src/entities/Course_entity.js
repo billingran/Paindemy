@@ -30,7 +30,11 @@ class CourseEntity {
   }
 
   getNameCourse() {
-    return this.nameCourse;
+    this.nameCourse.replace(/-/g, " ");
+
+    return `${this.nameCourse.charAt(0).toUpperCase()}${this.nameCourse
+      .slice(1)
+      .toLowerCase()}`;
   }
 
   setNameCourse(nameCourse) {
@@ -62,7 +66,11 @@ class CourseEntity {
   }
 
   getDescriptionCourse() {
-    return this.descriptionCourse;
+    this.descriptionCourse.replace(/-/g, " ");
+
+    return `${this.descriptionCourse
+      .charAt(0)
+      .toUpperCase()}${this.descriptionCourse.slice(1).toLowerCase()}`;
   }
 
   setDescriptionCourse(descriptionCourse) {

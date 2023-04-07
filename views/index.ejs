@@ -9,12 +9,12 @@
     <ul class="ul_btns">
       <li>
         <a href="/course/course/latest" class="left_btns a_NBorder"
-          >Latest Course</a
+          >Latest course</a
         >
       </li>
       <li>
         <a href="/course/course/random" class="right_btns a_NBorder"
-          >Show Random</a
+          >Show random</a
         >
       </li>
     </ul>
@@ -31,7 +31,7 @@
       <% if(typeof categories !== 'undefined' && categories != null &&
       categories.length > 0) { %> <% categories.forEach((category) => { %>
       <li class="mid_image">
-        <a href="/course/courses/<%= category.nameCategory %>">
+        <a href="/course/courses/<%= urlParsed(category.nameCategory) %>">
           <div class="ctn_image ctn_image_category">
             <div
               loading="lazy"
@@ -40,7 +40,7 @@
                 background-image: url('/images/<%= category.imageCategory %>');
               "
             >
-              <h3 class="title_category"><%= category.nameCategory %></h3>
+              <h3 class="title_category"><%= category.getNameCategory() %></h3>
             </div>
           </div>
         </a>
@@ -56,13 +56,15 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[0].iconCategory %>
-        <h2 class="title_display"><%= categories[0].nameCategory %> Courses</h2>
+        <h2 class="title_display">
+          <%= categories[0].getNameCategory() %> courses
+        </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= categories[0].nameCategory %>"
+          href="/course/courses/<%= urlParsed(categories[0].nameCategory) %>"
           class="ctn_viceTitle_display"
-          >View More
+          >View more
           <iconify-icon
             icon="mdi:more-circle"
             class="icon_viceTitle_display"
@@ -73,7 +75,7 @@
     <div>
       <ul class="ul_template">
         <% if(typeof coursesB !== 'undefined' && coursesB != null &&
-        coursesB.length > 0) { %> <% coursesB.forEach(function(courseOne){ %>
+        coursesB.length > 0) { %> <% coursesB.forEach(function(courseB){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
@@ -81,7 +83,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= courseOne.imageCourse[0] %>.png');
+                  background-image: url('/uploads/<%= courseB.imageCourse[0] %>.png');
                 "
               ></div>
             </div>
@@ -93,7 +95,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= courseOne.nameCourse %></a>
+                  <a href="#"><%= courseB.getNameCourse() %></a>
                 </div>
               </li>
 
@@ -106,8 +108,8 @@
                 </div>
                 <div>
                   <a href="#">
-                    <%= courseOne.instructorCourse.firstnameUser %> <%=
-                    courseOne.instructorCourse.lastnameUser %>
+                    <%= courseB.instructorCourse.firstnameUser %> <%=
+                    courseB.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -118,7 +120,7 @@
                 </div>
                 <div>
                   <a href="#">
-                    <%= courseOne.dateCourse %> / <%= courseOne.timeCourse %>
+                    <%= courseB.dateCourse %> / <%= courseB.timeCourse %>
                   </a>
                 </div>
               </li>
@@ -128,7 +130,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= courseOne.addressCourse %> </a>
+                  <a href="#"> <%= courseB.addressCourse %> </a>
                 </div>
               </li>
 
@@ -139,7 +141,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= courseOne.nameCourse %>">
+                  <a href="/course/course/<%= urlParsed(courseB.nameCourse) %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -149,8 +151,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have <%= categories[0].nameCategory %>
-          Course
+          Sorry, we currently don't have <%= categories[0].getNameCategory() %>
+          course
         </p>
         <% } %>
       </ul>
@@ -162,13 +164,15 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[1].iconCategory %>
-        <h2 class="title_display"><%= categories[1].nameCategory %> Courses</h2>
+        <h2 class="title_display">
+          <%= categories[1].getNameCategory() %> courses
+        </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= categories[1].nameCategory %>"
+          href="/course/courses/<%= urlParsed(categories[1].nameCategory) %>"
           class="ctn_viceTitle_display"
-          >View More
+          >View more
           <iconify-icon
             icon="mdi:more-circle"
             class="icon_viceTitle_display"
@@ -179,7 +183,7 @@
     <div>
       <ul class="ul_template">
         <% if(typeof coursesP !== 'undefined' && coursesP != null &&
-        coursesP.length > 0) { %> <% coursesP.forEach(function(courseTwo){ %>
+        coursesP.length > 0) { %> <% coursesP.forEach(function(courseP){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
@@ -187,7 +191,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= courseTwo.imageCourse[0] %>.png');
+                  background-image: url('/uploads/<%= courseP.imageCourse[0] %>.png');
                 "
               ></div>
             </div>
@@ -199,7 +203,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= courseTwo.nameCourse %></a>
+                  <a href="#"><%= courseP.getNameCourse() %></a>
                 </div>
               </li>
 
@@ -212,8 +216,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseTwo.instructorCourse.firstnameUser %> <%=
-                    courseTwo.instructorCourse.lastnameUser %>
+                    ><%= courseP.instructorCourse.firstnameUser %> <%=
+                    courseP.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -224,7 +228,7 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseTwo.dateCourse %> / <%= courseTwo.timeCourse %>
+                    ><%= courseP.dateCourse %> / <%= courseP.timeCourse %>
                   </a>
                 </div>
               </li>
@@ -234,7 +238,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= courseTwo.addressCourse %> </a>
+                  <a href="#"> <%= courseP.addressCourse %> </a>
                 </div>
               </li>
 
@@ -245,7 +249,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= courseTwo.nameCourse %>">
+                  <a href="/course/course/<%= urlParsed(courseP.nameCourse) %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -255,8 +259,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have <%= categories[1].nameCategory %>
-          Course
+          Sorry, we currently don't have <%= categories[1].getNameCategory() %>
+          course
         </p>
         <% } %>
       </ul>
@@ -268,13 +272,15 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[2].iconCategory %>
-        <h2 class="title_display"><%= categories[2].nameCategory %> Courses</h2>
+        <h2 class="title_display">
+          <%= categories[2].getNameCategory() %> courses
+        </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= categories[2].nameCategory %>"
+          href="/course/courses/<%= urlParsed(categories[2].nameCategory) %>"
           class="ctn_viceTitle_display"
-          >View More
+          >View more
           <iconify-icon
             icon="mdi:more-circle"
             class="icon_viceTitle_display"
@@ -285,7 +291,7 @@
     <div>
       <ul class="ul_template">
         <% if(typeof coursesO !== 'undefined' && coursesO != null &&
-        coursesO.length > 0) { %> <% coursesO.forEach(function(courseThree){ %>
+        coursesO.length > 0) { %> <% coursesO.forEach(function(courseO){ %>
         <li class="ctn_template mid_template">
           <a href="#">
             <div class="ctn_image_template">
@@ -293,7 +299,7 @@
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= courseThree.imageCourse[0] %>.png');
+                  background-image: url('/uploads/<%= courseO.imageCourse[0] %>.png');
                 "
               ></div>
             </div>
@@ -305,7 +311,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= courseThree.nameCourse %></a>
+                  <a href="#"><%= courseO.getNameCourse() %></a>
                 </div>
               </li>
 
@@ -318,8 +324,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseThree.instructorCourse.firstnameUser %> <%=
-                    courseThree.instructorCourse.lastnameUser %>
+                    ><%= courseO.instructorCourse.firstnameUser %> <%=
+                    courseO.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -330,8 +336,7 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseThree.dateCourse %> / <%= courseThree.timeCourse
-                    %>
+                    ><%= courseO.dateCourse %> / <%= courseO.timeCourse %>
                   </a>
                 </div>
               </li>
@@ -341,7 +346,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= courseThree.addressCourse %> </a>
+                  <a href="#"> <%= courseO.addressCourse %> </a>
                 </div>
               </li>
 
@@ -352,7 +357,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/course/<%= courseThree.nameCourse %>">
+                  <a href="/course/course/<%= urlParsed(courseO.nameCourse) %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -362,8 +367,8 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have <%= categories[2].nameCategory %>
-          Course
+          Sorry, we currently don't have <%= categories[2].getNameCategory() %>
+          course
         </p>
         <% } %>
       </ul>

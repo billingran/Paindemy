@@ -12,6 +12,7 @@ module.exports.getCoursesCategory = async (req, res) => {
   try {
     // req.params
     let { nameCategory } = req.params;
+    nameCategory = res.locals.getBackUrl(nameCategory);
 
     ////////////////////////////////////////////////////
     // find all courses for carousel
@@ -56,11 +57,7 @@ module.exports.getOneinstructor = (req, res) => {
 module.exports.getOnecourse = async (req, res) => {
   try {
     let { requestCourse } = req.params;
-
-    // turn first letter of req.params to upperCase
-    requestCourse = `${requestCourse
-      .charAt(0)
-      .toUpperCase()}${requestCourse.slice(1)}`;
+    requestCourse = res.locals.getBackUrl(requestCourse);
 
     ////////////////////////////////////////////////////
     // find latest, random or one course according req.params
@@ -98,6 +95,7 @@ module.exports.getOnecourse = async (req, res) => {
 
     ////////////////////////////////////////////////////
     // find related courses and icon according latest, random or one course
+
     // get icon category
     const categoryType = { nameCategory: oneCourse.categoryCourse };
     let iconCategory = await readService.getOneCategory(categoryType);
