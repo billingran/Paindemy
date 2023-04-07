@@ -36,6 +36,7 @@ class ReadService extends DbService {
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
+        "themeColorUser",
         "emailUser",
       ])
       .exec();
@@ -53,6 +54,7 @@ class ReadService extends DbService {
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
+        "themeColorUser",
         "emailUser",
       ])
       .exec();
@@ -60,12 +62,13 @@ class ReadService extends DbService {
     return new CourseEntity(course);
   }
 
-  // get all courses (all courses, courses category)
+  // get all courses (all courses, courses category, courses carousel)
   async getAllCourses(coursesType) {
     const allCourses = await this.Course.find(coursesType)
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
+        "themeColorUser",
         "emailUser",
       ])
       .exec();
@@ -88,6 +91,7 @@ class ReadService extends DbService {
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
+        "themeColorUser",
         "emailUser",
       ])
       .exec();
@@ -101,6 +105,8 @@ class ReadService extends DbService {
 
     return courses;
   }
+
+  // User//////////////////////////////////////////////////
 
   //   async getAllCourses() {
   //     const courses = await this.model.find();

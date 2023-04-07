@@ -9,26 +9,32 @@
   >
     <div class="carousel-inner ctn_mid_carousels">
       <div class="carousel-item active ctn_carousels">
-        <div class="carousels" style="background: #b3b3b3">
+        <div
+          class="carousels"
+          style="
+            background-color: <%- allCourses[0].instructorCourse.themeColorUser
+              %>;
+          "
+        >
           <div class="left_courses">
             <h2>
-              “ A quintessential bread that is synonymous with France is the
-              baguette. In fact, it is the most famous bread in France. Though
-              there are several types of baguettes mostly based on region, one
-              classic that stands out is the traditional baguette. The
-              traditional baguette is protected by French law and the
-              ingredients used to make this classic thin bread with a crispy
-              crust are defined by a law called Décret Pain...
-              <a class="">
+              “ <%- allCourses[0].descriptionCourse.slice(0, 480) %> ...
+              <a href="/course/course/<%- allCourses[0].nameCourse %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
                   class="icon_carousels"
-                ></iconify-icon> </a
-              >”
+                ></iconify-icon
+              ></a>
+              ”
             </h2>
-            <a class="ctn_icon_carousels">
-              -- Manon Lambert
+            <a
+              href="course/instructor/<%- allCourses[0].instructorCourse.firstnameUser %><%-
+              allCourses[0].instructorCourse.lastnameUser %>"
+              class="ctn_icon_carousels"
+            >
+              -- <%- allCourses[0].instructorCourse.firstnameUser %> <%-
+              allCourses[0].instructorCourse.lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -37,32 +43,45 @@
           </div>
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
-              <img src="/uploads/baguette_R.png" class="d-block" alt="..." />
+              <img
+                src="/uploads/<%- allCourses[0].imageCourse[1] %>.png"
+                class="d-block"
+                alt="photo <%- allCourses[0].nameCourse %>"
+              />
             </div>
           </div>
         </div>
       </div>
+
+      <% if(typeof allCourses !== 'undefined' && allCourses != null &&
+      allCourses.length > 0) { %> <%
+      allCourses.slice(1).forEach(function(course){ %>
       <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #627e65">
+        <div
+          class="carousels"
+          style="
+            background-color: <%- course.instructorCourse.themeColorUser %>;
+          "
+        >
           <div class="left_courses">
             <h2>
-              “ A quintessential bread that is synonymous with France is the
-              baguette. In fact, it is the most famous bread in France. Though
-              there are several types of baguettes mostly based on region, one
-              classic that stands out is the traditional baguette. The
-              traditional baguette is protected by French law and the
-              ingredients used to make this classic thin bread with a crispy
-              crust are defined by a law called Décret Pain...
-              <a class="">
+              “ <%- course.descriptionCourse.slice(0, 480) %> ...
+              <a href="/course/course/<%- course.nameCourse %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
                   class="icon_carousels"
-                ></iconify-icon> </a
-              >”
+                ></iconify-icon>
+              </a>
+              ”
             </h2>
-            <a class="ctn_icon_carousels">
-              -- Manon Lambert
+            <a
+              href="course/instructor/<%- course.instructorCourse.firstnameUser %><%-
+              course.instructorCourse.lastnameUser %>"
+              class="ctn_icon_carousels"
+            >
+              -- <%- course.instructorCourse.firstnameUser %> <%-
+              course.instructorCourse.lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -71,45 +90,16 @@
           </div>
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
-              <img src="/uploads/croissant_R.png" class="d-block" alt="..." />
+              <img
+                src="/uploads/<%- course.imageCourse[1] %>.png"
+                class="d-block"
+                alt="photo <%- course.nameCourse %>"
+              />
             </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #d3be4a">
-          <div class="left_courses">
-            <h2>
-              “ A quintessential bread that is synonymous with France is the
-              baguette. In fact, it is the most famous bread in France. Though
-              there are several types of baguettes mostly based on region, one
-              classic that stands out is the traditional baguette. The
-              traditional baguette is protected by French law and the
-              ingredients used to make this classic thin bread with a crispy
-              crust are defined by a law called Décret Pain...
-              <a class="">
-                read more
-                <iconify-icon
-                  icon="mdi:more-circle"
-                  class="icon_carousels"
-                ></iconify-icon> </a
-              >”
-            </h2>
-            <a class="ctn_icon_carousels">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_courses">
-            <div class="ctn_mainImg_courses">
-              <img src="/uploads/gua_bao_R.png" class="d-block" alt="..." />
-            </div>
-          </div>
-        </div>
-      </div>
+      <% }) %> <% } %>
     </div>
   </div>
 </section>
@@ -147,7 +137,7 @@
               loading="lazy"
               class="image_template"
               style="
-                background-image: url('/uploads/<%= course.imageCourse[0] %>');
+                background-image: url('/uploads/<%= course.imageCourse[0] %>.png');
               "
             ></div>
           </div>

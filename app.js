@@ -10,7 +10,7 @@ const expressLayouts = require("express-ejs-layouts");
 
 // models
 const Category = require("./src/models/Category_model");
-const User = require("./src/models/user_model");
+const User = require("./src/models/User_model");
 const Course = require("./src/models/Course_model");
 
 // routes
