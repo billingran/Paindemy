@@ -9,7 +9,7 @@ router.get("/instructors", courseController.getAllinstructors);
 router.get("/courses/:nameCategory", courseController.getCoursesCategory);
 
 //instructor
-router.get("/instructor", courseController.getOneinstructor);
+router.get("/instructor/:requestIntructor", courseController.getOneinstructor);
 
 //course
 router.get("/course/:requestCourse", courseController.getOnecourse);

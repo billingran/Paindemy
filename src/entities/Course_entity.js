@@ -1,6 +1,6 @@
 class CourseEntity {
   constructor(course) {
-    this.id = null;
+    this._id = null;
     this.nameCourse = "";
     this.dateCourse = "";
     this.timeCourse = "";

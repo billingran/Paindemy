@@ -59,7 +59,21 @@ module.exports.getCoursesCategory = async (req, res) => {
 
 // instrutor
 module.exports.getOneinstructor = (req, res) => {
-  res.render("instructor", { title: "Instructor" });
+  try {
+    let { requestIntructor } = req.params;
+    requestIntructor = res.locals.getBackUrl(requestIntructor);
+
+    ////////////////////////////////////////////////////
+    // find instructor according req.params
+
+    // const userTypeInstructor = { roleUser: "instructor" };
+    // let oneInstructors = await readService.getAllUser(userTypeAllInstructors);
+
+    res.render("instructor", { title: "Instructor" });
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
 };
 
 // course
