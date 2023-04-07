@@ -17,7 +17,7 @@
           <div class="left_instructors">
             <h2>“ <%= getBackUrl(allinstructors[0].fathUser) %> ”</h2>
             <a
-              href="course/instructor/<%= urlParsed(allinstructors[0].firstnameUser) %>"
+              href="course/instructor/<%= allinstructors[0]._id %>"
               class="central"
             >
               -- <%= getBackUrl(allinstructors[0].firstnameUser) %> <%=
@@ -32,7 +32,8 @@
             <img
               src="/uploads/<%= allinstructors[0].imageUser[1] %>.png"
               class="d-block"
-              alt="<%= allinstructors[0].getFirstnameUser() %>"
+              alt="<%= getBackUrl(allinstructors[0].firstnameUser) %> <%=
+              getBackUrl(allinstructors[0].lastnameUser) %>"
             />
           </div>
         </div>

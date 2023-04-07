@@ -86,10 +86,7 @@ module.exports.getOnecourse = async (req, res) => {
     // find latest, random or one course according req.params
 
     // get latest, random or one course
-
-    // get one course
-    const courseType = { nameCourse: requestCourse };
-    let oneCourse = await readService.getOneCourse(courseType);
+    let oneCourse;
 
     if (requestCourse == "Latest") {
       // get latest course
@@ -114,6 +111,10 @@ module.exports.getOnecourse = async (req, res) => {
       // get category course
       const coursesType = { categoryCourse: requestCourse };
       oneCourse = await readService.getOneCourseCountSkip(coursesType);
+    } else {
+      // get one course
+      const courseType = { _id: requestCourse };
+      oneCourse = await readService.getOneCourse(courseType);
     }
 
     ////////////////////////////////////////////////////

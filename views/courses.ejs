@@ -20,9 +20,7 @@
             <h2>
               “ <%= getBackUrl(allCourses[0].descriptionCourse.slice(0, 480)) %>
               ...
-              <a
-                href="/course/course/<%= urlParsed(allCourses[0].nameCourse) %>"
-              >
+              <a href="/course/course/<%= allCourses[0]._id %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -32,7 +30,7 @@
               ”
             </h2>
             <a
-              href="course/instructor/<%= urlParsed(allCourses[0].instructorCourse.firstnameUser) %>"
+              href="course/instructor/<%= allCourses[0].instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
               -- <%= getBackUrl(allCourses[0].instructorCourse.firstnameUser) %>
@@ -198,7 +196,7 @@
                 </a>
               </div>
               <div class="btns_template icon_more_template">
-                <a href="/course/course/<%= urlParsed(course.nameCourse) %>">
+                <a href="/course/course/<%= course._id %>">
                   <i class="uil uil-ellipsis-h"></i>
                 </a>
               </div>
