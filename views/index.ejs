@@ -108,8 +108,8 @@
                 </div>
                 <div>
                   <a href="#">
-                    <%= courseB.instructorCourse.firstnameUser %> <%=
-                    courseB.instructorCourse.lastnameUser %>
+                    <%= getBackUrl(courseB.instructorCourse.firstnameUser) %>
+                    <%= getBackUrl(courseB.instructorCourse.lastnameUser) %>
                   </a>
                 </div>
               </li>
@@ -216,8 +216,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseP.instructorCourse.firstnameUser %> <%=
-                    courseP.instructorCourse.lastnameUser %>
+                    ><%= getBackUrl(courseP.instructorCourse.firstnameUser) %>
+                    <%= getBackUrl(courseP.instructorCourse.lastnameUser) %>
                   </a>
                 </div>
               </li>
@@ -324,8 +324,8 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= courseO.instructorCourse.firstnameUser %> <%=
-                    courseO.instructorCourse.lastnameUser %>
+                    ><%= getBackUrl(courseO.instructorCourse.firstnameUser) %>
+                    <%= getBackUrl(courseO.instructorCourse.lastnameUser) %>
                   </a>
                 </div>
               </li>
@@ -421,7 +421,7 @@
 
   <!-- wanted text -->
   <div class="ctn_text">
-    <h2 class="title_homeThree">Our Instructors</h2>
+    <h2 class="title_homeThree">Our instructors</h2>
     <p class="text_homeThree">
       Are you an expert in the field of baking, with a desire to share your
       knowledge and skills with others? Do you have a passion for teaching and
@@ -432,10 +432,10 @@
     <div>
       <ul class="ul_btns ul_flexStart_btns">
         <li>
-          <a href="/course/instructors" class="left_btns a_NBorder">See More</a>
+          <a href="/course/instructors" class="left_btns a_NBorder">See more</a>
         </li>
         <li>
-          <a href="/auth/joinus" class="right_btns a_NBorder">Join Us</a>
+          <a href="/auth/joinus" class="right_btns a_NBorder">Join us</a>
         </li>
       </ul>
     </div>

@@ -12,14 +12,17 @@
         <div
           class="carousels"
           style="
-            background-color: <%- allCourses[0].instructorCourse.themeColorUser
+            background-color: <%= allCourses[0].instructorCourse.themeColorUser
               %>;
           "
         >
           <div class="left_courses">
             <h2>
-              “ <%- allCourses[0].descriptionCourse.slice(0, 480) %> ...
-              <a href="/course/course/<%- allCourses[0].nameCourse %>">
+              “ <%= getBackUrl(allCourses[0].descriptionCourse.slice(0, 480)) %>
+              ...
+              <a
+                href="/course/course/<%= urlParsed(allCourses[0].nameCourse) %>"
+              >
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -29,12 +32,11 @@
               ”
             </h2>
             <a
-              href="course/instructor/<%- allCourses[0].instructorCourse.firstnameUser %><%-
-              allCourses[0].instructorCourse.lastnameUser %>"
+              href="course/instructor/<%= urlParsed(allCourses[0].instructorCourse.firstnameUser) %>"
               class="ctn_icon_carousels"
             >
-              -- <%- allCourses[0].instructorCourse.firstnameUser %> <%-
-              allCourses[0].instructorCourse.lastnameUser %>
+              -- <%= getBackUrl(allCourses[0].instructorCourse.firstnameUser) %>
+              <%= getBackUrl(allCourses[0].instructorCourse.lastnameUser) %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -44,9 +46,9 @@
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
               <img
-                src="/uploads/<%- allCourses[0].imageCourse[1] %>.png"
+                src="/uploads/<%= allCourses[0].imageCourse[1] %>.png"
                 class="d-block"
-                alt="photo <%- allCourses[0].nameCourse %>"
+                alt="<%= allCourses[0].getNameCourse() %>"
               />
             </div>
           </div>
@@ -60,13 +62,13 @@
         <div
           class="carousels"
           style="
-            background-color: <%- course.instructorCourse.themeColorUser %>;
+            background-color: <%= course.instructorCourse.themeColorUser %>;
           "
         >
           <div class="left_courses">
             <h2>
-              “ <%- course.descriptionCourse.slice(0, 480) %> ...
-              <a href="/course/course/<%- course.nameCourse %>">
+              “ <%= getBackUrl(course.descriptionCourse.slice(0, 480)) %> ...
+              <a href="/course/course/<%= urlParsed(course.nameCourse) %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -76,12 +78,11 @@
               ”
             </h2>
             <a
-              href="course/instructor/<%- course.instructorCourse.firstnameUser %><%-
-              course.instructorCourse.lastnameUser %>"
+              href="course/instructor/<%= urlParsed(course.instructorCourse.firstnameUser) %>"
               class="ctn_icon_carousels"
             >
-              -- <%- course.instructorCourse.firstnameUser %> <%-
-              course.instructorCourse.lastnameUser %>
+              -- <%= getBackUrl(course.instructorCourse.firstnameUser) %> <%-
+              getBackUrl(course.instructorCourse.lastnameUser) %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -91,9 +92,9 @@
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
               <img
-                src="/uploads/<%- course.imageCourse[1] %>.png"
+                src="/uploads/<%= course.imageCourse[1] %>.png"
                 class="d-block"
-                alt="photo <%- course.nameCourse %>"
+                alt="photo <%= course.getNameCourse() %>"
               />
             </div>
           </div>
@@ -112,12 +113,12 @@
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
         <h2 class="title_display">
-          <%- iconCategory.getNameCategory() %> courses
+          <%= iconCategory.getNameCategory() %> courses
         </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/course/<%- urlParsed(iconCategory.nameCategory) %>"
+          href="/course/course/<%= urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
@@ -207,7 +208,7 @@
       </li>
       <% }) %> <% } else { %>
       <p>
-        Sorry, we currently don't have <%- iconCategory.getNameCategory() %>
+        Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
         courses
       </p>
       <% } %>

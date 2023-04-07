@@ -3,8 +3,19 @@ const ReadService = require("../services/Read_service");
 const readService = new ReadService();
 
 // instrutors
-module.exports.getAllinstructors = (req, res) => {
-  res.render("instructors", { title: "Instructors" });
+module.exports.getAllinstructors = async (req, res) => {
+  try {
+    ////////////////////////////////////////////////////
+    // find instructors for carousel and all instructors
+
+    const userTypeAllInstructors = { roleUser: "instructor" };
+    let allinstructors = await readService.getAllUser(userTypeAllInstructors);
+
+    res.render("instructors", { title: "Instructors", allinstructors });
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
 };
 
 //courses of categories
@@ -17,8 +28,6 @@ module.exports.getCoursesCategory = async (req, res) => {
     ////////////////////////////////////////////////////
     // find all courses for carousel
     let allCourses = await readService.getAllCourses({});
-
-    // console.log(allCourses[0].instructorCourse.firstnameUser);
 
     ////////////////////////////////////////////////////
     // find courses with one category or all courses

@@ -1,6 +1,6 @@
 class UserEntity {
   constructor(user) {
-    this.id = null;
+    this._id = null;
     this.firstnameUser = "";
     this.lastnameUser = "";
     this.themeColorUser = "";
@@ -14,8 +14,8 @@ class UserEntity {
     this.createdAt = new Date();
 
     for (let prop in user) {
-      if (this.hasOwnProperty(`_${prop}`)) {
-        this[`_${prop}`] = user[prop];
+      if (this.hasOwnProperty(prop)) {
+        this[prop] = user[prop];
       }
     }
   }
@@ -29,7 +29,11 @@ class UserEntity {
   }
 
   getFirstnameUser() {
-    return this.firstnameUser;
+    this.firstnameUser.replace(/-/g, " ");
+
+    return `${this.firstnameUser.charAt(0).toUpperCase()}${this.firstnameUser
+      .slice(1)
+      .toLowerCase()}`;
   }
 
   setFirstnameUser(firstnameUser) {
@@ -37,7 +41,11 @@ class UserEntity {
   }
 
   getLastnameUser() {
-    return this.lastnameUser;
+    this.lastnameUser.replace(/-/g, " ");
+
+    return `${this.lastnameUser.charAt(0).toUpperCase()}${this.lastnameUser
+      .slice(1)
+      .toLowerCase()}`;
   }
 
   setLastnameUser(lastnameUser) {

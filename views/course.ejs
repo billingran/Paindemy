@@ -11,7 +11,7 @@
             loading="lazy"
             class="image image_course"
             style="
-              background-image: url('/uploads/<%- oneCourse.imageCourse[0] %>.png');
+              background-image: url('/uploads/<%= oneCourse.imageCourse[0] %>.png');
             "
           ></div>
         </div>
@@ -25,22 +25,22 @@
               class="icon_imageContent_course"
             ></iconify-icon>
             <div>
-              <%- oneCourse.instructorCourse.firstnameUser %> <%-
-              oneCourse.instructorCourse.lastnameUser %>
+              <%= getBackUrl(oneCourse.instructorCourse.firstnameUser) %> <%=
+              getBackUrl(oneCourse.instructorCourse.lastnameUser) %>
             </div>
           </div>
         </li>
         <li class="ctn_imagedate_course">
           <div class="centralA">
             <i class="uil uil-calender icon_imageContent_course"></i>
-            <div><%- oneCourse.dateCourse %> / <%- oneCourse.timeCourse %></div>
+            <div><%= oneCourse.dateCourse %> / <%= oneCourse.timeCourse %></div>
           </div>
         </li>
         <li class="ctn_imageAddress_course centralA">
           <div>
             <i class="uil uil-map-marker icon_imageContent_course"></i>
           </div>
-          <div class="imageAddress_course"><%- oneCourse.addressCourse %></div>
+          <div class="imageAddress_course"><%= oneCourse.addressCourse %></div>
         </li>
       </ul>
 
@@ -63,7 +63,7 @@
               class="icon_imageContent_course"
             ></iconify-icon>
           </div>
-          <div><%- oneCourse.ingredientsCourse.length %></div>
+          <div><%= oneCourse.ingredientsCourse.length %></div>
         </li>
         <li>
           <div class="midLine_imageContent_course"></div>
@@ -72,14 +72,14 @@
           <div>
             <i class="uil uil-graduation-cap icon_imageContent_course"></i>
           </div>
-          <div><%- oneCourse.studentsCourse.length %></div>
+          <div><%= oneCourse.studentsCourse.length %></div>
         </li>
         <li>
           <div class="midLine_imageContent_course"></div>
         </li>
         <li class="style_imageContent_course">
           <i class="uil uil-fire icon_imageContent_course"></i>
-          <div><%- oneCourse.caloriesCourse %></div>
+          <div><%= oneCourse.caloriesCourse %></div>
         </li>
         <li>
           <div class="midLine_imageContent_course"></div>
@@ -93,7 +93,7 @@
       <div class="ctn_title_display ctn_title_displayCourse">
         <div class="centralA icon_title_display">
           <i class="uil uil-book-alt"></i>
-          <h2 class="title_display"><%- oneCourse.getNameCourse() %></h2>
+          <h2 class="title_display"><%= oneCourse.getNameCourse() %></h2>
         </div>
         <div class="mid_display mid_display_course">
           <a href="#" class="a_NBorder a_NBorder_course left_btns">
@@ -103,7 +103,7 @@
       </div>
 
       <div class="ctn_intro_course">
-        <p><%- oneCourse.getDescriptionCourse() %></p>
+        <p><%= oneCourse.getDescriptionCourse() %></p>
       </div>
 
       <div class="ctn_title_display ctn_title_displayCourse">
@@ -126,7 +126,7 @@
           oneCourse.ingredientsCourse != null &&
           oneCourse.ingredientsCourse.length > 0) { %> <%
           oneCourse.ingredientsCourse.forEach((course) => { %>
-          <li><%- getBackUrl(course); %></li>
+          <li><%= getBackUrl(course); %></li>
           <% }) %> <% } else { %>
           <p>No ingredient</p>
           <% } %>
@@ -137,7 +137,7 @@
 
   <% } else { %>
 
-  <p>Sorry, we can't find the <%- getBackUrl(requestCourse) %> course</p>
+  <p>Sorry, we can't find the <%= getBackUrl(requestCourse) %> course</p>
 
   <% } %>
 </section>
@@ -151,12 +151,12 @@
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
         <h2 class="title_display">
-          <%- iconCategory.getNameCategory() %> courses
+          <%= iconCategory.getNameCategory() %> courses
         </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/course/<%- urlParsed(iconCategory.nameCategory) %>"
+          href="/course/course/<%= urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
@@ -249,7 +249,7 @@
         </li>
         <% }) %> <% } else { %>
         <p>
-          Sorry, we currently don't have <%- iconCategory.getNameCategory() %>
+          Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
           course
         </p>
         <% } %>

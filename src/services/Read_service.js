@@ -1,6 +1,7 @@
 const DbService = require("../services/Db_service");
 const CategoryEntity = require("../entities/Category_entity");
 const CourseEntity = require("../entities/Course_entity");
+const UserEntity = require("../entities/User_entity");
 
 class ReadService extends DbService {
   constructor() {
@@ -107,6 +108,19 @@ class ReadService extends DbService {
   }
 
   // User//////////////////////////////////////////////////
+  // get all users (all instructors)
+  async getAllUser(usersType) {
+    const allUsers = await this.User.find(usersType).exec();
+
+    let users = [];
+
+    allUsers.forEach((user) => {
+      const userEntity = new UserEntity(user);
+      users.push(userEntity);
+    });
+
+    return users;
+  }
 
   //   async getAllCourses() {
   //     const courses = await this.model.find();

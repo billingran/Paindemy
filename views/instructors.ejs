@@ -9,12 +9,19 @@
   >
     <div class="carousel-inner ctn_mid_carousels">
       <div class="carousel-item active ctn_carousels">
-        <div class="carousels" style="background: #b3b3b3">
+        <div
+          class="carousels"
+          style="background-color: <%= allinstructors[0].themeColorUser %>"
+        >
           <div class="filter_instructors"></div>
           <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
+            <h2>“ <%= getBackUrl(allinstructors[0].fathUser) %> ”</h2>
+            <a
+              href="course/instructor/<%= urlParsed(allinstructors[0].firstnameUser) %>"
+              class="central"
+            >
+              -- <%= getBackUrl(allinstructors[0].firstnameUser) %> <%=
+              getBackUrl(allinstructors[0].lastnameUser) %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -23,21 +30,32 @@
           </div>
           <div class="right_instructors">
             <img
-              src="/uploads/Auguste_Lefebvre_R.png"
+              src="/uploads/<%= allinstructors[0].imageUser[1] %>.png"
               class="d-block"
-              alt="..."
+              alt="<%= allinstructors[0].getFirstnameUser() %>"
             />
           </div>
         </div>
       </div>
+
+      <% if(typeof allinstructors !== 'undefined' && allinstructors != null &&
+      allinstructors.length > 0) { %> <%
+      allinstructors.slice(1).forEach(instructor => { %>
       <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #36495c">
+        <div
+          class="carousels"
+          style="background-color: <%= instructor.themeColorUser %>"
+        >
           <div class="filter_instructors"></div>
 
           <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
+            <h2>“ <%= getBackUrl(instructor.fathUser) %> ”</h2>
+            <a
+              href="course/instructor/<%= urlParsed(instructor.firstnameUser) %>"
+              class="central"
+            >
+              -- <%= getBackUrl(instructor.firstnameUser) %> <%=
+              getBackUrl(instructor.lastnameUser) %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -46,177 +64,14 @@
           </div>
           <div class="right_instructors">
             <img
-              src="/uploads/Christine_Leconte_R.png"
+              src="/uploads/<%= instructor.imageUser[1] %>.png"
               class="d-block"
-              alt="..."
+              alt="<%= instructor.getFirstnameUser() %>"
             />
           </div>
         </div>
       </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #ff0066">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img
-              src="/uploads/Claudine_Lefort_R.png"
-              class="d-block"
-              alt="..."
-            />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #dca47d">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img
-              src="/uploads/Emmanuel_Brunel_R.png"
-              class="d-block"
-              alt="..."
-            />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #d3be4a">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img
-              src="/uploads/Joséphine_Fabret_R.png"
-              class="d-block"
-              alt="..."
-            />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #e39d0d">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img
-              src="/uploads/Sophie_Ferrand_R.png"
-              class="d-block"
-              alt="..."
-            />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #6e1d0e">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img
-              src="/uploads/Sébastien_Paul_R.png"
-              class="d-block"
-              alt="..."
-            />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #627e65">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img src="/uploads/Élise_Maillot_R.png" class="d-block" alt="..." />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #9f5514">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img src="/uploads/Lola_Gonzalez_R.png" class="d-block" alt="..." />
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ctn_carousel">
-        <div class="carousels" style="background: #91bcd6">
-          <div class="filter_instructors"></div>
-          <div class="left_instructors">
-            <h2>“ I beleive baking can have infinite possibilities. ”</h2>
-            <a class="central">
-              -- Manon Lambert
-              <iconify-icon
-                icon="mdi:more-circle"
-                class="icon_carousels"
-              ></iconify-icon>
-            </a>
-          </div>
-          <div class="right_instructors">
-            <img src="/uploads/Marie_Curie_R.png" class="d-block" alt="..." />
-          </div>
-        </div>
-      </div>
+      <% }) %> <% } %>
     </div>
   </div>
 </section>
@@ -236,7 +91,7 @@
       </div>
       <div class="mid_display">
         <a href="#" class="ctn_viceTitle_display"
-          >Show Ramdon
+          >Show ramdon
           <iconify-icon
             icon="fa:random"
             class="icon_viceTitle_display"
@@ -246,126 +101,28 @@
     </div>
     <div>
       <ul class="ctn_images_instructors">
+        <% if(typeof allinstructors !== 'undefined' && allinstructors != null &&
+        allinstructors.length > 0) { %> <% allinstructors.forEach(instructor =>
+        { %>
         <li class="mid_image">
           <a href="#">
             <div class="ctn_image ctn_image_instructors">
               <div
                 loading="lazy"
                 class="image image_instructors"
-                style="background-image: url('/uploads/Auguste_Lefebvre.png')"
+                style="
+                  background-image: url('/uploads/<%= instructor.imageUser[0] %>.png');
+                "
               ></div>
-              <h3 class="title_instructors">Auguste</h3>
+              <h3 class="title_instructors">
+                <%= instructor.getFirstnameUser() %>
+              </h3>
             </div>
           </a>
         </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Christine_Leconte.png')"
-              ></div>
-              <h3 class="title_instructors">Christine</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Claudine_Lefort.png')"
-              ></div>
-              <h3 class="title_instructors">Claudine</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Emmanuel_Brunel.png')"
-              ></div>
-              <h3 class="title_instructors">Emmanuel</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Joséphine_Fabret.png')"
-              ></div>
-              <h3 class="title_instructors">Joséphine</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Sophie_Ferrand.png')"
-              ></div>
-              <h3 class="title_instructors">Sophie</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Sébastien_Paul.png')"
-              ></div>
-              <h3 class="title_instructors">Sébastien</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Élise_Maillot.png')"
-              ></div>
-              <h3 class="title_instructors">Élise</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Lola_Gonzalez.png')"
-              ></div>
-              <h3 class="title_instructors">Élise</h3>
-            </div>
-          </a>
-        </li>
-        <li class="mid_image">
-          <a href="#">
-            <div class="ctn_image ctn_image_instructors">
-              <div
-                loading="lazy"
-                class="image image_instructors"
-                style="background-image: url('/uploads/Marie_Curie.png')"
-              ></div>
-              <h3 class="title_instructors">Marie</h3>
-            </div>
-          </a>
-        </li>
+        <% }) %> <% } else { %>
+        <p>Sorry, we currently don't have instuctor</p>
+        <% } %>
       </ul>
     </div>
   </div>
