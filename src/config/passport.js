@@ -9,19 +9,14 @@ const GoogleStrategy = require("passport-google-oauth20");
 
 // serializeuser and passport.deserializeuser``
 passport.serializeUser((user, done) => {
-  console.log("Serialize使用者...");
-  console.log(user);
   // func deserializeuser
-  done(null, user._id); //將 mongoDB 的 id，存在 session
-  //並且將 id 簽名後，以Cookie 的形式給使用者...
+  //set req.user = user, req.isAuthenticated() = true, req.logout is generated
+  done(null, user._id);
 });
 
 passport.deserializeUser(async (_id, done) => {
-  console.log(
-    "Deserialize使用者。。。使用serializeUser儲存的id，去找到資料庫的資料"
-  );
   let foundUser = await User.findOne({ _id });
-  done(null, foundUser); //將 req.user 這個屬性設定為 foundUser //req.isAuthenticated() 被製作出來 //req.logOut()被製作出來
+  done(null, foundUser);
 });
 
 // route setting
@@ -40,23 +35,25 @@ passport.use(
 
         if (userFound) {
           // func serializeuser
+          // save user on session, sign id of user, and then send it in cookie
           done(null, userFound);
         } else {
           userFound = new User({
-            firstnameUser: profile.displayName,
-            lastnameUser: profile.displayName,
-            emailUser: profile._json.email,
+            firstnameUser: profile.name.givenName,
+            lastnameUser: profile.name.familyName || "   ",
+            emailUser: profile.emails[0].value,
             googleIDUser: profile.id,
-            imageUser: profile._json.picture,
+            imageUser: profile.photos[0].value,
             roleUser: "student",
           });
+
           let userGoogle = await userFound.save();
 
           // func serializeuser
+          // save user on session, sign id of user, and then send it in cookie
           done(null, userGoogle);
         }
       } catch (error) {
-        res.status(500).send(error);
         console.log(error);
       }
     }

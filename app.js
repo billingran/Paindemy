@@ -8,6 +8,9 @@ const app = express();
 //session
 const session = require("express-session");
 
+//passport auth
+const passport = require("passport");
+
 // functions
 const myFunctions = require("./lib/functions");
 
@@ -29,6 +32,15 @@ const homePage = require("./src/routes/home_routes");
 
 //Connect to mongodb alts
 require("./src/models/database");
+
+// auth check
+const authCheck = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    return res.redirect("/auth/login");
+  }
+};
 
 // Middleware session
 app.use(
@@ -62,8 +74,8 @@ app.set("view engine", "ejs");
 // Middleware of routes
 app.use("/auth", authRoutes);
 app.use("/course", courseRoutes);
-app.use("/instructor", instructorRoutes);
-app.use("/student", studentRoutes);
+app.use("/instructor", authCheck, instructorRoutes);
+app.use("/student", authCheck, studentRoutes);
 
 // Middleware of home page
 app.use("/", homePage);

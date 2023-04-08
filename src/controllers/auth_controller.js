@@ -1,22 +1,39 @@
 // sign up
 module.exports.signUp = (req, res) => {
-  res.render("sign_up", { title: "Sign Up" });
+  return res.render("sign_up", { title: "Sign up" });
 };
 
 //login
 module.exports.login = (req, res) => {
-  res.render("login", { title: "Login" });
+  return res.render("login", { title: "Login" });
+};
+
+//logout
+module.exports.logout = (req, res) => {
+  req.logOut((err) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.redirect("/");
+    }
+  });
 };
 
 //google
 module.exports.googleAuth = (req, res) => {};
 
-//google
+//google redirect
 module.exports.googleRedirect = (req, res) => {
-  return res.redirect("/");
+  let user = req.user;
+
+  if (user.roleUser == "student") {
+    return res.redirect("/student/profile");
+  } else if (user.roleUser == "instructor") {
+    return res.redirect("/instructor/profile");
+  }
 };
 
 // join us
 module.exports.joinUs = (req, res) => {
-  res.render("join_us", { title: "Join Us" });
+  return res.render("join_us", { title: "Join us" });
 };

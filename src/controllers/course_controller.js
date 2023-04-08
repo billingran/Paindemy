@@ -11,9 +11,12 @@ module.exports.getAllinstructors = async (req, res) => {
     const userTypeAllInstructors = { roleUser: "instructor" };
     let allinstructors = await dbService.getAllUsers(userTypeAllInstructors);
 
-    res.render("instructors", { title: "Instructors", allinstructors });
+    return res.render("instructors", {
+      title: "Instructors",
+      allinstructors,
+    });
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).send(error);
     console.log(error);
   }
 };
@@ -45,14 +48,14 @@ module.exports.getCoursesCategory = async (req, res) => {
       manyCourses = await dbService.getAllCourses(coursesType);
     }
 
-    res.render("courses", {
-      title: `${nameCategory} Courses`,
+    return res.render("courses", {
+      title: "Courses",
       allCourses,
       manyCourses,
       iconCategory,
     });
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).send(error);
     console.log(error);
   }
 };
@@ -88,14 +91,14 @@ module.exports.getOneinstructor = async (req, res) => {
       numberStudentOneInstructor += course.studentsCourse.length;
     });
 
-    res.render("instructor", {
+    return res.render("instructor", {
       title: "Instructor",
       oneInstructor,
       coursesInstructor,
       numberStudentOneInstructor,
     });
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).send(error);
     console.log(error);
   }
 };
@@ -158,15 +161,15 @@ module.exports.getOnecourse = async (req, res) => {
       limitNumberRelated
     );
 
-    res.render("course", {
-      title: `${requestCourse} Course`,
+    return res.render("course", {
+      title: `Course`,
       requestCourse,
       iconCategory,
       oneCourse,
       relatedCourses,
     });
   } catch (error) {
-    res.status(500).send(error);
+    return res.status(500).send(error);
     console.log(error);
   }
 };

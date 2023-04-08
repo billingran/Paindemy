@@ -8,6 +8,9 @@ router.get("/signup", authController.signUp);
 // login
 router.get("/login", authController.login);
 
+// logout
+router.get("/logout", authController.logout);
+
 // google
 router.get(
   "/google",

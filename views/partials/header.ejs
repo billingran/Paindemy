@@ -72,6 +72,7 @@
     <li>
       <img src="/images/logo_home.png" alt="logo Paindemy" loading="lazy" />
     </li>
+    <% if (!authUser) { %>
     <li>
       <a href="/course/courses" class="centralA"
         ><i class="uil uil-book-alt icon_sideBar_header"></i> COURSES</a
@@ -84,11 +85,6 @@
           class="icon_sideBar_header"
         ></iconify-icon>
         INSTRUCTORS</a
-      >
-    </li>
-    <li>
-      <a href="/course/course" class="centralA"
-        ><i class="uil uil-book-alt icon_sideBar_header"></i> COURSE</a
       >
     </li>
     <li>
@@ -110,10 +106,17 @@
         ><i class="uil uil-signin icon_sideBar_header"></i> LOGIN</a
       >
     </li>
+    <% } %> <% if (authUser) { %>
     <li>
       <a href="/instructor/newclass" class="centralA"
+        ><i class="uil uil-book-alt icon_sideBar_header"></i>NEW COURSE</a
+      >
+    </li>
+    <li>
+      <a href="/auth/logout" class="centralA"
         ><i class="uil uil-signout icon_sideBar_header"></i> LOGOUT</a
       >
     </li>
+    <% } %>
   </ul>
 </section>
