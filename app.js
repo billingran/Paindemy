@@ -5,6 +5,9 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
 
+//session
+const session = require("express-session");
+
 // functions
 const myFunctions = require("./lib/functions");
 
@@ -18,6 +21,7 @@ const Course = require("./src/models/Course_model");
 
 // routes
 const authRoutes = require("./src/routes/auth_routes");
+require("./src/config/passport");
 const courseRoutes = require("./src/routes/course_routes");
 const instructorRoutes = require("./src/routes/instructor_routes");
 const studentRoutes = require("./src/routes/student_routes");
@@ -25,6 +29,18 @@ const homePage = require("./src/routes/home_routes");
 
 //Connect to mongodb alts
 require("./src/models/database");
+
+// Middleware session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false },
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware functions customized
 app.use((req, res, next) => {

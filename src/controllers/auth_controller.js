@@ -1,5 +1,3 @@
-const passport = require("passport");
-
 // sign up
 module.exports.signUp = (req, res) => {
   res.render("sign_up", { title: "Sign Up" });
@@ -11,11 +9,11 @@ module.exports.login = (req, res) => {
 };
 
 //google
-module.exports.google = (req, res) => {
-  passport.authenticate("google", {
-    scope: ["profile", "email"],
-    prompt: "select_account",
-  });
+module.exports.googleAuth = (req, res) => {};
+
+//google
+module.exports.googleRedirect = (req, res) => {
+  return res.redirect("/");
 };
 
 // join us

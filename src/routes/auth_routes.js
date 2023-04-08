@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const passport = require("passport");
 const authController = require("../controllers/auth_controller");
 
 // sign up
@@ -8,7 +9,21 @@ router.get("/signup", authController.signUp);
 router.get("/login", authController.login);
 
 // google
-router.get("/login", authController.google);
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    prompt: "select_account",
+  }),
+  authController.googleAuth
+);
+
+// google
+router.get(
+  "/google/redirect",
+  passport.authenticate("google"),
+  authController.googleRedirect
+);
 
 // join us
 router.get("/joinus", authController.joinUs);

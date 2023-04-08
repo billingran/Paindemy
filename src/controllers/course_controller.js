@@ -1,6 +1,6 @@
 // Class Services
-const ReadService = require("../services/Read_service");
-const readService = new ReadService();
+const DbService = require("../services/Db_service");
+const dbService = new DbService();
 
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
@@ -9,7 +9,7 @@ module.exports.getAllinstructors = async (req, res) => {
     // find instructors for carousel and all instructors
 
     const userTypeAllInstructors = { roleUser: "instructor" };
-    let allinstructors = await readService.getAllUser(userTypeAllInstructors);
+    let allinstructors = await dbService.getAllUsers(userTypeAllInstructors);
 
     res.render("instructors", { title: "Instructors", allinstructors });
   } catch (error) {
@@ -27,22 +27,22 @@ module.exports.getCoursesCategory = async (req, res) => {
 
     ////////////////////////////////////////////////////
     // find all courses for carousel
-    let allCourses = await readService.getAllCourses({});
+    let allCourses = await dbService.getAllCourses({});
 
     ////////////////////////////////////////////////////
     // find courses with one category or all courses
 
     // get one category icon
     const categoryType = { nameCategory };
-    let iconCategory = await readService.getOneCategory(categoryType);
+    let iconCategory = await dbService.getOneCategory(categoryType);
 
     // get all courses
-    let manyCourses = await readService.getAllCourses({});
+    let manyCourses = await dbService.getAllCourses({});
 
     if (nameCategory != "All") {
       // get category courses
       const coursesType = { categoryCourse: nameCategory };
-      manyCourses = await readService.getAllCourses(coursesType);
+      manyCourses = await dbService.getAllCourses(coursesType);
     }
 
     res.render("courses", {
@@ -62,17 +62,23 @@ module.exports.getOneinstructor = async (req, res) => {
   try {
     let { requestIntructor } = req.params;
 
+    console.log(requestIntructor);
     ////////////////////////////////////////////////////
     // find instructor or random according req.params
+    let oneInstructor;
 
-    const userTypeInstructor = { _id: requestIntructor };
-    let oneInstructor = await readService.getOneInstructor(userTypeInstructor);
+    if (requestIntructor == "random") {
+      oneInstructor = await dbService.getOneUserCountSkip({});
+    } else {
+      const userTypeInstructor = { _id: requestIntructor };
+      oneInstructor = await dbService.getOneUser(userTypeInstructor);
+    }
 
     ////////////////////////////////////////////////////
     // find all instructor courses
 
-    const coursesTypeOneInstructor = { instructorCourse: requestIntructor };
-    let coursesInstructor = await readService.getAllCourses(
+    const coursesTypeOneInstructor = { instructorCourse: oneInstructor._id };
+    let coursesInstructor = await dbService.getAllCourses(
       coursesTypeOneInstructor
     );
 
@@ -111,7 +117,7 @@ module.exports.getOnecourse = async (req, res) => {
       const sortNumberLatest = -1;
       const limitNumberLatest = 1;
 
-      oneCourse = await readService.getAllCoursesSortLimit(
+      oneCourse = await dbService.getAllCoursesSortLimit(
         {},
         sortNumberLatest,
         limitNumberLatest
@@ -120,7 +126,7 @@ module.exports.getOnecourse = async (req, res) => {
       oneCourse = oneCourse[0];
     } else if (requestCourse == "Random" || requestCourse == "All") {
       // get random course
-      oneCourse = await readService.getOneCourseCountSkip({});
+      oneCourse = await dbService.getOneCourseCountSkip({});
     } else if (
       requestCourse == "Bakery" ||
       requestCourse == "Pastry" ||
@@ -128,11 +134,11 @@ module.exports.getOnecourse = async (req, res) => {
     ) {
       // get category course
       const coursesType = { categoryCourse: requestCourse };
-      oneCourse = await readService.getOneCourseCountSkip(coursesType);
+      oneCourse = await dbService.getOneCourseCountSkip(coursesType);
     } else {
       // get one course
       const courseType = { _id: requestCourse };
-      oneCourse = await readService.getOneCourse(courseType);
+      oneCourse = await dbService.getOneCourse(courseType);
     }
 
     ////////////////////////////////////////////////////
@@ -140,13 +146,13 @@ module.exports.getOnecourse = async (req, res) => {
 
     // get icon category
     const categoryType = { nameCategory: oneCourse.categoryCourse };
-    let iconCategory = await readService.getOneCategory(categoryType);
+    let iconCategory = await dbService.getOneCategory(categoryType);
 
     // get related courses
     const coursesTypeRelated = { categoryCourse: oneCourse.categoryCourse };
     const sortNumberRelated = -1;
     const limitNumberRelated = 5;
-    let relatedCourses = await readService.getAllCoursesSortLimit(
+    let relatedCourses = await dbService.getAllCoursesSortLimit(
       coursesTypeRelated,
       sortNumberRelated,
       limitNumberRelated

@@ -4,13 +4,13 @@ const userSchema = new mongoose.Schema({
   firstnameUser: {
     type: String,
     require: true,
-    minlength: 1,
+    minlength: 3,
     maxlength: 50,
   },
   lastnameUser: {
     type: String,
     require: true,
-    minlength: 1,
+    minlength: 3,
     maxlength: 50,
   },
   themeColorUser: {
@@ -38,7 +38,6 @@ const userSchema = new mongoose.Schema({
   },
   introductionUser: {
     type: String,
-    required: true,
     minlength: 1,
   },
   googleIDUser: {
@@ -46,7 +45,6 @@ const userSchema = new mongoose.Schema({
   },
   imageUser: {
     type: Array,
-    required: true,
   },
   roleUser: {
     type: String,
