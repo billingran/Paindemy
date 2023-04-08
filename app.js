@@ -8,6 +8,9 @@ const app = express();
 //session
 const session = require("express-session");
 
+//flash message
+const flash = require("connect-flash");
+
 //passport auth
 const passport = require("passport");
 
@@ -54,10 +57,18 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Middleware functions customized
+// Middleware functions customized and flash message
+app.use(flash());
 app.use((req, res, next) => {
+  // funcs
   res.locals.urlParsed = myFunctions.urlParsed;
   res.locals.getBackUrl = myFunctions.getBackUrl;
+
+  // flash message
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+
   next();
 });
 

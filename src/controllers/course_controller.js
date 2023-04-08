@@ -11,9 +11,14 @@ module.exports.getAllinstructors = async (req, res) => {
     const userTypeAllInstructors = { roleUser: "instructor" };
     let allinstructors = await dbService.getAllUsers(userTypeAllInstructors);
 
+    // auth check
+    const authUser = req.user;
+
     return res.render("instructors", {
       title: "Instructors",
+      showHeader: true,
       allinstructors,
+      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);
@@ -48,11 +53,16 @@ module.exports.getCoursesCategory = async (req, res) => {
       manyCourses = await dbService.getAllCourses(coursesType);
     }
 
+    // auth check
+    const authUser = req.user;
+
     return res.render("courses", {
       title: "Courses",
+      showHeader: true,
       allCourses,
       manyCourses,
       iconCategory,
+      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);
@@ -91,11 +101,16 @@ module.exports.getOneinstructor = async (req, res) => {
       numberStudentOneInstructor += course.studentsCourse.length;
     });
 
+    // auth check
+    const authUser = req.user;
+
     return res.render("instructor", {
       title: "Instructor",
+      showHeader: true,
       oneInstructor,
       coursesInstructor,
       numberStudentOneInstructor,
+      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);
@@ -161,12 +176,17 @@ module.exports.getOnecourse = async (req, res) => {
       limitNumberRelated
     );
 
+    // auth check
+    const authUser = req.user;
+
     return res.render("course", {
       title: `Course`,
+      showHeader: true,
       requestCourse,
       iconCategory,
       oneCourse,
       relatedCourses,
+      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);

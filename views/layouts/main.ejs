@@ -48,8 +48,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <% if (title != "Sign up" && title != "Join us" && title != "Login" &&
-      title != "New class") { %> <%- include("../partials/header") %> <% } %>
+      <% if (showHeader) { %> <%- include("../partials/header") %> <% } %>
 
       <main><%- body -%></main>
 

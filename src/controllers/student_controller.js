@@ -1,6 +1,10 @@
 // student profile
 module.exports.studentProfile = (req, res) => {
-  let studentUser = req.user;
-
-  res.render("student_profile", { title: "Student profile", studentUser });
+  // auth check
+  const authUser = req.user;
+  res.render("student_profile", {
+    title: "Student profile",
+    showHeader: true,
+    authUser,
+  });
 };

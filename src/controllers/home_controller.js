@@ -41,6 +41,7 @@ module.exports.homePage = async (req, res) => {
 
     return res.render("index", {
       title: "Home page",
+      showHeader: true,
       categories,
       coursesB,
       coursesP,
