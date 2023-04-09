@@ -11,14 +11,11 @@ module.exports.getAllinstructors = async (req, res) => {
     const userTypeAllInstructors = { roleUser: "instructor" };
     let allinstructors = await dbService.getAllUsers(userTypeAllInstructors);
 
-    // auth check
-    const authUser = req.user;
-
     return res.render("instructors", {
       title: "Instructors",
       showHeader: true,
+      authUser: req.user,
       allinstructors,
-      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);
@@ -53,16 +50,13 @@ module.exports.getCoursesCategory = async (req, res) => {
       manyCourses = await dbService.getAllCourses(coursesType);
     }
 
-    // auth check
-    const authUser = req.user;
-
     return res.render("courses", {
       title: "Courses",
       showHeader: true,
+      authUser: req.user,
       allCourses,
       manyCourses,
       iconCategory,
-      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);
@@ -75,7 +69,6 @@ module.exports.getOneinstructor = async (req, res) => {
   try {
     let { requestIntructor } = req.params;
 
-    console.log(requestIntructor);
     ////////////////////////////////////////////////////
     // find instructor or random according req.params
     let oneInstructor;
@@ -101,16 +94,13 @@ module.exports.getOneinstructor = async (req, res) => {
       numberStudentOneInstructor += course.studentsCourse.length;
     });
 
-    // auth check
-    const authUser = req.user;
-
     return res.render("instructor", {
       title: "Instructor",
       showHeader: true,
+      authUser: req.user,
       oneInstructor,
       coursesInstructor,
       numberStudentOneInstructor,
-      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);
@@ -118,7 +108,7 @@ module.exports.getOneinstructor = async (req, res) => {
   }
 };
 
-// course
+// one course
 module.exports.getOnecourse = async (req, res) => {
   try {
     let { requestCourse } = req.params;
@@ -176,17 +166,14 @@ module.exports.getOnecourse = async (req, res) => {
       limitNumberRelated
     );
 
-    // auth check
-    const authUser = req.user;
-
     return res.render("course", {
       title: `Course`,
       showHeader: true,
+      authUser: req.user,
       requestCourse,
       iconCategory,
       oneCourse,
       relatedCourses,
-      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);

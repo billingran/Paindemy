@@ -91,6 +91,6 @@ app.use("/student", authCheck, studentRoutes);
 // Middleware of home page
 app.use("/", homePage);
 
-app.listen(8080, () => {
+app.listen(5000, () => {
   console.log("Server running on port 8080");
 });

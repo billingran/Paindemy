@@ -36,17 +36,14 @@ module.exports.homePage = async (req, res) => {
       limitNumberCourses
     );
 
-    // auth check
-    const authUser = req.user;
-
     return res.render("index", {
       title: "Home page",
       showHeader: true,
+      authUser: req.user,
       categories,
       coursesB,
       coursesP,
       coursesO,
-      authUser,
     });
   } catch (error) {
     return res.status(500).send(error);

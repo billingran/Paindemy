@@ -6,20 +6,25 @@ const User = require("../models/User_model");
 //passport auth
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
+const LocalStrategy = require("passport-local");
 
-// serializeuser and passport.deserializeuser``
+// bcrypt
+const bcrypt = require("bcrypt");
+
+// serializeuser
 passport.serializeUser((user, done) => {
   // func deserializeuser
   //set req.user = user, req.isAuthenticated() = true, req.logout is generated
   done(null, user._id);
 });
 
+// deserializeUser
 passport.deserializeUser(async (_id, done) => {
   let foundUser = await User.findOne({ _id });
   done(null, foundUser);
 });
 
-// route setting
+// route setting of google login
 passport.use(
   // auto authentication and profile function
   new GoogleStrategy(
@@ -34,7 +39,7 @@ passport.use(
         let userFound = await User.findOne(userTypeGoogle);
 
         if (userFound) {
-          // func serializeuser
+          // func serializeUser
           // save user on session, sign id of user, and then send it in cookie
           done(null, userFound);
         } else {
@@ -49,7 +54,7 @@ passport.use(
 
           let userGoogle = await userFound.save();
 
-          // func serializeuser
+          // func serializeUser
           // save user on session, sign id of user, and then send it in cookie
           done(null, userGoogle);
         }
@@ -58,4 +63,25 @@ passport.use(
       }
     }
   )
+);
+
+// route setting of local login
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    let userFound = await User.findOne({ emailUser: username });
+    if (userFound) {
+      let passwordCompared = await bcrypt.compare(
+        password,
+        userFound.passwordUser
+      );
+      if (passwordCompared) {
+        // func serializeUser
+        done(null, userFound);
+      } else {
+        done(null, false);
+      }
+    } else {
+      done(null, false);
+    }
+  })
 );

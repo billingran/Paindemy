@@ -20,7 +20,7 @@
             <h2>
               “ <%= getBackUrl(allCourses[0].descriptionCourse.slice(0, 480)) %>
               ...
-              <a href="/course/<%= allCourses[0]._id %>">
+              <a href="/course/onecourse/<%= allCourses[0]._id %>">
                 read more
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -116,7 +116,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/<%= urlParsed(iconCategory.nameCategory) %>"
+          href="/course/onecourse/<%= urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
@@ -132,7 +132,7 @@
       <% if(typeof manyCourses !== 'undefined' && manyCourses != null &&
       manyCourses.length > 0) { %> <% manyCourses.forEach(function(course){ %>
       <li class="ctn_template mid_template">
-        <a href="/course/<%= course._id %>">
+        <a href="/course/onecourse/<%= course._id %>">
           <div class="ctn_image_template">
             <div
               loading="lazy"
@@ -150,7 +150,7 @@
                 <i class="uil uil-book-alt icon_content_template"></i>
               </div>
               <div>
-                <a href="/course/<%= course._id %>"
+                <a href="/course/onecourse/<%= course._id %>"
                   ><%= course.getNameCourse() %>
                 </a>
               </div>
@@ -198,7 +198,7 @@
                 </a>
               </div>
               <div class="btns_template icon_more_template">
-                <a href="/course/<%= course._id %>">
+                <a href="/course/onecourse/<%= course._id %>">
                   <i class="uil uil-ellipsis-h"></i>
                 </a>
               </div>

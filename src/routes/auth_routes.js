@@ -11,8 +11,15 @@ router.post("/signup", authController.postSignUp);
 // login
 router.get("/login", authController.login);
 
-// logout
-router.get("/logout", authController.logout);
+// post login
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    failureRedirect: "/auth/login",
+    failureFlash: "login failure, your account or password is not correct.",
+  }),
+  authController.postLogin
+);
 
 // google
 router.get(
@@ -24,7 +31,7 @@ router.get(
   authController.googleAuth
 );
 
-// google
+// google redirect
 router.get(
   "/google/redirect",
   passport.authenticate("google"),
@@ -35,3 +42,6 @@ router.get(
 router.get("/joinus", authController.joinUs);
 
 module.exports = router;
+
+// logout
+router.get("/logout", authController.logout);

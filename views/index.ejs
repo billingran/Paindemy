@@ -7,10 +7,14 @@
   <div class="ctn_btns_homeOne">
     <ul class="ul_btns">
       <li>
-        <a href="/course/latest" class="left_btns a_NBorder">Latest course</a>
+        <a href="/course/onecourse/latest" class="left_btns a_NBorder"
+          >Latest course</a
+        >
       </li>
       <li>
-        <a href="/course/random" class="right_btns a_NBorder">Show random</a>
+        <a href="/course/onecourse/random" class="right_btns a_NBorder"
+          >Show random</a
+        >
       </li>
     </ul>
   </div>
@@ -72,7 +76,7 @@
         <% if(typeof coursesB !== 'undefined' && coursesB != null &&
         coursesB.length > 0) { %> <% coursesB.forEach(function(courseB){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/<%= courseB._id %>">
+          <a href="/course/onecourse/<%= courseB._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -90,7 +94,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/<%= courseB._id %>"
+                  <a href="/course/onecourse/<%= courseB._id %>"
                     ><%= courseB.getNameCourse() %>
                   </a>
                 </div>
@@ -140,7 +144,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/<%= courseB._id %>">
+                  <a href="/course/onecourse/<%= courseB._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -184,7 +188,7 @@
         <% if(typeof coursesP !== 'undefined' && coursesP != null &&
         coursesP.length > 0) { %> <% coursesP.forEach(function(courseP){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/<%= courseP._id %>">
+          <a href="/course/onecourse/<%= courseP._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -202,7 +206,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/<%= courseP._id %>"
+                  <a href="/course/onecourse/<%= courseP._id %>"
                     ><%= courseP.getNameCourse() %>
                   </a>
                 </div>
@@ -251,7 +255,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/<%= courseP._id %>">
+                  <a href="/course/onecourse/<%= courseP._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
@@ -295,7 +299,7 @@
         <% if(typeof coursesO !== 'undefined' && coursesO != null &&
         coursesO.length > 0) { %> <% coursesO.forEach(function(courseO){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/<%= courseO._id %>">
+          <a href="/course/onecourse/<%= courseO._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -313,7 +317,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/<%= courseO._id %>"
+                  <a href="/course/onecourse/<%= courseO._id %>"
                     ><%= courseO.getNameCourse() %>
                   </a>
                 </div>
@@ -362,7 +366,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/<%= courseO._id %>">
+                  <a href="/course/onecourse/<%= courseO._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>

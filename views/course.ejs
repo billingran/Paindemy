@@ -5,7 +5,7 @@
   <% if(oneCourse != null ) { %>
   <div class="ctn_course">
     <div class="ctn_midimage_course">
-      <a href="/course/<%= oneCourse._id %>">
+      <a href="/course/onecourse/<%= oneCourse._id %>">
         <div class="ctn_image ctn_image_course">
           <div
             loading="lazy"
@@ -156,7 +156,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/<%= urlParsed(iconCategory.nameCategory) %>"
+          href="/course/onecourse/<%= urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
@@ -172,7 +172,7 @@
         relatedCourses.length > 0) { %> <%
         relatedCourses.forEach(function(relatedCourse){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/<%= relatedCourse._id %>">
+          <a href="/course/onecourse/<%= relatedCourse._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -190,7 +190,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/<%= relatedCourse._id %>"
+                  <a href="/course/onecourse/<%= relatedCourse._id %>"
                     ><%= relatedCourse.getNameCourse() %>
                   </a>
                 </div>
@@ -240,7 +240,7 @@
                   </a>
                 </div>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/<%= relatedCourse._id %>">
+                  <a href="/course/onecourse/<%= relatedCourse._id %>">
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>

@@ -1,9 +1,15 @@
 const User = require("../models/User_model");
+
+// bcrypt
 const bcrypt = require("bcrypt");
 
 // sign up
 module.exports.signUp = (req, res) => {
-  return res.render("sign_up", { title: "Sign up", showHeader: false });
+  return res.render("sign_up", {
+    title: "Sign up",
+    showHeader: false,
+    authUser: req.user,
+  });
 };
 
 // post sign up
@@ -11,7 +17,6 @@ module.exports.postSignUp = async (req, res) => {
   try {
     let { firstnameUser, lastnameUser, emailUser, passwordUser } = req.body;
 
-    console.log(req.body);
     if (passwordUser.length < 8) {
       req.flash(
         "error_msg",
@@ -34,11 +39,10 @@ module.exports.postSignUp = async (req, res) => {
       passwordUser: hashedPasswordUser,
       roleUser: "student",
     });
+
     await studentUser.save();
     req.flash("success_msg", "Congradulation, you are our member now.");
     res.redirect("/auth/login");
-
-    return res.render("sign_up", { title: "Sign up", showHeader: false });
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -47,18 +51,22 @@ module.exports.postSignUp = async (req, res) => {
 
 //login
 module.exports.login = (req, res) => {
-  return res.render("login", { title: "Login", showHeader: false });
+  return res.render("login", {
+    title: "Login",
+    showHeader: false,
+    authUser: req.user,
+  });
 };
 
-//logout
-module.exports.logout = (req, res) => {
-  req.logOut((err) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.redirect("/");
-    }
-  });
+//post login
+module.exports.postLogin = (req, res) => {
+  let user = req.user;
+
+  if (user.roleUser == "student") {
+    return res.redirect("/student/profile");
+  } else if (user.roleUser == "instructor") {
+    return res.redirect("/instructor/profile");
+  }
 };
 
 //google
@@ -77,5 +85,20 @@ module.exports.googleRedirect = (req, res) => {
 
 // join us
 module.exports.joinUs = (req, res) => {
-  return res.render("join_us", { title: "Join us", showHeader: false });
+  return res.render("join_us", {
+    title: "Join us",
+    showHeader: false,
+    authUser: req.user,
+  });
+};
+
+//logout
+module.exports.logout = (req, res) => {
+  req.logOut((err) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.redirect("/");
+    }
+  });
 };

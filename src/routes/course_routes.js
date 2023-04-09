@@ -11,6 +11,6 @@ router.get("/courses/:nameCategory", courseController.getCoursesCategory);
 router.get("/instructor/:requestIntructor", courseController.getOneinstructor);
 
 //course
-router.get("/:requestCourse", courseController.getOnecourse);
+router.get("/onecourse/:requestCourse", courseController.getOnecourse);
 
 module.exports = router;
