@@ -8,6 +8,12 @@ router.get("/signup", authController.signUp);
 // post sign up
 router.post("/signup", authController.postSignUp);
 
+// join us
+router.get("/joinus", authController.joinUs);
+
+// post join us
+router.post("/joinus", authController.postJoinUs);
+
 // login
 router.get("/login", authController.login);
 
@@ -38,10 +44,7 @@ router.get(
   authController.googleRedirect
 );
 
-// join us
-router.get("/joinus", authController.joinUs);
-
-module.exports = router;
-
 // logout
 router.get("/logout", authController.logout);
+
+module.exports = router;

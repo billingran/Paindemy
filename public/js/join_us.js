@@ -2,7 +2,7 @@
 //add and delete img join us
 
 let imgJoinUsList = document.querySelector(".img_list");
-let inputJoinUs = document.querySelector('input[name="image_joinUs"]');
+let inputJoinUs = document.querySelector('input[name="imageUser"]');
 let imgJoinUsdiv = document.querySelector(".joinUs_div");
 
 function addImgJoinUs() {

@@ -49,6 +49,66 @@ module.exports.postSignUp = async (req, res) => {
   }
 };
 
+// join us
+module.exports.joinUs = (req, res) => {
+  return res.render("join_us", {
+    title: "Join us",
+    showHeader: false,
+    authUser: req.user,
+  });
+};
+
+// post join us
+module.exports.postJoinUs = async (req, res) => {
+  try {
+    let {
+      firstnameUser,
+      lastnameUser,
+      themeColorUser,
+      fathUser,
+      emailUser,
+      passwordUser,
+      introductionUser,
+      imageUser,
+    } = req.body;
+
+    if (passwordUser.length < 8) {
+      req.flash(
+        "error_msg",
+        "Password too short, at least 8 letters or numbers."
+      );
+      return res.redirect("/auth/signup");
+    }
+
+    const emailFound = await User.findOne({ emailUser }).exec();
+    if (emailFound) {
+      req.flash("error_msg", "Account exist.");
+      return res.redirect("/auth/joinus");
+    }
+
+    let hashedPasswordUser = await bcrypt.hash(passwordUser, 12);
+    let instructorUser = new User({
+      firstnameUser,
+      lastnameUser,
+      themeColorUser,
+      fathUser,
+      emailUser,
+      passwordUser: hashedPasswordUser,
+      introductionUser,
+      imageUser,
+      roleUser: "instructor",
+    });
+
+    await instructorUser.save();
+    console.log(instructorUser);
+    req.flash("success_msg", "Congradulation, you are our member now.");
+    res.redirect("/auth/joinus");
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+};
+
 //login
 module.exports.login = (req, res) => {
   return res.render("login", {
@@ -81,15 +141,6 @@ module.exports.googleRedirect = (req, res) => {
   } else if (user.roleUser == "instructor") {
     return res.redirect("/instructor/profile");
   }
-};
-
-// join us
-module.exports.joinUs = (req, res) => {
-  return res.render("join_us", {
-    title: "Join us",
-    showHeader: false,
-    authUser: req.user,
-  });
 };
 
 //logout

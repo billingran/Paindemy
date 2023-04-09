@@ -395,151 +395,151 @@ async function insertDymmyRecipeData() {
 // insertDymmyCategoryData();
 
 // user;
-async function insertDymmyCategoryData() {
-  try {
-    await User.insertMany([
-      {
-        firstnameUser: "Auguste",
-        lastnameUser: "Lefebvre",
-        themeColorUser: "#b3b3b3",
-        fathUser: "Cuisiner est une manière de démontrer notre amour.",
-        emailUser: "augustelefebvre@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m’appelle Auguste. Je travaille dans la boulangerie depuis 3 ans. Depuis tout jeune, j'ai toujours été passionné par la cuisine et surtout par la boulangerie. Après avoir terminé mes études dans l’art culinaire, j’ai décidé de poursuivre mon rêve de devenir boulanger. C’est un métier qui demande beaucoup d’innovation afin de créer de nouvelles recettes pour nos clients. J’adore me dépasser et faire de mon mieux pour satisfaire tout le monde. Ma spécialité sont les brioches au sucre  mais j’aimerais beaucoup m’améliorer pour pouvoir faire d'autres pâtisseries plus complexes.",
-        googleIDUser: "123",
-        imageUser: ["Auguste_Lefebvre", "Auguste_Lefebvre_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Christine",
-        lastnameUser: "Leconte",
-        themeColorUser: "#36495C",
-        fathUser:
-          "Enseigner la pâtisserie, c'est partager sa passion et transmettre l'art de faire sourire les gens avec chaque bouchée.",
-        emailUser: "christineleconte@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Issu d'une famille de boulangers, j’ai commencé à travailler dans la boulangerie familiale dès mon plus jeune âge. J’ai  perfectionné mes compétences au fil des ans en apprenant les techniques traditionnelles de boulangerie, en utilisant uniquement les meilleurs ingrédients et en expérimentant de nouvelles saveurs.",
-        googleIDUser: "123",
-        imageUser: ["Christine_Leconte", "Christine_Leconte_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Claudine",
-        lastnameUser: "Lefort",
-        themeColorUser: "#ff0066",
-        fathUser:
-          "La pâtisserie, c'est l'art de transformer les ingrédients en émotions.",
-        emailUser: "claudinelefort@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m'appelle Claudine. J'ai travaillé dans différents environnements, que ce soit des petites boulangeries familiales aux grandes cuisines commerciales, et j'ai créé de délicieuses et magnifiques pâtisseries. Je suis fière d'utiliser uniquement les meilleurs ingrédients dans ma pâtisserie, en privilégiant les sources locales dès que je peux, et j'aime expérimenter de nouveaux arômes et techniques pour créer des produits de boulangerie uniques et innovants.",
-        googleIDUser: "123",
-        imageUser: ["Claudine_Lefort", "Claudine_Lefort_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Emmanuel",
-        lastnameUser: "Brunel",
-        themeColorUser: "#dca47d",
-        fathUser:
-          "La pâtisserie m'a appris que les moments les plus doux de la vie sont ceux que l'on partage avec les autres.",
-        emailUser: "emmanuelbrunel@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Connu pour mes créations incroyablement délicieuses et esthétiquement belles. Je suis spécialisé dans la création de pains artisanaux, de viennoiseries et de pâtisseries complexes pour les occasions spéciales. Mes créations sont souvent présentées dans des magazines culinaires prestigieux et je suis régulièrement invité à participer à des émissions de télévision et des conférences sur la boulangerie dans le monde entier.",
-        googleIDUser: "123",
-        imageUser: ["Emmanuel_Brunel", "Emmanuel_Brunel_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Joséphine",
-        lastnameUser: "Fabre",
-        themeColorUser: "#d3be4a",
-        fathUser: "La pâtisserie, c'est ma passion sucrée.",
-        emailUser: "joséphinefabre@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m'appelle Joséphine. C'est ma 10ème année en tant que boulangère. Mes spécialités comprennent le pain artisanal, les pâtisseries  et les gâteaux personnalisés pour les occasions spéciales. J’ai déjà fait plusieurs pièces montées pour des mariages, ou des gâteaux pour des anniversaires. Je suis connue pour mon souci du détail et ma capacité à créer de beaux et délicieux desserts qui laissent une impression durable sur mes clients.",
-        googleIDUser: "123",
-        imageUser: ["Joséphine_Fabret", "Joséphine_Fabret_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Sophie",
-        lastnameUser: "Ferrand",
-        themeColorUser: "#e39d0d",
-        fathUser:
-          "La pâtisserie m'a appris que les défis sont les ingrédients de la réussite, et la patience la clé du succès.",
-        emailUser: "sophieferrand@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m’appelle Sophie. Ayant travaillé pendant des années à l’étranger, je travaille aujourd’hui  dans ma boulangerie, située dans la campagne française, où je continue d'innover et de créer des chefs-d'œuvre culinaires qui ravissent les papilles de mes clients fidèles.",
-        googleIDUser: "123",
-        imageUser: ["Sophie_Ferrand", "Sophie_Ferrand_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Sébastien",
-        lastnameUser: "Paul",
-        themeColorUser: "#6e1d0e",
-        fathUser:
-          "La pâtisserie est un art qui reflète la vie: elle peut être douce, amère, mais toujours belle et savoureuse.",
-        emailUser: "sébastienpaul@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je suis un jeune boulanger passionné qui vient de rejoindre l'industrie de la boulangerie. Bien que je sois nouveau dans le métier, j’essaie de faire preuve d'un grand talent et d'une grande créativité dans la création de pains et de pâtisseries délicieux. Après avoir obtenu mon diplôme en arts culinaires, j’ai commencé mon apprentissage auprès de boulangers expérimentés pour parfaire mes compétences. Je suis toujours à la recherche de nouvelles techniques et de nouvelles saveurs pour créer des créations innovantes.",
-        googleIDUser: "123",
-        imageUser: ["Sébastien_Paul", "Sébastien_Paul_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Élise",
-        lastnameUser: "Maillot",
-        themeColorUser: "#627e65",
-        fathUser:
-          "La pâtisserie c'est la magie de créer du bonheur à partager avec les autres.",
-        emailUser: "elisemaillot@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m'appelle Elise. Je travaille comme boulangère depuis 2 ans. Pendant mon temps libre, j'aime explorer de nouvelles recettes, assister à des conférences et des compétitions de pâtisserie, et partager ma passion pour la pâtisserie avec les autres. J'espère ouvrir un jour ma propre boulangerie, où je pourrai continuer à créer des recettes délicieuses et originales pendant de nombreuses années. J’ai déjà appris tant de choses durant mon apprentissage et j’ai toujours été très bien entourée. J’espère transmettre un peu de ma passion à travers ce que je crée.",
-        googleIDUser: "123",
-        imageUser: ["Élise_Maillot", "Élise_Maillot_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Lola",
-        lastnameUser: "Gonzalez",
-        themeColorUser: "#9F5514",
-        fathUser:
-          "Partager avec les autres, c’est aussi doux qu’une tarte tatin.",
-        emailUser: "lolagonzalez@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m’appelle Lola. J’ai toujours admiré mon père qui était pâtissier et j’ai donc décidé de suivre sa passion et de devenir pâtissière à mon tour. Petite, il m’apprenait à faire des croissants et des pains au chocolat et j’adorais ça. C’est pour cela qu’après avoir passé mon CAP et mon Brevet Professionnel j’ai tout de suite trouvé une boulangerie pâtisserie qui me mettait en confiance et dans laquelle j’adore travailler et partager avec les autres.",
-        googleIDUser: "123",
-        imageUser: ["Lola_Gonzalez", "Lola_Gonzalez_R"],
-        roleUser: "instructor",
-      },
-      {
-        firstnameUser: "Marie",
-        lastnameUser: "Curie",
-        themeColorUser: "#91BCD6",
-        fathUser:
-          "La pâtisserie est une aventure infinie où l'innovation, la créativité et la passion mènent à des saveurs inattendues et délicieuses.",
-        emailUser: "mariecurie@gmail.com",
-        passwordUser: "12345678",
-        introductionUser:
-          "Je m’appelle Marie et j’ai plus de 10 ans d'expérience en pâtisserie. J’utilise uniquement les meilleurs ingrédients pour créer des gâteaux, des tartes, des cookies et des pâtisseries incroyablement savoureux. Je  suis toujours à la recherche de nouvelles saveurs et de techniques innovantes pour créer des desserts qui surprennent et ravissent nos clients. Je suis  également une artiste de la décoration. Chaque gâteau est un chef-d'œuvre personnalisé, qui reflète les goûts et les styles de chaque client et c’est important pour moi de retransmettre ça dans mes créations.",
-        googleIDUser: "123",
-        imageUser: ["Marie_Curie", "Marie_Curie_R"],
-        roleUser: "instructor",
-      },
-    ]);
-  } catch (error) {
-    console.log("err", error);
-  }
-}
+// async function insertDymmyCategoryData() {
+//   try {
+//     await User.insertMany([
+//       {
+//         firstnameUser: "Auguste",
+//         lastnameUser: "Lefebvre",
+//         themeColorUser: "#b3b3b3",
+//         fathUser: "Cuisiner est une manière de démontrer notre amour.",
+//         emailUser: "augustelefebvre@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m’appelle Auguste. Je travaille dans la boulangerie depuis 3 ans. Depuis tout jeune, j'ai toujours été passionné par la cuisine et surtout par la boulangerie. Après avoir terminé mes études dans l’art culinaire, j’ai décidé de poursuivre mon rêve de devenir boulanger. C’est un métier qui demande beaucoup d’innovation afin de créer de nouvelles recettes pour nos clients. J’adore me dépasser et faire de mon mieux pour satisfaire tout le monde. Ma spécialité sont les brioches au sucre  mais j’aimerais beaucoup m’améliorer pour pouvoir faire d'autres pâtisseries plus complexes.",
+//         googleIDUser: "123",
+//         imageUser: ["Auguste_Lefebvre", "Auguste_Lefebvre_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Christine",
+//         lastnameUser: "Leconte",
+//         themeColorUser: "#36495C",
+//         fathUser:
+//           "Enseigner la pâtisserie, c'est partager sa passion et transmettre l'art de faire sourire les gens avec chaque bouchée.",
+//         emailUser: "christineleconte@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Issu d'une famille de boulangers, j’ai commencé à travailler dans la boulangerie familiale dès mon plus jeune âge. J’ai  perfectionné mes compétences au fil des ans en apprenant les techniques traditionnelles de boulangerie, en utilisant uniquement les meilleurs ingrédients et en expérimentant de nouvelles saveurs.",
+//         googleIDUser: "123",
+//         imageUser: ["Christine_Leconte", "Christine_Leconte_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Claudine",
+//         lastnameUser: "Lefort",
+//         themeColorUser: "#ff0066",
+//         fathUser:
+//           "La pâtisserie, c'est l'art de transformer les ingrédients en émotions.",
+//         emailUser: "claudinelefort@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m'appelle Claudine. J'ai travaillé dans différents environnements, que ce soit des petites boulangeries familiales aux grandes cuisines commerciales, et j'ai créé de délicieuses et magnifiques pâtisseries. Je suis fière d'utiliser uniquement les meilleurs ingrédients dans ma pâtisserie, en privilégiant les sources locales dès que je peux, et j'aime expérimenter de nouveaux arômes et techniques pour créer des produits de boulangerie uniques et innovants.",
+//         googleIDUser: "123",
+//         imageUser: ["Claudine_Lefort", "Claudine_Lefort_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Emmanuel",
+//         lastnameUser: "Brunel",
+//         themeColorUser: "#dca47d",
+//         fathUser:
+//           "La pâtisserie m'a appris que les moments les plus doux de la vie sont ceux que l'on partage avec les autres.",
+//         emailUser: "emmanuelbrunel@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Connu pour mes créations incroyablement délicieuses et esthétiquement belles. Je suis spécialisé dans la création de pains artisanaux, de viennoiseries et de pâtisseries complexes pour les occasions spéciales. Mes créations sont souvent présentées dans des magazines culinaires prestigieux et je suis régulièrement invité à participer à des émissions de télévision et des conférences sur la boulangerie dans le monde entier.",
+//         googleIDUser: "123",
+//         imageUser: ["Emmanuel_Brunel", "Emmanuel_Brunel_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Joséphine",
+//         lastnameUser: "Fabre",
+//         themeColorUser: "#d3be4a",
+//         fathUser: "La pâtisserie, c'est ma passion sucrée.",
+//         emailUser: "joséphinefabre@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m'appelle Joséphine. C'est ma 10ème année en tant que boulangère. Mes spécialités comprennent le pain artisanal, les pâtisseries  et les gâteaux personnalisés pour les occasions spéciales. J’ai déjà fait plusieurs pièces montées pour des mariages, ou des gâteaux pour des anniversaires. Je suis connue pour mon souci du détail et ma capacité à créer de beaux et délicieux desserts qui laissent une impression durable sur mes clients.",
+//         googleIDUser: "123",
+//         imageUser: ["Joséphine_Fabret", "Joséphine_Fabret_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Sophie",
+//         lastnameUser: "Ferrand",
+//         themeColorUser: "#e39d0d",
+//         fathUser:
+//           "La pâtisserie m'a appris que les défis sont les ingrédients de la réussite, et la patience la clé du succès.",
+//         emailUser: "sophieferrand@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m’appelle Sophie. Ayant travaillé pendant des années à l’étranger, je travaille aujourd’hui  dans ma boulangerie, située dans la campagne française, où je continue d'innover et de créer des chefs-d'œuvre culinaires qui ravissent les papilles de mes clients fidèles.",
+//         googleIDUser: "123",
+//         imageUser: ["Sophie_Ferrand", "Sophie_Ferrand_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Sébastien",
+//         lastnameUser: "Paul",
+//         themeColorUser: "#6e1d0e",
+//         fathUser:
+//           "La pâtisserie est un art qui reflète la vie: elle peut être douce, amère, mais toujours belle et savoureuse.",
+//         emailUser: "sébastienpaul@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je suis un jeune boulanger passionné qui vient de rejoindre l'industrie de la boulangerie. Bien que je sois nouveau dans le métier, j’essaie de faire preuve d'un grand talent et d'une grande créativité dans la création de pains et de pâtisseries délicieux. Après avoir obtenu mon diplôme en arts culinaires, j’ai commencé mon apprentissage auprès de boulangers expérimentés pour parfaire mes compétences. Je suis toujours à la recherche de nouvelles techniques et de nouvelles saveurs pour créer des créations innovantes.",
+//         googleIDUser: "123",
+//         imageUser: ["Sébastien_Paul", "Sébastien_Paul_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Élise",
+//         lastnameUser: "Maillot",
+//         themeColorUser: "#627e65",
+//         fathUser:
+//           "La pâtisserie c'est la magie de créer du bonheur à partager avec les autres.",
+//         emailUser: "elisemaillot@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m'appelle Elise. Je travaille comme boulangère depuis 2 ans. Pendant mon temps libre, j'aime explorer de nouvelles recettes, assister à des conférences et des compétitions de pâtisserie, et partager ma passion pour la pâtisserie avec les autres. J'espère ouvrir un jour ma propre boulangerie, où je pourrai continuer à créer des recettes délicieuses et originales pendant de nombreuses années. J’ai déjà appris tant de choses durant mon apprentissage et j’ai toujours été très bien entourée. J’espère transmettre un peu de ma passion à travers ce que je crée.",
+//         googleIDUser: "123",
+//         imageUser: ["Élise_Maillot", "Élise_Maillot_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Lola",
+//         lastnameUser: "Gonzalez",
+//         themeColorUser: "#9F5514",
+//         fathUser:
+//           "Partager avec les autres, c’est aussi doux qu’une tarte tatin.",
+//         emailUser: "lolagonzalez@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m’appelle Lola. J’ai toujours admiré mon père qui était pâtissier et j’ai donc décidé de suivre sa passion et de devenir pâtissière à mon tour. Petite, il m’apprenait à faire des croissants et des pains au chocolat et j’adorais ça. C’est pour cela qu’après avoir passé mon CAP et mon Brevet Professionnel j’ai tout de suite trouvé une boulangerie pâtisserie qui me mettait en confiance et dans laquelle j’adore travailler et partager avec les autres.",
+//         googleIDUser: "123",
+//         imageUser: ["Lola_Gonzalez", "Lola_Gonzalez_R"],
+//         roleUser: "instructor",
+//       },
+//       {
+//         firstnameUser: "Marie",
+//         lastnameUser: "Curie",
+//         themeColorUser: "#91BCD6",
+//         fathUser:
+//           "La pâtisserie est une aventure infinie où l'innovation, la créativité et la passion mènent à des saveurs inattendues et délicieuses.",
+//         emailUser: "mariecurie@gmail.com",
+//         passwordUser: "12345678",
+//         introductionUser:
+//           "Je m’appelle Marie et j’ai plus de 10 ans d'expérience en pâtisserie. J’utilise uniquement les meilleurs ingrédients pour créer des gâteaux, des tartes, des cookies et des pâtisseries incroyablement savoureux. Je  suis toujours à la recherche de nouvelles saveurs et de techniques innovantes pour créer des desserts qui surprennent et ravissent nos clients. Je suis  également une artiste de la décoration. Chaque gâteau est un chef-d'œuvre personnalisé, qui reflète les goûts et les styles de chaque client et c’est important pour moi de retransmettre ça dans mes créations.",
+//         googleIDUser: "123",
+//         imageUser: ["Marie_Curie", "Marie_Curie_R"],
+//         roleUser: "instructor",
+//       },
+//     ]);
+//   } catch (error) {
+//     console.log("err", error);
+//   }
+// }
 
 // insertDymmyCategoryData();
