@@ -1,420 +1,364 @@
 // courses
-// async function insertDymmyRecipeData() {
-//   try {
-//     await Course.insertMany([
-//       {
-//         nameCourse: "Baguette",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Baguette is a type of bread that originated in France in the 18th century. It is a long, thin loaf with a crispy crust and a soft, chewy interior. The word "baguette" comes from the French word for "wand" or "stick," which describes the shape of the bread.
+async function insertDymmyRecipeData() {
+  try {
+    await Course.insertMany([
+      {
+        nameCourse: "Baguette",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `La baguette est un type de pain français emblématique, reconnaissable à sa forme allongée et fine. Elle est fabriquée à partir d'une pâte simple composée de farine, d'eau, de sel et de levure, et est cuite à haute température pour obtenir une croûte croustillante et dorée. La baguette est un aliment de base dans la cuisine française et est souvent consommée au petit-déjeuner, au déjeuner ou au dîner. Elle est idéale pour accompagner une grande variété de plats, comme les fromages, les charcuteries et les soupes. La baguette est également un symbole culturel de la France, appréciée dans le monde entier pour son goût et sa texture uniques.`,
+        categoryCourse: "Bakery",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Eau",
+          "Sel",
+          "Levure",
+          "Levain",
+          "Bassinage",
+        ],
+        imageCourse: ["baguette.png", "baguette_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
 
-//               Baguette quickly became popular in France and eventually became a symbol of French culture and cuisine. It is traditionally made with just four basic ingredients: flour, water, yeast, and salt.
-
-//               Baguette is a versatile bread that can be eaten on its own or used as the base for sandwiches, crostini, and other dishes. It is enjoyed around the world and has become a staple of many bakery and café menus.`,
-//         categoryCourse: "Bakery",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Eau",
-//           "Sel",
-//           "Levure",
-//           "Levain",
-//           "Bassinage",
-//         ],
-//         imageCourse: ["baguette.png", "baguette_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Pain de mie",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse:
-//           "Pain de mie is a type of bread that originated in France and is now enjoyed around the world. It is also known as sandwich bread, as it is often used to make sandwiches. Pain de mie is a soft, dense bread with a fine crumb and a tender crust. It is made with a high proportion of milk and sugar, which gives it its unique texture and flavor. Pain de mie is typically baked in a rectangular loaf pan with a tight-fitting lid, which helps to create a uniform shape and texture. This bread is often sliced thinly and used for sandwiches or toasted for breakfast.",
-//         categoryCourse: "Bakery",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine de force",
-//           "Sucre",
-//           "Sel",
-//           "Levure",
-//           "Poudre de lait",
-//           "Eau",
-//           "Beurre",
-//         ],
-//         imageCourse: ["pain_de_mie.png", "pain_de_mie.png_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Pain au levain",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Pain au levain is a type of bread that originated in France and is now popular in many parts of the world. It is also known as sourdough bread, as it is made using a naturally fermented dough that gives the bread a distinctive sour flavor.
-
-//           Pain au levain is typically made with just three basic ingredients: flour, water, and salt. The dough is fermented using wild yeast and bacteria, which are naturally present in the flour and the environment. This fermentation process can take several hours or even days, depending on the recipe and the desired flavor and texture of the bread.
-
-//           The resulting bread has a tangy, complex flavor and a chewy texture with a crisp crust. It is often enjoyed on its own or used as the base for sandwiches and toast. Pain au levain is a popular choice for bread lovers who appreciate the unique flavor and texture that comes from natural fermentation.`,
-//         categoryCourse: "Bakery",
-//         caloriesCourse: 400,
-//         ingredientsCourse: ["Farine T65", "Eau", "Sel", "Levain"],
-//         imageCourse: ["pain_au_levain.png", "pain_au_levain_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Nordika",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Nordika is a type of bread that originated in Scandinavia and is now enjoyed in many parts of the world. It is a dense, dark bread made with rye flour and often includes other grains and seeds such as sunflower seeds and flaxseed. Nordika is a hearty bread that is rich in fiber, protein, and other nutrients.
-
-//           The dough for Nordika is typically made with a sourdough starter, which adds to the bread's distinct flavor and helps to improve its shelf life. The dough is left to ferment for several hours or even days, which contributes to the bread's dense texture and tangy flavor.
-
-//           Nordika is often sliced thinly and used as the base for open-faced sandwiches, known as smørrebrød in Scandinavia. It is also delicious toasted and served with butter and jam or used as a hearty base for avocado toast. Nordika is a popular choice for those looking for a flavorful, nutrient-dense bread that is both delicious and satisfying.`,
-//         categoryCourse: "Bakery",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T80",
-//           "Farine Nordika",
-//           "Eau",
-//           "Sel",
-//           "Levure",
-//           "Levain",
-//         ],
-//         imageCourse: ["nordika.png", "nordika_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Pain au khorazan",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Pain au khorasan is a type of bread made from khorasan wheat, which is also known as Kamut. This ancient grain is believed to have originated in Egypt and is now grown in many parts of the world.
-
-//           Pain au khorasan has a distinctive nutty flavor and a dense, chewy texture. It is often made with a sourdough starter, which gives the bread a tangy flavor and helps to improve its shelf life. The dough for Pain au khorasan is typically left to ferment for several hours or even days, which contributes to the bread's dense texture and complex flavor.
-
-//           Khorasan wheat is a rich source of protein, fiber, and other nutrients, making Pain au khorasan a nutritious choice for those looking for a healthy bread option. It is often enjoyed on its own or used as the base for sandwiches and toast.
-
-//           Pain au khorasan is a popular choice for those looking for a unique and flavorful bread that is also nutritious and satisfying.`,
-//         categoryCourse: "Bakery",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine Khorazan",
-//           "Eau",
-//           "Sel",
-//           "Levure",
-//           "Levain",
-//           "Bassinage",
-//           "Graines",
-//           "Hydra Graines",
-//         ],
-//         imageCourse: ["pain_au_khorazan.png", "pain_au_khorazan_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Croissant",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse:
-//           "Croissant is a popular French pastry that is famous all over the world. It is a flaky, buttery pastry that is usually eaten for breakfast or as a snack. The croissant is made from a yeast-leavened dough that is layered with butter and then rolled and folded several times to create its distinct flaky texture. The croissant is shaped like a crescent moon, with a crispy outer layer and a soft, buttery interior. The croissant is often served plain or with a variety of fillings, such as chocolate, almond paste, or ham and cheese. The croissant is a delicious and indulgent treat that has become a beloved staple of French cuisine and a symbol of French culture.",
-//         categoryCourse: "Pastry",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Sucre",
-//           "Sel",
-//           "Levure",
-//           "Beurre",
-//           "Lait",
-//           "Eau",
-//         ],
-//         imageCourse: ["croissant.png", "croissant_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Pain au chocolate",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse:
-//           "Pain au chocolat, also known as chocolate croissant, is a delicious French pastry that is enjoyed all over the world. It is made from a yeast-leavened dough that is layered with butter and then wrapped around pieces of chocolate, typically dark chocolate. The pastry is shaped into a long rectangular shape and baked until golden brown. Pain au chocolat has a crispy outer layer with a soft and buttery interior, and the melted chocolate in the center adds a rich and indulgent flavor. Pain au chocolat is often enjoyed for breakfast or as a snack with coffee or tea. It is a popular item in bakeries and cafes around the world, and its delicious combination of buttery pastry and rich chocolate has made it a beloved treat for many.",
-//         categoryCourse: "Pastry",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Sucre",
-//           "Sel",
-//           "Levure",
-//           "Beurre",
-//           "Lait",
-//           "Eau",
-//           "Oeuf",
-//           "Chocolate",
-//         ],
-//         imageCourse: ["pain_au_chocolate.png", "pain_au_chocolate_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Pain au raisins",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Pain au raisins, also known as raisin buns or cinnamon rolls, is a popular French pastry made with a laminated dough that is filled with custard or pastry cream and raisins. The dough used to make pain au raisins is similar to the dough used in croissants, and is made by layering butter between layers of dough and folding it multiple times to create a flaky, buttery texture.
-
-//           After the dough is prepared, it is rolled out and spread with a mixture of custard or pastry cream, raisins, and often cinnamon or other spices. The dough is then rolled up into a spiral and cut into individual portions, which are left to rise before being baked until golden brown.
-
-//           Pain au raisins is a popular breakfast pastry in France, and is often enjoyed with a cup of coffee or tea. It can also be found in bakeries and cafes around the world, and variations may include different types of fillings, such as chocolate or almond paste.`,
-//         categoryCourse: "Pastry",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Sucre",
-//           "Sel",
-//           "Levure",
-//           "Beurre",
-//           "Lait",
-//           "Eau",
-//           "Oeuf",
-//           "raisins",
-//           "sucre marron",
-//           "canelle",
-//           "muscade",
-//         ],
-//         imageCourse: ["pain_au_raisins.png", "pain_au_raisins_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Brioche",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Brioche is a French pastry that is similar to bread but richer and sweeter due to the high amount of butter and eggs used in the recipe. Brioche dough is typically enriched with sugar, eggs, milk, and butter, resulting in a soft, tender, and slightly flaky texture. Brioche can be shaped in various ways, such as small rolls, large loaves, or as a base for other pastries, such as the famous French dessert, Tarte Tatin.
-
-//           Brioche has been a staple of French cuisine for centuries and is commonly enjoyed for breakfast or as a snack with coffee or tea. It is also used in a variety of sweet and savory dishes, such as French toast, hamburgers, and sandwiches. Due to its rich and buttery flavor, brioche is often considered a luxurious pastry and is a popular item in high-end bakeries and restaurants around the world.`,
-//         categoryCourse: "Pastry",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine de force",
-//           "Oeufs",
-//           "Sel",
-//           "Levure",
-//           "Sucre",
-//           "Beurre",
-//         ],
-//         imageCourse: ["brioche.png", "brioche_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Brioche au sucre",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Brioche au sucre is a type of sweet bread that is a variation of the classic French brioche pastry. It is made with the same rich, buttery dough as brioche, but is sweetened with sugar and often topped with large sugar crystals for a crunchy texture.
-
-//           To prepare brioche au sucre, the dough is made by combining flour, sugar, eggs, milk, butter, and yeast. The dough is then kneaded and left to rise before being shaped into individual brioche rolls. The rolls are brushed with an egg wash and topped with sugar crystals before being baked until golden brown.
-
-//           Brioche au sucre is a popular pastry in France and can be enjoyed for breakfast or as a sweet snack throughout the day. It is often served with coffee or tea, and variations may include additional ingredients such as chocolate chips or raisins. The rich, buttery texture and sweet flavor of brioche au sucre make it a delicious treat for those with a sweet tooth.`,
-//         categoryCourse: "Pastry",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine de force",
-//           "Oeufs",
-//           "Sel",
-//           "Levure",
-//           "Sucre",
-//           "Beurre",
-//         ],
-//         imageCourse: ["brioche_au_sucre.png", "brioche_au_sucre_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Pizza",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Pizza is a popular Italian dish that has become a global favorite. It is a flatbread topped with tomato sauce, cheese, and various toppings, which can include vegetables, meats, and seafood. The origins of pizza can be traced back to ancient civilizations in the Mediterranean, where flatbreads were topped with ingredients such as herbs, cheese, and oil.
-
-//           Pizza as we know it today, however, originated in Naples, Italy in the late 18th century, where it was known as "Neapolitan pizza." The pizza was made with tomatoes, which were introduced to Italy in the 16th century, and mozzarella cheese, which was produced locally in the Campania region. Today, pizza has evolved into a global phenomenon, with countless variations and toppings that vary by region and personal preference.
-
-//           Pizza is typically cooked in a wood-fired oven, which gives the crust a crispy texture and imparts a smoky flavor. It can also be cooked in a conventional oven or on a grill. Pizza is often enjoyed with a variety of beverages, such as beer, soda, or wine, and is a popular food for gatherings, parties, and casual dining.`,
-//         categoryCourse: "Other",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Farine de seigle noire",
-//           "Eau",
-//           "Huile d’olive",
-//           "Oeufs",
-//           "Levure",
-//           "Sel",
-//         ],
-//         imageCourse: ["pizza.png", "pizza_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Gua Bao",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Gua Bao, also known as Taiwanese pork belly buns or steamed buns, is a traditional Taiwanese street food that has become popular around the world. Gua Bao consists of a soft, fluffy steamed bun that is folded in half and filled with tender, savory pork belly, pickled vegetables, and a variety of sauces and seasonings.
-
-//           The buns are made from a simple dough that is steamed until light and fluffy. The pork belly is typically marinated with soy sauce, sugar, garlic, and other spices, then slow-cooked until it is tender and flavorful. The pickled vegetables, which can include carrots, cucumber, and daikon radish, add a tangy and crunchy texture to the dish.
-
-//           Gua Bao is often served as a street food in Taiwan, and can also be found in restaurants and food stalls around the world. It is a popular snack or light meal, and can be enjoyed as a savory and satisfying treat any time of day. Vegetarian and other variations of Gua Bao are also available, making it a versatile dish suitable for a wide range of tastes and preferences.`,
-//         categoryCourse: "Other",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Lait",
-//           "Sucre",
-//           "Levure",
-//           "Sel",
-//           "Levure chimique",
-//           "Eau",
-//         ],
-//         imageCourse: ["gua_bao.png", "gua_bao_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Nann",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Naan is a type of flatbread that is a staple in many cuisines of South Asia and Central Asia, including Indian, Pakistani, and Afghan cuisines. It is typically made with a combination of wheat flour, yeast, salt, and water, and may also include ingredients such as yogurt, milk, or ghee.
-
-//           The dough is kneaded and then allowed to rest and rise before being flattened and cooked in a tandoor oven, which gives the bread a distinctive smoky flavor and slightly charred texture. Naan can also be cooked on a stovetop, either in a pan or directly on a flame, to achieve a similar texture.
-
-//           Naan can be enjoyed on its own or served alongside a variety of dishes, such as curries, kebabs, and other grilled meats. It can also be used as a base for pizza-like creations or as a sandwich wrap. Naan variations include garlic naan, cheese naan, and stuffed naan, which can be filled with ingredients such as paneer, potatoes, or meat.
-
-//           Naan is a versatile and delicious addition to any meal, and its popularity has made it a widely available and beloved food around the world.`,
-//         categoryCourse: "Other",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Levure",
-//           "Sucre",
-//           "Sel",
-//           "Lait",
-//           "Yaourt",
-//           "Beurre",
-//           "Oeuf",
-//         ],
-//         imageCourse: ["nann.png", "nann_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Tortillas",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Tortillas are a type of thin, unleavened flatbread made from either corn or wheat flour. They are a staple food in many Latin American countries, including Mexico, where they are an essential component of many traditional dishes such as tacos, quesadillas, and enchiladas.
-
-//           Corn tortillas are made by mixing masa harina (corn dough) with water to form a soft dough, which is then flattened into thin circles and cooked on a hot griddle or comal. Wheat tortillas are made with a similar process, using wheat flour instead of corn.
-
-//           Tortillas can be enjoyed on their own or used as a versatile base for a wide variety of dishes. They can be filled with meats, cheese, beans, and vegetables to create delicious and satisfying tacos, burritos, and other Mexican-inspired dishes. They can also be fried or baked to create crispy chips or tostadas, which can be topped with guacamole, salsa, and other flavorful toppings.
-
-//           Tortillas are widely available in grocery stores and can also be made at home with a few simple ingredients. They are a delicious and versatile addition to any meal and have become a beloved food around the world.
-//           `,
-//         categoryCourse: "Other",
-//         caloriesCourse: 400,
-//         ingredientsCourse: [
-//           "Farine T65",
-//           "Sel",
-//           "Levure chimique",
-//           "Eau",
-//           "Huile végétale",
-//         ],
-//         imageCourse: ["tortillas.png", "tortillas_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//       {
-//         nameCourse: "Dumpings",
-//         dateCourse: "2023-03-08",
-//         timeCourse: "14:30",
-//         addressCourse:
-//           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
-//         descriptionCourse: `Dumplings are a type of filled dough that are boiled, steamed, or fried, and are a popular food in many cultures around the world. They can be sweet or savory and can be filled with a variety of ingredients, such as meats, vegetables, cheese, or fruits.
-
-//           In Chinese cuisine, dumplings are known as "jiaozi" and are often served during the Chinese New Year as a symbol of wealth and good fortune. They are typically filled with pork or chicken, vegetables, and seasonings and are boiled or steamed.
-
-//           In Japanese cuisine, dumplings are called "gyoza" and are usually filled with pork and cabbage and are fried or steamed. In Korean cuisine, dumplings are called "mandu" and are filled with pork, beef, tofu, or vegetables and are often served in soups or fried.
-
-//           Dumplings are also popular in Eastern European cuisines, such as pierogi in Poland, pelmeni in Russia, and vareniki in Ukraine. These dumplings are usually filled with potatoes, cheese, or meats and are boiled or fried.
-
-//           Dumplings are a versatile and delicious food that can be enjoyed as a snack, appetizer, or main course. They can be served in a variety of ways, such as in soups, stews, or on their own with dipping sauces. Dumplings are a beloved food around the world and have a rich history and cultural significance in many countries.`,
-//         categoryCourse: "Other",
-//         caloriesCourse: 400,
-//         ingredientsCourse: ["Farine T65", "Eau", "Sel"],
-//         imageCourse: ["dumping.png", "dumping_R.png"],
-//         instructorCourse: {
-//           _id: "6408d89aaf9308838ec8e85a",
-//         },
-//         studentsCourse: ["123456"],
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log("err", error);
-//   }
-// }
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Pain de mie",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse:
+          "Le pain de mie est un pain blanc tranché à mie serrée, très utilisé pour les sandwichs et les toasts. Il est préparé à partir d'une pâte levée, qui est cuite dans une boîte à pain spéciale pour donner sa forme caractéristique. Le pain de mie est souvent plus doux et plus léger que les autres pains et peut être consommé grillé, beurré ou garni de divers ingrédients. Il est également couramment utilisé pour la préparation de plats tels que le pain perdu, les croûtons ou les croûtons. Sa texture moelleuse et sa forme régulière en font un choix populaire pour les sandwichs, en particulier dans les pays anglo-saxons.",
+        categoryCourse: "Bakery",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine de force",
+          "Sucre",
+          "Sel",
+          "Levure",
+          "Poudre de lait",
+          "Eau",
+          "Beurre",
+        ],
+        imageCourse: ["pain_de_mie.png", "pain_de_mie.png_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Pain au levain",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Le pain au levain est un pain fabriqué à partir d'une pâte fermentée naturellement avec un levain, plutôt que d'une levure commerciale. Cette méthode traditionnelle donne au pain une saveur légèrement acidulée et une texture plus dense et mâchée. Le levain est créé en mélangeant de la farine et de l'eau, puis en laissant fermenter naturellement pendant plusieurs jours, ce qui permet aux levures et aux bactéries naturellement présentes dans l'air et sur les grains de se développer. Le pain au levain est souvent considéré comme plus sain que le pain commercial, car il contient des nutriments plus nombreux et est plus facilement digéré. Il est apprécié pour sa saveur complexe et son aspect rustique.`,
+        categoryCourse: "Bakery",
+        caloriesCourse: 400,
+        ingredientsCourse: ["Farine T65", "Eau", "Sel", "Levain"],
+        imageCourse: ["pain_au_levain.png", "pain_au_levain_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Nordika",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Nordika est un type de pain originaire de Scandinavie et désormais apprécié dans de nombreuses régions du monde. C'est un pain dense et sombre fait de farine de seigle et contenant souvent d'autres grains et graines tels que des graines de tournesol et de lin. Nordika est un pain consistant, riche en fibres, en protéines et autres nutriments. La pâte à pain pour Nordika est généralement préparée avec un levain naturel, ce qui contribue à la saveur distincte du pain et améliore sa durée de conservation. La pâte est laissée fermenter pendant plusieurs heures, voire plusieurs jours, ce qui contribue à la texture dense et à la saveur acidulée du pain. Nordika est souvent coupé en fines tranches et utilisé comme base pour les sandwichs ouverts, connus sous le nom de smørrebrød en Scandinavie. Il est également délicieux grillé et servi avec du beurre et de la confiture ou utilisé comme base consistante pour le toast à l'avocat. Nordika est un choix populaire pour ceux qui cherchent un pain savoureux et riche en nutriments qui est à la fois délicieux et satisfaisant.`,
+        categoryCourse: "Bakery",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T80",
+          "Farine Nordika",
+          "Eau",
+          "Sel",
+          "Levure",
+          "Levain",
+        ],
+        imageCourse: ["nordika.png", "nordika_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Pain au khorazan",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Le Pain au Khorazan est un type de pain français fait avec de la farine de khorazan, une variété ancienne de blé d'origine iranienne. Cette farine est riche en nutriments, en fibres et en saveurs, et donne une texture moelleuse et une saveur noisette au pain. Le pain au Khorazan est souvent associé à une alimentation saine et équilibrée, car il est plus facilement digestible que les pains traditionnels. Il est parfait pour accompagner une grande variété de plats, ou simplement pour être dégusté avec du beurre ou de la confiture. Le pain au Khorazan est de plus en plus populaire dans les boulangeries et les restaurants, en raison de ses qualités nutritives et gustatives uniques.`,
+        categoryCourse: "Bakery",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine Khorazan",
+          "Eau",
+          "Sel",
+          "Levure",
+          "Levain",
+          "Bassinage",
+          "Graines",
+          "Hydra Graines",
+        ],
+        imageCourse: ["pain_au_khorazan.png", "pain_au_khorazan_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Croissant",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse:
+          "Le croissant est une pâtisserie d'origine autrichienne, mais qui est devenue emblématique de la France. Cette viennoiserie en forme de croissant de lune est composée de pâte feuilletée légère et croustillante, et est traditionnellement servie au petit-déjeuner ou au brunch. Le croissant est souvent accompagné de beurre, de confiture ou de miel, et se marie parfaitement avec un café ou un thé. Sa fabrication nécessite un savoir-faire particulier, incluant de nombreux tours de pâte pour créer les fines couches de feuilletage. Le croissant est un symbole de la culture française et est apprécié dans le monde entier pour sa texture croustillante et son goût délicieux.",
+        categoryCourse: "Pastry",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Sucre",
+          "Sel",
+          "Levure",
+          "Beurre",
+          "Lait",
+          "Eau",
+        ],
+        imageCourse: ["croissant.png", "croissant_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Pain au chocolate",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse:
+          "Le pain au chocolat est une viennoiserie française, composée d'une pâte feuilletée croustillante et d'une barre de chocolat fondant en son centre. C'est une pâtisserie populaire en France, souvent consommée au petit-déjeuner ou au goûter, accompagnée d'un café ou d'un chocolat chaud. Le pain au chocolat est apprécié pour sa texture légère et feuilletée, ainsi que pour la générosité de sa garniture chocolatée. Il peut être consommé chaud ou froid, et est souvent présenté en forme de croissant allongé. Le pain au chocolat est un classique de la boulangerie française, qui est apprécié dans le monde entier.",
+        categoryCourse: "Pastry",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Sucre",
+          "Sel",
+          "Levure",
+          "Beurre",
+          "Lait",
+          "Eau",
+          "Oeuf",
+          "Chocolate",
+        ],
+        imageCourse: ["pain_au_chocolate.png", "pain_au_chocolate_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Pain au raisins",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Le pain au raisin est une viennoiserie française, qui se compose d'une pâte levée feuilletée garnie de crème pâtissière et de raisins secs. C'est une pâtisserie généralement consommée au petit-déjeuner ou au goûter, accompagnée d'une tasse de café ou de thé. Le pain au raisin est reconnaissable à sa forme spirale et à ses raisins gonflés qui se détachent joliment sur sa surface dorée. Sa pâte feuilletée croustillante et sa garniture douce et crémeuse font de cette viennoiserie un vrai délice pour les amateurs de pâtisseries. Le pain au raisin est un classique de la boulangerie française, qui reste très apprécié aujourd'hui.`,
+        categoryCourse: "Pastry",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Sucre",
+          "Sel",
+          "Levure",
+          "Beurre",
+          "Lait",
+          "Eau",
+          "Oeuf",
+          "raisins",
+          "sucre marron",
+          "canelle",
+          "muscade",
+        ],
+        imageCourse: ["pain_au_raisins.png", "pain_au_raisins_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Brioche",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `La brioche est une viennoiserie française, moelleuse et délicieusement parfumée, qui est souvent consommée au petit-déjeuner ou au goûter. Elle est faite à partir d'une pâte levée riche en beurre, en œufs et en sucre, qui lui donne une texture tendre et fondante en bouche. La brioche peut être aromatisée avec des ingrédients tels que la vanille, le zeste d'orange ou le rhum, pour ajouter de la saveur. Elle peut être dégustée telle quelle ou toastée et tartinée de confiture ou de pâte à tartiner. La brioche est une pâtisserie incontournable de la tradition française, appréciée pour son goût délicat et sa texture légère.`,
+        categoryCourse: "Pastry",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine de force",
+          "Oeufs",
+          "Sel",
+          "Levure",
+          "Sucre",
+          "Beurre",
+        ],
+        imageCourse: ["brioche.png", "brioche_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Brioche au sucre",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `La brioche au sucre est une pâtisserie française, moelleuse et légèrement sucrée, qui est souvent consommée au petit-déjeuner ou au goûter. Elle est faite à partir d'une pâte levée riche en beurre, qui lui donne une texture tendre et fondante en bouche. La brioche est traditionnellement saupoudrée de sucre en grains avant d'être cuite au four, ce qui lui confère une croûte croustillante et dorée. Elle peut être dégustée telle quelle ou agrémentée de confiture, de pâte à tartiner ou de fruits frais. La brioche au sucre est une pâtisserie délicieuse et réconfortante, qui incarne parfaitement la tradition française de la boulangerie.`,
+        categoryCourse: "Pastry",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine de force",
+          "Oeufs",
+          "Sel",
+          "Levure",
+          "Sucre",
+          "Beurre",
+        ],
+        imageCourse: ["brioche_au_sucre.png", "brioche_au_sucre_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Pizza",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `La pizza est un plat italien emblématique, composé d'une pâte à pizza recouverte de sauce tomate et garnie de divers ingrédients, tels que du fromage, de la viande, des légumes ou des herbes aromatiques. La pizza est cuite au four et peut être dégustée chaude ou froide. Elle est souvent considérée comme un plat convivial à partager entre amis ou en famille. La pizza a connu une grande popularité dans le monde entier et il existe aujourd'hui de nombreuses variantes de ce plat traditionnel italien.`,
+        categoryCourse: "Other",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Farine de seigle noire",
+          "Eau",
+          "Huile d’olive",
+          "Oeufs",
+          "Levure",
+          "Sel",
+        ],
+        imageCourse: ["pizza.png", "pizza_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Gua Bao",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Le gua bao est un petit pain taïwanais cuit à la vapeur et farci de viande de porc braisée, de légumes et d'herbes aromatiques. Sa texture moelleuse et légère en fait une option de street food populaire dans de nombreux pays asiatiques. On le trouve souvent sous forme de sandwich, avec le pain ouvert en deux pour accueillir les garnitures savoureuses. Le gua bao est également souvent accompagné de sauces sucrées et salées pour ajouter une touche de saveur supplémentaire.`,
+        categoryCourse: "Other",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Lait",
+          "Sucre",
+          "Levure",
+          "Sel",
+          "Levure chimique",
+          "Eau",
+        ],
+        imageCourse: ["gua_bao.png", "gua_bao_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Nann",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Le pain naan est un pain traditionnel originaire d'Asie centrale et du sud. C'est un pain plat et rond, cuit au four tandoor, qui peut être dégusté nature, aromatisé ou fourré. Il est souvent utilisé pour accompagner des plats indiens ou moyen-orientaux tels que les curry, les tandoori et les kebabs. La pâte est généralement faite avec de la farine de blé, du yaourt et de la levure, ce qui donne une texture légèrement moelleuse et aérée. Le pain naan peut également être garni de fromage, d'oignons ou d'autres ingrédients avant d'être cuit pour créer des variantes savoureuses.`,
+        categoryCourse: "Other",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Levure",
+          "Sucre",
+          "Sel",
+          "Lait",
+          "Yaourt",
+          "Beurre",
+          "Oeuf",
+        ],
+        imageCourse: ["nann.png", "nann_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Tortillas",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `La tortilla est un plat traditionnel de la cuisine mexicaine, qui se présente sous forme d'une galette plate faite de maïs ou de farine de blé. Elle est généralement utilisée comme base pour des plats tels que les tacos, les enchiladas ou les quesadillas, et peut être garnie avec une variété d'ingrédients tels que de la viande, des légumes, du fromage et des sauces. La tortilla est souvent considérée comme un aliment de base dans la cuisine mexicaine et peut être consommée à tout moment de la journée, que ce soit pour le petit déjeuner, le déjeuner ou le dîner. Elle est également devenue populaire dans le monde entier en tant que plat savoureux et facile à préparer.
+          `,
+        categoryCourse: "Other",
+        caloriesCourse: 400,
+        ingredientsCourse: [
+          "Farine T65",
+          "Sel",
+          "Levure chimique",
+          "Eau",
+          "Huile végétale",
+        ],
+        imageCourse: ["tortillas.png", "tortillas_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+      {
+        nameCourse: "Dumpings",
+        dateCourse: "2023-03-08",
+        timeCourse: "14:30",
+        addressCourse:
+          "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
+        descriptionCourse: `Le dumpling est un plat traditionnel de la cuisine asiatique, constitué d'une petite boulette de pâte farcie de viande, de légumes ou de fruits de mer. On le cuit généralement à la vapeur, à la poêle ou dans un bouillon. Il existe de nombreuses variantes de dumplings selon les régions d'Asie, les ingrédients et les méthodes de cuisson utilisées. Les dumplings peuvent être dégustés en apéritif, en plat principal ou en collation. Ils sont souvent accompagnés d'une sauce soja, d'une sauce aigre-douce ou d'une sauce pimentée pour leur donner plus de saveur.`,
+        categoryCourse: "Other",
+        caloriesCourse: 400,
+        ingredientsCourse: ["Farine T65", "Eau", "Sel"],
+        imageCourse: ["dumping.png", "dumping_R.png"],
+        instructorCourse: {
+          _id: "6408d89aaf9308838ec8e85a",
+        },
+        studentsCourse: ["123456"],
+      },
+    ]);
+  } catch (error) {
+    console.log("err", error);
+  }
+}
 
 // insertDymmyRecipeData();
 
@@ -451,143 +395,151 @@
 // insertDymmyCategoryData();
 
 // user;
-// async function insertDymmyCategoryData() {
-//   try {
-//     await User.insertMany([
-//       {
-//         firstnameUser: "Auguste",
-//         lastnameUser: "Lefebvre",
-//         themeColorUser: "#b3b3b3",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "augustelefebvre@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Auguste_Lefebvre", "Auguste_Lefebvre_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Christine",
-//         lastnameUser: "Leconte",
-//         themeColorUser: "#36495C",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "christineleconte@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Christine_Leconte", "Christine_Leconte_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Claudine",
-//         lastnameUser: "Lefort",
-//         themeColorUser: "#ff0066",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "claudinelefort@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Claudine_Lefort", "Claudine_Lefort_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Emmanuel",
-//         lastnameUser: "Brunel",
-//         themeColorUser: "#dca47d",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "emmanuelbrunel@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Emmanuel_Brunel", "Emmanuel_Brunel_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Joséphine",
-//         lastnameUser: "Fabre",
-//         themeColorUser: "#d3be4a",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "joséphinefabre@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Joséphine_Fabret", "Joséphine_Fabret_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Sophie",
-//         lastnameUser: "Ferrand",
-//         themeColorUser: "#e39d0d",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "sophieferrand@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Sophie_Ferrand", "Sophie_Ferrand_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Sébastien",
-//         lastnameUser: "Paul",
-//         themeColorUser: "#6e1d0e",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "sébastienpaul@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Sébastien_Paul", "Sébastien_Paul_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Élise",
-//         lastnameUser: "Maillot",
-//         themeColorUser: "#627e65",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "elisemaillot@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Élise_Maillot", "Élise_Maillot_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Lola",
-//         lastnameUser: "Gonzalez",
-//         themeColorUser: "#9F5514",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "lolagonzalez@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Lola_Gonzalez", "Lola_Gonzalez_R"],
-//         roleUser: "instructor",
-//       },
-//       {
-//         firstnameUser: "Marie",
-//         lastnameUser: "Curie",
-//         themeColorUser: "#91BCD6",
-//         fathUser: "I beleive baking can have infinite possibilities.",
-//         emailUser: "mariecurie@gmail.com",
-//         passwordUser: "12345678",
-//         introductionUser:
-//           "Hello, my name is Lily and I am a professional baker with 5 years of experience. I have a passion for baking and creating unique and delicious treats. What I love most about baking is the opportunity to share my knowledge and skills with others. I believe that anyone can learn how to bake, and I enjoy teaching others through workshops and sharing my recipes online. If you're looking for a baker who is passionate about their craft and loves to share their skills with others, then I'm your girl.",
-//         googleIDUser: "123",
-//         imageUser: ["Marie_Curie", "Marie_Curie_R"],
-//         roleUser: "instructor",
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log("err", error);
-//   }
-// }
+async function insertDymmyCategoryData() {
+  try {
+    await User.insertMany([
+      {
+        firstnameUser: "Auguste",
+        lastnameUser: "Lefebvre",
+        themeColorUser: "#b3b3b3",
+        fathUser: "Cuisiner est une manière de démontrer notre amour.",
+        emailUser: "augustelefebvre@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m’appelle Auguste. Je travaille dans la boulangerie depuis 3 ans. Depuis tout jeune, j'ai toujours été passionné par la cuisine et surtout par la boulangerie. Après avoir terminé mes études dans l’art culinaire, j’ai décidé de poursuivre mon rêve de devenir boulanger. C’est un métier qui demande beaucoup d’innovation afin de créer de nouvelles recettes pour nos clients. J’adore me dépasser et faire de mon mieux pour satisfaire tout le monde. Ma spécialité sont les brioches au sucre  mais j’aimerais beaucoup m’améliorer pour pouvoir faire d'autres pâtisseries plus complexes.",
+        googleIDUser: "123",
+        imageUser: ["Auguste_Lefebvre", "Auguste_Lefebvre_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Christine",
+        lastnameUser: "Leconte",
+        themeColorUser: "#36495C",
+        fathUser:
+          "Enseigner la pâtisserie, c'est partager sa passion et transmettre l'art de faire sourire les gens avec chaque bouchée.",
+        emailUser: "christineleconte@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Issu d'une famille de boulangers, j’ai commencé à travailler dans la boulangerie familiale dès mon plus jeune âge. J’ai  perfectionné mes compétences au fil des ans en apprenant les techniques traditionnelles de boulangerie, en utilisant uniquement les meilleurs ingrédients et en expérimentant de nouvelles saveurs.",
+        googleIDUser: "123",
+        imageUser: ["Christine_Leconte", "Christine_Leconte_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Claudine",
+        lastnameUser: "Lefort",
+        themeColorUser: "#ff0066",
+        fathUser:
+          "La pâtisserie, c'est l'art de transformer les ingrédients en émotions.",
+        emailUser: "claudinelefort@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m'appelle Claudine. J'ai travaillé dans différents environnements, que ce soit des petites boulangeries familiales aux grandes cuisines commerciales, et j'ai créé de délicieuses et magnifiques pâtisseries. Je suis fière d'utiliser uniquement les meilleurs ingrédients dans ma pâtisserie, en privilégiant les sources locales dès que je peux, et j'aime expérimenter de nouveaux arômes et techniques pour créer des produits de boulangerie uniques et innovants.",
+        googleIDUser: "123",
+        imageUser: ["Claudine_Lefort", "Claudine_Lefort_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Emmanuel",
+        lastnameUser: "Brunel",
+        themeColorUser: "#dca47d",
+        fathUser:
+          "La pâtisserie m'a appris que les moments les plus doux de la vie sont ceux que l'on partage avec les autres.",
+        emailUser: "emmanuelbrunel@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Connu pour mes créations incroyablement délicieuses et esthétiquement belles. Je suis spécialisé dans la création de pains artisanaux, de viennoiseries et de pâtisseries complexes pour les occasions spéciales. Mes créations sont souvent présentées dans des magazines culinaires prestigieux et je suis régulièrement invité à participer à des émissions de télévision et des conférences sur la boulangerie dans le monde entier.",
+        googleIDUser: "123",
+        imageUser: ["Emmanuel_Brunel", "Emmanuel_Brunel_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Joséphine",
+        lastnameUser: "Fabre",
+        themeColorUser: "#d3be4a",
+        fathUser: "La pâtisserie, c'est ma passion sucrée.",
+        emailUser: "joséphinefabre@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m'appelle Joséphine. C'est ma 10ème année en tant que boulangère. Mes spécialités comprennent le pain artisanal, les pâtisseries  et les gâteaux personnalisés pour les occasions spéciales. J’ai déjà fait plusieurs pièces montées pour des mariages, ou des gâteaux pour des anniversaires. Je suis connue pour mon souci du détail et ma capacité à créer de beaux et délicieux desserts qui laissent une impression durable sur mes clients.",
+        googleIDUser: "123",
+        imageUser: ["Joséphine_Fabret", "Joséphine_Fabret_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Sophie",
+        lastnameUser: "Ferrand",
+        themeColorUser: "#e39d0d",
+        fathUser:
+          "La pâtisserie m'a appris que les défis sont les ingrédients de la réussite, et la patience la clé du succès.",
+        emailUser: "sophieferrand@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m’appelle Sophie. Ayant travaillé pendant des années à l’étranger, je travaille aujourd’hui  dans ma boulangerie, située dans la campagne française, où je continue d'innover et de créer des chefs-d'œuvre culinaires qui ravissent les papilles de mes clients fidèles.",
+        googleIDUser: "123",
+        imageUser: ["Sophie_Ferrand", "Sophie_Ferrand_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Sébastien",
+        lastnameUser: "Paul",
+        themeColorUser: "#6e1d0e",
+        fathUser:
+          "La pâtisserie est un art qui reflète la vie: elle peut être douce, amère, mais toujours belle et savoureuse.",
+        emailUser: "sébastienpaul@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je suis un jeune boulanger passionné qui vient de rejoindre l'industrie de la boulangerie. Bien que je sois nouveau dans le métier, j’essaie de faire preuve d'un grand talent et d'une grande créativité dans la création de pains et de pâtisseries délicieux. Après avoir obtenu mon diplôme en arts culinaires, j’ai commencé mon apprentissage auprès de boulangers expérimentés pour parfaire mes compétences. Je suis toujours à la recherche de nouvelles techniques et de nouvelles saveurs pour créer des créations innovantes.",
+        googleIDUser: "123",
+        imageUser: ["Sébastien_Paul", "Sébastien_Paul_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Élise",
+        lastnameUser: "Maillot",
+        themeColorUser: "#627e65",
+        fathUser:
+          "La pâtisserie c'est la magie de créer du bonheur à partager avec les autres.",
+        emailUser: "elisemaillot@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m'appelle Elise. Je travaille comme boulangère depuis 2 ans. Pendant mon temps libre, j'aime explorer de nouvelles recettes, assister à des conférences et des compétitions de pâtisserie, et partager ma passion pour la pâtisserie avec les autres. J'espère ouvrir un jour ma propre boulangerie, où je pourrai continuer à créer des recettes délicieuses et originales pendant de nombreuses années. J’ai déjà appris tant de choses durant mon apprentissage et j’ai toujours été très bien entourée. J’espère transmettre un peu de ma passion à travers ce que je crée.",
+        googleIDUser: "123",
+        imageUser: ["Élise_Maillot", "Élise_Maillot_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Lola",
+        lastnameUser: "Gonzalez",
+        themeColorUser: "#9F5514",
+        fathUser:
+          "Partager avec les autres, c’est aussi doux qu’une tarte tatin.",
+        emailUser: "lolagonzalez@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m’appelle Lola. J’ai toujours admiré mon père qui était pâtissier et j’ai donc décidé de suivre sa passion et de devenir pâtissière à mon tour. Petite, il m’apprenait à faire des croissants et des pains au chocolat et j’adorais ça. C’est pour cela qu’après avoir passé mon CAP et mon Brevet Professionnel j’ai tout de suite trouvé une boulangerie pâtisserie qui me mettait en confiance et dans laquelle j’adore travailler et partager avec les autres.",
+        googleIDUser: "123",
+        imageUser: ["Lola_Gonzalez", "Lola_Gonzalez_R"],
+        roleUser: "instructor",
+      },
+      {
+        firstnameUser: "Marie",
+        lastnameUser: "Curie",
+        themeColorUser: "#91BCD6",
+        fathUser:
+          "La pâtisserie est une aventure infinie où l'innovation, la créativité et la passion mènent à des saveurs inattendues et délicieuses.",
+        emailUser: "mariecurie@gmail.com",
+        passwordUser: "12345678",
+        introductionUser:
+          "Je m’appelle Marie et j’ai plus de 10 ans d'expérience en pâtisserie. J’utilise uniquement les meilleurs ingrédients pour créer des gâteaux, des tartes, des cookies et des pâtisseries incroyablement savoureux. Je  suis toujours à la recherche de nouvelles saveurs et de techniques innovantes pour créer des desserts qui surprennent et ravissent nos clients. Je suis  également une artiste de la décoration. Chaque gâteau est un chef-d'œuvre personnalisé, qui reflète les goûts et les styles de chaque client et c’est important pour moi de retransmettre ça dans mes créations.",
+        googleIDUser: "123",
+        imageUser: ["Marie_Curie", "Marie_Curie_R"],
+        roleUser: "instructor",
+      },
+    ]);
+  } catch (error) {
+    console.log("err", error);
+  }
+}
 
 // insertDymmyCategoryData();
