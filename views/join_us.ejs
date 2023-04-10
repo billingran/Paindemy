@@ -8,7 +8,7 @@
   </div>
   <div class="center_auth center_joinus">
     <h2>Join Us</h2>
-    <form action="/auth/joinus" method="POST" enctype="multipart/form-data">
+    <form action="/auth/joinus" enctype="multipart/form-data" method="POST">
       <%- include("partials/message") %>
 
       <div class="flex">
@@ -79,7 +79,7 @@
           type="file"
           name="imageUser"
           accept="image/*"
-          required
+          multiple
         />
         <span></span>
         <label for="imageUser" class="upload_joinus a_NBorder"
@@ -89,7 +89,7 @@
 
       <div class="img_list"></div>
 
-      <input type="submit" value="Join Us" />
+      <input type="submit" value="Join us" />
 
       <div class="link_auth">
         Already a member ? <a href="/auth/login">Login</a> or

@@ -20,6 +20,9 @@ const myFunctions = require("./lib/functions");
 // ejs
 const expressLayouts = require("express-ejs-layouts");
 
+// fild upload
+const fileUpload = require("express-fileupload");
+
 // models
 const Category = require("./src/models/Category_model");
 const User = require("./src/models/User_model");
@@ -76,6 +79,7 @@ app.use((req, res, next) => {
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 //Middleware of ejs layouts and ejs
 app.use(expressLayouts);

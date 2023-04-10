@@ -17,6 +17,7 @@ module.exports.postSignUp = async (req, res) => {
   try {
     let { firstnameUser, lastnameUser, emailUser, passwordUser } = req.body;
 
+    // validate password
     if (passwordUser.length < 8) {
       req.flash(
         "error_msg",
@@ -25,12 +26,14 @@ module.exports.postSignUp = async (req, res) => {
       return res.redirect("/auth/signup");
     }
 
+    // validate email
     const emailFound = await User.findOne({ emailUser }).exec();
     if (emailFound) {
       req.flash("error_msg", "Account exist.");
       return res.redirect("/auth/signup");
     }
 
+    // bcrypt and save user
     let hashedPasswordUser = await bcrypt.hash(passwordUser, 12);
     let studentUser = new User({
       firstnameUser,
@@ -69,9 +72,9 @@ module.exports.postJoinUs = async (req, res) => {
       emailUser,
       passwordUser,
       introductionUser,
-      imageUser,
     } = req.body;
 
+    // validate password
     if (passwordUser.length < 8) {
       req.flash(
         "error_msg",
@@ -80,12 +83,41 @@ module.exports.postJoinUs = async (req, res) => {
       return res.redirect("/auth/signup");
     }
 
+    // validate email
     const emailFound = await User.findOne({ emailUser }).exec();
     if (emailFound) {
       req.flash("error_msg", "Account exist.");
       return res.redirect("/auth/joinus");
     }
 
+    // validate img uploaded
+    let imageUploadFile;
+    let uploadPath;
+    let newImageName = [];
+
+    if (!req.files || Object.keys(req.files).length < 2) {
+      req.flash("error_msg", "Two images required");
+      return res.redirect("/auth/joinus");
+    } else if (req.files && Object.keys(req.files).length > 2) {
+      req.flash("error_msg", "you can only upload two images");
+      return res.redirect("/auth/joinus");
+    } else {
+      imageUploadFile = req.files.imageUser;
+
+      imageUploadFile.forEach((img, index) => {
+        newImageName.push(Date.now() + imageUploadFile[index].name);
+      });
+
+      newImageName.forEach((img, index) => {
+        uploadPath = require("path").resolve("./") + "/public/uploads/" + img;
+
+        imageUploadFile[index].mv(uploadPath, function (err) {
+          if (err) return res.satus(500).send(err);
+        });
+      });
+    }
+
+    // bcrypt and save user
     let hashedPasswordUser = await bcrypt.hash(passwordUser, 12);
     let instructorUser = new User({
       firstnameUser,
@@ -95,12 +127,11 @@ module.exports.postJoinUs = async (req, res) => {
       emailUser,
       passwordUser: hashedPasswordUser,
       introductionUser,
-      imageUser,
+      imageUser: newImageName,
       roleUser: "instructor",
     });
 
     await instructorUser.save();
-    console.log(instructorUser);
     req.flash("success_msg", "Congradulation, you are our member now.");
     res.redirect("/auth/joinus");
   } catch (error) {
