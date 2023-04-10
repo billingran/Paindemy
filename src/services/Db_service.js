@@ -154,6 +154,85 @@ class DbService {
     return users;
   }
 
+  // Search //////////////////////////////////////////////////
+  async getSearchTerm(searchTerm) {
+    let foundResults = await this.Course.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "instructorCourse",
+          foreignField: "_id",
+          as: "instructorCourse",
+        },
+      },
+      {
+        $match: {
+          $or: [
+            { nameCourse: { $regex: searchTerm, $options: "" } },
+            { dateCourse: { $regex: searchTerm, $options: "" } },
+            { timeCourse: { $regex: searchTerm, $options: "" } },
+            { addressCourse: { $regex: searchTerm, $options: "" } },
+            { descriptionCourse: { $regex: searchTerm, $options: "" } },
+            { categoryCourse: { $regex: searchTerm, $options: "" } },
+            { ingredientsCourse: { $regex: searchTerm, $options: "" } },
+            { imageCourse: { $regex: searchTerm, $options: "" } },
+            {
+              "instructorCourse._id": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+            {
+              "instructorCourse.firstnameUser": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+            {
+              "instructorCourse.lastnameUser": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+            {
+              "instructorCourse.emailUser": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+          ],
+        },
+      },
+      {
+        $project: {
+          nameCourse: 1,
+          dateCourse: 1,
+          timeCourse: 1,
+          addressCourse: 1,
+          descriptionCourse: 1,
+          categoryCourse: 1,
+          ingredientsCourse: 1,
+          imageCourse: 1,
+          instructorCourse: {
+            _id: 1,
+            firstnameUser: 1,
+            lastnameUser: 1,
+            emailUser: 1,
+          },
+        },
+      },
+    ]);
+
+    let results = [];
+
+    foundResults.forEach((result) => {
+      const courseEntity = new CourseEntity(result);
+      results.push(courseEntity);
+    });
+
+    return results;
+  }
+
   //   async getAllCourses() {
   //     const courses = await this.model.find();
   //     return courses;

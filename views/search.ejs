@@ -1,1 +1,112 @@
-<h1>Hi</h1>
+<!-- /////////////////////////////////////////////// -->
+<!-- search template-->
+
+<!-- /////////////////////////////////////////////// -->
+<!-- search display and template-->
+<section class="section_display section_mid">
+  <div class="ctn_display">
+    <div class="ctn_title_display">
+      <div class="centralA">
+        <i class="uil uil-search icon_title_display"></i>
+        <h2 class="title_display">Our instructors</h2>
+      </div>
+      <div class="mid_display">
+        <a href="/course/instructor/searchterm" class="ctn_viceTitle_display"
+          >Show ramdon
+          <iconify-icon
+            icon="fa:random"
+            class="icon_viceTitle_display"
+          ></iconify-icon>
+        </a>
+      </div>
+    </div>
+    <div>
+      <ul class="ul_template" style="justify-content: flex-start">
+        <% if(typeof results !== 'undefined' && results != null &&
+        results.length > 0) { %> <% results.forEach(function(result){ %>
+        <li class="ctn_template mid_template">
+          <a href="/course/onecourse/<%= result._id %>">
+            <div class="ctn_image_template">
+              <div
+                loading="lazy"
+                class="image_template"
+                style="
+                  background-image: url('/uploads/<%= result.imageCourse[0] %>');
+                "
+              ></div>
+            </div>
+          </a>
+          <div class="ctn_content_template">
+            <ul>
+              <li class="content_template">
+                <div>
+                  <i class="uil uil-book-alt icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="/course/onecourse/<%= result._id %>"
+                    ><%= result.getNameCourse() %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template">
+                <div>
+                  <iconify-icon
+                    icon="tabler:chef-hat"
+                    class="icon_content_template"
+                  ></iconify-icon>
+                </div>
+                <div>
+                  <a
+                    href="/course/instructor/<%= result.instructorCourse[0]._id %>"
+                    ><%= getBackUrl(result.instructorCourse[0].firstnameUser) %>
+                    <%= getBackUrl(result.instructorCourse[0].lastnameUser) %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template">
+                <div>
+                  <i class="uil uil-calender icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="#"
+                    ><%= result.dateCourse %> / <%= result.timeCourse %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template address_template">
+                <div>
+                  <i class="uil uil-map-marker icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="#"> <%= result.addressCourse %> </a>
+                </div>
+              </li>
+
+              <li class="ctn_btns_template">
+                <div class="btns_template icon_plus_template">
+                  <a href="#">
+                    <i class="uil uil-plus"></i>
+                  </a>
+                </div>
+                <div class="btns_template icon_more_template">
+                  <a href="/course/onecourse/<%= result._id %>">
+                    <i class="uil uil-ellipsis-h"></i>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <% }) %> <% } else { %>
+        <p>
+          Sorry, we currently don't have <%= categories[2].getNameCategory() %>
+          course
+        </p>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</section>
