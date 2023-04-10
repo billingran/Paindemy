@@ -2,6 +2,8 @@
 const DbService = require("../services/Db_service");
 const dbService = new DbService();
 
+const Course = require("../models/Course_model");
+
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
   try {
@@ -175,6 +177,78 @@ module.exports.getOnecourse = async (req, res) => {
       oneCourse,
       relatedCourses,
     });
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
+};
+
+// search
+module.exports.getSearchTerm = async (req, res) => {
+  try {
+    return res.render("search", {
+      title: "Search",
+      showHeader: true,
+      authUser: req.user,
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
+};
+
+// post search
+module.exports.postGetSearchTerm = async (req, res) => {
+  try {
+    let { searchTerm } = req.body;
+
+    let result = await Course.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "instructorCourse",
+          foreignField: "_id",
+          as: "instructor",
+        },
+      },
+      {
+        $match: {
+          $or: [
+            { nameCourse: { $regex: searchTerm, $options: "" } },
+            { dateCourse: { $regex: searchTerm, $options: "" } },
+            { timeCourse: { $regex: searchTerm, $options: "" } },
+            { addressCourse: { $regex: searchTerm, $options: "" } },
+            { descriptionCourse: { $regex: searchTerm, $options: "" } },
+            { categoryCourse: { $regex: searchTerm, $options: "" } },
+            { ingredientsCourse: { $regex: searchTerm, $options: "" } },
+            {
+              "instructor.firstnameUser": { $regex: searchTerm, $options: "" },
+            },
+            { "instructor.lastnameUser": { $regex: searchTerm, $options: "" } },
+            { "instructor.emailUser": { $regex: searchTerm, $options: "" } },
+          ],
+        },
+      },
+      {
+        $project: {
+          nameCourse: 1,
+          dateCourse: 1,
+          timeCourse: 1,
+          addressCourse: 1,
+          descriptionCourse: 1,
+          categoryCourse: 1,
+          ingredientsCourse: 1,
+          instructor: {
+            firstnameUser: 1,
+            lastnameUser: 1,
+            themeColorUser: 1,
+            emailUser: 1,
+          },
+        },
+      },
+    ]);
+
+    console.log(result);
   } catch (error) {
     return res.status(500).send(error);
     console.log(error);

@@ -27,7 +27,7 @@ router.post(
   authController.postLogin
 );
 
-// google
+// google login
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -37,7 +37,7 @@ router.get(
   authController.googleAuth
 );
 
-// google redirect
+// google login redirect
 router.get(
   "/google/redirect",
   passport.authenticate("google"),

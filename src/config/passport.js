@@ -1,7 +1,6 @@
 // Class Services
-// const AuthService = require("../services/auth_service");
-// authService = new AuthService();
-const User = require("../models/User_model");
+const UserService = require("../services/User_service");
+const userService = new UserService();
 
 //passport auth
 const passport = require("passport");
@@ -36,29 +35,9 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       try {
         const userTypeGoogle = { googleIDUser: profile.id };
-        let userFound = await User.findOne(userTypeGoogle);
-
-        if (userFound) {
-          // func serializeUser
-          // save user on session, sign id of user, and then send it in cookie
-          done(null, userFound);
-        } else {
-          userFound = new User({
-            firstnameUser: profile.name.givenName,
-            lastnameUser: profile.name.familyName || "   ",
-            emailUser: profile.emails[0].value,
-            googleIDUser: profile.id,
-            imageUser: profile.photos[0].value,
-            roleUser: "student",
-          });
-
-          let userGoogle = await userFound.save();
-
-          // func serializeUser
-          // save user on session, sign id of user, and then send it in cookie
-          done(null, userGoogle);
-        }
+        userService.setGoogleLogin(profile, userTypeGoogle, done);
       } catch (error) {
+        res.status(500).send(error);
         console.log(error);
       }
     }
@@ -68,20 +47,6 @@ passport.use(
 // route setting of local login
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    let userFound = await User.findOne({ emailUser: username });
-    if (userFound) {
-      let passwordCompared = await bcrypt.compare(
-        password,
-        userFound.passwordUser
-      );
-      if (passwordCompared) {
-        // func serializeUser
-        done(null, userFound);
-      } else {
-        done(null, false);
-      }
-    } else {
-      done(null, false);
-    }
+    userService.setLocalLogin(username, bcrypt, password, done);
   })
 );

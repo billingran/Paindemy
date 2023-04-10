@@ -11,15 +11,15 @@
     <form action="/auth/joinus" enctype="multipart/form-data" method="POST">
       <%- include("partials/message") %>
 
-      <div class="flex">
-        <div class="txt_field_auth">
+      <div class="ctn_input_fifty">
+        <div class="txt_field_auth" style="margin: 2.8rem 0 0; width: 50%">
           <input id="firstnameUser" type="text" name="firstnameUser" required />
           <span></span>
           <i class="uil uil-parking-circle up_joinus"></i>
           <label for="firstnameUser" class="up_joinus">Firstname</label>
         </div>
 
-        <div class="txt_field_auth">
+        <div class="txt_field_auth" style="margin: 2.8rem 0 0; width: 50%">
           <input id="lastnameUser" type="text" name="lastnameUser" required />
           <span></span>
           <i class="uil uil-user-circle up_joinus"></i>
@@ -27,8 +27,8 @@
         </div>
       </div>
 
-      <div class="flex">
-        <div class="txt_field_auth">
+      <div class="ctn_input_fifty">
+        <div class="txt_field_auth" style="margin: 2.8rem 0 0; width: 50%">
           <input
             id="themeColorUser"
             type="text"
@@ -40,7 +40,7 @@
           <label for="themeColorUser" class="up_joinus">Theme color</label>
         </div>
 
-        <div class="txt_field_auth">
+        <div class="txt_field_auth" style="margin: 2.8rem 0 0; width: 50%">
           <input id="fathUser" type="text" name="fathUser" required />
           <span></span>
           <i class="uil uil-bookmark up_joinus"></i>
@@ -80,6 +80,8 @@
           name="imageUser"
           accept="image/*"
           multiple
+          max="2"
+          required
         />
         <span></span>
         <label for="imageUser" class="upload_joinus a_NBorder"

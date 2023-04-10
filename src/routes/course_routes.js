@@ -13,4 +13,10 @@ router.get("/instructor/:requestIntructor", courseController.getOneinstructor);
 //course
 router.get("/onecourse/:requestCourse", courseController.getOnecourse);
 
+//search
+router.get("/search", courseController.getSearchTerm);
+
+//post search
+router.post("/search", courseController.postGetSearchTerm);
+
 module.exports = router;

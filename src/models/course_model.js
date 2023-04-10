@@ -60,4 +60,8 @@ const courseSchema = new mongoose.Schema({
   },
 });
 
+courseSchema.index({
+  "$**": "text",
+});
+
 module.exports = mongoose.model("Course", courseSchema);
