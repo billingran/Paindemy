@@ -241,14 +241,13 @@ module.exports.postGetSearchTerm = async (req, res) => {
           instructor: {
             firstnameUser: 1,
             lastnameUser: 1,
-            themeColorUser: 1,
             emailUser: 1,
           },
         },
       },
     ]);
 
-    console.log(result);
+    res.redirect("/course/search");
   } catch (error) {
     return res.status(500).send(error);
     console.log(error);
