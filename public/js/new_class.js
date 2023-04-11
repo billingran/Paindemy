@@ -229,7 +229,7 @@ loadIngredients();
 //add and delete img new class
 
 let imgClassList = document.querySelector(".img_list");
-let inputImgClass = document.querySelector('input[name="image_newClass"]');
+let inputImgClass = document.querySelector('input[name="imageCourse"]');
 let imgClassDiv = document.querySelector(".imgClass_div");
 
 //func + img new class

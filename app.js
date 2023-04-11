@@ -89,8 +89,8 @@ app.set("view engine", "ejs");
 // Middleware of routes
 app.use("/auth", authRoutes);
 app.use("/course", courseRoutes);
-app.use("/instructor", authCheck, instructorRoutes);
-app.use("/student", authCheck, studentRoutes);
+app.use("/instructor", instructorRoutes);
+app.use("/student", studentRoutes);
 
 // Middleware of home page
 app.use("/", homePage);

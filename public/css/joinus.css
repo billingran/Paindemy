@@ -45,7 +45,6 @@
 }
 
 /* input */
-
 .ctn_input_fifty {
   display: flex;
 }
@@ -76,9 +75,13 @@
   color: var(--C-FF0066);
 }
 
+.txt_field_auth textarea:focus ~ span::before,
+.txt_field_auth textarea:valid ~ span::before {
+  width: 100%;
+}
+
 /* image upload */
 input[type="file"] {
-  opacity: 0;
   font-size: 1.3rem;
 }
 

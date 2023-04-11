@@ -16,6 +16,43 @@
   padding: 5.5rem 0 2rem 0;
 }
 
+/* select */
+.txt_field_auth select {
+  color: var(--C-B3B3B3);
+  opacity: 0;
+  font-size: 1.3rem;
+  background: none;
+  font-weight: 600;
+
+  outline: none;
+  border: none;
+  padding: 0 5px;
+
+  min-width: 100%;
+  height: 39px;
+
+  transition: all 0.3s;
+}
+
+/* focus and valid select*/
+.txt_field_auth select:focus,
+.txt_field_auth select:valid {
+  opacity: 1;
+}
+
+.txt_field_auth select:focus ~ i.up_joinus,
+.txt_field_auth select:valid ~ i.up_joinus,
+.txt_field_auth select:focus ~ label.up_joinus,
+.txt_field_auth select:valid ~ label.up_joinus {
+  top: -1rem;
+  color: var(--C-FF0066);
+}
+
+.txt_field_auth select:focus ~ span::before,
+.txt_field_auth select:valid ~ span::before {
+  width: 100%;
+}
+
 /* ctn plus btn */
 .ctn_plus_btn {
   margin: 2.8rem 0;

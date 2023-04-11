@@ -57,6 +57,7 @@ form .txt_field_auth {
 
 .txt_field_auth input {
   color: var(--C-B3B3B3);
+  opacity: 0;
   font-size: 1.3rem;
   background: none;
   font-weight: 600;
@@ -67,6 +68,8 @@ form .txt_field_auth {
 
   min-width: 100%;
   height: 39px;
+
+  transition: all 0.3s;
 }
 
 .txt_field_auth i,
@@ -108,6 +111,11 @@ form .txt_field_auth {
 }
 
 /* focus and valid input*/
+.txt_field_auth input:focus,
+.txt_field_auth input:valid {
+  opacity: 1;
+}
+
 .txt_field_auth input:focus ~ i.up_joinus,
 .txt_field_auth input:valid ~ i.up_joinus,
 .txt_field_auth input:focus ~ label.up_joinus,
@@ -117,9 +125,7 @@ form .txt_field_auth {
 }
 
 .txt_field_auth input:focus ~ span::before,
-.txt_field_auth input:valid ~ span::before,
-.txt_field_auth textarea:focus ~ span::before,
-.txt_field_auth textarea:valid ~ span::before {
+.txt_field_auth input:valid ~ span::before {
   width: 100%;
 }
 
