@@ -43,8 +43,6 @@ module.exports.postNewClass = async (req, res) => {
     ingredientsCourse,
   } = req.body;
 
-  console.log(req.body);
-
   // validate date
   const newDateCourse = moment(dateCourse);
   const currentDate = moment().format("YYYY-MM-DD");
@@ -55,55 +53,62 @@ module.exports.postNewClass = async (req, res) => {
   }
 
   // validate calories
-  if (isNaN(categoryCourse)) {
-    // req.flash("error_msg", "Calories should be a number");
-    // return res.redirect("/instructor/newclass");
-    console.log("yes");
-  } else if (categoryCourse < 0) {
-    // req.flash("error_msg", "Calories should be greater than or equal to 0");
-    // return res.redirect("/instructor/newclass");
+  if (isNaN(caloriesCourse)) {
+    req.flash("error_msg", "Calories should be a number");
+    return res.redirect("/instructor/newclass");
+  }
+
+  caloriesCourse = Number(caloriesCourse);
+  if (caloriesCourse < 0) {
+    req.flash("error_msg", "Calories should be greater than or equal to 0");
+    return res.redirect("/instructor/newclass");
   }
 
   // validate img uploaded
-  // let imageUploadFile;
-  // let uploadPath;
-  // let newImageName = [];
+  let imageUploadFile;
+  let uploadPath;
+  let newImageName = [];
 
-  // if (!req.files || Object.keys(req.files.imageCourse).length < 2) {
-  //   req.flash("error_msg", "Two images required");
-  //   return res.redirect("/instructor/newclass");
-  // } else if (req.files && Object.keys(req.files.imageCourse).length > 2) {
-  //   req.flash("error_msg", "you can only upload two images");
-  //   return res.redirect("/instructor/newclass");
-  // } else {
-  //   imageUploadFile = req.files.imageCourse;
+  if (!req.files || Object.keys(req.files.imageCourse).length < 2) {
+    req.flash("error_msg", "Two images required");
+    return res.redirect("/instructor/newclass");
+  } else if (req.files && Object.keys(req.files.imageCourse).length > 2) {
+    req.flash("error_msg", "you can only upload two images");
+    return res.redirect("/instructor/newclass");
+  } else {
+    imageUploadFile = req.files.imageCourse;
 
-  //   imageUploadFile.forEach((img, index) => {
-  //     newImageName.push(Date.now() + imageUploadFile[index].name);
-  //   });
+    imageUploadFile.forEach((img, index) => {
+      newImageName.push(Date.now() + imageUploadFile[index].name);
+    });
 
-  //   newImageName.forEach((img, index) => {
-  //     uploadPath = require("path").resolve("./") + "/public/uploads/" + img;
+    newImageName.forEach((img, index) => {
+      uploadPath = require("path").resolve("./") + "/public/uploads/" + img;
 
-  //     imageUploadFile[index].mv(uploadPath, function (err) {
-  //       if (err) return res.satus(500).send(err);
-  //     });
-  //   });
-  // }
+      imageUploadFile[index].mv(uploadPath, function (err) {
+        if (err) return res.satus(500).send(err);
+      });
+    });
+  }
 
   // save new class
-  // let newCourse = new Course({
-  //   nameCourse,
-  //   dateCourse,
-  //   timeCourse,
-  //   addressCourse,
-  //   descriptionCourse,
-  //   categoryCourse,
-  //   caloriesCourse,
-  //   ingredientsCourse,
-  //   imageCourse: newImageName,
-  //   instructorCourse: req.user._id,
-  // });
+  let newCourse = new Course({
+    nameCourse,
+    dateCourse,
+    timeCourse,
+    addressCourse,
+    descriptionCourse,
+    categoryCourse,
+    caloriesCourse,
+    ingredientsCourse,
+    imageCourse: newImageName,
+    instructorCourse: req.user._id,
+  });
+
+  await newCourse.save();
+
+  req.flash("success_msg", "Course piblished successfully!");
+  res.redirect("/instructor/newclass");
 
   res.render("new_class", {
     title: "New class",

@@ -60,7 +60,7 @@
   background: var(--C-222222);
 
   width: 15.5rem;
-  min-height: 10rem;
+  min-height: 10.25rem;
 }
 
 .content_template {
@@ -97,7 +97,7 @@
 
 .address_template {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .address_template div:nth-child(2) {
