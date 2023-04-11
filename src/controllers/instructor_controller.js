@@ -1,5 +1,5 @@
-// models
-const Course = require("../models/Course_model");
+const CourseService = require("../services/Course_service");
+const courseService = new CourseService();
 
 // time controller
 const moment = require("moment");
@@ -43,56 +43,7 @@ module.exports.postNewClass = async (req, res) => {
     ingredientsCourse,
   } = req.body;
 
-  // validate date
-  const newDateCourse = moment(dateCourse);
-  const currentDate = moment().format("YYYY-MM-DD");
-
-  if (newDateCourse.isBefore(currentDate)) {
-    req.flash("error_msg", "Passed date is not allowed");
-    return res.redirect("/instructor/newclass");
-  }
-
-  // validate calories
-  if (isNaN(caloriesCourse)) {
-    req.flash("error_msg", "Calories should be a number");
-    return res.redirect("/instructor/newclass");
-  }
-
-  caloriesCourse = Number(caloriesCourse);
-  if (caloriesCourse < 0) {
-    req.flash("error_msg", "Calories should be greater than or equal to 0");
-    return res.redirect("/instructor/newclass");
-  }
-
-  // validate img uploaded
-  let imageUploadFile;
-  let uploadPath;
-  let newImageName = [];
-
-  if (!req.files || Object.keys(req.files.imageCourse).length < 2) {
-    req.flash("error_msg", "Two images required");
-    return res.redirect("/instructor/newclass");
-  } else if (req.files && Object.keys(req.files.imageCourse).length > 2) {
-    req.flash("error_msg", "you can only upload two images");
-    return res.redirect("/instructor/newclass");
-  } else {
-    imageUploadFile = req.files.imageCourse;
-
-    imageUploadFile.forEach((img, index) => {
-      newImageName.push(Date.now() + imageUploadFile[index].name);
-    });
-
-    newImageName.forEach((img, index) => {
-      uploadPath = require("path").resolve("./") + "/public/uploads/" + img;
-
-      imageUploadFile[index].mv(uploadPath, function (err) {
-        if (err) return res.satus(500).send(err);
-      });
-    });
-  }
-
-  // save new class
-  let newCourse = new Course({
+  const currentDate = await courseService.postNewCourse(
     nameCourse,
     dateCourse,
     timeCourse,
@@ -101,14 +52,9 @@ module.exports.postNewClass = async (req, res) => {
     categoryCourse,
     caloriesCourse,
     ingredientsCourse,
-    imageCourse: newImageName,
-    instructorCourse: req.user._id,
-  });
-
-  await newCourse.save();
-
-  req.flash("success_msg", "Course piblished successfully!");
-  res.redirect("/instructor/newclass");
+    req,
+    res
+  );
 
   res.render("new_class", {
     title: "New class",

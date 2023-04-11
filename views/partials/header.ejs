@@ -39,8 +39,23 @@
       <label for="search_homeOne"></label>
     </form>
 
-    <div class="ctn_burger">
-      <div class="burger"></div>
+    <div class="central">
+      <% if (!authUser) { %>
+      <div class="ctn_auth_header">
+        <a href="/auth/signup" class="auth_signup_header">Sign up</a>
+        <span class="midLine_auth_header">/</span>
+        <a href="/auth/login" class="auth_login_header">Login</a>
+      </div>
+      <% } %> <% if (authUser) { %>
+      <a href="/" class="ctn_image_header">
+        <span>T</span> <span>W</span>
+        <div class="ctn_course_number">1</div></a
+      >
+      <% } %>
+
+      <div class="ctn_burger">
+        <div class="burger"></div>
+      </div>
     </div>
   </div>
 </header>
@@ -69,39 +84,24 @@
         <label for="search_homeOne_sideBar"></label>
       </form>
     </li>
-    <li>
+    <li class="ctn_image_headerSidebar">
       <img src="/images/logo_home.png" alt="logo Paindemy" loading="lazy" />
-    </li>
-    <% if (!authUser) { %>
-    <li>
-      <a href="/course/courses" class="centralA"
-        ><i class="uil uil-book-alt icon_sideBar_header"></i> COURSES</a
+      <% if (authUser) { %>
+      <a href="/" class="ctn_image_sidebar">
+        <span>T</span> <span>W</span>
+        <div class="ctn_courseNumber_sidebar">1</div></a
       >
+      <% } %>
     </li>
-    <li>
-      <a href="/course/instructors" class="centralA"
-        ><iconify-icon
-          icon="tabler:chef-hat"
-          class="icon_sideBar_header"
-        ></iconify-icon>
-        INSTRUCTORS</a
-      >
-    </li>
-    <li>
-      <a href="/course/instructor" class="centralA"
-        ><iconify-icon
-          icon="tabler:chef-hat"
-          class="icon_sideBar_header"
-        ></iconify-icon>
-        INSTRUCTOR</a
-      >
-    </li>
-    <li>
+    <% if (authUser) { %>
+    <li><div>Teng-wei Huang</div></li>
+    <% } %> <% if (!authUser) { %>
+    <li class="ctn_sidbar_signup">
       <a href="/auth/signup" class="centralA"
         ><i class="uil uil-illustration icon_sideBar_header"></i> SIGN UP</a
       >
     </li>
-    <li>
+    <li class="ctn_sidbar_login">
       <a href="/auth/login" class="centralA"
         ><i class="uil uil-signin icon_sideBar_header"></i> LOGIN</a
       >
