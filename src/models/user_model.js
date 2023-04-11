@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   fathUser: {
     type: String,
     minlength: 1,
-    maxlength: 100,
+    maxlength: 50,
     default: "Bonjour, Je suis",
   },
   emailUser: {

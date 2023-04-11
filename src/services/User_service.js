@@ -7,7 +7,7 @@ class UserService extends DbService {
   constructor() {
     super();
   }
-
+  // Auth//////////////////////////////////////////////////
   // post sign up
   async setSignUp(
     firstnameUser,
@@ -123,7 +123,7 @@ class UserService extends DbService {
     await instructorUser.save();
 
     req.flash("success_msg", "Congradulation, you are our member now.");
-    res.redirect("/auth/joinus");
+    res.redirect("/auth/login");
   }
 
   // local login
@@ -187,6 +187,23 @@ class UserService extends DbService {
     } else if (user.roleUser == "instructor") {
       return res.redirect("/instructor/profile");
     }
+  }
+
+  // serializeUser
+  async serializeUser(passport) {
+    passport.serializeUser((user, done) => {
+      // func deserializeuser
+      //set req.user = user, req.isAuthenticated() = true, req.logout is generated
+      done(null, user._id);
+    });
+  }
+
+  // deserializeUser
+  async deserializeUser(passport) {
+    passport.deserializeUser(async (_id, done) => {
+      let foundUser = await this.User.findOne({ _id });
+      done(null, foundUser);
+    });
   }
 }
 

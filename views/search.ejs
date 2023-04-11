@@ -1,5 +1,8 @@
 <!-- /////////////////////////////////////////////// -->
-<!-- search template-->
+<!-- search title-->
+<section class="ctn_title_search">
+  <h2 class="title_search">Search resutls for :</h2>
+</section>
 
 <!-- /////////////////////////////////////////////// -->
 <!-- search display and template-->
@@ -11,7 +14,9 @@
         <h2 class="title_display">Our instructors</h2>
       </div>
       <div class="mid_display">
-        <a href="/course/instructor/searchterm" class="ctn_viceTitle_display"
+        <a
+          href="/course/onecourse/<%= result._id %>"
+          class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
             icon="fa:random"
@@ -21,7 +26,7 @@
       </div>
     </div>
     <div>
-      <ul class="ul_template" style="justify-content: flex-start">
+      <ul class="ul_template change_ul_template">
         <% if(typeof results !== 'undefined' && results != null &&
         results.length > 0) { %> <% results.forEach(function(result){ %>
         <li class="ctn_template mid_template">

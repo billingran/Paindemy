@@ -11,17 +11,10 @@ const LocalStrategy = require("passport-local");
 const bcrypt = require("bcrypt");
 
 // serializeuser
-passport.serializeUser((user, done) => {
-  // func deserializeuser
-  //set req.user = user, req.isAuthenticated() = true, req.logout is generated
-  done(null, user._id);
-});
+userService.serializeUser(passport);
 
 // deserializeUser
-passport.deserializeUser(async (_id, done) => {
-  let foundUser = await User.findOne({ _id });
-  done(null, foundUser);
-});
+userService.deserializeUser(passport);
 
 // route setting of google login
 passport.use(

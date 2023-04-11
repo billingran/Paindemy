@@ -123,6 +123,8 @@ function addIngredients(e) {
   function getIngredientsValue(item, index) {
     // generate random code
     let randomIngredientNumber = Math.random().toFixed(10);
+
+    // input ramdon code into delete Ingredient Btn
     deleteIngredientBtn.setAttribute("id", randomIngredientNumber);
 
     // input ramdon code into each ctn ingredient
@@ -163,14 +165,14 @@ addIngredientsBtn.addEventListener("click", addIngredients);
 /* /////////////////////////////////////////////// */
 //load and delete ingredients form localsotrage'
 
-loadIngredients();
-
 function loadIngredients() {
   let myIngredientsList = localStorage.getItem("myIngredientsList");
 
   if (myIngredientsList !== null) {
     // add ingredient to ingredient 0
     let myParsedIngredientsList = JSON.parse(myIngredientsList);
+
+    ingredientDiv[0].setAttribute("id", myParsedIngredientsList[0].code);
 
     ingredientDiv[0].childNodes[1].value =
       myParsedIngredientsList[0].ingredient;
@@ -179,6 +181,15 @@ function loadIngredients() {
     myParsedIngredientsList.slice(1).forEach((item, index) => {
       // clone ctn ingredient
       let newIngredients = ingredientDiv[0].cloneNode(true);
+
+      // input ramdon code of storage into each ctn ingredient
+      newIngredients.setAttribute("id", item.code);
+
+      //create delet button of ingredients
+      let deleteIngredientBtn = dltIngredientBtn();
+
+      // input ramdon code of storage into delete Ingredient Btn
+      deleteIngredientBtn.setAttribute("id", item.code);
 
       //+ ingredient number///////////////////////////////////////////
 
@@ -200,9 +211,6 @@ function loadIngredients() {
       // clear input value of new ingredient
       newIngredients.getElementsByTagName("input")[0].value = item.ingredient;
 
-      //create delet button of ingredients
-      let deleteIngredientBtn = dltIngredientBtn();
-
       // append dlt bun of ingredient and ctn ingredient into list of ingredient
       newIngredients.appendChild(deleteIngredientBtn);
       ingredientList.appendChild(newIngredients);
@@ -214,6 +222,8 @@ function loadIngredients() {
     });
   }
 }
+
+loadIngredients();
 
 /* /////////////////////////////////////////////// */
 //add and delete img new class

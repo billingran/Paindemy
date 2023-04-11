@@ -5,50 +5,58 @@
   <div class="filter_auth filter_newclass"></div>
   <div class="center_auth center_newclass">
     <h2>New Class</h2>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form
+      action="/instructor/newclass"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <div class="txt_field_auth">
-        <input id="classname" type="text" name="classname" required />
+        <input id="nameCourse" type="text" name="nameCourse" required />
         <span></span>
         <i class="uil uil-book-alt up_joinus"></i>
-        <label for="classname" class="up_joinus">Classname</label>
+        <label for="nameCourse" class="up_joinus">Classname</label>
       </div>
 
       <div class="txt_field_auth">
-        <input id="date" type="text" name="date" required />
+        <input id="dateCourse" type="text" name="dateCourse" required />
         <span></span>
         <i class="uil uil-calender up_joinus"></i>
-        <label for="date" class="up_joinus">Date</label>
+        <label for="dateCourse" class="up_joinus">Date</label>
       </div>
 
       <div class="txt_field_auth">
-        <input id="date" type="text" name="date" required />
+        <input id="timeCourse" type="text" name="timeCourse" required />
         <span></span>
         <i class="uil uil-clock up_joinus"></i>
-        <label for="date" class="up_joinus">Time</label>
+        <label for="timeCourse" class="up_joinus">Time</label>
       </div>
 
       <div class="txt_field_auth">
-        <input id="address" type="text" name="address" required />
+        <input id="addressCourse" type="text" name="addressCourse" required />
         <span></span>
         <i class="uil uil-map-marker up_joinus"></i>
-        <label for="address" class="up_joinus">Address</label>
+        <label for="addressCourse" class="up_joinus">Address</label>
       </div>
 
       <div class="txt_field_auth">
-        <textarea name="description" id="description" required></textarea>
+        <textarea
+          name="descriptionCourse"
+          id="descriptionCourse"
+          required
+        ></textarea>
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
-        <label for="description" class="up_joinus">Description</label>
+        <label for="descriptionCourse" class="up_joinus">Description</label>
       </div>
 
       <div class="txt_field_auth">
-        <input id="category" type="text" name="category" required />
+        <input id="categoryCourse" type="text" name="categoryCourse" required />
         <span></span>
         <i class="uil uil-folder up_joinus"></i>
-        <label for="category" class="up_joinus">Category</label>
+        <label for="categoryCourse" class="up_joinus">Category</label>
       </div>
       <div class="txt_field_auth">
-        <input id="calories" type="text" name="calories" required />
+        <input id="caloriesCourse" type="text" name="caloriesCourse" required />
         <span></span>
         <i class="uil uil-fire up_joinus"></i>
         <label for="calories" class="up_joinus">Calories</label>
@@ -91,7 +99,8 @@
 
       <input type="submit" value="Submit" />
       <div class="link_auth">
-        Back to <a href="#">Jasmin Dupre</a>'s profile or <a href="#">Home</a>
+        Back to <a href="/instructor/profile">Jasmin Dupre</a>'s profile or
+        <a href="/">Home</a>
       </div>
     </form>
   </div>

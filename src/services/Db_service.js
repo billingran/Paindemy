@@ -155,7 +155,9 @@ class DbService {
   }
 
   // Search //////////////////////////////////////////////////
-  async getSearchTerm(searchTerm) {
+
+  // get all results (result of searching,)
+  async getAllResults(searchTerm) {
     let foundResults = await this.Course.aggregate([
       {
         $lookup: {
@@ -231,6 +233,16 @@ class DbService {
     });
 
     return results;
+  }
+
+  // get one result (random result,)
+  getOneResultFloorMath(results) {
+    let countResults = results.length;
+    let numberResults = Math.floor(Math.random() * countResults);
+
+    const result = results[numberResults];
+
+    return result;
   }
 
   //   async getAllCourses() {

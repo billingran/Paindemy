@@ -191,13 +191,16 @@ module.exports.postGetSearchTerm = async (req, res) => {
   try {
     let { searchTerm } = req.body;
 
-    let results = await dbService.getSearchTerm(searchTerm);
+    let results = await dbService.getAllResults(searchTerm);
+
+    let result = dbService.getOneResultFloorMath(results);
 
     return res.render("search", {
       title: "Search",
       showHeader: true,
       authUser: req.user,
       results,
+      result,
     });
   } catch (error) {
     return res.status(500).send(error);

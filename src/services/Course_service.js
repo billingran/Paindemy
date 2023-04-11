@@ -7,6 +7,8 @@ class CourseService extends DbService {
   constructor() {
     super();
   }
+
+  // New class//////////////////////////////////////////////////
 }
 
 module.exports = CourseService;
