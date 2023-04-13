@@ -1,11 +1,11 @@
 <!-- /////////////////////////////////////////////// -->
-<!-- search title-->
+<!-- title search -->
 <section class="section_title">
   <h2 class="title">Search resutls for :</h2>
 </section>
 
 <!-- /////////////////////////////////////////////// -->
-<!-- search display and template-->
+<!-- display and template search-->
 <section class="section_display section_mid">
   <div class="ctn_display">
     <div class="ctn_title_display">
@@ -64,8 +64,11 @@
                 <div>
                   <a
                     href="/course/instructor/<%= result.instructorCourse[0]._id %>"
-                    ><%= getBackUrl(result.instructorCourse[0].firstnameUser) %>
-                    <%= getBackUrl(result.instructorCourse[0].lastnameUser) %>
+                    ><%=
+                    result.getBackUrl(result.instructorCourse[0].firstnameUser)
+                    %> <%=
+                    result.getBackUrl(result.instructorCourse[0].lastnameUser)
+                    %>
                   </a>
                 </div>
               </li>

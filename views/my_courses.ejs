@@ -1,0 +1,25 @@
+<!-- /////////////////////////////////////////////// -->
+<!--  my courses instructor-->
+<% if (authUser.roleUser == 'instructor') { %>
+
+<section class="section_title">
+  <h2 class="title central">
+    <iconify-icon icon="tabler:chef-hat" class="icon_title"></iconify-icon> <%=
+    authUser.firstnameUser %> <%= authUser.lastnameUser %>
+  </h2>
+</section>
+
+<% } %>
+
+<!-- /////////////////////////////////////////////// -->
+<!--  my courses student-->
+<% if (authUser.roleUser == 'student') { %>
+
+<section class="section_title">
+  <h2 class="title central">
+    <iconify-icon icon="tabler:chef-hat" class="icon_title"></iconify-icon> <%=
+    authUser.firstnameUser %> <%= authUser.lastnameUser %>
+  </h2>
+</section>
+
+<% } %>

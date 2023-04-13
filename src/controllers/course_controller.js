@@ -2,8 +2,6 @@
 const DbService = require("../services/Db_service");
 const dbService = new DbService();
 
-const Course = require("../models/Course_model");
-
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
   try {
@@ -30,7 +28,7 @@ module.exports.getCoursesCategory = async (req, res) => {
   try {
     // req.params
     let { nameCategory } = req.params;
-    nameCategory = res.locals.getBackUrl(nameCategory);
+    nameCategory = dbService.getBackUrl(nameCategory);
 
     ////////////////////////////////////////////////////
     // find all courses for carousel
@@ -114,7 +112,7 @@ module.exports.getOneinstructor = async (req, res) => {
 module.exports.getOnecourse = async (req, res) => {
   try {
     let { requestCourse } = req.params;
-    requestCourse = res.locals.getBackUrl(requestCourse);
+    requestCourse = dbService.getBackUrl(requestCourse);
 
     ////////////////////////////////////////////////////
     // find latest, random or one course according req.params

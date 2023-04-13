@@ -128,8 +128,10 @@
                 </div>
                 <div>
                   <a href="#"
-                    ><%= getBackUrl(course.instructorCourse.firstnameUser) %>
-                    <%= getBackUrl(course.instructorCourse.lastnameUser) %>
+                    ><%=
+                    course.getBackUrl(course.instructorCourse.firstnameUser) %>
+                    <%= course.getBackUrl(course.instructorCourse.lastnameUser)
+                    %>
                   </a>
                 </div>
               </li>

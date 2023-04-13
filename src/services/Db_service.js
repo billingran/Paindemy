@@ -12,14 +12,14 @@ class DbService {
   // Category//////////////////////////////////////////////////
   // get one category (icon Category,)
   async getOneCategory(categoryType) {
-    const category = await this.Category.findOne(categoryType);
+    const category = await this.Category.findOne(categoryType).exec();
 
     return new CategoryEntity(category);
   }
 
   // get all categories
   async getAllCategories(categoriesType) {
-    const allCategories = await this.Category.find(categoriesType);
+    const allCategories = await this.Category.find(categoriesType).exec();
 
     let categories = [];
 
@@ -33,7 +33,9 @@ class DbService {
 
   // get all categories limit (categories)
   async getAllCategoriesLimit(limitNumber) {
-    const categoriesLimit = await this.Category.find({}).limit(limitNumber);
+    const categoriesLimit = await this.Category.find({})
+      .limit(limitNumber)
+      .exec();
 
     let categories = [];
 
@@ -62,7 +64,9 @@ class DbService {
 
   // get one course count skip (random, show random category, show random all courses)
   async getOneCourseCountSkip(coursesType) {
-    let countCourses = await this.Course.find(coursesType).countDocuments();
+    let countCourses = await this.Course.find(coursesType)
+      .countDocuments()
+      .exec();
     let numberCourses = Math.floor(Math.random() * countCourses);
 
     const course = await this.Course.findOne(coursesType)
@@ -125,14 +129,14 @@ class DbService {
   // User//////////////////////////////////////////////////
   // get all users (instructor)
   async getOneUser(userType) {
-    const user = await this.User.findOne(userType);
+    const user = await this.User.findOne(userType).exec();
 
     return new UserEntity(user);
   }
 
   // get one user count skip (show randm instructor.)
   async getOneUserCountSkip(usersType) {
-    let countUsers = await this.User.find(usersType).countDocuments();
+    let countUsers = await this.User.find(usersType).countDocuments().exec();
     let numberUsers = Math.floor(Math.random() * countUsers);
 
     const user = await this.User.findOne(usersType).skip(numberUsers).exec();
@@ -243,6 +247,21 @@ class DbService {
     const result = results[numberResults];
 
     return result;
+  }
+
+  // url parser //////////////////////////////////////////////////
+  // url parsed to toLowerCase
+  urlParsed(url) {
+    const urlParsed = url.toLowerCase().replace(/\s+/g, "-");
+
+    return urlParsed;
+  }
+
+  // url parsed to toUpperCase
+  getBackUrl(urlParsed) {
+    let url = urlParsed.replace(/-/g, " ");
+
+    return `${url.charAt(0).toUpperCase()}${url.slice(1).toLowerCase()}`;
   }
 
   //   async getAllCourses() {

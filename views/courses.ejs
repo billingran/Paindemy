@@ -18,8 +18,9 @@
         >
           <div class="left_courses">
             <h2>
-              “ <%= getBackUrl(allCourses[0].descriptionCourse.slice(0, 480)) %>
-              ...
+              “ <%=
+              allCourses[0].getBackUrl(allCourses[0].descriptionCourse.slice(0,
+              480)) %> ...
               <a href="/course/onecourse/<%= allCourses[0]._id %>">
                 read more
                 <iconify-icon
@@ -33,8 +34,11 @@
               href="/course/instructor/<%= allCourses[0].instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
-              -- <%= getBackUrl(allCourses[0].instructorCourse.firstnameUser) %>
-              <%= getBackUrl(allCourses[0].instructorCourse.lastnameUser) %>
+              -- <%=
+              allCourses[0].getBackUrl(allCourses[0].instructorCourse.firstnameUser)
+              %> <%=
+              allCourses[0].getBackUrl(allCourses[0].instructorCourse.lastnameUser)
+              %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -65,7 +69,8 @@
         >
           <div class="left_courses">
             <h2>
-              “ <%= getBackUrl(course.descriptionCourse.slice(0, 480)) %> ...
+              “ <%= course.getBackUrl(course.descriptionCourse.slice(0, 480)) %>
+              ...
               <a href="/course/<%= course._id %>">
                 read more
                 <iconify-icon
@@ -79,8 +84,8 @@
               href="/course/instructor/<%= course.instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
-              -- <%= getBackUrl(course.instructorCourse.firstnameUser) %> <%-
-              getBackUrl(course.instructorCourse.lastnameUser) %>
+              -- <%= course.getBackUrl(course.instructorCourse.firstnameUser) %>
+              <%- course.getBackUrl(course.instructorCourse.lastnameUser) %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -116,7 +121,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/onecourse/<%= urlParsed(iconCategory.nameCategory) %>"
+          href="/course/onecourse/<%= iconCategory.urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon

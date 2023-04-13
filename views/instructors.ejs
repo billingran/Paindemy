@@ -15,13 +15,18 @@
         >
           <div class="filter_instructors"></div>
           <div class="left_instructors">
-            <h2>“ <%= getBackUrl(allinstructors[0].fathUser) %> ”</h2>
+            <h2>
+              “ <%= allinstructors[0].getBackUrl(allinstructors[0].fathUser) %>
+              ”
+            </h2>
             <a
               href="/course/instructor/<%= allinstructors[0]._id %>"
               class="central"
             >
-              -- <%= getBackUrl(allinstructors[0].firstnameUser) %> <%=
-              getBackUrl(allinstructors[0].lastnameUser) %>
+              -- <%=
+              allinstructors[0].getBackUrl(allinstructors[0].firstnameUser) %>
+              <%= allinstructors[0].getBackUrl(allinstructors[0].lastnameUser)
+              %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -32,8 +37,8 @@
             <img
               src="/uploads/<%= allinstructors[0].imageUser[1] %>"
               class="d-block"
-              alt="<%= getBackUrl(allinstructors[0].firstnameUser) %> <%=
-              getBackUrl(allinstructors[0].lastnameUser) %>"
+              alt="<%= allinstructors[0].getBackUrl(allinstructors[0].firstnameUser) %> <%=
+              allinstructors[0].getBackUrl(allinstructors[0].lastnameUser) %>"
             />
           </div>
         </div>
@@ -50,10 +55,10 @@
           <div class="filter_instructors"></div>
 
           <div class="left_instructors">
-            <h2>“ <%= getBackUrl(instructor.fathUser) %> ”</h2>
+            <h2>“ <%= instructor.getBackUrl(instructor.fathUser) %> ”</h2>
             <a href="/course/instructor/<%= instructor._id %>" class="central">
-              -- <%= getBackUrl(instructor.firstnameUser) %> <%=
-              getBackUrl(instructor.lastnameUser) %>
+              -- <%= instructor.getBackUrl(instructor.firstnameUser) %> <%=
+              instructor.getBackUrl(instructor.lastnameUser) %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"

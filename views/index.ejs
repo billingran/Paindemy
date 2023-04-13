@@ -30,7 +30,9 @@
       <% if(typeof categories !== 'undefined' && categories != null &&
       categories.length > 0) { %> <% categories.forEach((category) => { %>
       <li class="mid_image">
-        <a href="/course/courses/<%= urlParsed(category.nameCategory) %>">
+        <a
+          href="/course/courses/<%= category.urlParsed(category.nameCategory) %>"
+        >
           <div class="ctn_image ctn_image_category">
             <div
               loading="lazy"
@@ -61,7 +63,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= urlParsed(categories[0].nameCategory) %>"
+          href="/course/courses/<%= categories[0].urlParsed(categories[0].nameCategory) %>"
           class="ctn_viceTitle_display"
           >View more
           <iconify-icon
@@ -111,8 +113,10 @@
                   <a
                     href="/course/instructor/<%= courseB.instructorCourse._id %>"
                   >
-                    <%= getBackUrl(courseB.instructorCourse.firstnameUser) %>
-                    <%= getBackUrl(courseB.instructorCourse.lastnameUser) %>
+                    <%=
+                    courseB.getBackUrl(courseB.instructorCourse.firstnameUser)
+                    %> <%=
+                    courseB.getBackUrl(courseB.instructorCourse.lastnameUser) %>
                   </a>
                 </div>
               </li>
@@ -173,7 +177,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= urlParsed(categories[1].nameCategory) %>"
+          href="/course/courses/<%= categories[1].urlParsed(categories[1].nameCategory) %>"
           class="ctn_viceTitle_display"
           >View more
           <iconify-icon
@@ -222,8 +226,10 @@
                 <div>
                   <a
                     href="/course/instructor/<%= courseP.instructorCourse._id %>"
-                    ><%= getBackUrl(courseP.instructorCourse.firstnameUser) %>
-                    <%= getBackUrl(courseP.instructorCourse.lastnameUser) %>
+                    ><%=
+                    courseP.getBackUrl(courseP.instructorCourse.firstnameUser)
+                    %> <%=
+                    courseP.getBackUrl(courseP.instructorCourse.lastnameUser) %>
                   </a>
                 </div>
               </li>
@@ -284,7 +290,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= urlParsed(categories[2].nameCategory) %>"
+          href="/course/courses/<%= categories[2].urlParsed(categories[2].nameCategory) %>"
           class="ctn_viceTitle_display"
           >View more
           <iconify-icon
@@ -333,8 +339,10 @@
                 <div>
                   <a
                     href="/course/instructor/<%= courseO.instructorCourse._id %>"
-                    ><%= getBackUrl(courseO.instructorCourse.firstnameUser) %>
-                    <%= getBackUrl(courseO.instructorCourse.lastnameUser) %>
+                    ><%=
+                    courseO.getBackUrl(courseO.instructorCourse.firstnameUser)
+                    %> <%=
+                    courseO.getBackUrl(courseO.instructorCourse.lastnameUser) %>
                   </a>
                 </div>
               </li>

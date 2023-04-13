@@ -25,8 +25,9 @@
               class="icon_imageContent_course"
             ></iconify-icon>
             <div>
-              <%= getBackUrl(oneCourse.instructorCourse.firstnameUser) %> <%=
-              getBackUrl(oneCourse.instructorCourse.lastnameUser) %>
+              <%= oneCourse.getBackUrl(oneCourse.instructorCourse.firstnameUser)
+              %> <%=
+              oneCourse.getBackUrl(oneCourse.instructorCourse.lastnameUser) %>
             </div>
           </div>
         </li>
@@ -126,7 +127,7 @@
           oneCourse.ingredientsCourse != null &&
           oneCourse.ingredientsCourse.length > 0) { %> <%
           oneCourse.ingredientsCourse.forEach((course) => { %>
-          <li><%= getBackUrl(course); %></li>
+          <li><%= oneCourse.getBackUrl(course); %></li>
           <% }) %> <% } else { %>
           <p>No ingredient</p>
           <% } %>
@@ -137,7 +138,9 @@
 
   <% } else { %>
 
-  <p>Sorry, we can't find the <%= getBackUrl(requestCourse) %> course</p>
+  <p>
+    Sorry, we can't find the <%= oneCourse.getBackUrl(requestCourse) %> course
+  </p>
 
   <% } %>
 </section>
@@ -156,7 +159,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/onecourse/<%= urlParsed(iconCategory.nameCategory) %>"
+          href="/course/onecourse/<%= iconCategory.urlParsed(iconCategory.nameCategory) %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon

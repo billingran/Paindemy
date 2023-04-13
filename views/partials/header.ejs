@@ -109,7 +109,7 @@
           icon="tabler:chef-hat"
           class="icon_header_sidebar"
         ></iconify-icon>
-        <% } %> <% if (authUser == 'student') { %>
+        <% } %> <% if (authUser.roleUser == 'student') { %>
         <i class="uil uil-graduation-cap icon_header_sidebar"></i>
         <% } %> Teng-wei Huang
       </div>
@@ -125,12 +125,15 @@
         ><i class="uil uil-signin icon_sideBar_header"></i> Login</a
       >
     </li>
-    <% } %> <% if (authUser) { %>
+    <% } %> <% if (authUser) { %> <% if (authUser.roleUser == 'instructor') { %>
+
     <li>
       <a href="/instructor/newclass" class="centralA"
         ><i class="uil uil-book-alt icon_sideBar_header"></i>New course</a
       >
     </li>
+    <% } %>
+
     <li>
       <a href="/auth/logout" class="centralA"
         ><i class="uil uil-signout icon_sideBar_header"></i> Logout</a

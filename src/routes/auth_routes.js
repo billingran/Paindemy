@@ -22,7 +22,8 @@ router.post(
   "/login",
   passport.authenticate("local", {
     failureRedirect: "/auth/login",
-    failureFlash: "login failure, your account or password is not correct.",
+    failureFlash:
+      "Login failure, your account, password is not correct or account doesn't exist.",
   }),
   authController.postLogin
 );

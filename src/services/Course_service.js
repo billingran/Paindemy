@@ -22,7 +22,8 @@ class CourseService extends DbService {
     caloriesCourse,
     ingredientsCourse,
     req,
-    res
+    res,
+    path
   ) {
     // validate date
     const newDateCourse = moment(dateCourse);
@@ -64,7 +65,7 @@ class CourseService extends DbService {
       });
 
       newImageName.forEach((img, index) => {
-        uploadPath = require("path").resolve("./") + "/public/uploads/" + img;
+        uploadPath = path.resolve("./") + "/public/uploads/" + img;
 
         imageUploadFile[index].mv(uploadPath, function (err) {
           if (err) return res.satus(500).send(err);

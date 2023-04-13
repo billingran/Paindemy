@@ -15,7 +15,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 
 // functions
-const myFunctions = require("./lib/functions");
+// const myFunctions = require("./lib/functions");
 
 // ejs
 const expressLayouts = require("express-ejs-layouts");
@@ -67,8 +67,8 @@ app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
   // funcs
-  res.locals.urlParsed = myFunctions.urlParsed;
-  res.locals.getBackUrl = myFunctions.getBackUrl;
+  // res.locals.urlParsed = myFunctions.urlParsed;
+  // res.locals.getBackUrl = myFunctions.getBackUrl;
 
   // flash message
   res.locals.success_msg = req.flash("success_msg");

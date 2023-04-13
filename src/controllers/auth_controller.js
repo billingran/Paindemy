@@ -1,6 +1,9 @@
 const UserService = require("../services/User_service");
 const userService = new UserService();
 
+// image upload
+const path = require("path");
+
 // bcrypt
 const bcrypt = require("bcrypt");
 
@@ -65,7 +68,8 @@ module.exports.postJoinUs = async (req, res) => {
       introductionUser,
       req,
       res,
-      bcrypt
+      bcrypt,
+      path
     );
   } catch (error) {
     res.status(500).send(error);

@@ -1,0 +1,51 @@
+<!-- /////////////////////////////////////////////// -->
+<!--  title close instructor-->
+<% if (authUser.roleUser == 'instructor') { %>
+<section class="section_title">
+  <h2 class="title central">
+    <iconify-icon icon="tabler:chef-hat" class="icon_title"></iconify-icon> <%=
+    authUser.firstnameUser %> <%= authUser.lastnameUser %>
+  </h2>
+</section>
+
+<section class="section_delete">
+  <h2 class="warning_delete">Warning :</h2>
+  <div class="content_delete">
+    If you close your account, then you will lose all of the courses you have
+    saved and created forever.
+  </div>
+
+  <form
+    action="/<%= authUser.roleUser %>/delete/<%= authUser._id %>?_method=DELETE"
+    method="POST"
+  >
+    <input type="submit" value="Close" class="btn_delete" />
+  </form>
+</section>
+<% } %>
+
+<!-- /////////////////////////////////////////////// -->
+<!-- title close student-->
+<% if (authUser.roleUser == 'student') { %>
+<section class="section_title">
+  <h2 class="title central">
+    <i class="uil uil-graduation-cap icon_title"></i> <%= authUser.firstnameUser
+    %> <%= authUser.lastnameUser %>
+  </h2>
+</section>
+
+<section class="section_delete">
+  <h2 class="warning_delete">Warning :</h2>
+  <div class="content_delete">
+    If you close your account, then you will lose all of the courses you have
+    saved and created forever.
+  </div>
+
+  <form
+    action="/<%= authUser.roleUser %>/delete/<%= authUser._id %>?_method=DELETE"
+    method="POST"
+  >
+    <input type="submit" value="Close" class="btn_delete" />
+  </form>
+</section>
+<% } %>

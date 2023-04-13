@@ -61,7 +61,8 @@ class UserService extends DbService {
     introductionUser,
     req,
     res,
-    bcrypt
+    bcrypt,
+    path
   ) {
     // validate password
     if (passwordUser.length < 8) {
@@ -103,7 +104,7 @@ class UserService extends DbService {
       });
 
       newImageName.forEach((img, index) => {
-        uploadPath = require("path").resolve("./") + "/public/uploads/" + img;
+        uploadPath = path.resolve("./") + "/public/uploads/" + img;
 
         imageUploadFile[index].mv(uploadPath, function (err) {
           if (err) return res.satus(500).send(err);
@@ -133,12 +134,14 @@ class UserService extends DbService {
 
   // local login
   async setLocalLogin(username, bcrypt, password, done) {
-    let userFound = await this.User.findOne({ emailUser: username });
+    let userFound = await this.User.findOne({ emailUser: username }).exec();
+
     if (userFound) {
       let passwordCompared = await bcrypt.compare(
         password,
         userFound.passwordUser
       );
+
       if (passwordCompared) {
         // func serializeUser
         done(null, userFound);
@@ -161,7 +164,7 @@ class UserService extends DbService {
 
   //google login
   async setGoogleLogin(profile, userTypeGoogle, done) {
-    let userFound = await this.User.findOne(userTypeGoogle);
+    let userFound = await this.User.findOne(userTypeGoogle).exec();
 
     if (userFound) {
       // func serializeUser
@@ -206,7 +209,7 @@ class UserService extends DbService {
   // deserializeUser
   async deserializeUser(passport) {
     passport.deserializeUser(async (_id, done) => {
-      let foundUser = await this.User.findOne({ _id });
+      let foundUser = await this.User.findOne({ _id }).exec();
       done(null, foundUser);
     });
   }
