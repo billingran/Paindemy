@@ -97,7 +97,10 @@
           <h2 class="title_display"><%= oneCourse.getNameCourse() %></h2>
         </div>
         <div class="mid_display mid_display_course">
-          <a href="#" class="a_NBorder a_NBorder_course left_btns">
+          <a
+            href="/student/mycourses/<%= oneCourse._id %>"
+            class="a_NBorder a_NBorder_course left_btns"
+          >
             <i class="uil uil-plus"></i> Add</a
           >
         </div>
@@ -238,7 +241,7 @@
 
               <li class="ctn_btns_template">
                 <div class="btns_template icon_plus_template">
-                  <a href="#">
+                  <a href="/student/mycourses/<%= relatedCourse._id %>">
                     <i class="uil uil-plus"></i>
                   </a>
                 </div>

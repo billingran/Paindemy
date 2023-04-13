@@ -8,8 +8,7 @@
     authUser.firstnameUser %> <%= authUser.lastnameUser %>
   </h2>
 </section>
-
-<% } %>
+<%- include("partials/message") %> <% } %>
 
 <!-- /////////////////////////////////////////////// -->
 <!--  my courses student-->
@@ -17,9 +16,9 @@
 
 <section class="section_title">
   <h2 class="title central">
-    <iconify-icon icon="tabler:chef-hat" class="icon_title"></iconify-icon> <%=
-    authUser.firstnameUser %> <%= authUser.lastnameUser %>
+    <i class="uil uil-graduation-cap icon_title"></i> <%= authUser.firstnameUser
+    %> <%= authUser.lastnameUser %>
   </h2>
 </section>
 
-<% } %>
+<%- include("partials/message") %> <% } %>
