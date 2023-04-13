@@ -51,7 +51,15 @@
         <span>T</span> <span>W</span>
         <div class="ctn_course_number">1</div></a
       >
-      <% } %>
+      <% if (authUser.roleUser == "student") { %>
+      <a href="/" class="ctn_image_header">
+        <i class="uil uil-graduation-cap icon_header"></i>
+      </a>
+      <% } %> <% if (authUser.roleUser == "instructor") { %>
+      <a href="/" class="ctn_image_header">
+        <iconify-icon icon="tabler:chef-hat" class="icon_header"></iconify-icon>
+      </a>
+      <% } %> <% } %>
 
       <div class="ctn_burger">
         <div class="burger"></div>
@@ -94,27 +102,47 @@
       <% } %>
     </li>
     <% if (authUser) { %>
-    <li><div>Teng-wei Huang</div></li>
+    <li>
+      <div class="centralA">
+        <% if (authUser.roleUser == 'instructor') { %>
+        <iconify-icon
+          icon="tabler:chef-hat"
+          class="icon_header_sidebar"
+        ></iconify-icon>
+        <% } %> <% if (authUser == 'student') { %>
+        <i class="uil uil-graduation-cap icon_header_sidebar"></i>
+        <% } %> Teng-wei Huang
+      </div>
+    </li>
     <% } %> <% if (!authUser) { %>
     <li class="ctn_sidbar_signup">
       <a href="/auth/signup" class="centralA"
-        ><i class="uil uil-illustration icon_sideBar_header"></i> SIGN UP</a
+        ><i class="uil uil-illustration icon_sideBar_header"></i> sign up</a
       >
     </li>
     <li class="ctn_sidbar_login">
       <a href="/auth/login" class="centralA"
-        ><i class="uil uil-signin icon_sideBar_header"></i> LOGIN</a
+        ><i class="uil uil-signin icon_sideBar_header"></i> Login</a
       >
     </li>
     <% } %> <% if (authUser) { %>
     <li>
       <a href="/instructor/newclass" class="centralA"
-        ><i class="uil uil-book-alt icon_sideBar_header"></i>NEW COURSE</a
+        ><i class="uil uil-book-alt icon_sideBar_header"></i>New course</a
       >
     </li>
     <li>
       <a href="/auth/logout" class="centralA"
-        ><i class="uil uil-signout icon_sideBar_header"></i> LOGOUT</a
+        ><i class="uil uil-signout icon_sideBar_header"></i> Logout</a
+      >
+    </li>
+    <li>
+      <a
+        href="/<%= authUser.roleUser %>/delete/<%= authUser._id %>"
+        class="centralA"
+      >
+        <i class="uil uil-minus-circle icon_sideBar_header"></i> Close
+        account</a
       >
     </li>
     <% } %>

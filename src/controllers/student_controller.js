@@ -6,3 +6,15 @@ module.exports.studentProfile = (req, res) => {
     authUser: req.user,
   });
 };
+
+//student delete
+module.exports.studentDelete = async (req, res) => {
+  res.render("student_delete", {
+    title: "Student Delete",
+    showHeader: true,
+    authUser: req.user,
+  });
+};
+
+//post student delete
+module.exports.postStudentDelete = async (req, res) => {};

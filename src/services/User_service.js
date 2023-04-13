@@ -94,7 +94,12 @@ class UserService extends DbService {
       imageUploadFile = req.files.imageUser;
 
       imageUploadFile.forEach((img, index) => {
-        newImageName.push(Date.now() + imageUploadFile[index].name);
+        newImageName.push(
+          emailUser.replace("@", "").replace(".", "") +
+            "-" +
+            Date.now() +
+            imageUploadFile[index].name
+        );
       });
 
       newImageName.forEach((img, index) => {
@@ -148,9 +153,9 @@ class UserService extends DbService {
   // local login redirect
   setLocalLoginRedirect(user, res) {
     if (user.roleUser == "student") {
-      return res.redirect("/student/profile");
+      return res.redirect(`/student/profile/${user._id}`);
     } else if (user.roleUser == "instructor") {
-      return res.redirect("/instructor/profile");
+      return res.redirect(`/instructor/profile/${user._id}`);
     }
   }
 
@@ -183,9 +188,9 @@ class UserService extends DbService {
   //google login redirect
   setGoogleLoginRedirect(user, res) {
     if (user.roleUser == "student") {
-      return res.redirect("/student/profile");
+      return res.redirect(`/student/profile/${user._id}`);
     } else if (user.roleUser == "instructor") {
-      return res.redirect("/instructor/profile");
+      return res.redirect(`/instructor/profile/${user._id}`);
     }
   }
 

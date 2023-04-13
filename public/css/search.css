@@ -1,25 +1,4 @@
-.ctn_title_search {
-  background: linear-gradient(120deg, #6e1d0e, #ff0066);
-
-  border-radius: 0.55rem;
-  margin: 0 auto 1.5rem;
-
-  width: 91%;
-  height: 10rem;
-
-  display: flex;
-  align-items: center;
-}
-
-.title_search {
-  color: var(--C-F3F3F3);
-  font-size: 2.6rem;
-  font-weight: 600;
-
-  margin: 0 0 0 5rem;
-}
-
-.change_ul_template {
+.change_ul_template_search {
   justify-content: flex-start;
 }
 
@@ -27,19 +6,7 @@
 /* responive */
 
 @media screen and (max-width: 680px) {
-  .ctn_title_search {
-    justify-content: center;
-    padding: 0 0.25rem;
-  }
-
-  .title_search {
-    font-size: 1.9rem;
-    font-weight: 640;
-
-    margin: 0;
-  }
-
-  .change_ul_template {
+  .change_ul_template_search {
     justify-content: space-around;
   }
 }

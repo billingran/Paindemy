@@ -1,0 +1,24 @@
+.section_delete {
+  margin: 7rem auto;
+
+  width: 70%;
+}
+
+.warning_delete {
+  font-size: 3rem;
+  color: var(--C-FF0066);
+}
+
+.content_delete {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 3rem;
+  color: var(--C-565E64);
+
+  margin: 3rem auto;
+}
+
+.section_delete .btn_delete {
+  border-radius: 0.55rem;
+  width: 8rem;
+}

@@ -1,0 +1,50 @@
+.section_title {
+  background: linear-gradient(120deg, #6e1d0e, #ff0066);
+
+  border-radius: 0.55rem;
+  margin: 0 auto 1.5rem;
+
+  width: 91%;
+  height: 10rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: var(--C-F3F3F3);
+  font-size: 2.6rem;
+  font-weight: 600;
+
+  margin: 0 0 0 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.icon_title {
+  font-size: 5rem;
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 680px) {
+  .section_title {
+    justify-content: center;
+    padding: 0 0.25rem;
+  }
+
+  .title {
+    font-size: 1.9rem;
+    font-weight: 640;
+
+    margin: 0;
+  }
+
+  .icon_title {
+    font-size: 4.3rem;
+  }
+}

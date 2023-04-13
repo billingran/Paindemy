@@ -23,6 +23,9 @@ const expressLayouts = require("express-ejs-layouts");
 // fild upload
 const fileUpload = require("express-fileupload");
 
+//method override
+const methodOverride = require("method-override");
+
 // models
 const Category = require("./src/models/Category_model");
 const User = require("./src/models/User_model");
@@ -54,7 +57,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: { secure: false, maxAge: Infinity },
   })
 );
 app.use(passport.initialize());
@@ -80,6 +83,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
+app.use(methodOverride("_method"));
 
 //Middleware of ejs layouts and ejs
 app.use(expressLayouts);
@@ -89,8 +93,8 @@ app.set("view engine", "ejs");
 // Middleware of routes
 app.use("/auth", authRoutes);
 app.use("/course", courseRoutes);
-app.use("/instructor", instructorRoutes);
-app.use("/student", studentRoutes);
+app.use("/instructor", authCheck, instructorRoutes);
+app.use("/student", authCheck, studentRoutes);
 
 // Middleware of home page
 app.use("/", homePage);

@@ -11,6 +11,7 @@ class UserEntity {
     this.googleIDUser = "";
     this.imageUser = [];
     this.roleUser = null;
+    this.favoriteUser = [];
     this.createdAt = new Date();
 
     for (let prop in user) {
@@ -114,6 +115,14 @@ class UserEntity {
 
   setRoleUser(roleUser) {
     this.roleUser = roleUser;
+  }
+
+  getFavoriteUser() {
+    return this.favoriteUser;
+  }
+
+  setFavoriteUser(favoriteUser) {
+    this.favoriteUser = favoriteUser;
   }
 
   getCreatedAt() {

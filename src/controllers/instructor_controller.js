@@ -63,3 +63,24 @@ module.exports.postNewClass = async (req, res) => {
     currentDate,
   });
 };
+
+//instrutor delete
+module.exports.instructorDelete = async (req, res) => {
+  res.render("instructor_delete", {
+    title: "Instructor Delete",
+    showHeader: true,
+    authUser: req.user,
+  });
+};
+
+//post instrutor delete
+module.exports.postInstructorDelete = async (req, res) => {
+  console.log(req.user);
+  console.log(req.params);
+
+  res.render("instructor_delete", {
+    title: "Instructor Delete",
+    showHeader: true,
+    authUser: req.user,
+  });
+};

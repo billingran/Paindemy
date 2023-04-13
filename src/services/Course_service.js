@@ -60,7 +60,7 @@ class CourseService extends DbService {
       imageUploadFile = req.files.imageCourse;
 
       imageUploadFile.forEach((img, index) => {
-        newImageName.push(Date.now() + imageUploadFile[index].name);
+        newImageName.push(req.user._id + "-" + imageUploadFile[index].name);
       });
 
       newImageName.forEach((img, index) => {
