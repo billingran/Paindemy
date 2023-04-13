@@ -12,7 +12,7 @@ module.exports.studentProfile = (req, res) => {
 
 //student delete
 module.exports.studentDelete = async (req, res) => {
-  res.render("close_account", {
+  res.render("delete_account", {
     title: "Student Delete",
     showHeader: true,
     authUser: req.user,
@@ -44,4 +44,13 @@ module.exports.postStudentDelete = async (req, res) => {
     return res.status(500).send(error);
     console.log(error);
   }
+};
+
+//student my courses
+module.exports.studentMycourses = async (req, res) => {
+  res.render("my_courses", {
+    title: "Student my courses",
+    showHeader: true,
+    authUser: req.user,
+  });
 };

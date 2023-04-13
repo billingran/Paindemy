@@ -42,4 +42,11 @@ router.delete(
   instructorController.postInstructorDelete
 );
 
+// instructor my courses
+router.get(
+  "/mycourses/:_id",
+  authCheckInstructor,
+  instructorController.instructorMycourses
+);
+
 module.exports = router;

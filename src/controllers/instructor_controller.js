@@ -73,7 +73,7 @@ module.exports.postNewClass = async (req, res) => {
 
 //instrutor delete
 module.exports.instructorDelete = async (req, res) => {
-  res.render("close_account", {
+  res.render("delete_account", {
     title: "Instructor Delete",
     showHeader: true,
     authUser: req.user,
@@ -142,4 +142,13 @@ module.exports.postInstructorDelete = async (req, res) => {
     return res.status(500).send(error);
     console.log(error);
   }
+};
+
+//instructor my courses
+module.exports.instructorMycourses = async (req, res) => {
+  res.render("my_courses", {
+    title: "Instructor my courses",
+    showHeader: true,
+    authUser: req.user,
+  });
 };

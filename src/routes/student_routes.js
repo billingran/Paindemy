@@ -11,7 +11,7 @@ const authCheckStudent = (req, res, next) => {
   }
 };
 
-//student profile0
+//student profile
 router.get("/profile/:_id", authCheckStudent, studentController.studentProfile);
 
 //student delete
@@ -22,6 +22,13 @@ router.delete(
   "/delete/:_id",
   authCheckStudent,
   studentController.postStudentDelete
+);
+
+// student my courses
+router.get(
+  "/mycourses/:_id",
+  authCheckStudent,
+  studentController.studentMycourses
 );
 
 module.exports = router;

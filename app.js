@@ -47,6 +47,7 @@ const authCheck = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
   } else {
+    req.flash("error_msg", "You should login in first");
     return res.redirect("/auth/login");
   }
 };
