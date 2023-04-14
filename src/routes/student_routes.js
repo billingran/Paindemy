@@ -25,10 +25,6 @@ router.delete(
 );
 
 // student my courses
-router.get(
-  "/mycourses/:_id",
-  authCheckStudent,
-  studentController.studentMycourses
-);
+router.post("/mycourses", studentController.studentMycourses);
 
 module.exports = router;

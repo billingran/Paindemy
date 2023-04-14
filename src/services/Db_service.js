@@ -82,6 +82,16 @@ class DbService {
     return new CourseEntity(course);
   }
 
+  // get one course (show random all instructor courses,)
+  getOneCourseFloorMath(courses) {
+    let countCourses = courses.length;
+    let numberCoursess = Math.floor(Math.random() * countCourses);
+
+    const course = courses[numberCoursess];
+
+    return course;
+  }
+
   // get all courses (all courses, courses category, courses carousel)
   async getAllCourses(coursesType) {
     const allCourses = await this.Course.find(coursesType)
@@ -239,7 +249,7 @@ class DbService {
     return results;
   }
 
-  // get one result (random result,)
+  // get one result (show random result,)
   getOneResultFloorMath(results) {
     let countResults = results.length;
     let numberResults = Math.floor(Math.random() * countResults);

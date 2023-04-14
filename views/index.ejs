@@ -142,15 +142,24 @@
               </li>
 
               <li class="ctn_btns_template">
-                <div class="btns_template icon_plus_template">
-                  <a href="/student/mycourses/<%= courseB._id %>">
-                    <i class="uil uil-plus"></i>
-                  </a>
+                <div class="createdAt_template">
+                  <div>
+                    <i class="uil uil-clock"></i> <%= courseB.getCreatedAt() %>
+                  </div>
                 </div>
-                <div class="btns_template icon_more_template">
-                  <a href="/course/onecourse/<%= courseB._id %>">
-                    <i class="uil uil-ellipsis-h"></i>
-                  </a>
+                <div class="centralA">
+                  <% if (authUser.roleUser == "student") { %>
+                  <div class="btns_template icon_plus_template">
+                    <a href="#" class="btn_mycourses" id="<%= courseB._id %>">
+                      <i class="uil uil-plus"></i>
+                    </a>
+                  </div>
+                  <% } %>
+                  <div class="btns_template icon_more_template">
+                    <a href="/course/onecourse/<%= courseB._id %>">
+                      <i class="uil uil-ellipsis-h"></i>
+                    </a>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -255,15 +264,25 @@
               </li>
 
               <li class="ctn_btns_template">
-                <div class="btns_template icon_plus_template">
-                  <a href="/student/mycourses/<%= courseP._id %>">
-                    <i class="uil uil-plus"></i>
-                  </a>
+                <div class="createdAt_template">
+                  <div>
+                    <i class="uil uil-clock"></i> <%= courseP.getCreatedAt() %>
+                  </div>
                 </div>
-                <div class="btns_template icon_more_template">
-                  <a href="/course/onecourse/<%= courseP._id %>">
-                    <i class="uil uil-ellipsis-h"></i>
-                  </a>
+                <div class="centralA">
+                  <% if (authUser.roleUser == "student") { %>
+                  <div class="btns_template icon_plus_template">
+                    <a href="#" class="btn_mycourses" id="<%= courseP._id %>">
+                      <i class="uil uil-plus"></i>
+                    </a>
+                  </div>
+                  <% } %>
+
+                  <div class="btns_template icon_more_template">
+                    <a href="/course/onecourse/<%= courseP._id %>">
+                      <i class="uil uil-ellipsis-h"></i>
+                    </a>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -368,15 +387,24 @@
               </li>
 
               <li class="ctn_btns_template">
-                <div class="btns_template icon_plus_template">
-                  <a href="/student/mycourses/<%= courseO._id %>">
-                    <i class="uil uil-plus"></i>
-                  </a>
+                <div class="createdAt_template">
+                  <div>
+                    <i class="uil uil-clock"></i> <%= courseO.getCreatedAt() %>
+                  </div>
                 </div>
-                <div class="btns_template icon_more_template">
-                  <a href="/course/onecourse/<%= courseO._id %>">
-                    <i class="uil uil-ellipsis-h"></i>
-                  </a>
+                <div class="centralA">
+                  <% if (authUser.roleUser == "student") { %>
+                  <div class="btns_template icon_plus_template">
+                    <a href="#" class="btn_mycourses" id="<%= courseO._id %>">
+                      <i class="uil uil-plus"></i>
+                    </a>
+                  </div>
+                  <% } %>
+                  <div class="btns_template icon_more_template">
+                    <a href="/course/onecourse/<%= courseO._id %>">
+                      <i class="uil uil-ellipsis-h"></i>
+                    </a>
+                  </div>
                 </div>
               </li>
             </ul>

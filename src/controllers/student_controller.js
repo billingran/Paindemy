@@ -1,4 +1,6 @@
-const User = require("../models/User_model");
+// Class Services
+const UserService = require("../services/User_service");
+const userService = new UserService();
 const Course = require("../models/Course_model");
 
 // student profile
@@ -24,22 +26,7 @@ module.exports.postStudentDelete = async (req, res) => {
   try {
     let { _id } = req.params;
 
-    ////////////////////////////////////////////////////
-    // delete student from courses
-    Course.updateMany(
-      { studentsCourse: _id },
-      { $pull: { studentsCourse: _id } }
-    ).exec();
-
-    ////////////////////////////////////////////////////
-    // delete student
-    await User.deleteOne({ _id });
-
-    ////////////////////////////////////////////////////
-    // delete student session
-    // req.session.destroy();
-
-    res.redirect("/");
+    await userService.deleteStudent(_id, req, res);
   } catch (error) {
     return res.status(500).send(error);
     console.log(error);
@@ -49,24 +36,24 @@ module.exports.postStudentDelete = async (req, res) => {
 //student my courses
 module.exports.studentMycourses = async (req, res) => {
   try {
-    let { _id } = req.params;
+    // let { _id } = req.params;
 
     ////////////////////////////////////////////////////
     // add student into the course
 
-    const course = await Course.findOne({ _id }).exec();
-    console.log(course.studentsCourse.includes(req.user._id));
+    // const course = await Course.findOne({ _id }).exec();
+    // console.log(course.studentsCourse.includes(req.user._id));
 
-    if (course.studentsCourse.includes(req.user._id)) {
-      req.flash("error_msg", "You can't join same course two times");
-      return res.redirect(`/student/mycourses/${req.user._id}`);
-    }
+    // if (course.studentsCourse.includes(req.user._id)) {
+    //   req.flash("error_msg", "You can't join same course two times");
+    //   return res.redirect(`/student/mycourses/${req.user._id}`);
+    // }
 
-    await Course.updateOne(
-      { _id },
-      { $push: { studentsCourse: req.user._id } },
-      { runValidators: true }
-    ).exec();
+    // await Course.updateOne(
+    //   { _id },
+    //   { $push: { studentsCourse: req.user._id } },
+    //   { runValidators: true }
+    // ).exec();
 
     // let test = await Course.updateOne(
     //   { _id },

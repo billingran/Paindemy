@@ -1,3 +1,6 @@
+// time controller
+const moment = require("moment");
+
 class CourseEntity {
   constructor(course) {
     this._id = null;
@@ -126,7 +129,7 @@ class CourseEntity {
   }
 
   getCreatedAt() {
-    return this.createdAt;
+    return moment(this.createdAt).format("DD/MM/YYYY h:mm:ss a");
   }
 
   setCreatedAt(createdAt) {

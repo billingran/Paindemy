@@ -7,6 +7,12 @@
   flex-wrap: wrap;
 }
 
+.ul_template_two {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .ctn_template {
   box-shadow: 0 3px 10px rgb(34 34 34 / 0.5);
   overflow: hidden;
@@ -116,7 +122,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .btns_template {
@@ -150,10 +156,21 @@
   background: var(--C-DCA47D);
 }
 
+/* createdAt */
+.createdAt_template {
+  color: var(--C-72B955);
+  font-size: 0.5rem;
+}
+
 /* /////////////////////////////////////////////// */
 /* responive */
 
 @media screen and (max-width: 530px) {
+  /* ul template */
+  .ul_template_two {
+    justify-content: space-around;
+  }
+
   /* image template */
   .ctn_image_template,
   .ctn_image_template .image_template {

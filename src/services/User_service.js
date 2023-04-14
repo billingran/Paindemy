@@ -213,6 +213,83 @@ class UserService extends DbService {
       done(null, foundUser);
     });
   }
+
+  //post student delete
+  async deleteStudent(_id, req, res) {
+    ////////////////////////////////////////////////////
+    // delete student from courses
+    await this.Course.updateMany(
+      { studentsCourse: _id },
+      { $pull: { studentsCourse: _id } }
+    ).exec();
+
+    ////////////////////////////////////////////////////
+    // delete student
+    await this.User.deleteOne({ _id });
+
+    ////////////////////////////////////////////////////
+    // delete student session
+    req.session.destroy();
+
+    res.redirect("/");
+  }
+
+  //post instrutor delete
+  async deleteInstructor(_id, req, res, path, fs) {
+    ////////////////////////////////////////////////////
+    // delete instructor courses
+    await this.Course.deleteMany({ instructorCourse: _id });
+
+    ////////////////////////////////////////////////////
+    // delete instructor
+    await this.User.deleteOne({ _id });
+
+    ////////////////////////////////////////////////////
+    // delete instructor session
+    req.session.destroy();
+
+    ////////////////////////////////////////////////////
+    // delete instructor and courses photoes
+    // file path
+    const directoryPath = path.resolve("./") + "/public/uploads";
+
+    // read the file path
+    fs.readdir(directoryPath, (err, files) => {
+      if (err) {
+        console.error(`Error reading directory: ${err}`);
+        return;
+      }
+
+      files.forEach((file) => {
+        // image path
+        const filePath = path.join(directoryPath, file);
+        // get image stat
+        const fileStats = fs.statSync(filePath);
+        // get instrutor images firstname
+        const instructorImageName = req.user.emailUser
+          .replace("@", "")
+          .replace(".", "");
+
+        // get courses images firstname
+        const coursessImageName = _id;
+
+        // Check if the stat is a file and file was uploaded by the user
+        if (
+          (fileStats.isFile() && file.startsWith(instructorImageName)) ||
+          file.startsWith(coursessImageName)
+        ) {
+          // Delete the file
+          fs.unlink(filePath, (err) => {
+            if (err) {
+              console.error(`Error deleting file: ${err}`);
+            }
+          });
+        }
+      });
+    });
+
+    res.redirect("/");
+  }
 }
 
 module.exports = UserService;

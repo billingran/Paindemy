@@ -1,6 +1,12 @@
+// Class Services
 const CourseService = require("../services/Course_service");
 const courseService = new CourseService();
-const User = require("../models/User_model");
+const UserService = require("../services/User_service");
+const userService = new UserService();
+const DbService = require("../services/Db_service");
+const dbService = new DbService();
+
+// models
 const Course = require("../models/Course_model");
 
 // image upload
@@ -85,59 +91,7 @@ module.exports.postInstructorDelete = async (req, res) => {
   try {
     let { _id } = req.params;
 
-    ////////////////////////////////////////////////////
-    // delete instructor courses
-    await Course.deleteMany({ instructorCourse: _id });
-
-    ////////////////////////////////////////////////////
-    // delete instructor
-    await User.deleteOne({ _id });
-
-    ////////////////////////////////////////////////////
-    // delete instructor session
-    req.session.destroy();
-
-    ////////////////////////////////////////////////////
-    // delete instructor and courses photoes
-    // file path
-    const directoryPath = path.resolve("./") + "/public/uploads";
-
-    // read the file path
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        console.error(`Error reading directory: ${err}`);
-        return;
-      }
-
-      files.forEach((file) => {
-        // image path
-        const filePath = path.join(directoryPath, file);
-        // get image stat
-        const fileStats = fs.statSync(filePath);
-        // get instrutor images firstname
-        const instructorImageName = req.user.emailUser
-          .replace("@", "")
-          .replace(".", "");
-        // get courses images firstname
-        const coursessImageName = _id;
-
-        // Check if the stat is a file and file was uploaded by the user
-        if (
-          fileStats.isFile() &&
-          file.startsWith(instructorImageName) &&
-          file.startsWith(coursessImageName)
-        ) {
-          // Delete the file
-          fs.unlink(filePath, (err) => {
-            if (err) {
-              console.error(`Error deleting file: ${err}`);
-            }
-          });
-        }
-      });
-    });
-
-    res.redirect("/");
+    await userService.deleteInstructor(_id, req, res, path, fs);
   } catch (error) {
     return res.status(500).send(error);
     console.log(error);
@@ -146,9 +100,31 @@ module.exports.postInstructorDelete = async (req, res) => {
 
 //instructor my courses
 module.exports.instructorMycourses = async (req, res) => {
-  res.render("my_courses", {
-    title: "Instructor my courses",
-    showHeader: true,
-    authUser: req.user,
-  });
+  try {
+    ////////////////////////////////////////////////////
+    // find all instructor courses
+
+    let idInstructor = req.user._id;
+
+    const coursesTypeAllInstructorCourses = { instructorCourse: idInstructor };
+    let allInstructorCourses = await dbService.getAllCourses(
+      coursesTypeAllInstructorCourses
+    );
+
+    ////////////////////////////////////////////////////
+    // find instructor random course
+
+    let course = await dbService.getOneCourseFloorMath(allInstructorCourses);
+
+    res.render("my_courses", {
+      title: "Instructor my courses",
+      showHeader: true,
+      authUser: req.user,
+      allInstructorCourses,
+      course,
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
 };

@@ -197,15 +197,24 @@
             </li>
 
             <li class="ctn_btns_template">
-              <div class="btns_template icon_plus_template">
-                <a href="/student/mycourses/<%= course._id %>">
-                  <i class="uil uil-plus"></i>
-                </a>
+              <div class="createdAt_template">
+                <div>
+                  <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                </div>
               </div>
-              <div class="btns_template icon_more_template">
-                <a href="/course/onecourse/<%= course._id %>">
-                  <i class="uil uil-ellipsis-h"></i>
-                </a>
+              <div class="centralA">
+                <% if (authUser.roleUser == "student") { %>
+                <div class="btns_template icon_plus_template">
+                  <a href="/student/mycourses/<%= course._id %>">
+                    <i class="uil uil-plus"></i>
+                  </a>
+                </div>
+                <% } %>
+                <div class="btns_template icon_more_template">
+                  <a href="/course/onecourse/<%= course._id %>">
+                    <i class="uil uil-ellipsis-h"></i>
+                  </a>
+                </div>
               </div>
             </li>
           </ul>

@@ -92,7 +92,7 @@
       </div>
     </div>
     <div>
-      <ul class="ul_template" style="justify-content: flex-start">
+      <ul class="ul_template_two">
         <% if(typeof coursesInstructor !== 'undefined' && coursesInstructor !=
         null && coursesInstructor.length > 0) { %> <%
         coursesInstructor.forEach((course) => { %>
@@ -157,15 +157,24 @@
               </li>
 
               <li class="ctn_btns_template">
-                <div class="btns_template icon_plus_template">
-                  <a href="#">
-                    <i class="uil uil-plus"></i>
-                  </a>
+                <div class="createdAt_template">
+                  <div>
+                    <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                  </div>
                 </div>
-                <div class="btns_template icon_more_template">
-                  <a href="/course/<%= course._id %>">
-                    <i class="uil uil-ellipsis-h"></i>
-                  </a>
+                <div class="centralA">
+                  <% if (authUser.roleUser == "student") { %>
+                  <div class="btns_template icon_plus_template">
+                    <a href="#">
+                      <i class="uil uil-plus"></i>
+                    </a>
+                  </div>
+                  <% } %>
+                  <div class="btns_template icon_more_template">
+                    <a href="/course/<%= course._id %>">
+                      <i class="uil uil-ellipsis-h"></i>
+                    </a>
+                  </div>
                 </div>
               </li>
             </ul>

@@ -14,9 +14,6 @@ const flash = require("connect-flash");
 //passport auth
 const passport = require("passport");
 
-// functions
-// const myFunctions = require("./lib/functions");
-
 // ejs
 const expressLayouts = require("express-ejs-layouts");
 
@@ -25,6 +22,9 @@ const fileUpload = require("express-fileupload");
 
 //method override
 const methodOverride = require("method-override");
+
+//cors
+const cors = require("cors");
 
 // models
 const Category = require("./src/models/Category_model");
@@ -64,13 +64,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Middleware functions customized and flash message
+// Middleware flash message
 app.use(flash());
 app.use((req, res, next) => {
-  // funcs
-  // res.locals.urlParsed = myFunctions.urlParsed;
-  // res.locals.getBackUrl = myFunctions.getBackUrl;
-
   // flash message
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
@@ -85,6 +81,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(methodOverride("_method"));
+app.use(cors());
 
 //Middleware of ejs layouts and ejs
 app.use(expressLayouts);
