@@ -1,0 +1,32 @@
+.section_my_profile {
+  margin: 0 auto 1.5rem;
+
+  width: 91%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center_my_profile {
+  width: 68rem;
+}
+
+h2.title_my_profile {
+  color: var(--C-222222);
+}
+
+.txt_my_profile input,
+.txt_my_profile i,
+.txt_field_auth label {
+  color: var(--C-6C757D);
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 880px) {
+  .center_my_profile {
+    width: 100%;
+  }
+}

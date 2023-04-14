@@ -25,6 +25,6 @@ router.delete(
 );
 
 // student my courses
-router.post("/mycourses", studentController.studentMycourses);
+router.get("/mycourses/:_id", studentController.studentMycourses);
 
 module.exports = router;

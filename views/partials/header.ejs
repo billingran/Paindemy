@@ -47,7 +47,10 @@
         <a href="/auth/login" class="auth_login_header">Login</a>
       </div>
       <% } %> <% if (authUser) { %>
-      <a href="/" class="ctn_image_header">
+      <a
+        href="/<%= authUser.roleUser %>/mycourses/<%= authUser._id %>"
+        class="ctn_image_header"
+      >
         <span><%= authUser.firstnameUser[0] %></span>
         <span><%= authUser.lastnameUser[0] %></span>
         <% if (authUser.roleUser == "student") { %>
@@ -57,11 +60,17 @@
         <% } %>
       </a>
       <% if (authUser.roleUser == "student") { %>
-      <a href="/student/mycourses" class="ctn_image_header">
+      <a
+        href="/<%= authUser.roleUser %>/profile/<%= authUser._id %>"
+        class="ctn_image_header"
+      >
         <i class="uil uil-graduation-cap icon_header"></i>
       </a>
       <% } %> <% if (authUser.roleUser == "instructor") { %>
-      <a href="/instructor/mycourses" class="ctn_image_header">
+      <a
+        href="/<%= authUser.roleUser %>/profile/<%= authUser._id %>"
+        class="ctn_image_header"
+      >
         <iconify-icon icon="tabler:chef-hat" class="icon_header"></iconify-icon>
       </a>
       <% } %> <% } %>
@@ -101,7 +110,8 @@
       <img src="/images/logo_home.png" alt="logo Paindemy" loading="lazy" />
       <% if (authUser) { %>
       <a href="/" class="ctn_image_sidebar">
-        <span>T</span> <span>W</span>
+        <span><%= authUser.firstnameUser[0] %></span>
+        <span><%= authUser.lastnameUser[0] %></span>
         <div class="ctn_courseNumber_sidebar">1</div></a
       >
       <% } %>

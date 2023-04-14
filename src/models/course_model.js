@@ -41,11 +41,11 @@ const courseSchema = new mongoose.Schema({
     minlength: 1,
   },
   ingredientsCourse: {
-    type: Array,
+    type: [String],
     required: true,
   },
   imageCourse: {
-    type: Array,
+    type: [String],
     required: true,
   },
   instructorCourse: {
@@ -53,7 +53,7 @@ const courseSchema = new mongoose.Schema({
     ref: "User",
   },
   studentsCourse: {
-    type: Array,
+    type: [String],
     default: [],
   },
   createdAt: {

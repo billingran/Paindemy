@@ -5,7 +5,7 @@ const Course = require("../models/Course_model");
 
 // student profile
 module.exports.studentProfile = (req, res) => {
-  res.render("student_profile", {
+  res.render("my_profile", {
     title: "Student profile",
     showHeader: true,
     authUser: req.user,
@@ -36,6 +36,19 @@ module.exports.postStudentDelete = async (req, res) => {
 //student my courses
 module.exports.studentMycourses = async (req, res) => {
   try {
+    ////////////////////////////////////////////////////
+    // find all student courses
+
+    const coursesTypeRegister = { studentsCourse: req.user._id };
+    let allStudentCourses = await dbService.getAllCourses(coursesTypeRegister);
+
+    ////////////////////////////////////////////////////
+    // find student random course
+
+    const mycourseStudentRandom = await dbService.getOneCourseFloorMath(
+      allStudentCourses
+    );
+
     // let { _id } = req.params;
 
     ////////////////////////////////////////////////////
@@ -67,6 +80,8 @@ module.exports.studentMycourses = async (req, res) => {
       title: "Student my courses",
       showHeader: true,
       authUser: req.user,
+      allStudentCourses,
+      mycourseStudentRandom,
     });
   } catch (error) {
     return res.status(500).send(error);

@@ -44,7 +44,7 @@ router.delete(
 
 // instructor my courses
 router.get(
-  "/mycourses",
+  "/mycourses/:_id",
   authCheckInstructor,
   instructorController.instructorMycourses
 );

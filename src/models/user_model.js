@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   imageUser: {
-    type: Array,
+    type: [String],
   },
   roleUser: {
     type: String,
@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   favoriteUser: {
-    type: Array,
+    type: [{}],
     default: [],
   },
   createdAt: {

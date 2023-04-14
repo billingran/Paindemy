@@ -19,7 +19,7 @@ const moment = require("moment");
 // instructor profile
 module.exports.instructorProfile = (req, res) => {
   try {
-    res.render("instructor_profile", {
+    res.render("my_profile", {
       title: "Instructor profile",
       showHeader: true,
       authUser: req.user,
@@ -104,24 +104,24 @@ module.exports.instructorMycourses = async (req, res) => {
     ////////////////////////////////////////////////////
     // find all instructor courses
 
-    let idInstructor = req.user._id;
-
-    const coursesTypeAllInstructorCourses = { instructorCourse: idInstructor };
+    const coursesTypeRegister = { instructorCourse: req.user._id };
     let allInstructorCourses = await dbService.getAllCourses(
-      coursesTypeAllInstructorCourses
+      coursesTypeRegister
     );
 
     ////////////////////////////////////////////////////
     // find instructor random course
 
-    let course = await dbService.getOneCourseFloorMath(allInstructorCourses);
+    const mycourseInstructorRandom = await dbService.getOneCourseFloorMath(
+      allInstructorCourses
+    );
 
     res.render("my_courses", {
       title: "Instructor my courses",
       showHeader: true,
       authUser: req.user,
       allInstructorCourses,
-      course,
+      mycourseInstructorRandom,
     });
   } catch (error) {
     return res.status(500).send(error);

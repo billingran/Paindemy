@@ -153,13 +153,9 @@ class UserService extends DbService {
     }
   }
 
-  // local login redirect
+  //post local login redirect
   setLocalLoginRedirect(user, res) {
-    if (user.roleUser == "student") {
-      return res.redirect(`/student/profile/${user._id}`);
-    } else if (user.roleUser == "instructor") {
-      return res.redirect(`/instructor/profile/${user._id}`);
-    }
+    return res.redirect(`/`);
   }
 
   //google login
@@ -190,11 +186,7 @@ class UserService extends DbService {
 
   //google login redirect
   setGoogleLoginRedirect(user, res) {
-    if (user.roleUser == "student") {
-      return res.redirect(`/student/profile/${user._id}`);
-    } else if (user.roleUser == "instructor") {
-      return res.redirect(`/instructor/profile/${user._id}`);
-    }
+    return res.redirect(`/`);
   }
 
   // serializeUser

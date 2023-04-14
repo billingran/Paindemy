@@ -4,7 +4,7 @@
 <section loading="lazy" class="back_image_auth back_image_signup">
   <div class="filter_auth filter_signup"></div>
   <div class="center_auth center_signup">
-    <h2 class="font_weight_auth">Sign Up</h2>
+    <h2>Sign Up</h2>
     <form action="/auth/signup" method="POST">
       <%- include("partials/message") %>
       <div class="txt_field_auth">
@@ -37,7 +37,8 @@
 
       <input type="submit" value="Sign up" />
       <div class="link_auth">
-        Already a member ? <a href="#">Login</a> or <a href="#">Home</a>
+        Already a member ? <a href="/auth/login">Login</a> or
+        <a href="/">Home</a>
       </div>
     </form>
   </div>

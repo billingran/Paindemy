@@ -1,16 +1,16 @@
 <!-- /////////////////////////////////////////////// -->
-<!--  my courses instructor-->
-<% if (authUser.roleUser == 'instructor') { %>
+<!--  my courses instructor title-->
+<% if (authUser && authUser.roleUser == 'instructor') { %>
 
 <section class="section_title">
-  <h2 class="title central">
+  <h2 class="title">
     <iconify-icon icon="tabler:chef-hat" class="icon_title"></iconify-icon> <%=
     authUser.firstnameUser %> <%= authUser.lastnameUser %>
   </h2>
 </section>
 
 <!-- /////////////////////////////////////////////// -->
-<!-- courses display and template-->
+<!-- my courses instructor display and template-->
 <section class="section_display section_mid">
   <div class="ctn_display">
     <div class="ctn_title_display">
@@ -20,7 +20,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/onecourse/<%= course._id %>"
+          href="/course/onecourse/<%= mycourseInstructorRandom._id %>"
           class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
@@ -103,7 +103,7 @@
                 </div>
               </div>
               <div class="centralA">
-                <% if (authUser.roleUser == "student") { %>
+                <% if (authUser && authUser.roleUser == "student") { %>
                 <div class="btns_template icon_plus_template">
                   <a href="/student/mycourses">
                     <i class="uil uil-plus"></i>
@@ -121,10 +121,7 @@
         </div>
       </li>
       <% }) %> <% } else { %>
-      <p>
-        Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
-        courses
-      </p>
+      <p>Sorry, you currently you haven't registered any courses</p>
       <% } %>
     </ul>
   </div>
@@ -132,14 +129,132 @@
 <% } %>
 
 <!-- /////////////////////////////////////////////// -->
-<!--  my courses instructor-->
-<% if (authUser.roleUser == 'student') { %>
+<!--  my courses student title-->
+<% if (authUser && authUser.roleUser == 'student') { %>
 
 <section class="section_title">
-  <h2 class="title central">
+  <h2 class="title">
     <i class="uil uil-graduation-cap icon_title"></i> <%= authUser.firstnameUser
     %> <%= authUser.lastnameUser %>
   </h2>
+</section>
+
+<!-- /////////////////////////////////////////////// -->
+<!-- my courses student display and template-->
+<section class="section_display section_mid">
+  <div class="ctn_display">
+    <div class="ctn_title_display">
+      <div class="centralA icon_title_display">
+        <i class="uil uil-book-alt"></i>
+        <h2 class="title_display">My courses</h2>
+      </div>
+      <div class="mid_display">
+        <a
+          href="/course/onecourse/<%= mycourseStudentRandom._id %>"
+          class="ctn_viceTitle_display"
+          >Show ramdon
+          <iconify-icon
+            icon="fa:random"
+            class="icon_viceTitle_display"
+          ></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ul class="ul_template_two">
+      <% if(typeof allStudentCourses !== 'undefined' && allStudentCourses !=
+      null && allStudentCourses.length > 0) { %> <%
+      allStudentCourses.forEach(function(course){ %>
+      <li class="ctn_template mid_template">
+        <a href="/course/onecourse/<%= course._id %>">
+          <div class="ctn_image_template">
+            <div
+              loading="lazy"
+              class="image_template"
+              style="
+                background-image: url('/uploads/<%= course.imageCourse[0] %>');
+              "
+            ></div>
+          </div>
+        </a>
+        <div class="ctn_content_template">
+          <ul>
+            <li class="content_template">
+              <div>
+                <i class="uil uil-book-alt icon_content_template"></i>
+              </div>
+              <div>
+                <a href="/course/onecourse/<%= course._id %>"
+                  ><%= course.getNameCourse() %>
+                </a>
+              </div>
+            </li>
+
+            <li class="content_template">
+              <div>
+                <iconify-icon
+                  icon="tabler:chef-hat"
+                  class="icon_content_template"
+                ></iconify-icon>
+              </div>
+              <div>
+                <a href="/course/instructor/<%= course.instructorCourse._id %>"
+                  ><%= course.instructorCourse.firstnameUser %> <%=
+                  course.instructorCourse.lastnameUser %>
+                </a>
+              </div>
+            </li>
+
+            <li class="content_template">
+              <div>
+                <i class="uil uil-calender icon_content_template"></i>
+              </div>
+              <div>
+                <a href="#"
+                  ><%= course.dateCourse %> / <%= course.timeCourse %>
+                </a>
+              </div>
+            </li>
+
+            <li class="content_template address_template">
+              <div>
+                <i class="uil uil-map-marker icon_content_template"></i>
+              </div>
+              <div>
+                <a href="#"> <%= course.addressCourse %> </a>
+              </div>
+            </li>
+
+            <li class="ctn_btns_template">
+              <div class="createdAt_template">
+                <div>
+                  <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                </div>
+              </div>
+              <div class="centralA">
+                <% if (authUser && authUser.roleUser == "student") { %>
+                <div class="btns_template icon_plus_template">
+                  <a href="/student/mycourses/<%= course._id %>">
+                    <i class="uil uil-plus"></i>
+                  </a>
+                </div>
+                <% } %>
+                <div class="btns_template icon_more_template">
+                  <a href="/course/onecourse/<%= course._id %>">
+                    <i class="uil uil-ellipsis-h"></i>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <% }) %> <% } else { %>
+      <p>Sorry, you currently you haven't registered any courses</p>
+      <% } %>
+    </ul>
+  </div>
 </section>
 
 <% } %>
