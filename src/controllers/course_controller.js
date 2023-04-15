@@ -1,6 +1,10 @@
 // Class Services
-const DbService = require("../services/Db_service");
-const dbService = new DbService();
+const CategoryService = require("../services/Category_service");
+const categoryService = new CategoryService();
+const CourseService = require("../services/Course_service");
+const courseService = new CourseService();
+const UserService = require("../services/User_service");
+const userService = new UserService();
 
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
@@ -9,7 +13,7 @@ module.exports.getAllinstructors = async (req, res) => {
     // find instructors for carousel and all instructors
 
     const userTypeAllInstructors = { roleUser: "instructor" };
-    let allinstructors = await dbService.getAllUsers(userTypeAllInstructors);
+    let allinstructors = await userService.getAllUsers(userTypeAllInstructors);
 
     return res.render("instructors", {
       title: "Instructors",
@@ -28,26 +32,26 @@ module.exports.getCoursesCategory = async (req, res) => {
   try {
     // req.params
     let { nameCategory } = req.params;
-    nameCategory = dbService.getBackUrl(nameCategory);
+    nameCategory = categoryService.getBackUrl(nameCategory);
 
     ////////////////////////////////////////////////////
     // find all courses for carousel
-    let allCourses = await dbService.getAllCourses({});
+    let allCourses = await courseService.getAllCourses({});
 
     ////////////////////////////////////////////////////
     // find courses with one category or all courses
 
     // get one category icon
     const categoryType = { nameCategory };
-    let iconCategory = await dbService.getOneCategory(categoryType);
+    let iconCategory = await categoryService.getOneCategory(categoryType);
 
     // get all courses
-    let manyCourses = await dbService.getAllCourses({});
+    let manyCourses = await courseService.getAllCourses({});
 
     if (nameCategory != "All") {
       // get category courses
       const coursesType = { categoryCourse: nameCategory };
-      manyCourses = await dbService.getAllCourses(coursesType);
+      manyCourses = await courseService.getAllCourses(coursesType);
     }
 
     return res.render("courses", {
@@ -74,17 +78,17 @@ module.exports.getOneinstructor = async (req, res) => {
     let oneInstructor;
 
     if (requestIntructor == "random") {
-      oneInstructor = await dbService.getOneUserCountSkip({});
+      oneInstructor = await userService.getOneUserCountSkip({});
     } else {
       const userTypeInstructor = { _id: requestIntructor };
-      oneInstructor = await dbService.getOneUser(userTypeInstructor);
+      oneInstructor = await userService.getOneUser(userTypeInstructor);
     }
 
     ////////////////////////////////////////////////////
     // find all instructor courses
 
     const coursesTypeOneInstructor = { instructorCourse: oneInstructor._id };
-    let coursesInstructor = await dbService.getAllCourses(
+    let coursesInstructor = await courseService.getAllCourses(
       coursesTypeOneInstructor
     );
 
@@ -112,7 +116,7 @@ module.exports.getOneinstructor = async (req, res) => {
 module.exports.getOnecourse = async (req, res) => {
   try {
     let { requestCourse } = req.params;
-    requestCourse = dbService.getBackUrl(requestCourse);
+    requestCourse = courseService.getBackUrl(requestCourse);
 
     ////////////////////////////////////////////////////
     // find latest, random or one course according req.params
@@ -125,7 +129,7 @@ module.exports.getOnecourse = async (req, res) => {
       const sortNumberLatest = -1;
       const limitNumberLatest = 1;
 
-      oneCourse = await dbService.getAllCoursesSortLimit(
+      oneCourse = await courseService.getAllCoursesSortLimit(
         {},
         sortNumberLatest,
         limitNumberLatest
@@ -134,7 +138,7 @@ module.exports.getOnecourse = async (req, res) => {
       oneCourse = oneCourse[0];
     } else if (requestCourse == "Random" || requestCourse == "All") {
       // get random course
-      oneCourse = await dbService.getOneCourseCountSkip({});
+      oneCourse = await courseService.getOneCourseCountSkip({});
     } else if (
       requestCourse == "Bakery" ||
       requestCourse == "Pastry" ||
@@ -142,11 +146,11 @@ module.exports.getOnecourse = async (req, res) => {
     ) {
       // get category course
       const coursesType = { categoryCourse: requestCourse };
-      oneCourse = await dbService.getOneCourseCountSkip(coursesType);
+      oneCourse = await courseService.getOneCourseCountSkip(coursesType);
     } else {
       // get one course
       const courseType = { _id: requestCourse };
-      oneCourse = await dbService.getOneCourse(courseType);
+      oneCourse = await courseService.getOneCourse(courseType);
     }
 
     ////////////////////////////////////////////////////
@@ -154,13 +158,13 @@ module.exports.getOnecourse = async (req, res) => {
 
     // get icon category
     const categoryType = { nameCategory: oneCourse.categoryCourse };
-    let iconCategory = await dbService.getOneCategory(categoryType);
+    let iconCategory = await categoryService.getOneCategory(categoryType);
 
     // get related courses
     const coursesTypeRelated = { categoryCourse: oneCourse.categoryCourse };
     const sortNumberRelated = -1;
     const limitNumberRelated = 5;
-    let relatedCourses = await dbService.getAllCoursesSortLimit(
+    let relatedCourses = await courseService.getAllCoursesSortLimit(
       coursesTypeRelated,
       sortNumberRelated,
       limitNumberRelated
@@ -189,9 +193,9 @@ module.exports.postGetSearchTerm = async (req, res) => {
   try {
     let { searchTerm } = req.body;
 
-    let results = await dbService.getAllResults(searchTerm);
+    let results = await courseService.getAllResults(searchTerm);
 
-    let result = dbService.getOneResultFloorMath(results);
+    let result = courseService.getOneResultFloorMath(results);
 
     return res.render("search", {
       title: "Search",

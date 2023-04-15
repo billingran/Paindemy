@@ -1,35 +1,82 @@
 const DbService = require("./Db_service");
-const CategoryEntity = require("../entities/Category_entity");
-const CourseEntity = require("../entities/Course_entity");
 const UserEntity = require("../entities/User_entity");
 
 class UserService extends DbService {
   constructor() {
     super();
   }
+  // User//////////////////////////////////////////////////
+  // get all users (instructor)
+  async getOneUser(userType) {
+    const user = await this.User.findOne(userType).exec();
+
+    return new UserEntity(user);
+  }
+
+  // get one user count skip (show randm instructor.)
+  async getOneUserCountSkip(usersType) {
+    let countUsers = await this.User.find(usersType).countDocuments().exec();
+    let numberUsers = Math.floor(Math.random() * countUsers);
+
+    const user = await this.User.findOne(usersType).skip(numberUsers).exec();
+
+    return new UserEntity(user);
+  }
+
+  // get all users (all instructors)
+  async getAllUsers(usersType) {
+    const allUsers = await this.User.find(usersType).exec();
+
+    let users = [];
+
+    allUsers.forEach((user) => {
+      const userEntity = new UserEntity(user);
+      users.push(userEntity);
+    });
+
+    return users;
+  }
+
   // Auth//////////////////////////////////////////////////
-  // post sign up
+  // validation sign up
+  async signUpValidation(emailUser, validator, passwordUser) {
+    // validate email
+    const emailFound = await this.User.findOne({ emailUser }).exec();
+    if (emailFound) {
+      return { success: false, message: "Account exist." };
+    } else if (!validator.isEmail(emailUser)) {
+      return { success: false, message: "It's not a valid email." };
+    }
+
+    // validate password
+    if (passwordUser.length < 8) {
+      return {
+        success: false,
+        message: "Password too short, at least 8 letters or numbers.",
+      };
+    }
+
+    return { success: true };
+  }
+
   async setSignUp(
     firstnameUser,
     lastnameUser,
     emailUser,
+    validator,
     passwordUser,
     req,
     res
   ) {
-    // validate password
-    if (passwordUser.length < 8) {
-      req.flash(
-        "error_msg",
-        "Password too short, at least 8 letters or numbers."
-      );
-      return res.redirect("/auth/signup");
-    }
+    // validation sign up
+    const validationResultSignUp = await this.signUpValidation(
+      emailUser,
+      validator,
+      passwordUser
+    );
 
-    // validate email
-    const emailFound = await this.User.findOne({ emailUser }).exec();
-    if (emailFound) {
-      req.flash("error_msg", "Account exist.");
+    if (!validationResultSignUp.success) {
+      req.flash("error_msg", validationResultSignUp.message);
       return res.redirect("/auth/signup");
     }
 
@@ -48,6 +95,46 @@ class UserService extends DbService {
     res.redirect("/auth/login");
   }
 
+  // validation join us
+  async joinUsValidation(
+    emailUser,
+    validator,
+    passwordUser,
+    objectImagesFile,
+    arrayImagesFile
+  ) {
+    // validate email
+    const emailFound = await this.User.findOne({ emailUser }).exec();
+    if (emailFound) {
+      return { success: false, message: "Account exist." };
+    } else if (!validator.isEmail(emailUser)) {
+      return { success: false, message: "It's not a valid email." };
+    }
+
+    // validate password
+    if (passwordUser.length < 8) {
+      return {
+        success: false,
+        message: "Password too short, at least 8 letters or numbers.",
+      };
+    }
+
+    // validate img uploaded
+    if (!objectImagesFile || arrayImagesFile.length < 2) {
+      return {
+        success: false,
+        message: "Two images required.",
+      };
+    } else if (objectImagesFile && arrayImagesFile.length > 2) {
+      return {
+        success: false,
+        message: "You can only upload two images.",
+      };
+    }
+
+    return { success: true };
+  }
+
   // post join us
   async setJoinUs(
     firstnameUser,
@@ -55,59 +142,53 @@ class UserService extends DbService {
     themeColorUser,
     fathUser,
     emailUser,
+    validator,
     passwordUser,
     introductionUser,
     req,
     res,
     path
   ) {
-    // validate password
-    if (passwordUser.length < 8) {
-      req.flash(
-        "error_msg",
-        "Password too short, at least 8 letters or numbers."
-      );
-      return res.redirect("/auth/signup");
-    }
+    // validation join us
+    let objectImagesFile = req.files;
+    let arrayImagesFile = Object.keys(req.files.imageUser);
 
-    // validate email
-    const emailFound = await this.User.findOne({ emailUser }).exec();
-    if (emailFound) {
-      req.flash("error_msg", "Account exist.");
+    const validationResultJoinUs = await this.joinUsValidation(
+      emailUser,
+      validator,
+      passwordUser,
+      objectImagesFile,
+      arrayImagesFile
+    );
+
+    if (!validationResultJoinUs.success) {
+      req.flash("error_msg", validationResultJoinUs.message);
       return res.redirect("/auth/joinus");
     }
 
-    // validate img uploaded
-    let imageUploadFile;
+    // img uploaded
+
     let uploadPath;
     let newImageName = [];
 
-    if (!req.files || Object.keys(req.files.imageUser).length < 2) {
-      req.flash("error_msg", "Two images required");
-      return res.redirect("/auth/joinus");
-    } else if (req.files && Object.keys(req.files.imageUser).length > 2) {
-      req.flash("error_msg", "you can only upload two images");
-      return res.redirect("/auth/joinus");
-    } else {
-      imageUploadFile = req.files.imageUser;
+    let imageUploadFile = req.files.imageUser;
 
-      imageUploadFile.forEach((img, index) => {
-        newImageName.push(
-          emailUser.replace("@", "").replace(".", "") +
-            "-" +
-            Date.now() +
-            imageUploadFile[index].name
-        );
+    imageUploadFile.forEach((img, index) => {
+      newImageName.push(
+        emailUser.replace("@", "").replace(".", "") +
+          "-" +
+          Date.now() +
+          imageUploadFile[index].name
+      );
+    });
+
+    newImageName.forEach((img, index) => {
+      uploadPath = path.resolve("./") + "/public/uploads/" + img;
+
+      imageUploadFile[index].mv(uploadPath, function (err) {
+        if (err) return res.satus(500).send(err);
       });
-
-      newImageName.forEach((img, index) => {
-        uploadPath = path.resolve("./") + "/public/uploads/" + img;
-
-        imageUploadFile[index].mv(uploadPath, function (err) {
-          if (err) return res.satus(500).send(err);
-        });
-      });
-    }
+    });
 
     // save user
     let instructorUser = new this.User({

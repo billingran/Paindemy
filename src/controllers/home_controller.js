@@ -1,13 +1,15 @@
 // Class Services
-const DbService = require("../services/Db_service");
-dbService = new DbService();
+const CategoryService = require("../services/Category_service");
+const categoryService = new CategoryService();
+const CourseService = require("../services/Course_service");
+const courseService = new CourseService();
 
 // Home page
 module.exports.homePage = async (req, res) => {
   try {
     // find first 4 categories
     const limitNumberCategories = 4;
-    const categories = await dbService.getAllCategoriesLimit(
+    const categories = await categoryService.getAllCategoriesLimit(
       limitNumberCategories
     );
 
@@ -18,19 +20,19 @@ module.exports.homePage = async (req, res) => {
     const coursesTypeP = { categoryCourse: categories[1].nameCategory };
     const coursesTypeO = { categoryCourse: categories[2].nameCategory };
 
-    const coursesB = await dbService.getAllCoursesSortLimit(
+    const coursesB = await courseService.getAllCoursesSortLimit(
       coursesTypeB,
       sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesP = await dbService.getAllCoursesSortLimit(
+    const coursesP = await courseService.getAllCoursesSortLimit(
       coursesTypeP,
       sortNumberCourses,
       limitNumberCourses
     );
 
-    const coursesO = await dbService.getAllCoursesSortLimit(
+    const coursesO = await courseService.getAllCoursesSortLimit(
       coursesTypeO,
       sortNumberCourses,
       limitNumberCourses

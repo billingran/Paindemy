@@ -5,9 +5,7 @@ const userService = new UserService();
 const path = require("path");
 
 // validation
-// const signUpValidation = require(`${path.resolve(
-//   "./"
-// )}\\validation`).signUpValidation;
+const validator = require("validator");
 
 // sign up
 module.exports.signUp = (req, res) => {
@@ -27,10 +25,10 @@ module.exports.postSignUp = async (req, res) => {
       firstnameUser,
       lastnameUser,
       emailUser,
+      validator,
       passwordUser,
       req,
-      res,
-      signUpValidation
+      res
     );
   } catch (error) {
     res.status(500).send(error);
@@ -66,6 +64,7 @@ module.exports.postJoinUs = async (req, res) => {
       themeColorUser,
       fathUser,
       emailUser,
+      validator,
       passwordUser,
       introductionUser,
       req,

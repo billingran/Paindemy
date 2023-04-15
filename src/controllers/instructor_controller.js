@@ -3,8 +3,6 @@ const CourseService = require("../services/Course_service");
 const courseService = new CourseService();
 const UserService = require("../services/User_service");
 const userService = new UserService();
-const DbService = require("../services/Db_service");
-const dbService = new DbService();
 
 // models
 const Course = require("../models/Course_model");
@@ -123,7 +121,7 @@ module.exports.instructorMycourses = async (req, res) => {
     ////////////////////////////////////////////////////
     // find instructor random course
 
-    const mycourseInstructorRandom = await dbService.getOneCourseFloorMath(
+    const mycourseInstructorRandom = await courseService.getOneCourseFloorMath(
       allInstructorCourses
     );
 

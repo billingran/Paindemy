@@ -1,6 +1,8 @@
 // Class Services
 const UserService = require("../services/User_service");
 const userService = new UserService();
+const CourseService = require("../services/Course_service");
+const courseService = new CourseService();
 
 const User = require("../models/User_model");
 
@@ -86,7 +88,7 @@ module.exports.studentMycourses = async (req, res) => {
     ////////////////////////////////////////////////////
     // find student random course
 
-    const mycourseStudentRandom = await dbService.getOneCourseFloorMath(
+    const mycourseStudentRandom = await courseService.getOneCourseFloorMath(
       allStudentCourses
     );
 

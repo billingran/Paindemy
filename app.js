@@ -32,8 +32,8 @@ const User = require("./src/models/User_model");
 const Course = require("./src/models/Course_model");
 
 // Class Services
-const DbService = require("./src/services/Db_service");
-const dbService = new DbService();
+const CourseService = require("./src/services/Course_service");
+const courseService = new CourseService();
 
 // routes
 const authRoutes = require("./src/routes/auth_routes");
@@ -95,14 +95,14 @@ app.use(async (req, res, next) => {
   try {
     if (req.user && req.user.roleUser == "student") {
       const coursesTypeStudent = { studentsCourse: req.user._id };
-      req.user.coursesRegistered = await dbService.getAllCourses(
+      req.user.coursesRegistered = await courseService.getAllCourses(
         coursesTypeStudent
       );
 
       next();
     } else if (req.user && req.user.roleUser == "instructor") {
       const coursesTypeInstructor = { instructorCourse: req.user._id };
-      req.user.coursesRegistered = await dbService.getAllCourses(
+      req.user.coursesRegistered = await courseService.getAllCourses(
         coursesTypeInstructor
       );
 
