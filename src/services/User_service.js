@@ -15,8 +15,7 @@ class UserService extends DbService {
     emailUser,
     passwordUser,
     req,
-    res,
-    bcrypt
+    res
   ) {
     // validate password
     if (passwordUser.length < 8) {
@@ -34,13 +33,12 @@ class UserService extends DbService {
       return res.redirect("/auth/signup");
     }
 
-    // bcrypt and save user
-    let hashedPasswordUser = await bcrypt.hash(passwordUser, 12);
+    // save user
     let studentUser = new this.User({
       firstnameUser,
       lastnameUser,
       emailUser,
-      passwordUser: hashedPasswordUser,
+      passwordUser,
       roleUser: "student",
     });
 
@@ -61,7 +59,6 @@ class UserService extends DbService {
     introductionUser,
     req,
     res,
-    bcrypt,
     path
   ) {
     // validate password
@@ -112,15 +109,14 @@ class UserService extends DbService {
       });
     }
 
-    // bcrypt and save user
-    let hashedPasswordUser = await bcrypt.hash(passwordUser, 12);
+    // save user
     let instructorUser = new this.User({
       firstnameUser,
       lastnameUser,
       themeColorUser,
       fathUser,
       emailUser,
-      passwordUser: hashedPasswordUser,
+      passwordUser,
       introductionUser,
       imageUser: newImageName,
       roleUser: "instructor",

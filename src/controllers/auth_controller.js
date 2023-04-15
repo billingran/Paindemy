@@ -4,8 +4,10 @@ const userService = new UserService();
 // image upload
 const path = require("path");
 
-// bcrypt
-const bcrypt = require("bcrypt");
+// validation
+// const signUpValidation = require(`${path.resolve(
+//   "./"
+// )}\\validation`).signUpValidation;
 
 // sign up
 module.exports.signUp = (req, res) => {
@@ -28,7 +30,7 @@ module.exports.postSignUp = async (req, res) => {
       passwordUser,
       req,
       res,
-      bcrypt
+      signUpValidation
     );
   } catch (error) {
     res.status(500).send(error);
@@ -68,7 +70,6 @@ module.exports.postJoinUs = async (req, res) => {
       introductionUser,
       req,
       res,
-      bcrypt,
       path
     );
   } catch (error) {

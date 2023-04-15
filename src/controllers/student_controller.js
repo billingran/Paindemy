@@ -1,7 +1,8 @@
 // Class Services
 const UserService = require("../services/User_service");
 const userService = new UserService();
-const Course = require("../models/Course_model");
+
+const User = require("../models/User_model");
 
 // student profile
 module.exports.studentProfile = (req, res) => {
@@ -10,6 +11,47 @@ module.exports.studentProfile = (req, res) => {
     showHeader: true,
     authUser: req.user,
   });
+};
+
+// put student profile
+module.exports.putStudentProfile = async (req, res) => {
+  try {
+    let newData = req.body;
+
+    if (newData.passwordUser && newData.confirmPasswordUser) {
+      if (newData.passwordUser !== newData.confirmPasswordUser) {
+        req.flash(
+          "error_msg",
+          "New password and confirm password doesn't match"
+        );
+        return res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
+      }
+    }
+
+    if (req.user) {
+      let { _id } = req.user;
+      const userType = { _id };
+
+      await User.findOneAndUpdate(userType, newData, {
+        new: true,
+        runValidators: true,
+      });
+
+      req.flash("success_msg", "Updated Successfully");
+    } else {
+      req.flash("error_msg", "You should login first");
+      return res.redirect(`/auth/login`);
+    }
+
+    res.render("my_profile", {
+      title: "Student profile",
+      showHeader: true,
+      authUser: req.user,
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
 };
 
 //student delete
@@ -39,8 +81,7 @@ module.exports.studentMycourses = async (req, res) => {
     ////////////////////////////////////////////////////
     // find all student courses
 
-    const coursesTypeRegister = { studentsCourse: req.user._id };
-    let allStudentCourses = await dbService.getAllCourses(coursesTypeRegister);
+    let allStudentCourses = req.user.coursesRegistered;
 
     ////////////////////////////////////////////////////
     // find student random course

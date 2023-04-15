@@ -1,40 +1,43 @@
 const mongoose = require("mongoose");
 
+// bcrypt
+const bcrypt = require("bcrypt");
+
 const userSchema = new mongoose.Schema({
   firstnameUser: {
     type: String,
     require: true,
     minlength: 3,
-    maxlength: 50,
+    maxlength: 255,
   },
   lastnameUser: {
     type: String,
     require: true,
     minlength: 3,
-    maxlength: 50,
+    maxlength: 255,
   },
   themeColorUser: {
     type: String,
-    minlength: 1,
-    maxlength: 50,
+    minlength: 3,
+    maxlength: 255,
     default: "#b3b3b3",
   },
   fathUser: {
     type: String,
-    minlength: 1,
+    minlength: 3,
     maxlength: 50,
     default: "Bonjour, Je suis",
   },
   emailUser: {
     type: String,
     required: true,
-    minlength: 6,
-    maxlength: 100,
+    minlength: 3,
+    maxlength: 255,
   },
   passwordUser: {
     type: String,
-    minLength: 8,
-    maxLength: 1024,
+    minlength: 8,
+    maxLength: 255,
   },
   introductionUser: {
     type: String,
@@ -59,6 +62,17 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+// mongoose middleware
+// bcrypt password for new user or modified password
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("passwordUser")) {
+    const hashValue = await bcrypt.hash(this.passwordUser, 12);
+    this.passwordUser = hashValue;
+  }
+
+  next();
 });
 
 module.exports = mongoose.model("User", userSchema);

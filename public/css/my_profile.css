@@ -18,7 +18,8 @@ h2.title_my_profile {
 
 .txt_my_profile input,
 .txt_my_profile i,
-.txt_field_auth label {
+.txt_field_auth label,
+.txt_field_auth textarea {
   color: var(--C-6C757D);
 }
 

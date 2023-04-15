@@ -30,6 +30,20 @@ module.exports.instructorProfile = (req, res) => {
   }
 };
 
+// put instructor profile
+module.exports.putInstructorProfile = (req, res) => {
+  try {
+    res.render("my_profile", {
+      title: "Instructor profile",
+      showHeader: true,
+      authUser: req.user,
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
+};
+
 // new class
 module.exports.newClass = (req, res) => {
   const currentDate = moment().format("YYYY-MM-DD");
@@ -104,10 +118,7 @@ module.exports.instructorMycourses = async (req, res) => {
     ////////////////////////////////////////////////////
     // find all instructor courses
 
-    const coursesTypeRegister = { instructorCourse: req.user._id };
-    let allInstructorCourses = await dbService.getAllCourses(
-      coursesTypeRegister
-    );
+    let allInstructorCourses = req.user.coursesRegistered;
 
     ////////////////////////////////////////////////////
     // find instructor random course

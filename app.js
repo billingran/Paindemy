@@ -31,6 +31,10 @@ const Category = require("./src/models/Category_model");
 const User = require("./src/models/User_model");
 const Course = require("./src/models/Course_model");
 
+// Class Services
+const DbService = require("./src/services/Db_service");
+const dbService = new DbService();
+
 // routes
 const authRoutes = require("./src/routes/auth_routes");
 require("./src/config/passport");
@@ -42,13 +46,23 @@ const homePage = require("./src/routes/home_routes");
 //Connect to mongodb alts
 require("./src/models/database");
 
-// auth check
-const authCheck = (req, res, next) => {
-  if (req.isAuthenticated()) {
+// auth check instructor
+const authCheckInstructor = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.roleUser == "instructor") {
     next();
   } else {
-    req.flash("error_msg", "You should login in first");
-    return res.redirect("/auth/login");
+    req.flash("error_msg", "You should sign up to be a instructor first");
+    return res.redirect("/auth/joinus");
+  }
+};
+
+// auth check student
+const authCheckStudent = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.roleUser == "student") {
+    next();
+  } else {
+    req.flash("error_msg", "You should sign up to be a student first");
+    return res.redirect("/auth/signup");
   }
 };
 
@@ -75,6 +89,33 @@ app.use((req, res, next) => {
   next();
 });
 
+// My middleware
+// get all registered courses
+app.use(async (req, res, next) => {
+  try {
+    if (req.user && req.user.roleUser == "student") {
+      const coursesTypeStudent = { studentsCourse: req.user._id };
+      req.user.coursesRegistered = await dbService.getAllCourses(
+        coursesTypeStudent
+      );
+
+      next();
+    } else if (req.user && req.user.roleUser == "instructor") {
+      const coursesTypeInstructor = { instructorCourse: req.user._id };
+      req.user.coursesRegistered = await dbService.getAllCourses(
+        coursesTypeInstructor
+      );
+
+      next();
+    } else {
+      next();
+    }
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
+});
+
 //Middleware
 app.use(express.static("public"));
 app.use(express.json());
@@ -91,8 +132,8 @@ app.set("view engine", "ejs");
 // Middleware of routes
 app.use("/auth", authRoutes);
 app.use("/course", courseRoutes);
-app.use("/instructor", authCheck, instructorRoutes);
-app.use("/student", authCheck, studentRoutes);
+app.use("/instructor", authCheckInstructor, instructorRoutes);
+app.use("/student", authCheckStudent, studentRoutes);
 
 // Middleware of home page
 app.use("/", homePage);

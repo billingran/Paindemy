@@ -1,52 +1,25 @@
 const router = require("express").Router();
 const instructorController = require("../controllers/instructor_controller");
 
-// auth check instructor
-const authCheckInstructor = (req, res, next) => {
-  if (req.isAuthenticated() && req.user.roleUser == "instructor") {
-    next();
-  } else {
-    req.flash("error_msg", "You should sign up to be a instructor first");
-    return res.redirect("/auth/joinus");
-  }
-};
-
 //instructor profile
-router.get(
-  "/profile/:_id",
-  authCheckInstructor,
-  instructorController.instructorProfile
-);
+router.get("/profile/:_id", instructorController.instructorProfile);
+
+//put instructor profile
+router.put("/profile/:_id", instructorController.putInstructorProfile);
 
 //new class
-router.get("/newclass", authCheckInstructor, instructorController.newClass);
+router.get("/newclass", instructorController.newClass);
 
 //post new class
-router.post(
-  "/newclass",
-  authCheckInstructor,
-  instructorController.postNewClass
-);
+router.post("/newclass", instructorController.postNewClass);
 
 //instrutor delete
-router.get(
-  "/delete/:_id",
-  authCheckInstructor,
-  instructorController.instructorDelete
-);
+router.get("/delete/:_id", instructorController.instructorDelete);
 
 //post instrutor delete
-router.delete(
-  "/delete/:_id",
-  authCheckInstructor,
-  instructorController.postInstructorDelete
-);
+router.delete("/delete/:_id", instructorController.postInstructorDelete);
 
 // instructor my courses
-router.get(
-  "/mycourses/:_id",
-  authCheckInstructor,
-  instructorController.instructorMycourses
-);
+router.get("/mycourses/:_id", instructorController.instructorMycourses);
 
 module.exports = router;

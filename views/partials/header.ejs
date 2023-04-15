@@ -53,10 +53,16 @@
       >
         <span><%= authUser.firstnameUser[0] %></span>
         <span><%= authUser.lastnameUser[0] %></span>
-        <% if (authUser.roleUser == "student") { %>
-        <div class="ctn_course_number"></div>
-        <% } %> <% if (authUser.roleUser == "instructor") { %>
-        <div class="ctn_course_number"></div>
+        <% if (authUser.roleUser == "instructor" &&
+        authUser.coursesRegistered.length > 0 ) { %>
+        <div class="ctn_course_number">
+          <%= authUser.coursesRegistered.length %>
+        </div>
+        <% } %> <% if (authUser.roleUser == "student" &&
+        authUser.coursesRegistered.length > 0) { %>
+        <div class="ctn_course_number">
+          <%= authUser.coursesRegistered.length %>
+        </div>
         <% } %>
       </a>
       <% if (authUser.roleUser == "student") { %>
@@ -112,8 +118,18 @@
       <a href="/" class="ctn_image_sidebar">
         <span><%= authUser.firstnameUser[0] %></span>
         <span><%= authUser.lastnameUser[0] %></span>
-        <div class="ctn_courseNumber_sidebar">1</div></a
-      >
+        <% if (authUser.roleUser == "instructor" &&
+        authUser.coursesRegistered.length > 0) { %>
+        <div class="ctn_courseNumber_sidebar">
+          <%= authUser.coursesRegistered.length %>
+        </div>
+        <% } %> <% if (authUser.roleUser == "student" &&
+        authUser.coursesRegistered.length > 0) { %>
+        <div class="ctn_courseNumber_sidebar">
+          <%= authUser.coursesRegistered.length %>
+        </div>
+        <% } %>
+      </a>
       <% } %>
     </li>
     <% if (authUser) { %>
@@ -132,36 +148,35 @@
     <% } %> <% if (!authUser) { %>
     <li class="ctn_sidbar_signup">
       <a href="/auth/signup" class="centralA"
-        ><i class="uil uil-illustration icon_sideBar_header"></i> sign up</a
-      >
+        ><i class="uil uil-illustration icon_sideBar_header"></i> sign up
+      </a>
     </li>
     <li class="ctn_sidbar_login">
       <a href="/auth/login" class="centralA"
-        ><i class="uil uil-signin icon_sideBar_header"></i> Login</a
-      >
+        ><i class="uil uil-signin icon_sideBar_header"></i> Login
+      </a>
     </li>
     <% } %> <% if (authUser) { %> <% if (authUser.roleUser == 'instructor') { %>
 
     <li>
       <a href="/instructor/newclass" class="centralA"
-        ><i class="uil uil-book-alt icon_sideBar_header"></i>New course</a
-      >
+        ><i class="uil uil-book-alt icon_sideBar_header"></i>New course
+      </a>
     </li>
     <% } %>
 
     <li>
       <a href="/auth/logout" class="centralA"
-        ><i class="uil uil-signout icon_sideBar_header"></i> Logout</a
-      >
+        ><i class="uil uil-signout icon_sideBar_header"></i> Logout
+      </a>
     </li>
     <li>
       <a
         href="/<%= authUser.roleUser %>/delete/<%= authUser._id %>"
         class="centralA"
       >
-        <i class="uil uil-minus-circle icon_sideBar_header"></i> Close
-        account</a
-      >
+        <i class="uil uil-minus-circle icon_sideBar_header"></i> Close account
+      </a>
     </li>
     <% } %>
   </ul>
