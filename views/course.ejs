@@ -2,7 +2,7 @@
 <!-- course -->
 
 <section class="section_course">
-  <% if(oneCourse != null ) { %>
+  <% if(oneCourse) { %>
   <div class="ctn_course">
     <div class="ctn_midimage_course">
       <a href="/course/onecourse/<%= oneCourse._id %>">
@@ -265,10 +265,12 @@
           </div>
         </li>
         <% }) %> <% } else { %>
-        <p>
-          Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
-          course
-        </p>
+        <div class="ctn_msg error_msg">
+          <strong>
+            Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
+            course
+          </strong>
+        </div>
         <% } %>
       </ul>
     </div>

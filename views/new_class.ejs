@@ -124,10 +124,16 @@
       <div class="img_list"></div>
 
       <input type="submit" value="Submit" />
+      <% if (authUser) { %>
       <div class="link_auth">
-        Back to <a href="/instructor/profile">Jasmin Dupre</a>'s profile or
+        Back to
+        <a href="/instructor/mycourses/<%= authUser._id %>"
+          ><%= authUser.firstnameUser %> <%= authUser.lastnameUser %></a
+        >
+        's courses or
         <a href="/">Home</a>
       </div>
+      <% } %>
     </form>
   </div>
 </section>

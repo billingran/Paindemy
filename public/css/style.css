@@ -128,13 +128,6 @@ h2 {
   margin: 7rem auto;
 }
 
-/* a tag with border*/
-.btn_Border {
-  font-family: "Rubik", sans-serif;
-  border: 0.05rem solid var(--C-222222);
-  border-radius: 0.35rem;
-}
-
 /* /////////////////////////////////////////////// */
 /* a tag without border*/
 
@@ -161,8 +154,37 @@ h2 {
 }
 
 /* /////////////////////////////////////////////// */
+/* flash message */
+.ctn_msg {
+  font-size: 1.3rem;
+  text-align: justify;
+  padding: 0.5rem;
+
+  border-radius: 0.55rem;
+
+  margin: 0.5rem 0 0 0;
+
+  height: 4rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error_msg {
+  color: var(--C-FF0066);
+  border: var(--C-FF0066) 1.8px solid;
+}
+
+.success_msg {
+  color: var(--C-72B955);
+  border: var(--C-72B955) 1.8px solid;
+}
+/* /////////////////////////////////////////////// */
 /* responive */
 
+/* a tag without border*/
 @media screen and (max-width: 830px) {
   .a_NBorder {
     font-size: 2.8vw;

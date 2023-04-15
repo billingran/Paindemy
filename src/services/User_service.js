@@ -150,6 +150,7 @@ class UserService extends DbService {
     path
   ) {
     // validation join us
+    // img uploaded join us
     let objectImagesFile = req.files;
     let arrayImagesFile = Object.keys(req.files.imageUser);
 
@@ -186,7 +187,7 @@ class UserService extends DbService {
       uploadPath = path.resolve("./") + "/public/uploads/" + img;
 
       imageUploadFile[index].mv(uploadPath, function (err) {
-        if (err) return res.satus(500).send(err);
+        if (err) return res.status(500).send(err);
       });
     });
 

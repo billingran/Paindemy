@@ -8,6 +8,7 @@
     data-bs-ride="carousel"
   >
     <div class="carousel-inner ctn_mid_carousels">
+      <% if (allCourses && allCourses.length >= 0) { %>
       <div class="carousel-item active ctn_carousels">
         <div
           class="carousels"
@@ -56,8 +57,7 @@
           </div>
         </div>
       </div>
-
-      <% if(typeof allCourses !== 'undefined' && allCourses != null &&
+      <% } %> <% if(typeof allCourses !== 'undefined' && allCourses != null &&
       allCourses.length > 0) { %> <%
       allCourses.slice(1).forEach(function(course){ %>
       <div class="carousel-item ctn_carousel">
@@ -111,6 +111,7 @@
 <!-- /////////////////////////////////////////////// -->
 <!-- courses display and template-->
 <section class="section_display section_mid">
+  <% if (iconCategory && manyCourses.length >= 0) { %>
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
@@ -132,6 +133,7 @@
       </div>
     </div>
   </div>
+  <% } %>
   <div>
     <ul class="ul_template">
       <% if(typeof manyCourses !== 'undefined' && manyCourses != null &&
@@ -221,10 +223,12 @@
         </div>
       </li>
       <% }) %> <% } else { %>
-      <p>
-        Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
-        courses
-      </p>
+      <div class="ctn_msg error_msg">
+        <strong>
+          Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
+          courses
+        </strong>
+      </div>
       <% } %>
     </ul>
   </div>

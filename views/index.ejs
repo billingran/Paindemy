@@ -47,13 +47,16 @@
         </a>
       </li>
       <% }) %> <% } else { %>
-      <p>Sorry, we currently don't have category</p>
+      <div class="ctn_msg error_msg">
+        <strong>Sorry, we currently don't have category</strong>
+      </div>
       <% } %>
     </ul>
   </div>
 
   <!-- Bakery display and template -->
   <div class="ctn_display">
+    <% if (categories && categories.length >= 0) { %>
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[0].iconCategory %>
@@ -73,6 +76,7 @@
         </a>
       </div>
     </div>
+    <% } %>
     <div>
       <ul class="ul_template">
         <% if(typeof coursesB !== 'undefined' && coursesB != null &&
@@ -166,10 +170,12 @@
           </div>
         </li>
         <% }) %> <% } else { %>
-        <p>
-          Sorry, we currently don't have <%= categories[0].getNameCategory() %>
-          course
-        </p>
+        <div class="ctn_msg error_msg">
+          <strong>
+            Sorry, we currently don't have <%= categories[0].getNameCategory()
+            %> course
+          </strong>
+        </div>
         <% } %>
       </ul>
     </div>
@@ -177,6 +183,7 @@
 
   <!-- Pastry display and template -->
   <div class="ctn_display">
+    <% if (categories && categories.length >= 0) { %>
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[1].iconCategory %>
@@ -196,6 +203,7 @@
         </a>
       </div>
     </div>
+    <% } %>
     <div>
       <ul class="ul_template">
         <% if(typeof coursesP !== 'undefined' && coursesP != null &&
@@ -289,10 +297,12 @@
           </div>
         </li>
         <% }) %> <% } else { %>
-        <p>
-          Sorry, we currently don't have <%= categories[1].getNameCategory() %>
-          course
-        </p>
+        <div class="ctn_msg error_msg">
+          <strong>
+            Sorry, we currently don't have <%= categories[1].getNameCategory()
+            %> course
+          </strong>
+        </div>
         <% } %>
       </ul>
     </div>
@@ -300,6 +310,7 @@
 
   <!-- Other display and template -->
   <div class="ctn_display">
+    <% if (categories && categories.length >= 0) { %>
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[2].iconCategory %>
@@ -319,6 +330,7 @@
         </a>
       </div>
     </div>
+    <% } %>
     <div>
       <ul class="ul_template">
         <% if(typeof coursesO !== 'undefined' && coursesO != null &&
@@ -411,10 +423,12 @@
           </div>
         </li>
         <% }) %> <% } else { %>
-        <p>
-          Sorry, we currently don't have <%= categories[2].getNameCategory() %>
-          course
-        </p>
+        <div class="ctn_msg error_msg">
+          <strong>
+            Sorry, we currently don't have <%= categories[2].getNameCategory()
+            %> course
+          </strong>
+        </div>
         <% } %>
       </ul>
     </div>

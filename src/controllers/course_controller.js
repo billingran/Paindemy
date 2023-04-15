@@ -92,6 +92,12 @@ module.exports.getOneinstructor = async (req, res) => {
       coursesTypeOneInstructor
     );
 
+    // get instructor random course
+
+    const courseRandomInstructor = await courseService.getOneCourseFloorMath(
+      coursesInstructor
+    );
+
     // get all students number
     let numberStudentOneInstructor = 0;
     coursesInstructor.forEach((course) => {
@@ -104,6 +110,7 @@ module.exports.getOneinstructor = async (req, res) => {
       authUser: req.user,
       oneInstructor,
       coursesInstructor,
+      courseRandomInstructor,
       numberStudentOneInstructor,
     });
   } catch (error) {

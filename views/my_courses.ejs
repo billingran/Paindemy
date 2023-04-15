@@ -18,6 +18,7 @@
         <i class="uil uil-book-alt"></i>
         <h2 class="title_display">My courses</h2>
       </div>
+      <% if (allInstructorCourses && allInstructorCourses.length > 0) { %>
       <div class="mid_display">
         <a
           href="/course/onecourse/<%= mycourseInstructorRandom._id %>"
@@ -29,6 +30,7 @@
           ></iconify-icon>
         </a>
       </div>
+      <% } %>
     </div>
   </div>
   <div>
@@ -121,7 +123,9 @@
         </div>
       </li>
       <% }) %> <% } else { %>
-      <p>Sorry, you currently you haven't registered any courses</p>
+      <div class="ctn_msg error_msg">
+        <strong>Sorry, you currently you haven't registered any courses</strong>
+      </div>
       <% } %>
     </ul>
   </div>
@@ -148,6 +152,7 @@
         <i class="uil uil-book-alt"></i>
         <h2 class="title_display">My courses</h2>
       </div>
+      <% if (allInstructorCourses && allInstructorCourses.length >= 0) { %>
       <div class="mid_display">
         <a
           href="/course/onecourse/<%= mycourseStudentRandom._id %>"
@@ -159,6 +164,7 @@
           ></iconify-icon>
         </a>
       </div>
+      <% } %>
     </div>
   </div>
   <div>
@@ -251,7 +257,9 @@
         </div>
       </li>
       <% }) %> <% } else { %>
-      <p>Sorry, you currently you haven't registered any courses</p>
+      <div class="ctn_msg error_msg">
+        <strong>Sorry, you currently you haven't registered any courses</strong>
+      </div>
       <% } %>
     </ul>
   </div>

@@ -8,6 +8,7 @@
     data-bs-ride="carousel"
   >
     <div class="carousel-inner ctn_mid_carousels">
+      <% if (allinstructors && allinstructors.length >= 0) { %>
       <div class="carousel-item active ctn_carousels">
         <div
           class="carousels"
@@ -43,9 +44,8 @@
           </div>
         </div>
       </div>
-
-      <% if(typeof allinstructors !== 'undefined' && allinstructors != null &&
-      allinstructors.length > 0) { %> <%
+      <% } %> <% if(typeof allinstructors !== 'undefined' && allinstructors !=
+      null && allinstructors.length > 0) { %> <%
       allinstructors.slice(1).forEach(instructor => { %>
       <div class="carousel-item ctn_carousel">
         <div
@@ -124,7 +124,9 @@
           </a>
         </li>
         <% }) %> <% } else { %>
-        <p>Sorry, we currently don't have instuctor</p>
+        <div class="ctn_msg error_msg">
+          <strong>Sorry, we currently don't have instuctor</strong>
+        </div>
         <% } %>
       </ul>
     </div>

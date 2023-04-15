@@ -2,6 +2,7 @@
 <!-- instructor -->
 
 <section class="section_instructor">
+  <% if (oneInstructor) { %>
   <div class="ctn_instructor">
     <div class="ctn_midimage_instructor">
       <a href="#">
@@ -69,6 +70,7 @@
       </ul>
     </div>
   </div>
+  <% } %>
 </section>
 
 <!-- /////////////////////////////////////////////// -->
@@ -81,8 +83,11 @@
         <i class="uil uil-book-alt icon_title_display"></i>
         <h2 class="title_display">My courses</h2>
       </div>
+      <% if (coursesInstructor && coursesInstructor.length >= 0) { %>
       <div class="mid_display">
-        <a href="#" class="ctn_viceTitle_display"
+        <a
+          href="/course/onecourse/<%= courseRandomInstructor._id %>"
+          class="ctn_viceTitle_display"
           >Show ramdon
           <iconify-icon
             icon="fa:random"
@@ -90,6 +95,7 @@
           ></iconify-icon>
         </a>
       </div>
+      <% } %>
     </div>
     <div>
       <ul class="ul_template_two">
@@ -181,7 +187,9 @@
           </div>
         </li>
         <% }) %> <% } else { %>
-        <p>Sorry, we currently don't have category</p>
+        <div class="ctn_msg error_msg">
+          <strong>Sorry, we currently don't have category</strong>
+        </div>
         <% } %>
       </ul>
     </div>

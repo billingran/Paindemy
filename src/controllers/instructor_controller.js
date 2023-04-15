@@ -56,37 +56,35 @@ module.exports.newClass = (req, res) => {
 
 // post new class
 module.exports.postNewClass = async (req, res) => {
-  let {
-    nameCourse,
-    dateCourse,
-    timeCourse,
-    addressCourse,
-    descriptionCourse,
-    categoryCourse,
-    caloriesCourse,
-    ingredientsCourse,
-  } = req.body;
+  try {
+    let {
+      nameCourse,
+      dateCourse,
+      timeCourse,
+      addressCourse,
+      descriptionCourse,
+      categoryCourse,
+      caloriesCourse,
+      ingredientsCourse,
+    } = req.body;
 
-  const currentDate = await courseService.postNewCourse(
-    nameCourse,
-    dateCourse,
-    timeCourse,
-    addressCourse,
-    descriptionCourse,
-    categoryCourse,
-    caloriesCourse,
-    ingredientsCourse,
-    req,
-    res,
-    path
-  );
-
-  res.render("new_class", {
-    title: "New class",
-    showHeader: false,
-    authUser: req.user,
-    currentDate,
-  });
+    await courseService.postNewCourse(
+      nameCourse,
+      dateCourse,
+      timeCourse,
+      addressCourse,
+      descriptionCourse,
+      categoryCourse,
+      caloriesCourse,
+      ingredientsCourse,
+      req,
+      res,
+      path
+    );
+  } catch (error) {
+    return res.status(500).send(error);
+    console.log(error);
+  }
 };
 
 //instrutor delete

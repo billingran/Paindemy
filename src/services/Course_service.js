@@ -189,6 +189,50 @@ class CourseService extends DbService {
   }
 
   // New class//////////////////////////////////////////////////
+
+  // validation join us
+  async newClassValidation(
+    newDateCourse,
+    currentDate,
+    caloriesCourse,
+    objectImagesFile,
+    arrayImagesFile
+  ) {
+    // validate date
+    if (newDateCourse.isBefore(currentDate)) {
+      return { success: false, message: "Passed date is not allowed." };
+    }
+
+    // validate calories
+    if (isNaN(caloriesCourse)) {
+      return { success: false, message: "Calories should be a number." };
+    }
+
+    caloriesCourse = Number(caloriesCourse);
+    if (caloriesCourse < 0) {
+      return {
+        success: false,
+        message: "Calories should be greater than or equal to 0.",
+      };
+    }
+
+    // validate img uploaded
+    if (!objectImagesFile || arrayImagesFile.length < 2) {
+      return {
+        success: false,
+        message: "Two images required.",
+      };
+    } else if (objectImagesFile && arrayImagesFile.length > 2) {
+      return {
+        success: false,
+        message: "You can only upload two images.",
+      };
+    }
+
+    return { success: true };
+  }
+
+  // post new class
   async postNewCourse(
     nameCourse,
     dateCourse,
@@ -202,53 +246,45 @@ class CourseService extends DbService {
     res,
     path
   ) {
-    // validate date
+    // validation new class
+    // date new class
     const newDateCourse = moment(dateCourse);
     const currentDate = moment().format("YYYY-MM-DD");
 
-    if (newDateCourse.isBefore(currentDate)) {
-      req.flash("error_msg", "Passed date is not allowed");
+    // img uploaded new class
+    let objectImagesFile = req.files;
+    let arrayImagesFile = Object.keys(req.files.imageCourse);
+
+    const validationResultNewClass = await this.newClassValidation(
+      newDateCourse,
+      currentDate,
+      caloriesCourse,
+      objectImagesFile,
+      arrayImagesFile
+    );
+
+    if (!validationResultNewClass.success) {
+      req.flash("error_msg", validationResultNewClass.message);
       return res.redirect("/instructor/newclass");
     }
 
-    // validate calories
-    if (isNaN(caloriesCourse)) {
-      req.flash("error_msg", "Calories should be a number");
-      return res.redirect("/instructor/newclass");
-    }
-
-    caloriesCourse = Number(caloriesCourse);
-    if (caloriesCourse < 0) {
-      req.flash("error_msg", "Calories should be greater than or equal to 0");
-      return res.redirect("/instructor/newclass");
-    }
-
-    // validate img uploaded
-    let imageUploadFile;
+    // img uploaded
     let uploadPath;
     let newImageName = [];
 
-    if (!req.files || Object.keys(req.files.imageCourse).length < 2) {
-      req.flash("error_msg", "Two images required");
-      return res.redirect("/instructor/newclass");
-    } else if (req.files && Object.keys(req.files.imageCourse).length > 2) {
-      req.flash("error_msg", "you can only upload two images");
-      return res.redirect("/instructor/newclass");
-    } else {
-      imageUploadFile = req.files.imageCourse;
+    let imageUploadFile = req.files.imageCourse;
 
-      imageUploadFile.forEach((img, index) => {
-        newImageName.push(req.user._id + "-" + imageUploadFile[index].name);
+    imageUploadFile.forEach((img, index) => {
+      newImageName.push(req.user._id + "-" + imageUploadFile[index].name);
+    });
+
+    newImageName.forEach((img, index) => {
+      uploadPath = path.resolve("./") + "/public/uploads/" + img;
+
+      imageUploadFile[index].mv(uploadPath, function (err) {
+        if (err) return res.status(500).send(err);
       });
-
-      newImageName.forEach((img, index) => {
-        uploadPath = path.resolve("./") + "/public/uploads/" + img;
-
-        imageUploadFile[index].mv(uploadPath, function (err) {
-          if (err) return res.satus(500).send(err);
-        });
-      });
-    }
+    });
 
     // save new class
     let newCourse = new this.Course({
@@ -268,8 +304,6 @@ class CourseService extends DbService {
 
     req.flash("success_msg", "Course piblished successfully!");
     res.redirect("/instructor/newclass");
-
-    return currentDate;
   }
 }
 

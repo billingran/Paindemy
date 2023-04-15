@@ -8,6 +8,7 @@
 <!-- display and template search-->
 <section class="section_display section_mid">
   <div class="ctn_display">
+    <% if (result && results.length >= 0) { %>
     <div class="ctn_title_display">
       <div class="centralA">
         <i class="uil uil-search icon_title_display"></i>
@@ -25,6 +26,7 @@
         </a>
       </div>
     </div>
+    <% } %>
     <div>
       <ul class="ul_template_two change_ul_template_search">
         <% if(typeof results !== 'undefined' && results != null &&
@@ -118,10 +120,12 @@
           </div>
         </li>
         <% }) %> <% } else { %>
-        <p>
-          Sorry, we currently don't have <%= categories[2].getNameCategory() %>
-          course
-        </p>
+        <div class="ctn_msg error_msg">
+          <strong>
+            Sorry, we currently don't have <%= categories[2].getNameCategory()
+            %> course
+          </strong>
+        </div>
         <% } %>
       </ul>
     </div>
