@@ -21,16 +21,16 @@ class DbService {
 
   // imgs dealer //////////////////////////////////////////////////
   //upload imgs
-  async uploadImgs(objectImagesFile, ImageName, path) {
+  async uploadImgs(objectImagesFile, imageName, path) {
     // img uploaded
     let uploadPath;
     let newImageName = [];
 
-    let imageUploadFile = objectImagesFile.imageUser;
+    let imageUploadFile = objectImagesFile;
 
     imageUploadFile.forEach((img, index) => {
       newImageName.push(
-        ImageName + "-" + Date.now() + imageUploadFile[index].name
+        imageName + "-" + Date.now() + imageUploadFile[index].name
       );
     });
 

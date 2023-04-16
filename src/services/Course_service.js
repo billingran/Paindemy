@@ -1,14 +1,12 @@
 const DbService = require("./Db_service");
 const CourseEntity = require("../entities/Course_entity");
 
-// time controller
-const moment = require("moment");
-
 class CourseService extends DbService {
   constructor() {
     super();
   }
-  // Course//////////////////////////////////////////////////
+  // READ //////////////////////////////////////////////////
+  // Course////////////////////////////////////////////////
   // get one course (one course)
   async getOneCourse(courseType) {
     const course = await this.Course.findOne(courseType)
@@ -188,52 +186,10 @@ class CourseService extends DbService {
     return result;
   }
 
-  // New class//////////////////////////////////////////////////
+  // CREATE //////////////////////////////////////////////////
 
-  // validation join us
-  async newClassValidation(
-    newDateCourse,
-    currentDate,
-    caloriesCourse,
-    objectImagesFile,
-    arrayImagesFile
-  ) {
-    // validate date
-    if (newDateCourse.isBefore(currentDate)) {
-      return { success: false, message: "Date, passed date is not allowed." };
-    }
-
-    // validate calories
-    if (isNaN(caloriesCourse)) {
-      return { success: false, message: "Calories, numbers only." };
-    }
-
-    caloriesCourse = Number(caloriesCourse);
-    if (caloriesCourse < 0) {
-      return {
-        success: false,
-        message: "Calories, numbers should be greater than or equal to zero.",
-      };
-    }
-
-    // validate img uploaded
-    if (!objectImagesFile || arrayImagesFile.length < 2) {
-      return {
-        success: false,
-        message: "Image upload, two images required.",
-      };
-    } else if (objectImagesFile && arrayImagesFile.length > 2) {
-      return {
-        success: false,
-        message: "Image upload, only two images required.",
-      };
-    }
-
-    return { success: true };
-  }
-
-  // post new class
-  async postNewCourse(
+  // validation new class and update class
+  async classValidation(
     nameCourse,
     dateCourse,
     timeCourse,
@@ -242,52 +198,150 @@ class CourseService extends DbService {
     categoryCourse,
     caloriesCourse,
     ingredientsCourse,
+    objectImagesFile,
+    arrayImagesFile,
+    moment,
+    req,
+    path
+  ) {
+    let newDataClass = {};
+
+    //validate class name
+    if (nameCourse) {
+      if (nameCourse[0] !== nameCourse[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Class name, first letter should be upperCase.",
+        };
+      }
+
+      newDataClass.nameCourse = nameCourse;
+    }
+
+    //validate class date
+    if (dateCourse) {
+      const newDateCourse = moment(dateCourse);
+      const currentDate = moment().format("YYYY-MM-DD");
+      if (newDateCourse.isBefore(currentDate)) {
+        return {
+          success: false,
+          message: "Date, passed date is not allowed.",
+        };
+      }
+
+      newDataClass.dateCourse = dateCourse;
+    }
+
+    //validate class time
+    if (timeCourse) {
+      newDataClass.timeCourse = timeCourse;
+    }
+
+    //validate class address
+    if (addressCourse) {
+      newDataClass.addressCourse = addressCourse;
+    }
+
+    //validate class description
+    if (descriptionCourse) {
+      if (descriptionCourse[0] !== descriptionCourse[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Description, first letter should be upperCase.",
+        };
+      }
+
+      newDataClass.descriptionCourse = descriptionCourse;
+    }
+
+    //validate class category
+    if (categoryCourse) {
+      if (
+        categoryCourse !== "Bakery" &&
+        categoryCourse !== "Pastry" &&
+        categoryCourse !== "Other"
+      ) {
+        return {
+          success: false,
+          message: 'Category, only "Bakery", "Pastry" or "Other"',
+        };
+      }
+
+      newDataClass.categoryCourse = categoryCourse;
+    }
+
+    //validate class calories
+    if (caloriesCourse) {
+      if (isNaN(caloriesCourse)) {
+        return { success: false, message: "Calories, only numbers allowed." };
+      }
+
+      caloriesCourse = Number(caloriesCourse);
+
+      if (caloriesCourse < 0) {
+        return {
+          success: false,
+          message: "Calories, numbers should be greater than or equal to zero.",
+        };
+      }
+
+      newDataClass.caloriesCourse = caloriesCourse;
+    }
+
+    //validate class ingredients
+    if (ingredientsCourse) {
+      newDataClass.ingredientsCourse = ingredientsCourse;
+    }
+
+    // validate class img uploaded
+    if (objectImagesFile && arrayImagesFile) {
+      if (objectImagesFile.imageCourse.length != 2) {
+        return {
+          success: false,
+          message: "Image upload, two images required.",
+        };
+      }
+
+      //class img upload
+      const courseImageName = req.user._id;
+      const imageFile = "imageCourse";
+
+      newDataClass.imageCourse = await super.uploadImgs(
+        objectImagesFile.imageCourse,
+        courseImageName,
+        path
+      );
+    }
+
+    newDataClass.instructorCourse = req.user._id;
+    return { success: true, newDataClass };
+  }
+
+  // post new class
+  async setNewClass(
+    nameCourse,
+    dateCourse,
+    timeCourse,
+    addressCourse,
+    descriptionCourse,
+    categoryCourse,
+    caloriesCourse,
+    ingredientsCourse,
+    moment,
     req,
     res,
     path
   ) {
     // validation new class
-    // date new class
-    const newDateCourse = moment(dateCourse);
-    const currentDate = moment().format("YYYY-MM-DD");
 
-    // img uploaded new class
+    // params img uploaded new class
     let objectImagesFile = req.files;
-    let arrayImagesFile = Object.keys(req.files.imageCourse);
-
-    const validationResultNewClass = await this.newClassValidation(
-      newDateCourse,
-      currentDate,
-      caloriesCourse,
-      objectImagesFile,
-      arrayImagesFile
-    );
-
-    if (!validationResultNewClass.success) {
-      req.flash("error_msg", validationResultNewClass.message);
-      return res.redirect("/instructor/newclass");
+    let arrayImagesFile;
+    if (objectImagesFile) {
+      arrayImagesFile = Object.keys(req.files.imageCourse);
     }
 
-    // img uploaded
-    let uploadPath;
-    let newImageName = [];
-
-    let imageUploadFile = req.files.imageCourse;
-
-    imageUploadFile.forEach((img, index) => {
-      newImageName.push(req.user._id + "-" + imageUploadFile[index].name);
-    });
-
-    newImageName.forEach((img, index) => {
-      uploadPath = path.resolve("./") + "/public/uploads/" + img;
-
-      imageUploadFile[index].mv(uploadPath, function (err) {
-        if (err) return res.status(500).send(err);
-      });
-    });
-
-    // save new class
-    let newCourse = new this.Course({
+    const validationResultNewClass = await this.classValidation(
       nameCourse,
       dateCourse,
       timeCourse,
@@ -296,9 +350,20 @@ class CourseService extends DbService {
       categoryCourse,
       caloriesCourse,
       ingredientsCourse,
-      imageCourse: newImageName,
-      instructorCourse: req.user._id,
-    });
+      objectImagesFile,
+      arrayImagesFile,
+      moment,
+      req,
+      path
+    );
+
+    if (!validationResultNewClass.success) {
+      req.flash("error_msg", validationResultNewClass.message);
+      return res.redirect("/instructor/newclass");
+    }
+
+    // save new class
+    let newCourse = new this.Course(validationResultNewClass.newDataClass);
 
     await newCourse.save();
 

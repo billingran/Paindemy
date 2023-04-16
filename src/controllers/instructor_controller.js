@@ -90,7 +90,7 @@ module.exports.postNewClass = async (req, res) => {
       ingredientsCourse,
     } = req.body;
 
-    await courseService.postNewCourse(
+    await courseService.setNewClass(
       nameCourse,
       dateCourse,
       timeCourse,
@@ -99,10 +99,32 @@ module.exports.postNewClass = async (req, res) => {
       categoryCourse,
       caloriesCourse,
       ingredientsCourse,
+      moment,
       req,
       res,
       path
     );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+// update class
+module.exports.updateClass = (req, res) => {
+  const currentDate = moment().format("YYYY-MM-DD");
+
+  res.render("update_class", {
+    title: "Update class",
+    showHeader: true,
+    authUser: req.user,
+    currentDate,
+  });
+};
+
+// patch update class
+module.exports.patchUpdateClass = async (req, res) => {
+  try {
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

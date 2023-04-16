@@ -1,5 +1,5 @@
 <!-- /////////////////////////////////////////////// -->
-<!--  my profile instructor title-->
+<!--  update class title-->
 <% if (authUser && authUser.roleUser == 'instructor') { %>
 
 <section class="section_title">
@@ -99,7 +99,7 @@
 
       <div class="txt_field_auth txt_my_profile">
         <textarea name="introductionUser" id="introductionUser">
-<%= authUser.introductionUser || "" %></textarea
+    <%= authUser.introductionUser || "" %></textarea
         >
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
@@ -117,78 +117,6 @@
       </div>
 
       <div class="img_list img_list_myProfile"></div>
-
-      <input type="submit" value="Save" />
-    </form>
-  </div>
-</section>
-
-<% } %>
-
-<!-- /////////////////////////////////////////////// -->
-<!--  my profile student title-->
-<% if (authUser && authUser.roleUser == 'student') { %>
-
-<section class="section_title">
-  <h2 class="title">
-    <i class="uil uil-graduation-cap icon_title"></i> <%= authUser.firstnameUser
-    %> <%= authUser.lastnameUser %>
-  </h2>
-</section>
-
-<!-- /////////////////////////////////////////////// -->
-<!-- my profile student display and template-->
-<section class="section_my_profile">
-  <div class="center_auth center_my_profile">
-    <h2 class="title_my_profile">My profile</h2>
-    <form
-      action="/<%= authUser.roleUser %>/profile/<%= authUser._id %>?_method=PATCH"
-      method="POST"
-    >
-      <%- include("partials/message") %>
-      <div class="txt_field_auth txt_my_profile">
-        <input value="<%= authUser.firstnameUser || "" %>" id="firstnameUser"
-        type="text" name="firstnameUser"/>
-        <span></span>
-        <i class="uil uil-parking-circle up_joinus"></i>
-        <label for="firstnameUser" class="up_joinus">Firstname</label>
-      </div>
-
-      <div class="txt_field_auth txt_my_profile">
-        <input value="<%= authUser.lastnameUser || "" %>" id="lastnameUser"
-        type="text" name="lastnameUser"/>
-        <span></span>
-        <i class="uil uil-user-circle up_joinus"></i>
-        <label for="lastnameUser" class="up_joinus">Lastname</label>
-      </div>
-
-      <div class="txt_field_auth txt_my_profile">
-        <input value="<%= authUser.emailUser || "" %>" id="emailUser"
-        type="email" name="emailUser"/>
-        <span></span>
-        <i class="uil uil-envelope-alt up_joinus"></i>
-        <label for="emailUser" class="up_joinus">Email</label>
-      </div>
-
-      <div class="txt_field_auth txt_my_profile">
-        <input id="passwordUser" type="password" name="passwordUser" />
-        <span></span>
-        <i class="uil uil-lock up_joinus"></i>
-        <label for="passwordUser" class="up_joinus">New password</label>
-      </div>
-
-      <div class="txt_field_auth txt_my_profile">
-        <input
-          id="confirmPasswordUser"
-          type="password"
-          name="confirmPasswordUser"
-        />
-        <span></span>
-        <i class="uil uil-lock up_joinus"></i>
-        <label for="confirmPasswordUser" class="up_joinus"
-          >Confirm password</label
-        >
-      </div>
 
       <input type="submit" value="Save" />
     </form>

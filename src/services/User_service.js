@@ -246,10 +246,11 @@ class UserService extends DbService {
         };
       }
 
+      // img upload
       const instructorImageName = emailUser.replace("@", "").replace(".", "");
 
       newDataInstructorProfile.imageUser = await super.uploadImgs(
-        objectImagesFile,
+        objectImagesFile.imageUser,
         instructorImageName,
         path
       );

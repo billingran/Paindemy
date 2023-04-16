@@ -105,9 +105,9 @@
                 </div>
               </div>
               <div class="centralA">
-                <% if (authUser && authUser.roleUser == "student") { %>
+                <% if (authUser && authUser.roleUser == "instructor") { %>
                 <div class="btns_template icon_plus_template">
-                  <a href="/student/mycourses">
+                  <a href="/instructor/updateclass/<%= course._id %>">
                     <i class="uil uil-plus"></i>
                   </a>
                 </div>
