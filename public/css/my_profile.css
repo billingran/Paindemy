@@ -20,6 +20,7 @@ h2.title_my_profile {
 .txt_my_profile i,
 .txt_my_profile label,
 .txt_my_profile textarea,
+.txt_my_profile select,
 .img_list_myProfile .img_minus_btn,
 .img_list_myProfile .img_minus {
   color: var(--C-6C757D);

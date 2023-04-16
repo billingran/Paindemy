@@ -10,116 +10,117 @@
 </section>
 
 <!-- /////////////////////////////////////////////// -->
-<!-- my profile instructor join us-->
+<!-- update class-->
 <section class="section_my_profile">
   <div class="center_auth center_my_profile">
-    <h2 class="title_my_profile">My profile</h2>
+    <h2 class="title_my_profile">Update Class</h2>
+    <% if (courseUpdate) { %>
     <form
-      action="/<%= authUser.roleUser %>/profile/<%= authUser._id %>?_method=PATCH"
-      enctype="multipart/form-data"
+      action="/<%= authUser.roleUser %>/updateclass/<%= courseUpdate._id %>?_method=PATCH"
       method="POST"
+      enctype="multipart/form-data"
     >
       <%- include("partials/message") %>
 
-      <div class="ctn_input_fifty">
-        <div
-          class="txt_field_auth txt_my_profile"
-          style="margin: 2.8rem 0 0; width: 50%"
-        >
-          <input value="<%= authUser.firstnameUser || "" %>" id="firstnameUser"
-          type="text" name="firstnameUser"/>
-          <span></span>
-          <i class="uil uil-parking-circle up_joinus"></i>
-          <label for="firstnameUser" class="up_joinus">Firstname</label>
-        </div>
-
-        <div
-          class="txt_field_auth txt_my_profile"
-          style="margin: 2.8rem 0 0; width: 50%"
-        >
-          <input value="<%= authUser.lastnameUser || "" %>" id="lastnameUser"
-          type="text" name="lastnameUser"/>
-          <span></span>
-          <i class="uil uil-user-circle up_joinus"></i>
-          <label for="lastnameUser" class="up_joinus">Lastname</label>
-        </div>
-      </div>
-
-      <div class="ctn_input_fifty">
-        <div
-          class="txt_field_auth txt_my_profile"
-          style="margin: 2.8rem 0 0; width: 50%"
-        >
-          <input value="<%= authUser.themeColorUser || "" %>"
-          id="themeColorUser" type="text" name="themeColorUser"/>
-          <span></span>
-          <i class="uil uil-swatchbook up_joinus"></i>
-          <label for="themeColorUser" class="up_joinus">Theme color</label>
-        </div>
-
-        <div
-          class="txt_field_auth txt_my_profile"
-          style="margin: 2.8rem 0 0; width: 50%"
-        >
-          <input value="<%= authUser.fathUser || "" %>" id="fathUser"
-          type="text" name="fathUser"/>
-          <span></span>
-          <i class="uil uil-bookmark up_joinus"></i>
-          <label for="fathUser" class="up_joinus">Fath</label>
-        </div>
-      </div>
-
       <div class="txt_field_auth txt_my_profile">
-        <input value="<%= authUser.emailUser || "" %>" id="emailUser"
-        type="email" name="emailUser"/>
+        <input value="<%= courseUpdate.nameCourse || "" %>" id="nameCourse"
+        type="text" name="nameCourse" />
         <span></span>
-        <i class="uil uil-envelope-alt up_joinus"></i>
-        <label for="emailUser" class="up_joinus">Email</label>
+        <i class="uil uil-book-alt up_joinus"></i>
+        <label for="nameCourse" class="up_joinus">Classname</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
-        <input id="passwordUser" type="password" name="passwordUser" />
+        <input value="<%= courseUpdate.dateCourse || "" %>" id="dateCourse"
+        type="date" name="dateCourse" min="<%= currentDate %>" />
         <span></span>
-        <i class="uil uil-lock up_joinus"></i>
-        <label for="passwordUser" class="up_joinus">New password</label>
+        <i class="uil uil-calender up_joinus"></i>
+        <label for="dateCourse" class="up_joinus">Date</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
-        <input
-          id="confirmPasswordUser"
-          type="password"
-          name="confirmPasswordUser"
-        />
+        <input value="<%= courseUpdate.timeCourse || "" %>" id="timeCourse"
+        type="time" name="timeCourse" />
         <span></span>
-        <i class="uil uil-lock up_joinus"></i>
-        <label for="confirmPasswordUser" class="up_joinus"
-          >Confirm password</label
-        >
+        <i class="uil uil-clock up_joinus"></i>
+        <label for="timeCourse" class="up_joinus">Time</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
-        <textarea name="introductionUser" id="introductionUser">
-    <%= authUser.introductionUser || "" %></textarea
+        <input value="<%= courseUpdate.addressCourse || "" %>"
+        id="addressCourse" type="text" name="addressCourse" />
+        <span></span>
+        <i class="uil uil-map-marker up_joinus"></i>
+        <label for="addressCourse" class="up_joinus">Address</label>
+      </div>
+
+      <div class="txt_field_auth txt_my_profile">
+        <textarea name="descriptionCourse" id="descriptionCourse">
+<%= courseUpdate.descriptionCourse || "" %></textarea
         >
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
-        <label for="introductionUser" class="up_joinus">Introduction</label>
+        <label for="descriptionCourse" class="up_joinus">Description</label>
       </div>
 
-      <div class="txt_field_auth joinUs_div txt_my_profile">
-        <input value="<%= authUser.imageUser || "" %>" id="imageUser"
-        type="file" name="imageUser" accept="image/*" multiple style="opacity:
-        0" />
+      <div class="txt_field_auth txt_my_profile">
+        <select id="categoryCourse" name="categoryCourse">
+          <option value="">-- Select a category --</option>
+          <option value="Bakery" <%= courseUpdate.categoryCourse === 'Bakery' ? 'selected' : '' %>>Bakery</option>
+          <option value="Pastry" <%= courseUpdate.categoryCourse === 'Pastry' ? 'selected' : '' %>>Pastry</option>
+          <option value="Other" <%= courseUpdate.categoryCourse === 'Other' ? 'selected' : '' %>>Other</option>
+        </select>
         <span></span>
-        <label for="imageUser" class="upload_joinus a_NBorder"
-          ><i class="uil uil-image"></i>Image update</label
+        <i class="uil uil-folder up_joinus"></i>
+        <label for="categoryCourse" class="up_joinus">Category</label>
+      </div>
+
+      <div class="txt_field_auth txt_my_profile">
+        <input value="<%= courseUpdate.caloriesCourse || "" %>"
+        id="caloriesCourse" type="number" name="caloriesCourse" min="0" />
+        <span></span>
+        <i class="uil uil-fire up_joinus"></i>
+        <label for="caloriesCourse" class="up_joinus">Calories</label>
+      </div>
+
+      <div class="ingredient_list">
+        <div class="txt_field_auth ingredient_div txt_my_profile">
+          <input id="ingredientsCourse" type="text" name="ingredientsCourse" />
+          <span></span>
+          <i class="up_joinus">
+            <iconify-icon icon="lucide:wheat"></iconify-icon>
+          </i>
+          <label for="ingredientsCourse" class="up_joinus"
+            >Ingredient <span style="color: #72b955">0</span></label
+          >
+        </div>
+      </div>
+
+      <div class="ctn_plus_btn">
+        <button type="button" class="add_ingredients_btn plus_btn a_NBorder">
+          + Ingredient
+        </button>
+      </div>
+
+      <div class="txt_field_auth imgClass_div txt_my_profile">
+        <input
+          id="imageCourse"
+          type="file"
+          name="imageCourse"
+          accept="image/*"
+          multiple
+          style="opacity: 0"
+        />
+        <span></span>
+        <label for="imageCourse" class="upload_joinus a_NBorder"
+          ><i class="uil uil-image"></i>+ Image</label
         >
       </div>
-
       <div class="img_list img_list_myProfile"></div>
 
-      <input type="submit" value="Save" />
+      <input type="submit" value="Submit" />
     </form>
+    <% } %>
   </div>
 </section>
 

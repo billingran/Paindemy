@@ -370,6 +370,74 @@ class CourseService extends DbService {
     req.flash("success_msg", "New class, publish successefully.");
     res.redirect("/instructor/newclass");
   }
+
+  // patch update class
+  async setUpdateClass(
+    _id,
+    nameCourse,
+    dateCourse,
+    timeCourse,
+    addressCourse,
+    descriptionCourse,
+    categoryCourse,
+    caloriesCourse,
+    ingredientsCourse,
+    moment,
+    req,
+    res,
+    path,
+    fs
+  ) {
+    // validation new class
+
+    // params img uploaded new class
+    let objectImagesFile = req.files;
+    let arrayImagesFile;
+    if (objectImagesFile) {
+      arrayImagesFile = Object.keys(req.files.imageCourse);
+
+      // delete courseUpdate imgs
+      const courseImageName = req.user._id;
+
+      await super.deleteImgs(courseImageName, path, fs);
+    }
+
+    const validationResultUpdateClass = await this.classValidation(
+      nameCourse,
+      dateCourse,
+      timeCourse,
+      addressCourse,
+      descriptionCourse,
+      categoryCourse,
+      caloriesCourse,
+      ingredientsCourse,
+      objectImagesFile,
+      arrayImagesFile,
+      moment,
+      req,
+      path
+    );
+
+    if (!validationResultUpdateClass.success) {
+      req.flash("error_msg", validationResultUpdateClass.message);
+      return res.redirect(`/instructor/updateclass/${_id}`);
+    }
+
+    // update class
+    const courseTypeUpdateClass = { _id };
+
+    await this.Course.findOneAndUpdate(
+      courseTypeUpdateClass,
+      validationResultUpdateClass.newDataClass,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+
+    req.flash("success_msg", "New class, publish successefully.");
+    res.redirect(`/instructor/updateclass/${_id}`);
+  }
 }
 
 module.exports = CourseService;

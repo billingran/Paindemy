@@ -111,20 +111,60 @@ module.exports.postNewClass = async (req, res) => {
 };
 
 // update class
-module.exports.updateClass = (req, res) => {
-  const currentDate = moment().format("YYYY-MM-DD");
+module.exports.updateClass = async (req, res) => {
+  try {
+    let { _id } = req.params;
 
-  res.render("update_class", {
-    title: "Update class",
-    showHeader: true,
-    authUser: req.user,
-    currentDate,
-  });
+    let courseTypeUpdate = { _id };
+    let courseUpdate = await courseService.getOneCourse(courseTypeUpdate);
+
+    const currentDate = moment().format("YYYY-MM-DD");
+
+    res.render("update_class", {
+      title: "Update class",
+      showHeader: true,
+      authUser: req.user,
+      courseUpdate,
+      currentDate,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
 };
 
 // patch update class
 module.exports.patchUpdateClass = async (req, res) => {
   try {
+    let {
+      nameCourse,
+      dateCourse,
+      timeCourse,
+      addressCourse,
+      descriptionCourse,
+      categoryCourse,
+      caloriesCourse,
+      ingredientsCourse,
+    } = req.body;
+
+    let { _id } = req.params;
+
+    await courseService.setUpdateClass(
+      _id,
+      nameCourse,
+      dateCourse,
+      timeCourse,
+      addressCourse,
+      descriptionCourse,
+      categoryCourse,
+      caloriesCourse,
+      ingredientsCourse,
+      moment,
+      req,
+      res,
+      path,
+      fs
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
