@@ -97,7 +97,11 @@ module.exports.login = (req, res) => {
 
 //post local login redirect
 module.exports.postLogin = (req, res) => {
-  let user = req.user;
+  let user;
+
+  if (req.user) {
+    user = req.user;
+  }
 
   userService.setLocalLoginRedirect(user, res);
 };
@@ -107,7 +111,11 @@ module.exports.googleAuth = (req, res) => {};
 
 //google login redirect
 module.exports.googleRedirect = (req, res) => {
-  let user = req.user;
+  let user;
+
+  if (req.user) {
+    user = req.user;
+  }
 
   userService.setGoogleLoginRedirect(user, res);
 };

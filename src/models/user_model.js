@@ -77,7 +77,6 @@ userSchema.pre("findOneAndUpdate", async function (next) {
     this._update.passwordUser = hashValue;
   }
 
-  console.log(this._update);
   next();
 });
 

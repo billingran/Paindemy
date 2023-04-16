@@ -7,8 +7,6 @@ const userService = new UserService();
 // validation
 const validator = require("validator");
 
-const User = require("../models/User_model");
-
 // image upload
 const fs = require("fs");
 const path = require("path");
@@ -55,7 +53,8 @@ module.exports.patchInstructorProfile = async (req, res) => {
     validator,
     req,
     res,
-    path
+    path,
+    fs
   );
 
   try {

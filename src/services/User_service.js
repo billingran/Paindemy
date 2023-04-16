@@ -191,7 +191,7 @@ class UserService extends DbService {
     }
 
     //validate faith
-    if (lastnameUser) {
+    if (fathUser) {
       if (fathUser[0] !== fathUser[0].toUpperCase()) {
         return {
           success: false,
@@ -246,30 +246,13 @@ class UserService extends DbService {
         };
       }
 
-      // img uploaded
-      let uploadPath;
-      let newImageName = [];
+      const instructorImageName = emailUser.replace("@", "").replace(".", "");
 
-      let imageUploadFile = objectImagesFile.imageUser;
-
-      imageUploadFile.forEach((img, index) => {
-        newImageName.push(
-          emailUser.replace("@", "").replace(".", "") +
-            "-" +
-            Date.now() +
-            imageUploadFile[index].name
-        );
-      });
-
-      newImageName.forEach((img, index) => {
-        uploadPath = path.resolve("./") + "/public/uploads/" + img;
-
-        imageUploadFile[index].mv(uploadPath, function (err) {
-          if (err) return res.status(500).send(err);
-        });
-      });
-
-      newDataInstructorProfile.imageUser = newImageName;
+      newDataInstructorProfile.imageUser = await super.uploadImgs(
+        objectImagesFile,
+        instructorImageName,
+        path
+      );
     }
 
     newDataInstructorProfile.roleUser = "instructor";
@@ -473,15 +456,24 @@ class UserService extends DbService {
     validator,
     req,
     res,
-    path
+    path,
+    fs
   ) {
     // validation instructor profile
 
     // params img uploaded join us
     let objectImagesFile = req.files;
     let arrayImagesFile;
+
     if (objectImagesFile) {
       arrayImagesFile = Object.keys(req.files.imageUser);
+
+      // delete instructor imgs
+      const instructorImageName = req.user.emailUser
+        .replace("@", "")
+        .replace(".", "");
+
+      await super.deleteImgs(instructorImageName, path, fs);
     }
 
     const validationResultInstructorProfile =
@@ -506,7 +498,7 @@ class UserService extends DbService {
       return res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
     }
 
-    // update user
+    // update user instructor
     let { _id } = req.user;
     const userTypeInstructorProfile = { _id };
 
@@ -526,6 +518,15 @@ class UserService extends DbService {
   // DELETE //////////////////////////////////////////////////
   //post instrutor delete
   async deleteInstructor(_id, req, res, path, fs) {
+    // delete instructor and courses imgs
+    const instructorImageName = req.user.emailUser
+      .replace("@", "")
+      .replace(".", "");
+
+    const courseImageName = req.user._id;
+
+    await super.deleteBothImgs(instructorImageName, courseImageName, path, fs);
+
     // delete instructor courses
     await this.Course.deleteMany({ instructorCourse: _id });
 
@@ -534,45 +535,6 @@ class UserService extends DbService {
 
     // delete instructor session
     req.session.destroy();
-
-    // delete instructor and courses photoes
-    // file path
-    const directoryPath = path.resolve("./") + "/public/uploads";
-
-    // read the file path
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        console.error(`Error reading directory: ${err}`);
-        return;
-      }
-
-      files.forEach((file) => {
-        // image path
-        const filePath = path.join(directoryPath, file);
-        // get image stat
-        const fileStats = fs.statSync(filePath);
-        // get instrutor images firstname
-        const instructorImageName = req.user.emailUser
-          .replace("@", "")
-          .replace(".", "");
-
-        // get courses images firstname
-        const coursessImageName = _id;
-
-        // Check if the stat is a file and file was uploaded by the user
-        if (
-          (fileStats.isFile() && file.startsWith(instructorImageName)) ||
-          file.startsWith(coursessImageName)
-        ) {
-          // Delete the file
-          fs.unlink(filePath, (err) => {
-            if (err) {
-              console.error(`Error deleting file: ${err}`);
-            }
-          });
-        }
-      });
-    });
 
     res.redirect("/");
   }

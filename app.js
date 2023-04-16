@@ -51,7 +51,7 @@ const authCheckInstructor = (req, res, next) => {
   if (req.isAuthenticated() && req.user.roleUser == "instructor") {
     next();
   } else {
-    req.flash("error_msg", "You should sign up to be a instructor first");
+    req.flash("error_msg", "You should sign up to be a instructor first.");
     return res.redirect("/auth/joinus");
   }
 };
@@ -61,7 +61,7 @@ const authCheckStudent = (req, res, next) => {
   if (req.isAuthenticated() && req.user.roleUser == "student") {
     next();
   } else {
-    req.flash("error_msg", "You should sign up to be a student first");
+    req.flash("error_msg", "You should sign up to be a student first.");
     return res.redirect("/auth/signup");
   }
 };
