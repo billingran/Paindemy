@@ -5,7 +5,7 @@ const instructorController = require("../controllers/instructor_controller");
 router.get("/profile/:_id", instructorController.instructorProfile);
 
 //put instructor profile
-router.put("/profile/:_id", instructorController.putInstructorProfile);
+router.patch("/profile/:_id", instructorController.patchInstructorProfile);
 
 //new class
 router.get("/newclass", instructorController.newClass);

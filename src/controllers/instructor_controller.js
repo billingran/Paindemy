@@ -30,14 +30,35 @@ module.exports.instructorProfile = (req, res) => {
   }
 };
 
-// put instructor profile
-module.exports.putInstructorProfile = (req, res) => {
+// patch instructor profile
+module.exports.patchInstructorProfile = async (req, res) => {
+  let {
+    firstnameUser,
+    lastnameUser,
+    themeColorUser,
+    fathUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    introductionUser,
+  } = req.body;
+
+  await userService.setInstructorProfile(
+    firstnameUser.trim(),
+    lastnameUser.trim(),
+    themeColorUser,
+    fathUser,
+    emailUser.trim(),
+    passwordUser.trim(),
+    confirmPasswordUser.trim(),
+    introductionUser,
+    validator,
+    req,
+    res,
+    path
+  );
+
   try {
-    res.render("my_profile", {
-      title: "Instructor profile",
-      showHeader: true,
-      authUser: req.user,
-    });
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

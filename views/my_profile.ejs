@@ -15,7 +15,7 @@
   <div class="center_auth center_my_profile">
     <h2 class="title_my_profile">My profile</h2>
     <form
-      action="<%= authUser.roleUser %>/profile/<%= authUser._id %>?_method=PATCH"
+      action="/<%= authUser.roleUser %>/profile/<%= authUser._id %>?_method=PATCH"
       enctype="multipart/form-data"
       method="POST"
     >
@@ -81,7 +81,7 @@
         <input id="passwordUser" type="password" name="passwordUser" />
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
-        <label for="passwordUser" class="up_joinus">Password</label>
+        <label for="passwordUser" class="up_joinus">New password</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -112,7 +112,7 @@
         0" />
         <span></span>
         <label for="imageUser" class="upload_joinus a_NBorder"
-          ><i class="uil uil-image"></i>Image Upload</label
+          ><i class="uil uil-image"></i>Image update</label
         >
       </div>
 

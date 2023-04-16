@@ -19,14 +19,21 @@ module.exports.signUp = (req, res) => {
 // post sign up
 module.exports.postSignUp = async (req, res) => {
   try {
-    let { firstnameUser, lastnameUser, emailUser, passwordUser } = req.body;
+    let {
+      firstnameUser,
+      lastnameUser,
+      emailUser,
+      passwordUser,
+      confirmPasswordUser,
+    } = req.body;
 
     userService.setSignUp(
       firstnameUser.trim(),
       lastnameUser.trim(),
       emailUser.trim(),
-      validator,
       passwordUser.trim(),
+      confirmPasswordUser.trim(),
+      validator,
       req,
       res
     );
@@ -55,6 +62,7 @@ module.exports.postJoinUs = async (req, res) => {
       fathUser,
       emailUser,
       passwordUser,
+      confirmPasswordUser,
       introductionUser,
     } = req.body;
 
@@ -64,9 +72,10 @@ module.exports.postJoinUs = async (req, res) => {
       themeColorUser,
       fathUser,
       emailUser.trim(),
-      validator,
       passwordUser.trim(),
+      confirmPasswordUser.trim(),
       introductionUser,
+      validator,
       req,
       res,
       path

@@ -7,24 +7,20 @@ const userSchema = new mongoose.Schema({
   firstnameUser: {
     type: String,
     require: true,
-    minlength: 3,
     maxlength: 255,
   },
   lastnameUser: {
     type: String,
     require: true,
-    minlength: 3,
     maxlength: 255,
   },
   themeColorUser: {
     type: String,
-    minlength: 3,
     maxlength: 255,
     default: "#b3b3b3",
   },
   fathUser: {
     type: String,
-    minlength: 3,
     maxlength: 50,
     default: "Bonjour, Je suis",
   },
@@ -32,7 +28,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: 3,
     maxlength: 255,
   },
   passwordUser: {
