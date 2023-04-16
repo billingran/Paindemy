@@ -22,17 +22,17 @@ module.exports.postSignUp = async (req, res) => {
     let { firstnameUser, lastnameUser, emailUser, passwordUser } = req.body;
 
     userService.setSignUp(
-      firstnameUser,
-      lastnameUser,
-      emailUser,
+      firstnameUser.trim(),
+      lastnameUser.trim(),
+      emailUser.trim(),
       validator,
-      passwordUser,
+      passwordUser.trim(),
       req,
       res
     );
   } catch (error) {
-    res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -59,21 +59,21 @@ module.exports.postJoinUs = async (req, res) => {
     } = req.body;
 
     userService.setJoinUs(
-      firstnameUser,
-      lastnameUser,
+      firstnameUser.trim(),
+      lastnameUser.trim(),
       themeColorUser,
       fathUser,
-      emailUser,
+      emailUser.trim(),
       validator,
-      passwordUser,
+      passwordUser.trim(),
       introductionUser,
       req,
       res,
       path
     );
   } catch (error) {
-    res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 

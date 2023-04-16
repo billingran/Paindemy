@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
   emailUser: {
     type: String,
     required: true,
+    unique: true,
     minlength: 3,
     maxlength: 255,
   },
@@ -71,7 +72,17 @@ userSchema.pre("save", async function (next) {
     const hashValue = await bcrypt.hash(this.passwordUser, 12);
     this.passwordUser = hashValue;
   }
+  next();
+});
 
+userSchema.pre("findOneAndUpdate", async function (next) {
+  const { passwordUser: plainPassword } = this._update;
+  if (plainPassword) {
+    const hashValue = await bcrypt.hash(plainPassword, 12);
+    this._update.passwordUser = hashValue;
+  }
+
+  console.log(this._update);
   next();
 });
 

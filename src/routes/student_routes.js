@@ -5,7 +5,7 @@ const studentController = require("../controllers/student_controller");
 router.get("/profile/:_id", studentController.studentProfile);
 
 //put student profile
-router.patch("/profile/:_id", studentController.putStudentProfile);
+router.patch("/profile/:_id", studentController.patchStudentProfile);
 
 //student delete
 router.get("/delete/:_id", studentController.studentDelete);

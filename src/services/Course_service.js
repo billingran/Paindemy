@@ -200,19 +200,19 @@ class CourseService extends DbService {
   ) {
     // validate date
     if (newDateCourse.isBefore(currentDate)) {
-      return { success: false, message: "Passed date is not allowed." };
+      return { success: false, message: "Date, passed date is not allowed." };
     }
 
     // validate calories
     if (isNaN(caloriesCourse)) {
-      return { success: false, message: "Calories should be a number." };
+      return { success: false, message: "Calories, numbers only." };
     }
 
     caloriesCourse = Number(caloriesCourse);
     if (caloriesCourse < 0) {
       return {
         success: false,
-        message: "Calories should be greater than or equal to 0.",
+        message: "Calories, numbers should be greater than or equal to zero.",
       };
     }
 
@@ -220,12 +220,12 @@ class CourseService extends DbService {
     if (!objectImagesFile || arrayImagesFile.length < 2) {
       return {
         success: false,
-        message: "Two images required.",
+        message: "Image upload, two images required.",
       };
     } else if (objectImagesFile && arrayImagesFile.length > 2) {
       return {
         success: false,
-        message: "You can only upload two images.",
+        message: "Image upload, only two images required.",
       };
     }
 
@@ -302,7 +302,7 @@ class CourseService extends DbService {
 
     await newCourse.save();
 
-    req.flash("success_msg", "Course piblished successfully!");
+    req.flash("success_msg", "New class, publish successefully.");
     res.redirect("/instructor/newclass");
   }
 }

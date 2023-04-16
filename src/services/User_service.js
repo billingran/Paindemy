@@ -5,6 +5,7 @@ class UserService extends DbService {
   constructor() {
     super();
   }
+  // READ //////////////////////////////////////////////////
   // User//////////////////////////////////////////////////
   // get all users (instructor)
   async getOneUser(userType) {
@@ -37,22 +38,45 @@ class UserService extends DbService {
     return users;
   }
 
+  // CREATE //////////////////////////////////////////////////
   // Auth//////////////////////////////////////////////////
   // validation sign up
-  async signUpValidation(emailUser, validator, passwordUser) {
+  async signUpValidation(
+    firstnameUser,
+    lastnameUser,
+    emailUser,
+    validator,
+    passwordUser
+  ) {
+    //validate firstname
+    if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
+      return {
+        success: false,
+        message: "Firstname, first letter should be upperCase.",
+      };
+    }
+
+    //validate lastname
+    if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
+      return {
+        success: false,
+        message: "Lastname, first letter should be upperCase.",
+      };
+    }
+
     // validate email
     const emailFound = await this.User.findOne({ emailUser }).exec();
     if (emailFound) {
-      return { success: false, message: "Account exist." };
+      return { success: false, message: "Email, account exist." };
     } else if (!validator.isEmail(emailUser)) {
-      return { success: false, message: "It's not a valid email." };
+      return { success: false, message: "Email, not a valid email." };
     }
 
     // validate password
     if (passwordUser.length < 8) {
       return {
         success: false,
-        message: "Password too short, at least 8 letters or numbers.",
+        message: "Password, at least 8 letters or numbers.",
       };
     }
 
@@ -70,6 +94,8 @@ class UserService extends DbService {
   ) {
     // validation sign up
     const validationResultSignUp = await this.signUpValidation(
+      firstnameUser,
+      lastnameUser,
       emailUser,
       validator,
       passwordUser
@@ -91,31 +117,49 @@ class UserService extends DbService {
 
     await studentUser.save();
 
-    req.flash("success_msg", "Congradulation, you are our member now.");
+    req.flash("success_msg", "You are a student now.");
     res.redirect("/auth/login");
   }
 
   // validation join us
   async joinUsValidation(
+    firstnameUser,
+    lastnameUser,
     emailUser,
     validator,
     passwordUser,
     objectImagesFile,
     arrayImagesFile
   ) {
+    //validate firstname
+    if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
+      return {
+        success: false,
+        message: "Firstname, first letter should be upperCase.",
+      };
+    }
+
+    //validate lastname
+    if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
+      return {
+        success: false,
+        message: "Lastname, first letter should be upperCase.",
+      };
+    }
+
     // validate email
     const emailFound = await this.User.findOne({ emailUser }).exec();
     if (emailFound) {
-      return { success: false, message: "Account exist." };
+      return { success: false, message: "Email, account exist." };
     } else if (!validator.isEmail(emailUser)) {
-      return { success: false, message: "It's not a valid email." };
+      return { success: false, message: "Email, not a valid email." };
     }
 
     // validate password
     if (passwordUser.length < 8) {
       return {
         success: false,
-        message: "Password too short, at least 8 letters or numbers.",
+        message: "Password, at least 8 letters or numbers.",
       };
     }
 
@@ -123,12 +167,12 @@ class UserService extends DbService {
     if (!objectImagesFile || arrayImagesFile.length < 2) {
       return {
         success: false,
-        message: "Two images required.",
+        message: "Image upload, two images required.",
       };
     } else if (objectImagesFile && arrayImagesFile.length > 2) {
       return {
         success: false,
-        message: "You can only upload two images.",
+        message: "Image upload, only two images required.",
       };
     }
 
@@ -155,6 +199,8 @@ class UserService extends DbService {
     let arrayImagesFile = Object.keys(req.files.imageUser);
 
     const validationResultJoinUs = await this.joinUsValidation(
+      firstnameUser,
+      lastnameUser,
       emailUser,
       validator,
       passwordUser,
@@ -206,17 +252,19 @@ class UserService extends DbService {
 
     await instructorUser.save();
 
-    req.flash("success_msg", "Congradulation, you are our member now.");
+    req.flash("success_msg", "You are a instructor now.");
     res.redirect("/auth/login");
   }
 
   // local login
   async setLocalLogin(username, bcrypt, password, done) {
-    let userFound = await this.User.findOne({ emailUser: username }).exec();
+    let userFound = await this.User.findOne({
+      emailUser: username.trim(),
+    }).exec();
 
     if (userFound) {
       let passwordCompared = await bcrypt.compare(
-        password,
+        password.trim(),
         userFound.passwordUser
       );
 
@@ -284,41 +332,125 @@ class UserService extends DbService {
     });
   }
 
-  //post student delete
-  async deleteStudent(_id, req, res) {
-    ////////////////////////////////////////////////////
-    // delete student from courses
-    await this.Course.updateMany(
-      { studentsCourse: _id },
-      { $pull: { studentsCourse: _id } }
-    ).exec();
+  // UPDATE //////////////////////////////////////////////////
+  // validation student profile
+  async studentProfileValidation(
+    firstnameUser,
+    lastnameUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    validator
+  ) {
+    let newData = {};
 
-    ////////////////////////////////////////////////////
-    // delete student
-    await this.User.deleteOne({ _id });
+    //validate firstname
+    if (firstnameUser) {
+      if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Firstname, first letter should be upperCase.",
+        };
+      }
+      newData.firstnameUser = firstnameUser;
+    }
 
-    ////////////////////////////////////////////////////
-    // delete student session
-    req.session.destroy();
+    //validate lastname
+    if (lastnameUser) {
+      if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Lastname, first letter should be upperCase.",
+        };
+      }
+      newData.lastnameUser = lastnameUser;
+    }
 
-    res.redirect("/");
+    // validate email
+    if (emailUser) {
+      if (!validator.isEmail(emailUser)) {
+        return { success: false, message: "Email, not a valid email." };
+      }
+      newData.emailUser = emailUser;
+    }
+
+    // validate password
+    if (passwordUser && confirmPasswordUser) {
+      if (passwordUser !== confirmPasswordUser) {
+        return {
+          success: false,
+          message: "Password, new password and confirm password doesn't match.",
+        };
+      } else if (passwordUser.trim().length < 8) {
+        return {
+          success: false,
+          message: "Password, at least 8 letters or numbers.",
+        };
+      }
+      newData.passwordUser = passwordUser;
+    }
+
+    return { success: true, newData };
   }
 
+  //patch student profile
+  async setStudentProfile(
+    firstnameUser,
+    lastnameUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    validator,
+    req,
+    res
+  ) {
+    // validation student profile
+
+    const validationResultStudentProfile = await this.studentProfileValidation(
+      firstnameUser,
+      lastnameUser,
+      emailUser,
+      passwordUser,
+      confirmPasswordUser,
+      validator
+    );
+
+    if (!validationResultStudentProfile.success) {
+      req.flash("error_msg", validationResultStudentProfile.message);
+      return res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
+    }
+
+    console.log(validationResultStudentProfile.newData);
+
+    // update user
+    let { _id } = req.user;
+    const userType = { _id };
+
+    await this.User.findOneAndUpdate(
+      userType,
+      validationResultStudentProfile.newData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+
+    req.flash("success_msg", "Updated Successfully.");
+    res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
+  }
+
+  // DELETE //////////////////////////////////////////////////
   //post instrutor delete
   async deleteInstructor(_id, req, res, path, fs) {
-    ////////////////////////////////////////////////////
     // delete instructor courses
     await this.Course.deleteMany({ instructorCourse: _id });
 
-    ////////////////////////////////////////////////////
     // delete instructor
     await this.User.deleteOne({ _id });
 
-    ////////////////////////////////////////////////////
     // delete instructor session
     req.session.destroy();
 
-    ////////////////////////////////////////////////////
     // delete instructor and courses photoes
     // file path
     const directoryPath = path.resolve("./") + "/public/uploads";
@@ -357,6 +489,23 @@ class UserService extends DbService {
         }
       });
     });
+
+    res.redirect("/");
+  }
+
+  //post student delete
+  async deleteStudent(_id, req, res) {
+    // delete student from courses
+    await this.Course.updateMany(
+      { studentsCourse: _id },
+      { $pull: { studentsCourse: _id } }
+    ).exec();
+
+    // delete student
+    await this.User.deleteOne({ _id });
+
+    // delete student session
+    req.session.destroy();
 
     res.redirect("/");
   }
