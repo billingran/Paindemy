@@ -22,8 +22,8 @@ module.exports.getAllinstructors = async (req, res) => {
       allinstructors,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -63,8 +63,8 @@ module.exports.getCoursesCategory = async (req, res) => {
       iconCategory,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -114,8 +114,8 @@ module.exports.getOneinstructor = async (req, res) => {
       numberStudentOneInstructor,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -187,8 +187,8 @@ module.exports.getOnecourse = async (req, res) => {
       relatedCourses,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -212,7 +212,7 @@ module.exports.postGetSearchTerm = async (req, res) => {
       result,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };

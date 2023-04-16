@@ -4,8 +4,10 @@ const courseService = new CourseService();
 const UserService = require("../services/User_service");
 const userService = new UserService();
 
-// models
-const Course = require("../models/Course_model");
+// validation
+const validator = require("validator");
+
+const User = require("../models/User_model");
 
 // image upload
 const fs = require("fs");
@@ -23,8 +25,8 @@ module.exports.instructorProfile = (req, res) => {
       authUser: req.user,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -37,8 +39,8 @@ module.exports.putInstructorProfile = (req, res) => {
       authUser: req.user,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -82,8 +84,8 @@ module.exports.postNewClass = async (req, res) => {
       path
     );
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -103,8 +105,8 @@ module.exports.postInstructorDelete = async (req, res) => {
 
     await userService.deleteInstructor(_id, req, res, path, fs);
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };
 
@@ -131,7 +133,7 @@ module.exports.instructorMycourses = async (req, res) => {
       mycourseInstructorRandom,
     });
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 };

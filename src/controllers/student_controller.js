@@ -7,8 +7,6 @@ const courseService = new CourseService();
 // validation
 const validator = require("validator");
 
-const User = require("../models/User_model");
-
 // student profile
 module.exports.studentProfile = (req, res) => {
   res.render("my_profile", {

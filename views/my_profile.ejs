@@ -15,7 +15,7 @@
   <div class="center_auth center_my_profile">
     <h2 class="title_my_profile">My profile</h2>
     <form
-      action="<%= authUser.roleUser %>/profile/<%= authUser._id %>?_method=PUT"
+      action="<%= authUser.roleUser %>/profile/<%= authUser._id %>?_method=PATCH"
       enctype="multipart/form-data"
       method="POST"
     >
@@ -27,7 +27,7 @@
           style="margin: 2.8rem 0 0; width: 50%"
         >
           <input value="<%= authUser.firstnameUser || "" %>" id="firstnameUser"
-          type="text" name="firstnameUser" required />
+          type="text" name="firstnameUser"/>
           <span></span>
           <i class="uil uil-parking-circle up_joinus"></i>
           <label for="firstnameUser" class="up_joinus">Firstname</label>
@@ -38,7 +38,7 @@
           style="margin: 2.8rem 0 0; width: 50%"
         >
           <input value="<%= authUser.lastnameUser || "" %>" id="lastnameUser"
-          type="text" name="lastnameUser" required />
+          type="text" name="lastnameUser"/>
           <span></span>
           <i class="uil uil-user-circle up_joinus"></i>
           <label for="lastnameUser" class="up_joinus">Lastname</label>
@@ -51,7 +51,7 @@
           style="margin: 2.8rem 0 0; width: 50%"
         >
           <input value="<%= authUser.themeColorUser || "" %>"
-          id="themeColorUser" type="text" name="themeColorUser" required />
+          id="themeColorUser" type="text" name="themeColorUser"/>
           <span></span>
           <i class="uil uil-swatchbook up_joinus"></i>
           <label for="themeColorUser" class="up_joinus">Theme color</label>
@@ -62,7 +62,7 @@
           style="margin: 2.8rem 0 0; width: 50%"
         >
           <input value="<%= authUser.fathUser || "" %>" id="fathUser"
-          type="text" name="fathUser" required />
+          type="text" name="fathUser"/>
           <span></span>
           <i class="uil uil-bookmark up_joinus"></i>
           <label for="fathUser" class="up_joinus">Fath</label>
@@ -71,22 +71,34 @@
 
       <div class="txt_field_auth txt_my_profile">
         <input value="<%= authUser.emailUser || "" %>" id="emailUser"
-        type="email" name="emailUser" required />
+        type="email" name="emailUser"/>
         <span></span>
         <i class="uil uil-envelope-alt up_joinus"></i>
         <label for="emailUser" class="up_joinus">Email</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
-        <input value="<%= authUser.passwordUser || "" %>" id="passwordUser"
-        type="password" name="passwordUser" required />
+        <input id="passwordUser" type="password" name="passwordUser" />
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
         <label for="passwordUser" class="up_joinus">Password</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
-        <textarea name="introductionUser" id="introductionUser" required>
+        <input
+          id="confirmPasswordUser"
+          type="password"
+          name="confirmPasswordUser"
+        />
+        <span></span>
+        <i class="uil uil-lock up_joinus"></i>
+        <label for="confirmPasswordUser" class="up_joinus"
+          >Confirm password</label
+        >
+      </div>
+
+      <div class="txt_field_auth txt_my_profile">
+        <textarea name="introductionUser" id="introductionUser">
 <%= authUser.introductionUser || "" %></textarea
         >
         <span></span>
@@ -96,8 +108,8 @@
 
       <div class="txt_field_auth joinUs_div txt_my_profile">
         <input value="<%= authUser.imageUser || "" %>" id="imageUser"
-        type="file" name="imageUser" accept="image/*" multiple required
-        style="opacity: 0" />
+        type="file" name="imageUser" accept="image/*" multiple style="opacity:
+        0" />
         <span></span>
         <label for="imageUser" class="upload_joinus a_NBorder"
           ><i class="uil uil-image"></i>Image Upload</label
