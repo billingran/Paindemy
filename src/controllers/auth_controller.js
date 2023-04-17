@@ -7,6 +7,9 @@ const path = require("path");
 // validation
 const validator = require("validator");
 
+// bcrypt
+const bcrypt = require("bcrypt");
+
 // sign up
 module.exports.signUp = (req, res) => {
   return res.render("sign_up", {
@@ -35,7 +38,8 @@ module.exports.postSignUp = async (req, res) => {
       confirmPasswordUser.trim(),
       validator,
       req,
-      res
+      res,
+      bcrypt
     );
   } catch (error) {
     console.log(error);
@@ -78,7 +82,8 @@ module.exports.postJoinUs = async (req, res) => {
       validator,
       req,
       res,
-      path
+      path,
+      bcrypt
     );
   } catch (error) {
     console.log(error);

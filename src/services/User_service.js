@@ -47,7 +47,8 @@ class UserService extends DbService {
     emailUser,
     passwordUser,
     confirmPasswordUser,
-    validator
+    validator,
+    bcrypt
   ) {
     let newDataStudentProfile = {};
 
@@ -94,6 +95,8 @@ class UserService extends DbService {
           message: "Password, at least 8 letters or numbers.",
         };
       }
+      const hashValue = await bcrypt.hash(passwordUser, 12);
+      passwordUser = hashValue;
       newDataStudentProfile.passwordUser = passwordUser;
     }
 
@@ -108,7 +111,8 @@ class UserService extends DbService {
     confirmPasswordUser,
     validator,
     req,
-    res
+    res,
+    bcrypt
   ) {
     // validate email exist
     const emailFound = await this.User.findOne({ emailUser }).exec();
@@ -124,7 +128,8 @@ class UserService extends DbService {
       emailUser,
       passwordUser,
       confirmPasswordUser,
-      validator
+      validator,
+      bcrypt
     );
 
     if (!validationResultSignUp.success) {
@@ -159,7 +164,8 @@ class UserService extends DbService {
     arrayImagesFile,
     validator,
     res,
-    path
+    path,
+    bcrypt
   ) {
     let newDataInstructorProfile = {};
 
@@ -222,6 +228,9 @@ class UserService extends DbService {
           message: "Password, at least 8 letters or numbers.",
         };
       }
+
+      const hashValue = await bcrypt.hash(passwordUser, 12);
+      passwordUser = hashValue;
       newDataInstructorProfile.passwordUser = passwordUser;
     }
 
@@ -273,7 +282,8 @@ class UserService extends DbService {
     validator,
     req,
     res,
-    path
+    path,
+    bcrypt
   ) {
     // validate email exist
     const emailFound = await this.User.findOne({ emailUser }).exec();
@@ -304,7 +314,8 @@ class UserService extends DbService {
       arrayImagesFile,
       validator,
       res,
-      path
+      path,
+      bcrypt
     );
 
     if (!validationResultJoinUs.success) {
@@ -410,7 +421,8 @@ class UserService extends DbService {
     confirmPasswordUser,
     validator,
     req,
-    res
+    res,
+    bcrypt
   ) {
     // validation student profile
     const validationResultStudentProfile = await this.studentProfileValidation(
@@ -419,7 +431,8 @@ class UserService extends DbService {
       emailUser,
       passwordUser,
       confirmPasswordUser,
-      validator
+      validator,
+      bcrypt
     );
 
     if (!validationResultStudentProfile.success) {
@@ -458,7 +471,8 @@ class UserService extends DbService {
     req,
     res,
     path,
-    fs
+    fs,
+    bcrypt
   ) {
     // validation instructor profile
 
@@ -491,7 +505,8 @@ class UserService extends DbService {
         arrayImagesFile,
         validator,
         res,
-        path
+        path,
+        bcrypt
       );
 
     if (!validationResultInstructorProfile.success) {

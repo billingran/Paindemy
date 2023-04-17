@@ -14,6 +14,9 @@ const path = require("path");
 // time controller
 const moment = require("moment");
 
+// bcrypt
+const bcrypt = require("bcrypt");
+
 // instructor profile
 module.exports.instructorProfile = (req, res) => {
   try {
@@ -54,7 +57,8 @@ module.exports.patchInstructorProfile = async (req, res) => {
     req,
     res,
     path,
-    fs
+    fs,
+    bcrypt
   );
 
   try {

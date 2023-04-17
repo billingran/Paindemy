@@ -7,6 +7,9 @@ const courseService = new CourseService();
 // validation
 const validator = require("validator");
 
+// bcrypt
+const bcrypt = require("bcrypt");
+
 // student profile
 module.exports.studentProfile = (req, res) => {
   res.render("my_profile", {
@@ -35,7 +38,8 @@ module.exports.patchStudentProfile = async (req, res) => {
       confirmPasswordUser.trim(),
       validator,
       req,
-      res
+      res,
+      bcrypt
     );
   } catch (error) {
     console.log(error);

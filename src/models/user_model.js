@@ -60,24 +60,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// mongoose middleware
-// bcrypt password for new user or modified password
-userSchema.pre("save", async function (next) {
-  if (this.isNew || this.isModified("passwordUser")) {
-    const hashValue = await bcrypt.hash(this.passwordUser, 12);
-    this.passwordUser = hashValue;
-  }
-  next();
-});
-
-userSchema.pre("findOneAndUpdate", async function (next) {
-  const { passwordUser: plainPassword } = this._update;
-  if (plainPassword) {
-    const hashValue = await bcrypt.hash(plainPassword, 12);
-    this._update.passwordUser = hashValue;
-  }
-
-  next();
-});
-
 module.exports = mongoose.model("User", userSchema);
