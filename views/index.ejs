@@ -30,9 +30,7 @@
       <% if(typeof categories !== 'undefined' && categories != null &&
       categories.length > 0) { %> <% categories.forEach((category) => { %>
       <li class="mid_image">
-        <a
-          href="/course/courses/<%= category.urlParsed(category.nameCategory) %>"
-        >
+        <a href="/course/courses/<%= category._id %>">
           <div class="ctn_image ctn_image_category">
             <div
               loading="lazy"
@@ -66,7 +64,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= categories[0].urlParsed(categories[0].nameCategory) %>"
+          href="/course/courses/<%= categories[0]._id %>"
           class="ctn_viceTitle_display"
           >View more
           <iconify-icon
@@ -193,7 +191,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= categories[1].urlParsed(categories[1].nameCategory) %>"
+          href="/course/courses/<%= categories[1]._id %>"
           class="ctn_viceTitle_display"
           >View more
           <iconify-icon
@@ -320,7 +318,7 @@
       </div>
       <div class="mid_display">
         <a
-          href="/course/courses/<%= categories[2].urlParsed(categories[2].nameCategory) %>"
+          href="/course/courses/<%= categories[2]._id %>"
           class="ctn_viceTitle_display"
           >View more
           <iconify-icon

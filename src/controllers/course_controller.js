@@ -30,9 +30,13 @@ module.exports.getAllinstructors = async (req, res) => {
 //courses of categories
 module.exports.getCoursesCategory = async (req, res) => {
   try {
-    // req.params
-    let { nameCategory } = req.params;
-    nameCategory = categoryService.getBackUrl(nameCategory);
+    // id category
+    let { _id } = req.params;
+    let nameCategory;
+
+    // turn id into name category
+    let category = await categoryService.getOneCategory({ _id });
+    nameCategory = category.nameCategory;
 
     ////////////////////////////////////////////////////
     // find all courses for carousel
@@ -122,16 +126,25 @@ module.exports.getOneinstructor = async (req, res) => {
 // one course
 module.exports.getOnecourse = async (req, res) => {
   try {
-    let { requestCourse } = req.params;
-    requestCourse = courseService.getBackUrl(requestCourse);
+    let { _id } = req.params;
+    let requestCourse = _id;
+
+    // turn id into name category and check if it's category name
+    if (_id != "latest" && _id != "random") {
+      let category = await categoryService.getOneCategory({ _id });
+
+      if (category._id != null) {
+        requestCourse = category.nameCategory;
+      }
+    }
 
     ////////////////////////////////////////////////////
-    // find latest, random or one course according req.params
+    // find latest, random or one course according requestCourse
 
     // get latest, random or one course
     let oneCourse;
 
-    if (requestCourse == "Latest") {
+    if (requestCourse == "latest") {
       // get latest course
       const sortNumberLatest = -1;
       const limitNumberLatest = 1;
@@ -143,7 +156,7 @@ module.exports.getOnecourse = async (req, res) => {
       );
 
       oneCourse = oneCourse[0];
-    } else if (requestCourse == "Random" || requestCourse == "All") {
+    } else if (requestCourse == "random" || requestCourse == "All") {
       // get random course
       oneCourse = await courseService.getOneCourseCountSkip({});
     } else if (
