@@ -6,7 +6,7 @@ class UserService extends DbService {
     super();
   }
   // READ //////////////////////////////////////////////////
-  // User//////////////////////////////////////////////////
+  // User
   // get all users (instructor)
   async getOneUser(userType) {
     const user = await this.User.findOne(userType).exec();

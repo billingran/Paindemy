@@ -170,6 +170,7 @@
         <label for="emailUser" class="up_joinus">Email</label>
       </div>
 
+      <% if (authUser.roleUser == 'student' && !authUser.googleIDUser) { %>
       <div class="txt_field_auth txt_my_profile">
         <input id="passwordUser" type="password" name="passwordUser" />
         <span></span>
@@ -189,6 +190,7 @@
           >Confirm password</label
         >
       </div>
+      <% } %>
 
       <input type="submit" value="Save" />
     </form>
