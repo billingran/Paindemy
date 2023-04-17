@@ -321,6 +321,7 @@ header .ctn_burger {
 .ul_sideBar_header li.ctn_sidbar_login {
   display: none;
   visibility: hidden;
+  align-self: flex-start;
 }
 
 /* input side bar/////////////////////////////////////////// */
@@ -407,7 +408,7 @@ header .ctn_burger {
 /* /////////////////////////////////////////////// */
 /* responive */
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 1000px) {
   .form_homeOne {
     display: none;
     visibility: hidden;
@@ -419,7 +420,7 @@ header .ctn_burger {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .ctn_auth_header {
     display: none;
     visibility: hidden;
@@ -432,7 +433,7 @@ header .ctn_burger {
 
   .ul_sideBar_header li.ctn_sidbar_signup,
   .ul_sideBar_header li.ctn_sidbar_login {
-    display: block;
+    display: flex;
     visibility: visible;
   }
 }

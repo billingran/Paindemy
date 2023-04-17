@@ -57,7 +57,7 @@ class UserService extends DbService {
       if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
         return {
           success: false,
-          message: "Firstname, first letter should be upperCase.",
+          message: "Prénom, Première lettre en majuscule.",
         };
       }
       newDataStudentProfile.firstnameUser = firstnameUser;
@@ -68,7 +68,7 @@ class UserService extends DbService {
       if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
         return {
           success: false,
-          message: "Lastname, first letter should be upperCase.",
+          message: "Nom de famille, Première lettre en majuscule.",
         };
       }
       newDataStudentProfile.lastnameUser = lastnameUser;
@@ -77,7 +77,10 @@ class UserService extends DbService {
     // validate email
     if (emailUser) {
       if (!validator.isEmail(emailUser)) {
-        return { success: false, message: "Email, not a valid email." };
+        return {
+          success: false,
+          message: "Adresse mail, L’adresse mail n’est pas valide.",
+        };
       }
       newDataStudentProfile.emailUser = emailUser;
     }
@@ -87,12 +90,13 @@ class UserService extends DbService {
       if (passwordUser !== confirmPasswordUser) {
         return {
           success: false,
-          message: "Password, password and confirm password doesn't match.",
+          message:
+            "Mot de passe, Le mot de passe et la confirmation ne sont pas les même.",
         };
       } else if (passwordUser.trim().length < 8) {
         return {
           success: false,
-          message: "Password, at least 8 letters or numbers.",
+          message: "Mot de passe, Au moins 8 lettres ou chiffres.",
         };
       }
       const hashValue = await bcrypt.hash(passwordUser, 12);
@@ -174,7 +178,7 @@ class UserService extends DbService {
       if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
         return {
           success: false,
-          message: "Firstname, first letter should be upperCase.",
+          message: "Prénom, Première lettre en majuscule.",
         };
       }
       newDataInstructorProfile.firstnameUser = firstnameUser;
@@ -185,7 +189,7 @@ class UserService extends DbService {
       if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
         return {
           success: false,
-          message: "Lastname, first letter should be upperCase.",
+          message: "Nom de famille, Première lettre en majuscule.",
         };
       }
       newDataInstructorProfile.lastnameUser = lastnameUser;
@@ -201,7 +205,7 @@ class UserService extends DbService {
       if (fathUser[0] !== fathUser[0].toUpperCase()) {
         return {
           success: false,
-          message: "Faith, first letter should be upperCase.",
+          message: "Devise, Première lettre en majuscule.",
         };
       }
       newDataInstructorProfile.fathUser = fathUser;
@@ -210,7 +214,10 @@ class UserService extends DbService {
     // validate email
     if (emailUser) {
       if (!validator.isEmail(emailUser)) {
-        return { success: false, message: "Email, not a valid email." };
+        return {
+          success: false,
+          message: "Adresse mail, L’adresse mail n’est pas valide.",
+        };
       }
       newDataInstructorProfile.emailUser = emailUser;
     }
@@ -220,12 +227,13 @@ class UserService extends DbService {
       if (passwordUser !== confirmPasswordUser) {
         return {
           success: false,
-          message: "Password, password and confirm password doesn't match.",
+          message:
+            "Mot de passe, Le mot de passe et la confirmation ne sont pas les même.",
         };
       } else if (passwordUser.trim().length < 8) {
         return {
           success: false,
-          message: "Password, at least 8 letters or numbers.",
+          message: "Mot de passe, Au moins 8 lettres ou chiffres.",
         };
       }
 
@@ -239,7 +247,7 @@ class UserService extends DbService {
       if (introductionUser[0] !== introductionUser[0].toUpperCase()) {
         return {
           success: false,
-          message: "Introduction, first letter should be upperCase.",
+          message: "Introduction, Première lettre en majuscule.",
         };
       }
 
@@ -251,7 +259,7 @@ class UserService extends DbService {
       if (objectImagesFile.imageUser.length != 2) {
         return {
           success: false,
-          message: "Image upload, two images required.",
+          message: "Image, 2 images nécessaires.",
         };
       }
 
@@ -371,20 +379,29 @@ class UserService extends DbService {
       // save user on session, sign id of user, and then send it in cookie
       done(null, userFound);
     } else {
-      userFound = new this.User({
-        firstnameUser: profile.name.givenName,
-        lastnameUser: profile.name.familyName || "   ",
+      // validate email exist
+      const emailFound = await this.User.findOne({
         emailUser: profile.emails[0].value,
-        googleIDUser: profile.id,
-        imageUser: profile.photos[0].value,
-        roleUser: "student",
-      });
+      }).exec();
 
-      let userGoogle = await userFound.save();
+      if (emailFound) {
+        done(null, false);
+      } else {
+        userFound = new this.User({
+          firstnameUser: profile.name.givenName,
+          lastnameUser: profile.name.familyName || "   ",
+          emailUser: profile.emails[0].value,
+          googleIDUser: profile.id,
+          imageUser: profile.photos[0].value,
+          roleUser: "student",
+        });
 
-      // func serializeUser
-      // save user on session, sign id of user, and then send it in cookie
-      done(null, userGoogle);
+        let userGoogle = await userFound.save();
+
+        // func serializeUser
+        // save user on session, sign id of user, and then send it in cookie
+        done(null, userGoogle);
+      }
     }
   }
 

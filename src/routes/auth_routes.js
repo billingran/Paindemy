@@ -41,7 +41,10 @@ router.get(
 // google login redirect
 router.get(
   "/google/redirect",
-  passport.authenticate("google"),
+  passport.authenticate("google", {
+    failureRedirect: "/auth/login",
+    failureFlash: "Google login failure, email, email exists.",
+  }),
   authController.googleRedirect
 );
 

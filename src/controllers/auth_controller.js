@@ -115,7 +115,7 @@ module.exports.postLogin = (req, res) => {
 module.exports.googleAuth = (req, res) => {};
 
 //google login redirect
-module.exports.googleRedirect = (req, res) => {
+module.exports.googleRedirect = (err, req, res) => {
   let user;
 
   if (req.user) {

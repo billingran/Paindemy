@@ -27,7 +27,7 @@ const courseSchema = new mongoose.Schema({
   },
   categoryCourse: {
     type: String,
-    enum: ["Bakery", "Pastry", "Other"],
+    enum: ["Boulangerie", "Pâtisserie", "Autre"],
     required: true,
   },
   caloriesCourse: {

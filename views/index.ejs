@@ -2,18 +2,18 @@
 <!-- Home One -->
 <section loading="lazy" class="back_image_homeOne">
   <div class="size_background_homeOne filter_homeOne"></div>
-  <h2 class="title_homeOne">Find a Baking course ?</h2>
+  <h2 class="title_homeOne">Trouver un cursus en boulangerie ?</h2>
 
   <div class="ctn_btns_homeOne">
     <ul class="ul_btns">
       <li>
         <a href="/course/onecourse/latest" class="left_btns a_NBorder"
-          >Latest course</a
+          >Dernier cours</a
         >
       </li>
       <li>
         <a href="/course/onecourse/random" class="right_btns a_NBorder"
-          >Show random</a
+          >Mode aléatoire</a
         >
       </li>
     </ul>
@@ -59,14 +59,14 @@
       <div class="centralA icon_title_display">
         <%- categories[0].iconCategory %>
         <h2 class="title_display">
-          <%= categories[0].getNameCategory() %> courses
+          Cours en <%= categories[0].getNameCategory() %>
         </h2>
       </div>
       <div class="mid_display">
         <a
           href="/course/courses/<%= categories[0]._id %>"
           class="ctn_viceTitle_display"
-          >View more
+          >Voir plus
           <iconify-icon
             icon="mdi:more-circle"
             class="icon_viceTitle_display"
@@ -186,14 +186,14 @@
       <div class="centralA icon_title_display">
         <%- categories[1].iconCategory %>
         <h2 class="title_display">
-          <%= categories[1].getNameCategory() %> courses
+          Cours en <%= categories[1].getNameCategory() %>
         </h2>
       </div>
       <div class="mid_display">
         <a
           href="/course/courses/<%= categories[1]._id %>"
           class="ctn_viceTitle_display"
-          >View more
+          >Voir plus
           <iconify-icon
             icon="mdi:more-circle"
             class="icon_viceTitle_display"
@@ -313,14 +313,14 @@
       <div class="centralA icon_title_display">
         <%- categories[2].iconCategory %>
         <h2 class="title_display">
-          <%= categories[2].getNameCategory() %> courses
+          <%= categories[2].getNameCategory() %>s cours
         </h2>
       </div>
       <div class="mid_display">
         <a
           href="/course/courses/<%= categories[2]._id %>"
           class="ctn_viceTitle_display"
-          >View more
+          >Voir plus
           <iconify-icon
             icon="mdi:more-circle"
             class="icon_viceTitle_display"
@@ -478,21 +478,23 @@
 
   <!-- wanted text -->
   <div class="ctn_text">
-    <h2 class="title_homeThree">Our instructors</h2>
+    <h2 class="title_homeThree">Nos enseignants</h2>
     <p class="text_homeThree">
-      Are you an expert in the field of baking, with a desire to share your
-      knowledge and skills with others? Do you have a passion for teaching and
-      helping others grow? Then we want you! As an Udemy instructor, you'll have
-      the opportunity to create engaging, high-quality courses that meet the
-      needs of today's learners. <br />
+      Etes vous un expert, avec le désir de partager vos savoirs et vos
+      compétences ? Avez-vous une passion pour l’enseignement et l’entraide ?
+      Bienvenue parmis nous ! Vous êtes au bon endroit ! En tant qu’enseignant
+      Paindemy, vous aurez l’opportunité de créer des cours intéressants et de
+      haute qualité afin de satisfaire les besoins de nos apprenants. <br />
     </p>
     <div>
       <ul class="ul_btns ul_flexStart_btns">
         <li>
-          <a href="/course/instructors" class="left_btns a_NBorder">See more</a>
+          <a href="/course/instructors" class="left_btns a_NBorder"
+            >Voir plus
+          </a>
         </li>
         <li>
-          <a href="/auth/joinus" class="right_btns a_NBorder">Join us</a>
+          <a href="/auth/joinus" class="right_btns a_NBorder">Rejoignez-nous</a>
         </li>
       </ul>
     </div>

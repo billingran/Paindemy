@@ -52,7 +52,7 @@ module.exports.getCoursesCategory = async (req, res) => {
     // get all courses
     let manyCourses = await courseService.getAllCourses({});
 
-    if (nameCategory != "All") {
+    if (nameCategory != "Tout") {
       // get category courses
       const coursesType = { categoryCourse: nameCategory };
       manyCourses = await courseService.getAllCourses(coursesType);
@@ -156,13 +156,13 @@ module.exports.getOnecourse = async (req, res) => {
       );
 
       oneCourse = oneCourse[0];
-    } else if (requestCourse == "random" || requestCourse == "All") {
+    } else if (requestCourse == "random" || requestCourse == "Tout") {
       // get random course
       oneCourse = await courseService.getOneCourseCountSkip({});
     } else if (
-      requestCourse == "Bakery" ||
-      requestCourse == "Pastry" ||
-      requestCourse == "Other"
+      requestCourse == "Boulangerie" ||
+      requestCourse == "Pâtisserie" ||
+      requestCourse == "Autre"
     ) {
       // get category course
       const coursesType = { categoryCourse: requestCourse };

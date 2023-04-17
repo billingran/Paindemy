@@ -4,7 +4,7 @@
 <section loading="lazy" class="back_image_auth back_image_login">
   <div class="filter_auth filter_login"></div>
   <div class="center_auth center_login">
-    <h2 class="font_weight_auth">Login</h2>
+    <h2 class="font_weight_auth">Se connecter</h2>
     <form action="/auth/login" method="POST">
       <%- include("partials/message") %>
 
@@ -12,25 +12,25 @@
         <input id="username" type="text" name="username" required />
         <span></span>
         <i class="uil uil-envelope-alt up_joinus"></i>
-        <label for="username" class="up_joinus">Email</label>
+        <label for="username" class="up_joinus">Adresse mail</label>
       </div>
 
       <div class="txt_field_auth">
         <input id="password" type="password" name="password" required />
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
-        <label for="password" class="up_joinus">Password</label>
+        <label for="password" class="up_joinus">Mot de passe</label>
       </div>
-      <div class="pass_auth">Forget password?</div>
-      <input type="submit" value="Login" />
+      <div class="pass_auth">Mot de passe oublié ?</div>
+      <input type="submit" value="Se connecter" />
 
       <a href="/auth/google" class="google"
-        ><ion-icon name="logo-google"></ion-icon>Login with google
+        ><ion-icon name="logo-google"></ion-icon>Se connecter avec Google
       </a>
 
       <div class="link_auth">
-        Not a member ? <a href="/auth/signup">Sign up</a> or
-        <a href="/">Home</a>
+        Pas encore membre ? <a href="/auth/signup">Créer un compte</a> ou
+        <a href="/">Menu</a>
       </div>
     </form>
   </div>

@@ -32,7 +32,7 @@
         id="search_homeOne"
         type="search"
         name="searchTerm"
-        placeholder="Searching..."
+        placeholder="Rechercher..."
         autofocus
         class="input_homeOne"
       />
@@ -42,9 +42,9 @@
     <div class="central">
       <% if (!authUser) { %>
       <div class="ctn_auth_header">
-        <a href="/auth/signup" class="auth_signup_header">Sign up</a>
+        <a href="/auth/signup" class="auth_signup_header">Créer un compte</a>
         <span class="midLine_auth_header">/</span>
-        <a href="/auth/login" class="auth_login_header">Login</a>
+        <a href="/auth/login" class="auth_login_header">Se connecter</a>
       </div>
       <% } %> <% if (authUser) { %>
       <a
@@ -105,7 +105,7 @@
           id="search_homeOne_sideBar"
           type="search"
           name="searchTerm"
-          placeholder="Searching..."
+          placeholder="Rechercher..."
           autofocus
           class="input_homeOne"
         />
@@ -148,12 +148,13 @@
     <% } %> <% if (!authUser) { %>
     <li class="ctn_sidbar_signup">
       <a href="/auth/signup" class="centralA"
-        ><i class="uil uil-illustration icon_sideBar_header"></i> sign up
+        ><i class="uil uil-illustration icon_sideBar_header"></i> Créer un
+        compte
       </a>
     </li>
     <li class="ctn_sidbar_login">
       <a href="/auth/login" class="centralA"
-        ><i class="uil uil-signin icon_sideBar_header"></i> Login
+        ><i class="uil uil-signin icon_sideBar_header"></i> Se connecter
       </a>
     </li>
     <% } %> <% if (authUser) { %> <% if (authUser.roleUser == 'instructor') { %>
