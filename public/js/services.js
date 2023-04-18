@@ -1,15 +1,14 @@
 const API_URL = "http://localhost:5000";
 
 // register a course//////////////////////////////////////////////////
-const btnMycourses = document.querySelectorAll(".btn_mycourses");
+const btnRegisterClass = document.querySelectorAll(".btn_register_class");
 
-btnMycourses.forEach((btn) => {
+btnRegisterClass.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     event.preventDefault();
     const _id = event.target.getAttribute("id");
-
     axios
-      .post(`http://localhost:5000/course/registermycourses/`, { _id })
+      .post(`${API_URL}/course/registerclass/${_id}`, { _id })
       .then((response) => {
         const message = response.data.message;
         alert(message);

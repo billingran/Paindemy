@@ -229,3 +229,15 @@ module.exports.postGetSearchTerm = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+//Axios//////////////////////////////////////////////////
+// register course
+module.exports.registerClass = async (req, res) => {
+  console.log("Hi");
+  try {
+    console.log(req.body);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
