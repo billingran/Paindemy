@@ -456,16 +456,14 @@ class CourseService extends DbService {
       { runValidators: true }
     ).exec();
 
-    // if (result.modifiedCount === 0) {
-    //   throw new Error("Unable to add student to course.");
-    // }
-
-    //AXIOS //////////////////////////////////////////////////
-    // get register courses number
+    // erro of adding a course twice or get new number courses of user
 
     let coursesRegistered;
 
-    if (req.user && req.user.roleUser == "student") {
+    if (result.modifiedCount === 0) {
+      coursesRegistered = "Vous vous êtes déjà inscrit à ce cours.";
+      res.status(200).send(coursesRegistered);
+    } else if (req.user && req.user.roleUser == "student") {
       const coursesTypeStudent = { studentsCourse: req.user._id };
 
       coursesRegistered = await this.getAllCourses(coursesTypeStudent);

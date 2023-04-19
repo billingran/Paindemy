@@ -55,8 +55,8 @@ module.exports.homePage = async (req, res) => {
 
 //AXIOS //////////////////////////////////////////////////
 
-// register a course
-module.exports.homePageRegisterClass = async (req, res) => {
+// post home page register class
+module.exports.postHomePageRegisterClass = async (req, res) => {
   try {
     // course id
     let { _id } = req.body;

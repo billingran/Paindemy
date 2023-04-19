@@ -6,7 +6,7 @@ router.get("/", homePageController.homePage);
 
 //AXIOS //////////////////////////////////////////////////
 
-// register a course
-router.post("/", homePageController.homePageRegisterClass);
+// post home page register class
+router.post("/", homePageController.postHomePageRegisterClass);
 
 module.exports = router;

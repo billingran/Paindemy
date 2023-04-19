@@ -157,7 +157,7 @@ h2 {
 /* flash message */
 .ctn_msg {
   font-size: 1.3rem;
-  text-align: justify;
+  text-align: center;
   padding: 0.5rem;
 
   border-radius: 0.55rem;
@@ -170,6 +170,17 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
 }
 
 .error_msg {
