@@ -121,7 +121,7 @@ class UserService extends DbService {
     // validate email exist
     const emailFound = await this.User.findOne({ emailUser }).exec();
     if (emailFound) {
-      req.flash("error_msg", "Email, account exist.");
+      req.flash("error_msg", "Adresse mail, compte existant.");
       return res.redirect("/auth/signup");
     }
 
@@ -296,7 +296,7 @@ class UserService extends DbService {
     // validate email exist
     const emailFound = await this.User.findOne({ emailUser }).exec();
     if (emailFound) {
-      req.flash("error_msg", "Email, account exist.");
+      req.flash("error_msg", "Adresse mail, adresse mail existante.");
       return res.redirect("/auth/joinus");
     }
 

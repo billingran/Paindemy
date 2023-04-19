@@ -147,7 +147,7 @@
         ></iconify-icon>
         <% } %> <% if (authUser.roleUser == 'student') { %>
         <i class="uil uil-graduation-cap icon_header_sidebar"></i>
-        <% } %> Teng-wei Huang
+        <% } %> <%= authUser.firstnameUser %> <%= authUser.lastnameUser %>
       </div>
     </li>
     <% } %> <% if (!authUser) { %>
@@ -166,14 +166,14 @@
 
     <li>
       <a href="/instructor/newclass" class="centralA"
-        ><i class="uil uil-book-alt icon_sideBar_header"></i>New course
+        ><i class="uil uil-book-alt icon_sideBar_header"></i>Nouveau cours
       </a>
     </li>
     <% } %>
 
     <li>
       <a href="/auth/logout" class="centralA"
-        ><i class="uil uil-signout icon_sideBar_header"></i> Logout
+        ><i class="uil uil-signout icon_sideBar_header"></i> Se déconnecter
       </a>
     </li>
     <li>
@@ -181,7 +181,8 @@
         href="/<%= authUser.roleUser %>/delete/<%= authUser._id %>"
         class="centralA"
       >
-        <i class="uil uil-minus-circle icon_sideBar_header"></i> Close account
+        <i class="uil uil-minus-circle icon_sideBar_header"></i> Fermer le
+        compte
       </a>
     </li>
     <% } %>

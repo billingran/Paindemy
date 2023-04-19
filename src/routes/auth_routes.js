@@ -23,7 +23,7 @@ router.post(
   passport.authenticate("local", {
     failureRedirect: "/auth/login",
     failureFlash:
-      "Login failure, account, password is not correct or doesn't exist.",
+      "Erreur de connexion, le compte, mot de passe n’est pas correct ou n’existe pas.",
   }),
   authController.postLogin
 );
@@ -43,7 +43,7 @@ router.get(
   "/google/redirect",
   passport.authenticate("google", {
     failureRedirect: "/auth/login",
-    failureFlash: "Google login failure, email exists.",
+    failureFlash: "Connexion Google échouée, adresse mail existante",
   }),
   authController.googleRedirect
 );
