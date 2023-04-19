@@ -83,33 +83,6 @@ module.exports.studentMycourses = async (req, res) => {
       allStudentCourses
     );
 
-    // let { _id } = req.params;
-
-    ////////////////////////////////////////////////////
-    // add student into the course
-
-    // const course = await Course.findOne({ _id }).exec();
-    // console.log(course.studentsCourse.includes(req.user._id));
-
-    // if (course.studentsCourse.includes(req.user._id)) {
-    //   req.flash("error_msg", "You can't join same course two times");
-    //   return res.redirect(`/student/mycourses/${req.user._id}`);
-    // }
-
-    // await Course.updateOne(
-    //   { _id },
-    //   { $push: { studentsCourse: req.user._id } },
-    //   { runValidators: true }
-    // ).exec();
-
-    // let test = await Course.updateOne(
-    //   { _id },
-    //   { $addToSet: { studentsCourse: req.user._id } },
-    //   { runValidators: true }
-    // ).exec();
-
-    // console.log(test);
-
     res.render("my_courses", {
       title: "Student my courses",
       showHeader: true,

@@ -371,6 +371,8 @@ class CourseService extends DbService {
     res.redirect("/instructor/newclass");
   }
 
+  // CREATE //////////////////////////////////////////////////
+
   // patch update class
   async setUpdateClass(
     _id,
@@ -437,6 +439,43 @@ class CourseService extends DbService {
 
     req.flash("success_msg", "New class, publish successefully.");
     res.redirect(`/instructor/updateclass/${_id}`);
+  }
+
+  // Axios //////////////////////////////////////////////////
+
+  // register a course
+  async registerClass(_id, req, res) {
+    // add user into course registered
+    const idStudent = req.user._id;
+
+    const courseTypeRegisterClass = { _id };
+
+    let result = await this.Course.updateOne(
+      courseTypeRegisterClass,
+      { $addToSet: { studentsCourse: idStudent } },
+      { runValidators: true }
+    ).exec();
+
+    // if (result.modifiedCount === 0) {
+    //   throw new Error("Unable to add student to course.");
+    // }
+
+    //AXIOS //////////////////////////////////////////////////
+    // get register courses number
+
+    let coursesRegistered;
+
+    if (req.user && req.user.roleUser == "student") {
+      const coursesTypeStudent = { studentsCourse: req.user._id };
+
+      coursesRegistered = await this.getAllCourses(coursesTypeStudent);
+      res.status(200).send(coursesRegistered);
+    } else if (req.user && req.user.roleUser == "instructor") {
+      const coursesTypeInstructor = { instructorCourse: req.user._id };
+
+      coursesRegistered = await this.getAllCourses(coursesTypeInstructor);
+      res.status(200).send(coursesRegistered);
+    }
   }
 }
 

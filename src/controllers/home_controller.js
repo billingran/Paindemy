@@ -52,3 +52,44 @@ module.exports.homePage = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+//AXIOS //////////////////////////////////////////////////
+
+// register a course
+module.exports.homePageRegisterClass = async (req, res) => {
+  try {
+    // course id
+    let { _id } = req.body;
+
+    await courseService.registerClass(_id, req, res);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+// add user into course re);
+
+// let { _id } = req.params;
+
+// const course = await Course.findOne({ _id }).exec();
+// console.log(course.studentsCourse.includes(req.user._id));
+
+// if (course.studentsCourse.includes(req.user._id)) {
+//   req.flash("error_msg", "You can't join same course two times");
+//   return res.redirect(`/student/mycourses/${req.user._id}`);
+// }
+
+// await Course.updateOne(
+//   { _id },
+//   { $push: { studentsCourse: req.user._id } },
+//   { runValidators: true }
+// ).exec();
+
+// let test = await Course.updateOne(
+//   { _id },
+//   { $addToSet: { studentsCourse: req.user._id } },
+//   { runValidators: true }
+// ).exec();
+
+// console.log(test);

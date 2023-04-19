@@ -134,6 +134,7 @@ label[for="search_homeOne_sideBar"] {
 }
 
 .ctn_course_number {
+  overflow: hidden;
   border-radius: 5rem;
   background-color: var(--C-6E1D0E);
   font-size: 0.85rem;
@@ -152,6 +153,42 @@ label[for="search_homeOne_sideBar"] {
   transition: all 0.3s;
 }
 
+.course_number {
+  background-color: var(--C-6E1D0E);
+
+  width: 1rem;
+  height: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.new_course_number {
+  background-color: var(--C-6E1D0E);
+
+  width: 1rem;
+  height: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: turnRed 0.3s;
+}
+
+.ctn_image_header:hover,
 .ctn_image_header:hover {
   color: var(--C-FF0066);
 }
@@ -368,6 +405,7 @@ header .ctn_burger {
   border-radius: 5rem;
   background-color: var(--C-DCA47D);
   font-size: 1.3rem;
+  overflow: hidden;
 
   width: 2.5rem;
   height: 2.5rem;
@@ -381,6 +419,52 @@ header .ctn_burger {
   right: 0;
 
   transition: all 0.3s;
+}
+
+.courseNumber_sidebar {
+  background-color: var(--C-DCA47D);
+
+  width: 2rem;
+  height: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.new_courseNumber_sidebar {
+  background-color: var(--C-DCA47D);
+
+  width: 2rem;
+  height: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: turnRed 0.3s;
+}
+
+@keyframes turnRed {
+  from {
+    color: var(--C-FF0066);
+    scale: 2;
+  }
+  to {
+    color: var(--C-F3F3F3);
+    scale: 1;
+  }
 }
 
 .ctn_image_sidebar:hover {

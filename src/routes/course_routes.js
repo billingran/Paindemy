@@ -19,8 +19,4 @@ router.get("/search", courseController.getSearchTerm);
 //post search
 router.post("/search", courseController.postGetSearchTerm);
 
-//Axios//////////////////////////////////////////////////
-// register course
-router.post("/registerclass/:_id", courseController.registerClass);
-
 module.exports = router;

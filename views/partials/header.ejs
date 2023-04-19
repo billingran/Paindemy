@@ -53,17 +53,20 @@
       >
         <span><%= authUser.firstnameUser[0] %></span>
         <span><%= authUser.lastnameUser[0] %></span>
-        <% if (authUser.roleUser == "instructor" &&
-        authUser.coursesRegistered.length > 0 ) { %>
+
         <div class="ctn_course_number">
-          <%= authUser.coursesRegistered.length %>
+          0 <% if (authUser.roleUser == "instructor" &&
+          authUser.coursesRegistered.length > 0 ) { %>
+          <div class="course_number">
+            <%= authUser.coursesRegistered.length%>
+          </div>
+          <% } %> <% if (authUser.roleUser == "student" &&
+          authUser.coursesRegistered.length > 0) { %>
+          <div class="course_number">
+            <%= authUser.coursesRegistered.length %>
+          </div>
+          <% } %>
         </div>
-        <% } %> <% if (authUser.roleUser == "student" &&
-        authUser.coursesRegistered.length > 0) { %>
-        <div class="ctn_course_number">
-          <%= authUser.coursesRegistered.length %>
-        </div>
-        <% } %>
       </a>
       <% if (authUser.roleUser == "student") { %>
       <a
@@ -118,17 +121,19 @@
       <a href="/" class="ctn_image_sidebar">
         <span><%= authUser.firstnameUser[0] %></span>
         <span><%= authUser.lastnameUser[0] %></span>
-        <% if (authUser.roleUser == "instructor" &&
-        authUser.coursesRegistered.length > 0) { %>
         <div class="ctn_courseNumber_sidebar">
-          <%= authUser.coursesRegistered.length %>
+          0 <% if (authUser.roleUser == "instructor" &&
+          authUser.coursesRegistered.length > 0) { %>
+          <div class="courseNumber_sidebar">
+            <%= authUser.coursesRegistered.length %>
+          </div>
+          <% } %> <% if (authUser.roleUser == "student" &&
+          authUser.coursesRegistered.length > 0) { %>
+          <div class="courseNumber_sidebar">
+            <%= authUser.coursesRegistered.length %>
+          </div>
+          <% } %>
         </div>
-        <% } %> <% if (authUser.roleUser == "student" &&
-        authUser.coursesRegistered.length > 0) { %>
-        <div class="ctn_courseNumber_sidebar">
-          <%= authUser.coursesRegistered.length %>
-        </div>
-        <% } %>
       </a>
       <% } %>
     </li>
