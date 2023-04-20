@@ -478,7 +478,7 @@ class CourseService extends DbService {
       coursesRegistered = await this.getAllCourses(coursesTypeStudent);
       return res.send(coursesRegistered);
     } else {
-      // erro not a user student
+      // error not a user student
       req.flash(
         "error_msg",
         "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
@@ -489,6 +489,7 @@ class CourseService extends DbService {
     }
   }
 
+  // unregister a course
   async unRegisterOneCourse(_id, req, res) {
     // check if it's a user
     if (req.user && req.user.roleUser == "student") {
@@ -503,7 +504,7 @@ class CourseService extends DbService {
       let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
       return res.send(coursesUnregistered);
     } else {
-      // erro not a user student
+      // error not a user student
       req.flash(
         "error_msg",
         "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
