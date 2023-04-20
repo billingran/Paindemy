@@ -244,3 +244,16 @@ module.exports.postRegisterOneCourse = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+// post unregister one course
+module.exports.postUnregisterOneCourse = async (req, res) => {
+  try {
+    // course id
+    let { _id } = req.body;
+
+    await courseService.unRegisterOneCourse(_id, req, res);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};

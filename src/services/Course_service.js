@@ -463,28 +463,54 @@ class CourseService extends DbService {
         { runValidators: true }
       ).exec();
 
-      // erro of adding a course twice or get new number courses of user
+      // validation register one course
 
       let coursesRegistered;
 
       if (result.modifiedCount === 0) {
+        // erro of adding a course twice
         coursesRegistered = "Vous vous êtes déjà inscrit à ce cours.";
-        res.status(200).send(coursesRegistered);
-      } else if (req.user && req.user.roleUser == "student") {
-        const coursesTypeStudent = { studentsCourse: req.user._id };
-
-        coursesRegistered = await this.getAllCourses(coursesTypeStudent);
-        res.status(200).send(coursesRegistered);
-      } else if (req.user && req.user.roleUser == "instructor") {
-        const coursesTypeInstructor = { instructorCourse: req.user._id };
-
-        coursesRegistered = await this.getAllCourses(coursesTypeInstructor);
-        res.status(200).send(coursesRegistered);
+        return res.send(coursesRegistered);
       }
+
+      // get new number courses of user
+      const coursesTypeStudent = { studentsCourse: req.user._id };
+      coursesRegistered = await this.getAllCourses(coursesTypeStudent);
+      return res.send(coursesRegistered);
     } else {
-      let coursesRegistered =
-        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours";
-      return res.status(400).send(coursesRegistered);
+      // erro not a user student
+      req.flash(
+        "error_msg",
+        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
+      );
+
+      let coursesRegistered = { message: "error not a user student." };
+      return res.send(coursesRegistered);
+    }
+  }
+
+  async unRegisterOneCourse(_id, req, res) {
+    // check if it's a user
+    if (req.user && req.user.roleUser == "student") {
+      // delete user from course registered
+      await this.Course.updateOne(
+        { _id },
+        { $pull: { studentsCourse: req.user._id } }
+      ).exec();
+
+      // get new number courses of user
+      const coursesTypeStudent = { studentsCourse: req.user._id };
+      let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
+      return res.send(coursesUnregistered);
+    } else {
+      // erro not a user student
+      req.flash(
+        "error_msg",
+        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
+      );
+
+      let coursesUnregistered = { message: "error not a user student." };
+      return res.send(coursesUnregistered);
     }
   }
 }

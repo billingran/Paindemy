@@ -24,4 +24,7 @@ router.post("/search", courseController.postGetSearchTerm);
 // post register one course
 router.post("/registeronecourse", courseController.postRegisterOneCourse);
 
+// post unregister one course
+router.post("/unregisteronecourse", courseController.postUnregisterOneCourse);
+
 module.exports = router;

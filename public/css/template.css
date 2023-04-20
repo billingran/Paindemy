@@ -26,6 +26,12 @@
   transition: all 0.3s;
 }
 
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
+  }
+}
+
 .ctn_template:hover {
   box-shadow: 0 3px 10px rgb(255 0 102 / 0.5);
 }

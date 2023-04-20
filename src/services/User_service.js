@@ -208,6 +208,12 @@ class UserService extends DbService {
           message: "Devise, Première lettre en majuscule.",
         };
       }
+      if (fathUser.length > 50) {
+        return {
+          success: false,
+          message: "Devise, Pas plus de 50 caractères, espaces inclus.",
+        };
+      }
       newDataInstructorProfile.fathUser = fathUser;
     }
 
