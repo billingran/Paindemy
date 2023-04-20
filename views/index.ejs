@@ -53,7 +53,7 @@
   </div>
 
   <!-- Bakery display and template -->
-  <div class="erro_number_courseRegistered"></div>
+  <div class="errorAxios"></div>
   <div class="ctn_display">
     <% if (categories && categories.length > 0) { %>
     <div class="ctn_title_display">
@@ -151,11 +151,14 @@
                   </div>
                 </div>
                 <div class="centralA">
-                  <% if (authUser && authUser.roleUser == "student") { %>
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === courseB._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"
-                      class="btn_register_class"
+                      class="btn_register_OneCourse"
                       id="<%= courseB._id %>"
                     >
                       <i class="uil uil-plus"></i>
@@ -185,7 +188,7 @@
   </div>
 
   <!-- Pastry display and template -->
-  <div class="erro_number_courseRegistered"></div>
+  <div class="errorAxios"></div>
   <div class="ctn_display">
     <% if (categories && categories.length > 0) { %>
     <div class="ctn_title_display">
@@ -282,9 +285,16 @@
                   </div>
                 </div>
                 <div class="centralA">
-                  <% if (authUser && authUser.roleUser == "student") { %>
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === courseP._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
-                    <a href="#" class="btn_mycourses" id="<%= courseP._id %>">
+                    <a
+                      href="#"
+                      class="btn_register_OneCourse"
+                      id="<%= courseP._id %>"
+                    >
                       <i class="uil uil-plus"></i>
                     </a>
                   </div>
@@ -313,7 +323,7 @@
   </div>
 
   <!-- Other display and template -->
-  <div class="erro_number_courseRegistered"></div>
+  <div class="errorAxios"></div>
   <div class="ctn_display">
     <% if (categories && categories.length > 0) { %>
     <div class="ctn_title_display">
@@ -410,9 +420,16 @@
                   </div>
                 </div>
                 <div class="centralA">
-                  <% if (authUser && authUser.roleUser == "student") { %>
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === courseO._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
-                    <a href="#" class="btn_mycourses" id="<%= courseO._id %>">
+                    <a
+                      href="#"
+                      class="btn_register_OneCourse"
+                      id="<%= courseO._id %>"
+                    >
                       <i class="uil uil-plus"></i>
                     </a>
                   </div>

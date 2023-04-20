@@ -96,14 +96,20 @@
           <i class="uil uil-book-alt"></i>
           <h2 class="title_display"><%= oneCourse.getNameCourse() %></h2>
         </div>
+        <% if (authUser && authUser.roleUser == "student" &&
+        !authUser.idCoursesRegistered.some(function (idCourseRegistered) {
+        return idCourseRegistered.toString() === oneCourse._id.toString() ; }))
+        { %>
         <div class="mid_display mid_display_course">
           <a
-            href="/student/mycourses/<%= oneCourse._id %>"
-            class="a_NBorder a_NBorder_course left_btns"
+            href="#"
+            class="a_NBorder a_NBorder_course left_btns btn_register_OneCourse"
+            id="<%= oneCourse._id %>"
           >
-            <i class="uil uil-plus"></i> Add</a
-          >
+            <i class="uil uil-plus"></i> Add
+          </a>
         </div>
+        <% } %>
       </div>
 
       <div class="ctn_intro_course">
@@ -152,7 +158,7 @@
 <!-- courses same category of course -->
 
 <section class="section_display section_mid">
-  <div class="erro_number_courseRegistered"></div>
+  <div class="errorAxios"></div>
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
@@ -248,9 +254,16 @@
                   </div>
                 </div>
                 <div class="centralA">
-                  <% if (authUser && authUser.roleUser == "student") { %>
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === relatedCourse._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
-                    <a href="/student/mycourses/<%= relatedCourse._id %>">
+                    <a
+                      href="#"
+                      class="btn_register_OneCourse"
+                      id="<%= relatedCourse._id %>"
+                    >
                       <i class="uil uil-plus"></i>
                     </a>
                   </div>

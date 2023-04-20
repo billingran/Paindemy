@@ -7,7 +7,7 @@
 <!-- /////////////////////////////////////////////// -->
 <!-- display and template search-->
 <section class="section_display section_mid">
-  <div class="erro_number_courseRegistered"></div>
+  <div class="errorAxios"></div>
   <div class="ctn_display">
     <% if (result && results.length > 0) { %>
     <div class="ctn_title_display">
@@ -103,9 +103,16 @@
                   </div>
                 </div>
                 <div class="centralA">
-                  <% if (authUser && authUser.roleUser == "student") { %>
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === result._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
-                    <a href="/student/mycourses/<%= result._id %>">
+                    <a
+                      href="#"
+                      class="btn_register_OneCourse"
+                      id="<%= result._id %>"
+                    >
                       <i class="uil uil-plus"></i>
                     </a>
                   </div>

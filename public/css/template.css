@@ -107,6 +107,7 @@
 }
 
 .address_template div:nth-child(2) {
+  min-height: 2.3rem;
   max-height: 2.3rem;
 
   overflow: auto;
@@ -136,11 +137,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: all 0.3s;
 }
 
 .btns_template a {
   color: var(--C-F3F3F3);
   transition: all 0.3s;
+}
+
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
+  }
 }
 
 /* hover */

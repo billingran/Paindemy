@@ -77,7 +77,7 @@
 <!-- courses instructor -->
 
 <section class="section_display section_mid">
-  <div class="erro_number_courseRegistered"></div>
+  <div class="errorAxios"></div>
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA">
@@ -170,9 +170,16 @@
                   </div>
                 </div>
                 <div class="centralA">
-                  <% if (authUser && authUser.roleUser == "student") { %>
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === course._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
-                    <a href="#">
+                    <a
+                      href="#"
+                      class="btn_register_OneCourse"
+                      id="<%= course._id %>"
+                    >
                       <i class="uil uil-plus"></i>
                     </a>
                   </div>

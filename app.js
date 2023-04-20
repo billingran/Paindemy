@@ -100,13 +100,20 @@ app.use((req, res, next) => {
 app.use(async (req, res, next) => {
   try {
     if (req.user && req.user.roleUser == "student") {
+      // registered courses student
       const coursesTypeStudent = { studentsCourse: req.user._id };
       req.user.coursesRegistered = await courseService.getAllCourses(
         coursesTypeStudent
       );
 
+      // id registered courses student
+      req.user.idCoursesRegistered = req.user.coursesRegistered.map(
+        (course) => course._id
+      );
+
       next();
     } else if (req.user && req.user.roleUser == "instructor") {
+      // opened courses instructor
       const coursesTypeInstructor = { instructorCourse: req.user._id };
       req.user.coursesRegistered = await courseService.getAllCourses(
         coursesTypeInstructor
@@ -117,8 +124,8 @@ app.use(async (req, res, next) => {
       next();
     }
   } catch (error) {
-    return res.status(500).send(error);
     console.log(error);
+    return res.status(500).send(error);
   }
 });
 

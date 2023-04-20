@@ -211,7 +211,7 @@ class CourseService extends DbService {
       if (nameCourse[0] !== nameCourse[0].toUpperCase()) {
         return {
           success: false,
-          message: "Class name, first letter should be upperCase.",
+          message: "Nom du cours, première lettre en majuscule.",
         };
       }
 
@@ -225,7 +225,7 @@ class CourseService extends DbService {
       if (newDateCourse.isBefore(currentDate)) {
         return {
           success: false,
-          message: "Date, passed date is not allowed.",
+          message: "Date, Date antérieure non autorisée.",
         };
       }
 
@@ -247,7 +247,7 @@ class CourseService extends DbService {
       if (descriptionCourse[0] !== descriptionCourse[0].toUpperCase()) {
         return {
           success: false,
-          message: "Description, first letter should be upperCase.",
+          message: "Description, première lettre en majuscule.",
         };
       }
 
@@ -257,13 +257,14 @@ class CourseService extends DbService {
     //validate class category
     if (categoryCourse) {
       if (
-        categoryCourse !== "Bakery" &&
-        categoryCourse !== "Pastry" &&
-        categoryCourse !== "Other"
+        categoryCourse !== "Boulangerie" &&
+        categoryCourse !== "Pâtisserie" &&
+        categoryCourse !== "Autre"
       ) {
         return {
           success: false,
-          message: 'Category, only "Bakery", "Pastry" or "Other"',
+          message:
+            "Catégorie, seulement « Boulangerie », « Pâtisserie » ou « Autre ».",
         };
       }
 
@@ -273,7 +274,10 @@ class CourseService extends DbService {
     //validate class calories
     if (caloriesCourse) {
       if (isNaN(caloriesCourse)) {
-        return { success: false, message: "Calories, only numbers allowed." };
+        return {
+          success: false,
+          message: "Calories, seuls les nombres sont autorisés.",
+        };
       }
 
       caloriesCourse = Number(caloriesCourse);
@@ -281,7 +285,8 @@ class CourseService extends DbService {
       if (caloriesCourse < 0) {
         return {
           success: false,
-          message: "Calories, numbers should be greater than or equal to zero.",
+          message:
+            "Calories, Les nombres doivent être plus grands ou égaux à zéro.",
         };
       }
 
@@ -298,7 +303,7 @@ class CourseService extends DbService {
       if (objectImagesFile.imageCourse.length != 2) {
         return {
           success: false,
-          message: "Image upload, two images required.",
+          message: "Image, deux images nécessaires.",
         };
       }
 
@@ -437,42 +442,49 @@ class CourseService extends DbService {
       }
     ).exec();
 
-    req.flash("success_msg", "New class, publish successefully.");
+    req.flash("success_msg", "Nouveau cours, publié avec succès.");
     res.redirect(`/instructor/updateclass/${_id}`);
   }
 
   // Axios //////////////////////////////////////////////////
 
   // register a course
-  async registerClass(_id, req, res) {
-    // add user into course registered
-    const idStudent = req.user._id;
+  async registerOneCourse(_id, req, res) {
+    // check if it's a user
+    if (req.user && req.user.roleUser == "student") {
+      // add user into course registered
+      const idStudent = req.user._id;
 
-    const courseTypeRegisterClass = { _id };
+      const courseTypeRegisterOneCourse = { _id };
 
-    let result = await this.Course.updateOne(
-      courseTypeRegisterClass,
-      { $addToSet: { studentsCourse: idStudent } },
-      { runValidators: true }
-    ).exec();
+      let result = await this.Course.updateOne(
+        courseTypeRegisterOneCourse,
+        { $addToSet: { studentsCourse: idStudent } },
+        { runValidators: true }
+      ).exec();
 
-    // erro of adding a course twice or get new number courses of user
+      // erro of adding a course twice or get new number courses of user
 
-    let coursesRegistered;
+      let coursesRegistered;
 
-    if (result.modifiedCount === 0) {
-      coursesRegistered = "Vous vous êtes déjà inscrit à ce cours.";
-      res.status(200).send(coursesRegistered);
-    } else if (req.user && req.user.roleUser == "student") {
-      const coursesTypeStudent = { studentsCourse: req.user._id };
+      if (result.modifiedCount === 0) {
+        coursesRegistered = "Vous vous êtes déjà inscrit à ce cours.";
+        res.status(200).send(coursesRegistered);
+      } else if (req.user && req.user.roleUser == "student") {
+        const coursesTypeStudent = { studentsCourse: req.user._id };
 
-      coursesRegistered = await this.getAllCourses(coursesTypeStudent);
-      res.status(200).send(coursesRegistered);
-    } else if (req.user && req.user.roleUser == "instructor") {
-      const coursesTypeInstructor = { instructorCourse: req.user._id };
+        coursesRegistered = await this.getAllCourses(coursesTypeStudent);
+        res.status(200).send(coursesRegistered);
+      } else if (req.user && req.user.roleUser == "instructor") {
+        const coursesTypeInstructor = { instructorCourse: req.user._id };
 
-      coursesRegistered = await this.getAllCourses(coursesTypeInstructor);
-      res.status(200).send(coursesRegistered);
+        coursesRegistered = await this.getAllCourses(coursesTypeInstructor);
+        res.status(200).send(coursesRegistered);
+      }
+    } else {
+      let coursesRegistered =
+        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours";
+      return res.status(400).send(coursesRegistered);
     }
   }
 }

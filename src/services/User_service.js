@@ -91,7 +91,7 @@ class UserService extends DbService {
         return {
           success: false,
           message:
-            "Mot de passe, Le mot de passe et la confirmation ne sont pas les même.",
+            "Mot de passe, Le mot de passe et la confirmation mot de passe ne sont pas les même.",
         };
       } else if (passwordUser.trim().length < 8) {
         return {
@@ -150,7 +150,7 @@ class UserService extends DbService {
 
     await studentUser.save();
 
-    req.flash("success_msg", "You are a student now.");
+    req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
     res.redirect("/auth/login");
   }
 
@@ -228,7 +228,7 @@ class UserService extends DbService {
         return {
           success: false,
           message:
-            "Mot de passe, Le mot de passe et la confirmation ne sont pas les même.",
+            "Mot de passe, Le mot de passe et la confirmation mot de passe ne sont pas les même.",
         };
       } else if (passwordUser.trim().length < 8) {
         return {
@@ -338,7 +338,10 @@ class UserService extends DbService {
 
     await instructorUser.save();
 
-    req.flash("success_msg", "You are a instructor now.");
+    req.flash(
+      "success_msg",
+      "Félicitations, vous êtes désormais un enseignant."
+    );
     res.redirect("/auth/login");
   }
 

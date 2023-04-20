@@ -53,21 +53,6 @@ module.exports.homePage = async (req, res) => {
   }
 };
 
-//AXIOS //////////////////////////////////////////////////
-
-// post home page register class
-module.exports.postHomePageRegisterClass = async (req, res) => {
-  try {
-    // course id
-    let { _id } = req.body;
-
-    await courseService.registerClass(_id, req, res);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send(error);
-  }
-};
-
 // add user into course re);
 
 // let { _id } = req.params;
