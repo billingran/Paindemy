@@ -30,7 +30,7 @@
           type="text" name="firstnameUser"/>
           <span></span>
           <i class="uil uil-parking-circle up_joinus"></i>
-          <label for="firstnameUser" class="up_joinus">Firstname</label>
+          <label for="firstnameUser" class="up_joinus">Prénom</label>
         </div>
 
         <div
@@ -41,7 +41,7 @@
           type="text" name="lastnameUser"/>
           <span></span>
           <i class="uil uil-user-circle up_joinus"></i>
-          <label for="lastnameUser" class="up_joinus">Lastname</label>
+          <label for="lastnameUser" class="up_joinus">Nom de famille</label>
         </div>
       </div>
 
@@ -54,7 +54,7 @@
           id="themeColorUser" type="text" name="themeColorUser"/>
           <span></span>
           <i class="uil uil-swatchbook up_joinus"></i>
-          <label for="themeColorUser" class="up_joinus">Theme color</label>
+          <label for="themeColorUser" class="up_joinus">Couleur de thème</label>
         </div>
 
         <div
@@ -65,7 +65,7 @@
           type="text" name="fathUser"/>
           <span></span>
           <i class="uil uil-bookmark up_joinus"></i>
-          <label for="fathUser" class="up_joinus">Fath</label>
+          <label for="fathUser" class="up_joinus">Devise</label>
         </div>
       </div>
 
@@ -74,14 +74,14 @@
         type="email" name="emailUser"/>
         <span></span>
         <i class="uil uil-envelope-alt up_joinus"></i>
-        <label for="emailUser" class="up_joinus">Email</label>
+        <label for="emailUser" class="up_joinus">Adresse mail</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
         <input id="passwordUser" type="password" name="passwordUser" />
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
-        <label for="passwordUser" class="up_joinus">New password</label>
+        <label for="passwordUser" class="up_joinus">Mot de passe</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -93,7 +93,7 @@
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
         <label for="confirmPasswordUser" class="up_joinus"
-          >Confirm password</label
+          >Confirmation mot de passe</label
         >
       </div>
 
@@ -112,7 +112,7 @@
         0" />
         <span></span>
         <label for="imageUser" class="upload_joinus a_NBorder"
-          ><i class="uil uil-image"></i>Image update</label
+          ><i class="uil uil-image"></i>+ Image</label
         >
       </div>
 
@@ -151,7 +151,7 @@
         type="text" name="firstnameUser"/>
         <span></span>
         <i class="uil uil-parking-circle up_joinus"></i>
-        <label for="firstnameUser" class="up_joinus">Firstname</label>
+        <label for="firstnameUser" class="up_joinus">Prénom</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -159,7 +159,7 @@
         type="text" name="lastnameUser"/>
         <span></span>
         <i class="uil uil-user-circle up_joinus"></i>
-        <label for="lastnameUser" class="up_joinus">Lastname</label>
+        <label for="lastnameUser" class="up_joinus">Nom de famille</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -167,7 +167,7 @@
         type="email" name="emailUser"/>
         <span></span>
         <i class="uil uil-envelope-alt up_joinus"></i>
-        <label for="emailUser" class="up_joinus">Email</label>
+        <label for="emailUser" class="up_joinus">Adresse mail</label>
       </div>
 
       <% if (authUser.roleUser == 'student' && !authUser.googleIDUser) { %>
@@ -175,7 +175,7 @@
         <input id="passwordUser" type="password" name="passwordUser" />
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
-        <label for="passwordUser" class="up_joinus">New password</label>
+        <label for="passwordUser" class="up_joinus">Mot de passe</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -187,7 +187,7 @@
         <span></span>
         <i class="uil uil-lock up_joinus"></i>
         <label for="confirmPasswordUser" class="up_joinus"
-          >Confirm password</label
+          >Confirmation mot de passe</label
         >
       </div>
       <% } %>
