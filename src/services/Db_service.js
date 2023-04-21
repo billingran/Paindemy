@@ -135,6 +135,7 @@ class DbService {
         pass: process.env.PASSWORD,
       },
     });
+
     const mailOption = {
       from: process.env.GMAIL_USER,
       to: userStudent.emailUser,
@@ -400,6 +401,7 @@ class DbService {
       </html>
       `),
     };
+
     try {
       await transporter.sendMail(mailOption);
       return Promise.resolve("Message Sent Successfully!");
