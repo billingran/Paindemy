@@ -372,7 +372,7 @@ class CourseService extends DbService {
 
     await newCourse.save();
 
-    req.flash("success_msg", "New class, publish successefully.");
+    req.flash("success_msg", "Nouveau cours, publié avec succès.");
     res.redirect("/instructor/newclass");
   }
 
@@ -407,12 +407,9 @@ class CourseService extends DbService {
       const courseTypeDeleteImage = { _id };
       const courseDeleteImage = await this.getOneCourse(courseTypeDeleteImage);
 
-      courseDeleteImage.imageCourse.forEach(async (imageName) => {
-        let ctnCourseImageName = imageName.split("-");
-        let courseImageName = `${ctnCourseImageName[1]}${ctnCourseImageName[2]}`;
+      let courseImageName = courseDeleteImage.imageCourse[0].split("-")[1];
 
-        await super.deleteImgs(courseImageName, path, fs);
-      });
+      await super.deleteImgs(courseImageName, path, fs);
     }
 
     const validationResultUpdateClass = await this.classValidation(
@@ -448,7 +445,7 @@ class CourseService extends DbService {
       }
     ).exec();
 
-    req.flash("success_msg", "Nouveau cours, publié avec succès.");
+    req.flash("success_msg", "Mis à jour avec succès.");
     res.redirect(`/instructor/updateclass/${_id}`);
   }
 
@@ -516,13 +513,18 @@ class CourseService extends DbService {
     // check if it's a user
     if (req.user) {
       if (req.user.roleUser == "instructor") {
-        // delete user instructor's course and image course
-        await this.Course.deleteOne({ _id }).exec();
-
         // delete user instructor's image course
-        const courseImageName = req.user._id;
+        const courseTypeDeleteImage = { _id };
+        const courseDeleteImage = await this.getOneCourse(
+          courseTypeDeleteImage
+        );
+
+        let courseImageName = courseDeleteImage.imageCourse[0].split("-")[1];
 
         await super.deleteImgs(courseImageName, path, fs);
+
+        // delete user instructor's course
+        await this.Course.deleteOne({ _id }).exec();
 
         // get new number courses of user instructor
         const coursesTypeInstructor = { instructorCourse: req.user._id };

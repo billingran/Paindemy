@@ -510,11 +510,14 @@ class UserService extends DbService {
       arrayImagesFile = Object.keys(req.files.imageUser);
 
       // delete instructor imgs
-      const instructorImageName = req.user.emailUser
-        .replace("@", "")
-        .replace(".", "");
+      const userTypeDeleteImage = req.user._id.toString();
+      const userDeleteImage = await this.getOneUser({
+        _id: userTypeDeleteImage,
+      });
 
-      await super.deleteImgs(instructorImageName, path, fs);
+      let userImageName = userDeleteImage.imageUser[0].split("-")[1];
+
+      await super.deleteImgs(userImageName, path, fs);
     }
 
     const validationResultInstructorProfile =
@@ -553,7 +556,7 @@ class UserService extends DbService {
       }
     ).exec();
 
-    req.flash("success_msg", "Updated Successfully.");
+    req.flash("success_msg", "Mis à jour avec succès.");
     res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
   }
 

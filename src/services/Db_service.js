@@ -30,7 +30,7 @@ class DbService {
 
     imageUploadFile.forEach((img, index) => {
       newImageName.push(
-        imageName + "-" + Date.now() + imageUploadFile[index].name
+        imageName + "-" + Date.now() + "-" + imageUploadFile[index].name
       );
     });
 
@@ -68,14 +68,15 @@ class DbService {
         const ImagesName = ImageName;
 
         // Check if the stat is a file and file was uploaded by the user
-        if (fileStats.isFile() && file.startsWith(ImagesName)) {
-          // Delete the file
-          fs.unlink(filePath, (err) => {
-            if (err) {
-              console.error(`Error deleting file: ${err}`);
-            }
-          });
-        }
+        if (file.includes(ImagesName + "-"))
+          if (fileStats.isFile() && file.split("-")[1].startsWith(ImagesName)) {
+            // Delete the file
+            fs.unlink(filePath, (err) => {
+              if (err) {
+                console.error(`Error deleting file: ${err}`);
+              }
+            });
+          }
       });
     });
   }
@@ -122,6 +123,7 @@ class DbService {
   }
 
   // email dealer //////////////////////////////////////////////////
+  // register one course
   async registerOneCourseMailer(
     nodeMailer,
     juice,
