@@ -27,7 +27,7 @@
         type="text" name="nameCourse" />
         <span></span>
         <i class="uil uil-book-alt up_joinus"></i>
-        <label for="nameCourse" class="up_joinus">Classname</label>
+        <label for="nameCourse" class="up_joinus">Nom de la classe</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -43,7 +43,7 @@
         type="time" name="timeCourse" />
         <span></span>
         <i class="uil uil-clock up_joinus"></i>
-        <label for="timeCourse" class="up_joinus">Time</label>
+        <label for="timeCourse" class="up_joinus">Temps</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -51,7 +51,7 @@
         id="addressCourse" type="text" name="addressCourse" />
         <span></span>
         <i class="uil uil-map-marker up_joinus"></i>
-        <label for="addressCourse" class="up_joinus">Address</label>
+        <label for="addressCourse" class="up_joinus">Adresse</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -65,14 +65,14 @@
 
       <div class="txt_field_auth txt_my_profile">
         <select id="categoryCourse" name="categoryCourse">
-          <option value="">-- Select a category --</option>
-          <option value="Bakery" <%= courseUpdate.categoryCourse === 'Bakery' ? 'selected' : '' %>>Bakery</option>
-          <option value="Pastry" <%= courseUpdate.categoryCourse === 'Pastry' ? 'selected' : '' %>>Pastry</option>
-          <option value="Other" <%= courseUpdate.categoryCourse === 'Other' ? 'selected' : '' %>>Other</option>
+          <option value="">-- Sélectionner une catégorie --</option>
+          <option value="Boulangerie" <%= courseUpdate.categoryCourse === 'Bakery' ? 'selected' : '' %>>Boulangerie</option>
+          <option value="Pâtisserie" <%= courseUpdate.categoryCourse === 'Pastry' ? 'selected' : '' %>>Pâtisserie</option>
+          <option value="Autre" <%= courseUpdate.categoryCourse === 'Other' ? 'selected' : '' %>>Autre</option>
         </select>
         <span></span>
         <i class="uil uil-folder up_joinus"></i>
-        <label for="categoryCourse" class="up_joinus">Category</label>
+        <label for="categoryCourse" class="up_joinus">Calories</label>
       </div>
 
       <div class="txt_field_auth txt_my_profile">
@@ -91,7 +91,7 @@
             <iconify-icon icon="lucide:wheat"></iconify-icon>
           </i>
           <label for="ingredientsCourse" class="up_joinus"
-            >Ingredient <span style="color: #72b955">0</span></label
+            >Ingredients <span style="color: #72b955">0</span></label
           >
         </div>
       </div>
@@ -118,7 +118,7 @@
       </div>
       <div class="img_list img_list_myProfile"></div>
 
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Envoyer" />
     </form>
     <% } %>
   </div>

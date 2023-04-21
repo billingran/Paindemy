@@ -10,6 +10,12 @@ const userService = new UserService();
 const path = require("path");
 const fs = require("fs");
 
+//node mailer
+const nodeMailer = require("nodemailer");
+
+// juice
+const juice = require("juice");
+
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
   try {
@@ -242,7 +248,7 @@ module.exports.postRegisterOneCourse = async (req, res) => {
     // course id
     let { _id } = req.body;
 
-    await courseService.registerOneCourse(_id, req, res);
+    await courseService.registerOneCourse(_id, req, res, nodeMailer, juice);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

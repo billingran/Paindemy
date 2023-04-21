@@ -407,7 +407,10 @@ class CourseService extends DbService {
       const courseTypeDeleteImage = { _id };
       const courseDeleteImage = await this.getOneCourse(courseTypeDeleteImage);
 
-      courseDeleteImage.imageCourse.forEach(async (courseImageName) => {
+      courseDeleteImage.imageCourse.forEach(async (imageName) => {
+        let ctnCourseImageName = imageName.split("-");
+        let courseImageName = `${ctnCourseImageName[1]}${ctnCourseImageName[2]}`;
+
         await super.deleteImgs(courseImageName, path, fs);
       });
     }
@@ -452,7 +455,7 @@ class CourseService extends DbService {
   // Axios //////////////////////////////////////////////////
 
   // register a course
-  async registerOneCourse(_id, req, res) {
+  async registerOneCourse(_id, req, res, nodeMailer, juice) {
     // check if it's a user student
     if (req.user && req.user.roleUser == "student") {
       // add user into course registered
@@ -479,6 +482,22 @@ class CourseService extends DbService {
       // get new number courses of user
       const coursesTypeStudent = { studentsCourse: req.user._id };
       coursesRegistered = await this.getAllCourses(coursesTypeStudent);
+
+      // set email to student and instructor
+      const coursesTypecourseRegistered = { _id };
+      const userStudent = req.user;
+      let courseRegistered = await this.getOneCourse(
+        coursesTypecourseRegistered
+      );
+
+      await super.registerOneCourseMailer(
+        nodeMailer,
+        juice,
+        userStudent,
+        courseRegistered
+      );
+
+      // send new number courses of user
       return res.send(coursesRegistered);
     } else {
       // error not a user student
