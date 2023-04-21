@@ -113,7 +113,6 @@
 }
 
 .address_template div:nth-child(2) {
-  min-height: 2.3rem;
   max-height: 2.3rem;
 
   overflow: auto;
@@ -169,6 +168,10 @@
 
 .icon_more_template {
   background: var(--C-DCA47D);
+}
+
+.icon_update_template {
+  background: var(--C-F45e2c);
 }
 
 /* createdAt */

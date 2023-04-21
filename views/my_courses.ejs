@@ -106,9 +106,18 @@
                 </div>
                 <div class="centralA">
                   <% if (authUser && authUser.roleUser == "instructor") { %>
-                  <div class="btns_template icon_plus_template">
+                  <div class="btns_template icon_update_template">
                     <a href="/instructor/updateclass/<%= course._id %>">
-                      <i class="uil uil-plus"></i>
+                      <i class="uil uil-redo"></i>
+                    </a>
+                  </div>
+                  <div class="btns_template icon_plus_template">
+                    <a
+                      href="#"
+                      class="btn_unregister_OneCourse"
+                      id="<%= course._id %>"
+                    >
+                      <i class="uil uil-times"></i>
                     </a>
                   </div>
                   <% } %>

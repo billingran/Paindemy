@@ -6,6 +6,10 @@ const courseService = new CourseService();
 const UserService = require("../services/User_service");
 const userService = new UserService();
 
+// image upload
+const path = require("path");
+const fs = require("fs");
+
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
   try {
@@ -251,7 +255,7 @@ module.exports.postUnregisterOneCourse = async (req, res) => {
     // course id
     let { _id } = req.body;
 
-    await courseService.unRegisterOneCourse(_id, req, res);
+    await courseService.unRegisterOneCourse(_id, req, res, path, fs);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

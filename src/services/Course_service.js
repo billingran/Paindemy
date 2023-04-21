@@ -404,9 +404,12 @@ class CourseService extends DbService {
       arrayImagesFile = Object.keys(req.files.imageCourse);
 
       // delete courseUpdate imgs
-      const courseImageName = req.user._id;
+      const courseTypeDeleteImage = { _id };
+      const courseDeleteImage = await this.getOneCourse(courseTypeDeleteImage);
 
-      await super.deleteImgs(courseImageName, path, fs);
+      courseDeleteImage.imageCourse.forEach(async (courseImageName) => {
+        await super.deleteImgs(courseImageName, path, fs);
+      });
     }
 
     const validationResultUpdateClass = await this.classValidation(
@@ -450,7 +453,7 @@ class CourseService extends DbService {
 
   // register a course
   async registerOneCourse(_id, req, res) {
-    // check if it's a user
+    // check if it's a user student
     if (req.user && req.user.roleUser == "student") {
       // add user into course registered
       const idStudent = req.user._id;
@@ -490,19 +493,36 @@ class CourseService extends DbService {
   }
 
   // unregister a course
-  async unRegisterOneCourse(_id, req, res) {
+  async unRegisterOneCourse(_id, req, res, path, fs) {
     // check if it's a user
-    if (req.user && req.user.roleUser == "student") {
-      // delete user from course registered
-      await this.Course.updateOne(
-        { _id },
-        { $pull: { studentsCourse: req.user._id } }
-      ).exec();
+    if (req.user) {
+      if (req.user.roleUser == "instructor") {
+        // delete user instructor's course and image course
+        await this.Course.deleteOne({ _id }).exec();
 
-      // get new number courses of user
-      const coursesTypeStudent = { studentsCourse: req.user._id };
-      let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
-      return res.send(coursesUnregistered);
+        // delete user instructor's image course
+        const courseImageName = req.user._id;
+
+        await super.deleteImgs(courseImageName, path, fs);
+
+        // get new number courses of user instructor
+        const coursesTypeInstructor = { instructorCourse: req.user._id };
+        let coursesUnregistered = await this.getAllCourses(
+          coursesTypeInstructor
+        );
+        return res.send(coursesUnregistered);
+      } else if (req.user.roleUser == "student") {
+        // delete user student from course registered
+        await this.Course.updateOne(
+          { _id },
+          { $pull: { studentsCourse: req.user._id } }
+        ).exec();
+
+        // get new number courses of user student
+        const coursesTypeStudent = { studentsCourse: req.user._id };
+        let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
+        return res.send(coursesUnregistered);
+      }
     } else {
       // error not a user student
       req.flash(

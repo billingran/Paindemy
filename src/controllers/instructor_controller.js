@@ -8,8 +8,8 @@ const userService = new UserService();
 const validator = require("validator");
 
 // image upload
-const fs = require("fs");
 const path = require("path");
+const fs = require("fs");
 
 // time controller
 const moment = require("moment");
