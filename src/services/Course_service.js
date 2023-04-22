@@ -480,7 +480,7 @@ class CourseService extends DbService {
       const coursesTypeStudent = { studentsCourse: req.user._id };
       coursesRegistered = await this.getAllCourses(coursesTypeStudent);
 
-      // set email to student and instructor
+      // send email to student and instructor
       const coursesTypecourseRegistered = { _id };
       const userStudent = req.user;
       let courseRegistered = await this.getOneCourse(
@@ -509,7 +509,7 @@ class CourseService extends DbService {
   }
 
   // unregister a course
-  async unRegisterOneCourse(_id, req, res, path, fs) {
+  async unRegisterOneCourse(_id, req, res, path, fs, nodeMailer, juice) {
     // check if it's a user
     if (req.user) {
       if (req.user.roleUser == "instructor") {
@@ -523,14 +523,37 @@ class CourseService extends DbService {
 
         await super.deleteImgs(courseImageName, path, fs);
 
+        // send email to student
+        // get unregistered course
+        const coursesTypecourseUnregistered = { _id };
+        let courseUnregistered = await this.getOneCourse(
+          coursesTypecourseUnregistered
+        );
+
+        // get students in unregistered course
+        let userStudents = await Promise.all(
+          courseUnregistered.studentsCourse.map(async (student) => {
+            return await this.User.find({ _id: student });
+          })
+        );
+
+        await super.unregisterOneCourseMailerInstructor(
+          nodeMailer,
+          juice,
+          userStudents,
+          courseUnregistered
+        );
+
         // delete user instructor's course
-        await this.Course.deleteOne({ _id }).exec();
+        // await this.Course.deleteOne({ _id }).exec();
 
         // get new number courses of user instructor
         const coursesTypeInstructor = { instructorCourse: req.user._id };
         let coursesUnregistered = await this.getAllCourses(
           coursesTypeInstructor
         );
+
+        // send new number courses of user
         return res.send(coursesUnregistered);
       } else if (req.user.roleUser == "student") {
         // delete user student from course registered
@@ -542,6 +565,8 @@ class CourseService extends DbService {
         // get new number courses of user student
         const coursesTypeStudent = { studentsCourse: req.user._id };
         let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
+
+        // send new number courses of user
         return res.send(coursesUnregistered);
       }
     } else {

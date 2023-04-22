@@ -261,7 +261,15 @@ module.exports.postUnregisterOneCourse = async (req, res) => {
     // course id
     let { _id } = req.body;
 
-    await courseService.unRegisterOneCourse(_id, req, res, path, fs);
+    await courseService.unRegisterOneCourse(
+      _id,
+      req,
+      res,
+      path,
+      fs,
+      nodeMailer,
+      juice
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

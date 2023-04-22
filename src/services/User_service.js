@@ -510,10 +510,8 @@ class UserService extends DbService {
       arrayImagesFile = Object.keys(req.files.imageUser);
 
       // delete instructor imgs
-      const userTypeDeleteImage = req.user._id.toString();
-      const userDeleteImage = await this.getOneUser({
-        _id: userTypeDeleteImage,
-      });
+      const userTypeDeleteImage = { _id: req.user._id };
+      const userDeleteImage = await this.getOneUser(userTypeDeleteImage);
 
       let userImageName = userDeleteImage.imageUser[0].split("-")[1];
 
