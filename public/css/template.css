@@ -170,8 +170,17 @@
   background: var(--C-DCA47D);
 }
 
+.icon_plus_template i,
+.icon_more_template i {
+  font-size: 1.4rem;
+}
+
 .icon_update_template {
   background: var(--C-F45e2c);
+}
+
+.icon_calculate_template {
+  background: var(--C-72B955);
 }
 
 /* createdAt */

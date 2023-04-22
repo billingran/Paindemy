@@ -123,11 +123,16 @@
           <iconify-icon icon="lucide:wheat"></iconify-icon>
           <h2 class="title_display">Ingredients</h2>
         </div>
+        <% if (authUser && authUser.roleUser == "student" &&
+        !authUser.idCoursesRegistered.some(function (idCourseRegistered) {
+        return idCourseRegistered.toString() === oneCourse._id.toString() ; }))
+        { %>
         <div class="mid_display mid_display_course">
           <a href="#" class="a_NBorder a_NBorder_course right_btns">
             <i class="uil uil-calculator-alt"></i> Calculer
           </a>
         </div>
+        <% } %>
       </div>
 
       <div class="ctn_intro_course">
