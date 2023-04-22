@@ -523,7 +523,7 @@ class CourseService extends DbService {
 
         await super.deleteImgs(courseImageName, path, fs);
 
-        // send email to student
+        // send email to students
         // get unregistered course
         const coursesTypecourseUnregistered = { _id };
         let courseUnregistered = await this.getOneCourse(
@@ -545,7 +545,7 @@ class CourseService extends DbService {
         );
 
         // delete user instructor's course
-        // await this.Course.deleteOne({ _id }).exec();
+        await this.Course.deleteOne({ _id }).exec();
 
         // get new number courses of user instructor
         const coursesTypeInstructor = { instructorCourse: req.user._id };
@@ -556,6 +556,13 @@ class CourseService extends DbService {
         // send new number courses of user
         return res.send(coursesUnregistered);
       } else if (req.user.roleUser == "student") {
+        // send email to instructor
+        // get unregistered course
+        const coursesTypecourseUnregistered = { _id };
+        let courseUnregistered = await this.getOneCourse(
+          coursesTypecourseUnregistered
+        );
+
         // delete user student from course registered
         await this.Course.updateOne(
           { _id },
