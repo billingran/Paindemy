@@ -559,8 +559,15 @@ class CourseService extends DbService {
         // send email to instructor
         // get unregistered course
         const coursesTypecourseUnregistered = { _id };
+        const userStudent = req.user;
         let courseUnregistered = await this.getOneCourse(
           coursesTypecourseUnregistered
+        );
+        await super.unregisterOneCourseMailerStudent(
+          nodeMailer,
+          juice,
+          userStudent,
+          courseUnregistered
         );
 
         // delete user student from course registered

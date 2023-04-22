@@ -147,11 +147,8 @@
 
   <% } else { %>
 
-  <p>
-    Sorry, we can't find the <%= oneCourse.getBackUrl(requestCourse) %> course
-  </p>
-
-  <% } %>
+  <p>Aucun résultat pour <%= oneCourse.getBackUrl(requestCourse) %></p>
+  . <% } %>
 </section>
 
 <!-- /////////////////////////////////////////////// -->
@@ -163,9 +160,7 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
-        <h2 class="title_display">
-          <%= iconCategory.getNameCategory() %> courses
-        </h2>
+        <h2 class="title_display"><%= iconCategory.getNameCategory() %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -281,8 +276,7 @@
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
           <strong>
-            Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
-            course
+            Aucun résultat pour <%= iconCategory.getNameCategory() %>.
           </strong>
         </div>
         <% } %>

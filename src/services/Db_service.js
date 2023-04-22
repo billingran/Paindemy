@@ -582,6 +582,11 @@ class DbService {
                 <li><strong>Ingredients :</strong> ${courseRegistered.ingredientsCourse
                   .map((ingredient) => `<span>${ingredient}</span>`)
                   .join(", ")}</li>
+                  <li>
+                <strong>Élèves : </strong>${
+                  courseRegistered.studentsCourse.length
+                }
+                </li>
               </ul>
             </div>
       
@@ -1095,7 +1100,7 @@ class DbService {
             </div>
       
             <p>
-              Merci d’avoir rejoins Paîndemy ! Veuillez trouver ci-dessous les informations sur les cours que vous avez créé, et auxquels un étudiant s'est inscrit.
+              Merci d’avoir rejoins Paîndemy ! Veuillez trouver ci-dessous les informations sur les cours que vous avez créé, et les étudiants qui se sont désinscrits
             </p>
       
             <div class="course">
@@ -1140,13 +1145,15 @@ class DbService {
                   .map((ingredient) => `<span>${ingredient}</span>`)
                   .join(", ")}</li>
                 <li>
-                <strong>Élèves : </strong>${courseRegistered.studentCourse}
+                <strong>Élèves : </strong>${
+                  courseRegistered.studentsCourse.length - 1
+                }
                 </li>
               </ul>
             </div>
       
             <p>
-              Veillez à vous rappeler des dates et de l’heure, et n’hésitez pas à nous contacter si vous avez d’autres questions ou inquiétudes. 
+              Si vous avez des questions pour les étudiants vous pouvez les contacter grâce à leurs informations personnelles. 
             </p>
       
             <div class="course">

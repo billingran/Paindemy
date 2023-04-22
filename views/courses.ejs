@@ -23,7 +23,7 @@
               allCourses[0].getBackUrl(allCourses[0].descriptionCourse.slice(0,
               480)) %> ...
               <a href="/course/onecourse/<%= allCourses[0]._id %>">
-                read more
+                Voir plus
                 <iconify-icon
                   icon="mdi:more-circle"
                   class="icon_carousels"
@@ -72,7 +72,7 @@
               “ <%= course.getBackUrl(course.descriptionCourse.slice(0, 480)) %>
               ...
               <a href="/course/oneCourse/<%= course._id %>">
-                read more
+                Voir plus
                 <iconify-icon
                   icon="mdi:more-circle"
                   class="icon_carousels"
@@ -117,9 +117,7 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
-        <h2 class="title_display">
-          <%= iconCategory.getNameCategory() %> courses
-        </h2>
+        <h2 class="title_display"><%= iconCategory.getNameCategory() %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -233,8 +231,7 @@
       <% }) %> <% } else { %>
       <div class="ctn_msg error_msg">
         <strong>
-          Sorry, we currently don't have <%= iconCategory.getNameCategory() %>
-          courses
+          Aucun résultat pour <%= iconCategory.getNameCategory() %>.
         </strong>
       </div>
       <% } %>

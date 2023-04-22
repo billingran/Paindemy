@@ -1,7 +1,7 @@
 <!-- /////////////////////////////////////////////// -->
 <!-- title search -->
 <section class="section_title">
-  <h2 class="title">Search resutls for :</h2>
+  <h2 class="title">Résultats pour :</h2>
 </section>
 
 <!-- /////////////////////////////////////////////// -->
@@ -13,7 +13,7 @@
     <div class="ctn_title_display">
       <div class="centralA">
         <i class="uil uil-search icon_title_display"></i>
-        <h2 class="title_display">Our instructors</h2>
+        <h2 class="title_display"><%= searchTerm %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -129,10 +129,7 @@
         </li>
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
-          <strong>
-            Sorry, we currently don't have <%= categories[2].getNameCategory()
-            %> course
-          </strong>
+          <strong> Aucun résultat pour <%= searchTerm %>. </strong>
         </div>
         <% } %>
       </ul>

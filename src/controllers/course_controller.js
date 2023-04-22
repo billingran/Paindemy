@@ -233,6 +233,7 @@ module.exports.postGetSearchTerm = async (req, res) => {
       authUser: req.user,
       results,
       result,
+      searchTerm,
     });
   } catch (error) {
     console.log(error);
