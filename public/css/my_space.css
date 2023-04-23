@@ -1,0 +1,95 @@
+.section_my_space {
+  margin: 0 auto 1.5rem;
+
+  width: 91%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center_my_space {
+  width: 68rem;
+}
+
+.ctn_icon_mySpace {
+  background: linear-gradient(120deg, #6e1d0e, #ff0066);
+  border-radius: 5rem;
+  background-color: var(--C-6C757D);
+
+  width: 4.5rem;
+  height: 4.5rem;
+
+  margin: 0 0.5rem 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon_my_space {
+  font-size: 3.5rem;
+  color: var(--C-F3F3F3);
+}
+
+h2.title_my_space {
+  color: var(--C-222222);
+
+  padding: 1.5rem 0 1.5rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mid_info_mySpace {
+  margin: 1.5rem 0 1.5rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.mid_info_mySpace a {
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+
+  transition: all 0.3s;
+}
+
+.mid_icon_mySpace {
+  font-size: 1.4rem;
+  color: var(--C-6E1D0E);
+
+  margin: 0 0.125rem 0 0;
+
+  transition: all 0.3s;
+}
+
+.mid_info_mySpace a[href]:hover,
+.mid_info_mySpace a[href]:hover .mid_icon_mySpace {
+  color: #ff0066;
+}
+
+.txt_my_space input,
+.txt_my_space i,
+.txt_my_space label,
+.txt_my_space textarea,
+.img_list_mySpace .img_minus_btn,
+.img_list_mySpace .img_minus {
+  color: var(--C-6C757D);
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 880px) {
+  .center_my_space {
+    width: 100%;
+  }
+}
