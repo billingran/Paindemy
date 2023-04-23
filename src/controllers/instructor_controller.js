@@ -227,10 +227,18 @@ module.exports.instructorMycourses = async (req, res) => {
 //instructor my space
 module.exports.instructorMyspace = async (req, res) => {
   try {
+    let { _id } = req.params;
+
+    const courseTypeCourseFavorite = { _id };
+    let courseFavorite = await courseService.getOneCourse(
+      courseTypeCourseFavorite
+    );
+
     res.render("my_space", {
       title: "Instructor my space",
       showHeader: true,
       authUser: req.user,
+      courseFavorite,
     });
   } catch (error) {
     console.log(error);

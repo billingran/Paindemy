@@ -6,7 +6,7 @@
       <div class="ctn_icon_mySpace">
         <iconify-icon icon="carbon:wheat" class="icon_my_space"></iconify-icon>
       </div>
-      Mon profile
+      Mon espace
     </h2>
 
     <div class="mid_info_mySpace">
@@ -15,20 +15,21 @@
           icon="tabler:chef-hat"
           class="mid_icon_mySpace"
         ></iconify-icon>
-        Teng-wei Huang
+        <%= courseFavorite.instructorCourse.firstnameUser %> <%=
+        courseFavorite.instructorCourse.lastnameUser %>
       </a>
       <a href="#">
         <i class="uil uil-book-alt mid_icon_mySpace"></i>
-        Nordika
+        <%= courseFavorite.nameCourse %>
       </a>
       <a>
         <i class="uil uil-folder mid_icon_mySpace"></i>
-        Boulangerie
+        <%= courseFavorite.categoryCourse %>
       </a>
     </div>
 
     <form
-      action="/<%= authUser.roleUser %>/myspace/<%= authUser._id %>?_method=PATCH"
+      action="/<%= authUser.roleUser %>/myspace/<%= courseFavorite._id %>?_method=PATCH"
       enctype="multipart/form-data"
       method="POST"
     >
@@ -41,8 +42,8 @@
         >
           <input id="firstnameUser" type="text" name="firstnameUser" required />
           <span></span>
-          <i class="uil uil-parking-circle up_joinus"></i>
-          <label for="firstnameUser" class="up_joinus">Prénom</label>
+          <i class="uil uil-heart-alt up_joinus"></i>
+          <label for="firstnameUser" class="up_joinus">Nom</label>
         </div>
 
         <div
@@ -51,8 +52,8 @@
         >
           <input id="lastnameUser" type="text" name="lastnameUser" required />
           <span></span>
-          <i class="uil uil-user-circle up_joinus"></i>
-          <label for="lastnameUser" class="up_joinus">Nom de famille</label>
+          <i class="uil uil-balance-scale up_joinus"></i>
+          <label for="lastnameUser" class="up_joinus">Quantité</label>
         </div>
       </div>
 
@@ -64,7 +65,7 @@
         ></textarea>
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
-        <label for="introductionUser" class="up_joinus">Introduction</label>
+        <label for="introductionUser" class="up_joinus">Notes</label>
       </div>
 
       <div class="ingredient_list">

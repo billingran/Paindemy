@@ -50,10 +50,6 @@ const userSchema = new mongoose.Schema({
     enum: ["student", "instructor"],
     required: true,
   },
-  favoriteUser: {
-    type: [{}],
-    default: [],
-  },
   createdAt: {
     type: Date,
     default: Date.now,
