@@ -16,4 +16,7 @@ router.delete("/delete/:_id", studentController.postStudentDelete);
 // student my courses
 router.get("/mycourses/:_id", studentController.studentMycourses);
 
+// instructor my space
+router.get("/myspace/:_id", studentController.studentMyspace);
+
 module.exports = router;

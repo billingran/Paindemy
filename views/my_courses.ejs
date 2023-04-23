@@ -107,7 +107,7 @@
                 <div class="centralA">
                   <% if (authUser && authUser.roleUser == "instructor") { %>
                   <div class="btns_template icon_calculate_template">
-                    <a href="/instructor/updateclass/<%= course._id %>">
+                    <a href="/instructor/myspace/<%= course._id %>">
                       <i class="uil uil-calculator-alt"></i>
                     </a>
                   </div>
@@ -258,6 +258,11 @@
                   authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
                   === course._id.toString() ; })) { %>
+                  <div class="btns_template icon_calculate_template">
+                    <a href="/student/myspace/<%= course._id %>">
+                      <i class="uil uil-calculator-alt"></i>
+                    </a>
+                  </div>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"

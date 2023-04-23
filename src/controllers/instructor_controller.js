@@ -223,3 +223,17 @@ module.exports.instructorMycourses = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+//instructor my space
+module.exports.instructorMyspace = async (req, res) => {
+  try {
+    res.render("my_space", {
+      title: "Instructor my space",
+      showHeader: true,
+      authUser: req.user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};

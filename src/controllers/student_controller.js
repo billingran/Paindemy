@@ -95,3 +95,17 @@ module.exports.studentMycourses = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+//student my space
+module.exports.studentMyspace = async (req, res) => {
+  try {
+    res.render("my_space", {
+      title: "Student my space",
+      showHeader: true,
+      authUser: req.user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
