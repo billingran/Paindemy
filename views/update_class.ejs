@@ -68,10 +68,12 @@
           <option value="">-- Sélectionner une catégorie --</option>
           <% if(typeof allCategoriesNeeded !== 'undefined' &&
           allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
-          allCategoriesNeeded.forEach((category) => { %>
-            <option value="<%= category.nameCategory %>" <%= courseUpdate.categoryCourse === category.nameCategory ? 'selected' : '' %>><%= category.nameCategory %></option>
-            <% }) %> <% } %>
+          allCategoriesNeeded.forEach((category) => { %> <option value="<%=
+          category.nameCategory %>" <%= courseUpdate.categoryCourse ===
+          category.nameCategory ? 'selected' : '' %>> <%= category.nameCategory %>
+          </option> <% }) %> <% } %>
         </select>
+
         <span></span>
         <i class="uil uil-folder up_joinus"></i>
         <label for="categoryCourse" class="up_joinus">Calories</label>
