@@ -66,9 +66,11 @@
       <div class="txt_field_auth txt_my_profile">
         <select id="categoryCourse" name="categoryCourse">
           <option value="">-- Sélectionner une catégorie --</option>
-          <option value="Boulangerie" <%= courseUpdate.categoryCourse === 'Bakery' ? 'selected' : '' %>>Boulangerie</option>
-          <option value="Pâtisserie" <%= courseUpdate.categoryCourse === 'Pastry' ? 'selected' : '' %>>Pâtisserie</option>
-          <option value="Autre" <%= courseUpdate.categoryCourse === 'Other' ? 'selected' : '' %>>Autre</option>
+          <% if(typeof allCategoriesNeeded !== 'undefined' &&
+          allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
+          allCategoriesNeeded.forEach((category) => { %>
+            <option value="<%= category.nameCategory %>" <%= courseUpdate.categoryCourse === category.nameCategory ? 'selected' : '' %>><%= category.nameCategory %></option>
+            <% }) %> <% } %>
         </select>
         <span></span>
         <i class="uil uil-folder up_joinus"></i>

@@ -60,9 +60,13 @@
       <div class="txt_field_auth">
         <select id="categoryCourse" name="categoryCourse" required>
           <option value="">-- Sélectionner une catégorie --</option>
-          <option value="Boulangerie">Boulangerie</option>
-          <option value="Pâtisserie">Pâtisserie</option>
-          <option value="Autre">Autre</option>
+          <% if(typeof allCategoriesNeeded !== 'undefined' &&
+          allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
+          allCategoriesNeeded.forEach((category) => { %>
+          <option value="<%= category.nameCategory %>">
+            <%= category.nameCategory %>
+          </option>
+          <% }) %> <% } %>
         </select>
         <span></span>
         <i class="uil uil-folder up_joinus"></i>

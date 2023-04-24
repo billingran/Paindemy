@@ -1,4 +1,6 @@
 // Class Services
+const CategoryService = require("../services/Category_service");
+const categoryService = new CategoryService();
 const CourseService = require("../services/Course_service");
 const courseService = new CourseService();
 const UserService = require("../services/User_service");
@@ -69,14 +71,21 @@ module.exports.patchInstructorProfile = async (req, res) => {
 };
 
 // new class
-module.exports.newClass = (req, res) => {
+module.exports.newClass = async (req, res) => {
   const currentDate = moment().format("YYYY-MM-DD");
+
+  // get all categories needed
+  const allCategories = await categoryService.getAllCategories({});
+  const allCategoriesNeeded = allCategories.filter((category) => {
+    return category.nameCategory !== "Tout";
+  });
 
   res.render("new_class", {
     title: "New class",
     showHeader: false,
     authUser: req.user,
     currentDate,
+    allCategoriesNeeded,
   });
 };
 
@@ -119,10 +128,17 @@ module.exports.updateClass = async (req, res) => {
   try {
     let { _id } = req.params;
 
+    // get course update
     let courseTypeUpdate = { _id };
     let courseUpdate = await courseService.getOneCourse(courseTypeUpdate);
 
     const currentDate = moment().format("YYYY-MM-DD");
+
+    // get all categories needed
+    const allCategories = await categoryService.getAllCategories({});
+    const allCategoriesNeeded = allCategories.filter((category) => {
+      return category.nameCategory !== "Tout";
+    });
 
     res.render("update_class", {
       title: "Update class",
@@ -130,6 +146,7 @@ module.exports.updateClass = async (req, res) => {
       authUser: req.user,
       courseUpdate,
       currentDate,
+      allCategoriesNeeded,
     });
   } catch (error) {
     console.log(error);
