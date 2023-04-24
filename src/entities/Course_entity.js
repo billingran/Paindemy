@@ -9,7 +9,7 @@ class CourseEntity {
     this.timeCourse = "";
     this.addressCourse = "";
     this.descriptionCourse = "";
-    this.categoryCourse = "";
+    this.categoryCourse = null;
     this.caloriesCourse = 0;
     this.ingredientsCourse = [];
     this.imageCourse = [];

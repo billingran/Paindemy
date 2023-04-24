@@ -19,9 +19,7 @@
         >
           <div class="left_courses">
             <h2>
-              “ <%=
-              allCourses[0].getBackUrl(allCourses[0].descriptionCourse.slice(0,
-              480)) %> ...
+              “ <%= allCourses[0].descriptionCourse.slice(0, 480) %> ...
               <a href="/course/onecourse/<%= allCourses[0]._id %>">
                 Voir plus
                 <iconify-icon
@@ -35,11 +33,8 @@
               href="/course/instructor/<%= allCourses[0].instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
-              -- <%=
-              allCourses[0].getBackUrl(allCourses[0].instructorCourse.firstnameUser)
-              %> <%=
-              allCourses[0].getBackUrl(allCourses[0].instructorCourse.lastnameUser)
-              %>
+              -- <%= allCourses[0].instructorCourse.firstnameUser %> <%=
+              allCourses[0].instructorCourse.lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -51,7 +46,7 @@
               <img
                 src="/uploads/<%= allCourses[0].imageCourse[1] %>"
                 class="d-block"
-                alt="<%= allCourses[0].getNameCourse() %>"
+                alt="<%= allCourses[0].nameCourse %>"
               />
             </div>
           </div>
@@ -69,8 +64,7 @@
         >
           <div class="left_courses">
             <h2>
-              “ <%= course.getBackUrl(course.descriptionCourse.slice(0, 480)) %>
-              ...
+              “ <%= course.descriptionCourse.slice(0, 480) %> ...
               <a href="/course/oneCourse/<%= course._id %>">
                 Voir plus
                 <iconify-icon
@@ -84,8 +78,8 @@
               href="/course/instructor/<%= course.instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
-              -- <%= course.getBackUrl(course.instructorCourse.firstnameUser) %>
-              <%- course.getBackUrl(course.instructorCourse.lastnameUser) %>
+              -- <%= course.instructorCourse.firstnameUser %> <%-
+              course.instructorCourse.lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -97,7 +91,7 @@
               <img
                 src="/uploads/<%= course.imageCourse[1] %>"
                 class="d-block"
-                alt="photo <%= course.getNameCourse() %>"
+                alt="photo <%= course.nameCourse %>"
               />
             </div>
           </div>
@@ -111,13 +105,13 @@
 <!-- /////////////////////////////////////////////// -->
 <!-- courses display and template-->
 <section class="section_display section_mid">
-  <% if (iconCategory && manyCourses.length > 0) { %>
+  <% if (iconCategory) { %>
   <div class="errorAxios"></div>
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
-        <h2 class="title_display"><%= iconCategory.getNameCategory() %></h2>
+        <h2 class="title_display"><%= iconCategory.nameCategory %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -157,7 +151,7 @@
               </div>
               <div>
                 <a href="/course/onecourse/<%= course._id %>"
-                  ><%= course.getNameCourse() %>
+                  ><%= course.nameCourse %>
                 </a>
               </div>
             </li>
@@ -230,9 +224,7 @@
       </li>
       <% }) %> <% } else { %>
       <div class="ctn_msg error_msg">
-        <strong>
-          Aucun résultat pour <%= iconCategory.getNameCategory() %>.
-        </strong>
+        <strong> Aucun résultat pour <%= iconCategory.nameCategory %>. </strong>
       </div>
       <% } %>
     </ul>

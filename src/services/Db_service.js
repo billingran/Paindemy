@@ -323,7 +323,7 @@ class DbService {
                   }
                 </li>
                 <li><strong>Catégorie : </strong>${
-                  courseRegistered.categoryCourse
+                  courseRegistered.categoryCourse.nameCategory
                 }</li>
                 <li><strong>Calories : </strong>${
                   courseRegistered.caloriesCourse
@@ -574,7 +574,7 @@ class DbService {
                   }
                 </li>
                 <li><strong>Catégorie : </strong>${
-                  courseRegistered.categoryCourse
+                  courseRegistered.categoryCourse.nameCategory
                 }</li>
                 <li><strong>Calories : </strong>${
                   courseRegistered.caloriesCourse
@@ -858,7 +858,7 @@ class DbService {
                 }
               </li>
               <li><strong>Catégorie : </strong>${
-                courseRegistered.categoryCourse
+                courseRegistered.categoryCourse.nameCategory
               }</li>
               <li><strong>Calories : </strong>${
                 courseRegistered.caloriesCourse
@@ -1136,7 +1136,7 @@ class DbService {
                   }
                 </li>
                 <li><strong>Catégorie : </strong>${
-                  courseRegistered.categoryCourse
+                  courseRegistered.categoryCourse.nameCategory
                 }</li>
                 <li><strong>Calories : </strong>${
                   courseRegistered.caloriesCourse

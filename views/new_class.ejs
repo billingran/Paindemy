@@ -63,7 +63,7 @@
           <% if(typeof allCategoriesNeeded !== 'undefined' &&
           allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
           allCategoriesNeeded.forEach((category) => { %>
-          <option value="<%= category.nameCategory %>">
+          <option value="<%= category._id %>">
             <%= category.nameCategory %>
           </option>
           <% }) %> <% } %>

@@ -39,14 +39,14 @@
                 background-image: url('/images/<%= category.imageCategory %>');
               "
             >
-              <h3 class="title_category"><%= category.getNameCategory() %></h3>
+              <h3 class="title_category"><%= category.nameCategory %></h3>
             </div>
           </div>
         </a>
       </li>
       <% }) %> <% } else { %>
       <div class="ctn_msg error_msg">
-        <strong>Sorry, we currently don't have category</strong>
+        <strong>Aucun résultat pour categorie.</strong>
       </div>
       <% } %>
     </ul>
@@ -59,7 +59,7 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[0].iconCategory %>
-        <h2 class="title_display"><%= categories[0].getNameCategory() %></h2>
+        <h2 class="title_display"><%= categories[0].nameCategory %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -98,7 +98,7 @@
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= courseB._id %>"
-                    ><%= courseB.getNameCourse() %>
+                    ><%= courseB.nameCourse %>
                   </a>
                 </div>
               </li>
@@ -114,10 +114,8 @@
                   <a
                     href="/course/instructor/<%= courseB.instructorCourse._id %>"
                   >
-                    <%=
-                    courseB.getBackUrl(courseB.instructorCourse.firstnameUser)
-                    %> <%=
-                    courseB.getBackUrl(courseB.instructorCourse.lastnameUser) %>
+                    <%= courseB.instructorCourse.firstnameUser %> <%=
+                    courseB.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -176,7 +174,7 @@
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
           <strong>
-            Aucun résultat pour <%= categories[0].getNameCategory() %>.
+            Aucun résultat pour <%= categories[0].nameCategory %>.
           </strong>
         </div>
         <% } %>
@@ -191,7 +189,7 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[1].iconCategory %>
-        <h2 class="title_display"><%= categories[1].getNameCategory() %></h2>
+        <h2 class="title_display"><%= categories[1].nameCategory %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -230,7 +228,7 @@
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= courseP._id %>"
-                    ><%= courseP.getNameCourse() %>
+                    ><%= courseP.nameCourse %>
                   </a>
                 </div>
               </li>
@@ -245,10 +243,8 @@
                 <div>
                   <a
                     href="/course/instructor/<%= courseP.instructorCourse._id %>"
-                    ><%=
-                    courseP.getBackUrl(courseP.instructorCourse.firstnameUser)
-                    %> <%=
-                    courseP.getBackUrl(courseP.instructorCourse.lastnameUser) %>
+                    ><%= courseP.instructorCourse.firstnameUser %> <%=
+                    courseP.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -308,7 +304,7 @@
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
           <strong>
-            Aucun résultat pour <%= categories[1].getNameCategory() %>.
+            Aucun résultat pour <%= categories[1].nameCategory %>.
           </strong>
         </div>
         <% } %>
@@ -323,7 +319,7 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- categories[2].iconCategory %>
-        <h2 class="title_display"><%= categories[2].getNameCategory() %></h2>
+        <h2 class="title_display"><%= categories[2].nameCategory %></h2>
       </div>
       <div class="mid_display">
         <a
@@ -362,7 +358,7 @@
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= courseO._id %>"
-                    ><%= courseO.getNameCourse() %>
+                    ><%= courseO.nameCourse %>
                   </a>
                 </div>
               </li>
@@ -377,10 +373,8 @@
                 <div>
                   <a
                     href="/course/instructor/<%= courseO.instructorCourse._id %>"
-                    ><%=
-                    courseO.getBackUrl(courseO.instructorCourse.firstnameUser)
-                    %> <%=
-                    courseO.getBackUrl(courseO.instructorCourse.lastnameUser) %>
+                    ><%= courseO.instructorCourse.firstnameUser %> <%=
+                    courseO.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -439,7 +433,7 @@
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
           <strong>
-            Aucun résultat pour <%= categories[2].getNameCategory() %>.
+            Aucun résultat pour <%= categories[2].nameCategory %>.
           </strong>
         </div>
         <% } %>

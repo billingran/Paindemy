@@ -10,6 +10,11 @@ class CourseService extends DbService {
   // get one course (one course)
   async getOneCourse(courseType) {
     const course = await this.Course.findOne(courseType)
+      .populate("categoryCourse", [
+        "nameCategory",
+        "imageCategory",
+        "iconCategory",
+      ])
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
@@ -30,6 +35,11 @@ class CourseService extends DbService {
 
     const course = await this.Course.findOne(coursesType)
       .skip(numberCourses)
+      .populate("categoryCourse", [
+        "nameCategory",
+        "imageCategory",
+        "iconCategory",
+      ])
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
@@ -54,6 +64,11 @@ class CourseService extends DbService {
   // get all courses (all courses, courses category, courses carousel)
   async getAllCourses(coursesType) {
     const allCourses = await this.Course.find(coursesType)
+      .populate("categoryCourse", [
+        "nameCategory",
+        "imageCategory",
+        "iconCategory",
+      ])
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
@@ -77,6 +92,11 @@ class CourseService extends DbService {
     const coursesSortLimit = await this.Course.find(coursesType)
       .sort({ _id: sortNumber })
       .limit(limitNumber)
+      .populate("categoryCourse", [
+        "nameCategory",
+        "imageCategory",
+        "iconCategory",
+      ])
       .populate("instructorCourse", [
         "firstnameUser",
         "lastnameUser",
@@ -102,6 +122,14 @@ class CourseService extends DbService {
     let foundResults = await this.Course.aggregate([
       {
         $lookup: {
+          from: "categories",
+          localField: "categoryCourse",
+          foreignField: "_id",
+          as: "categoryCourse",
+        },
+      },
+      {
+        $lookup: {
           from: "users",
           localField: "instructorCourse",
           foreignField: "_id",
@@ -119,6 +147,30 @@ class CourseService extends DbService {
             { categoryCourse: { $regex: searchTerm, $options: "" } },
             { ingredientsCourse: { $regex: searchTerm, $options: "" } },
             { imageCourse: { $regex: searchTerm, $options: "" } },
+            {
+              "categoryCourse._id": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+            {
+              "categoryCourse.nameCategory": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+            {
+              "categoryCourse.imageCategory": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
+            {
+              "categoryCourse.iconCategory": {
+                $regex: searchTerm,
+                $options: "",
+              },
+            },
             {
               "instructorCourse._id": {
                 $regex: searchTerm,
@@ -153,7 +205,12 @@ class CourseService extends DbService {
           timeCourse: 1,
           addressCourse: 1,
           descriptionCourse: 1,
-          categoryCourse: 1,
+          categoryCourse: {
+            _id: 1,
+            nameCategory: 1,
+            imageCategory: 1,
+            iconCategory: 1,
+          },
           ingredientsCourse: 1,
           imageCourse: 1,
           instructorCourse: {
@@ -257,9 +314,9 @@ class CourseService extends DbService {
     //validate class category
     if (categoryCourse) {
       if (
-        categoryCourse !== "Boulangerie" &&
-        categoryCourse !== "Pâtisserie" &&
-        categoryCourse !== "Autre"
+        categoryCourse !== "642b25e9e4f201d77621c6bc" &&
+        categoryCourse !== "642b25f3e4f201d77621c6bd" &&
+        categoryCourse !== "642b25fbe4f201d77621c6be"
       ) {
         return {
           success: false,

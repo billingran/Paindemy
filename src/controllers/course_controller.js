@@ -15,6 +15,7 @@ const nodeMailer = require("nodemailer");
 
 // juice
 const juice = require("juice");
+const { Console } = require("console");
 
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
@@ -42,18 +43,18 @@ module.exports.getCoursesCategory = async (req, res) => {
   try {
     // id category
     let { _id } = req.params;
-    let nameCategory;
-
-    // turn id into name category
-    let category = await categoryService.getOneCategory({ _id });
-    nameCategory = category.nameCategory;
 
     ////////////////////////////////////////////////////
     // find all courses for carousel
     let allCourses = await courseService.getAllCourses({});
 
     ////////////////////////////////////////////////////
-    // find courses with one category or all courses
+    // find courses with one category or all courses show random
+
+    // turn id into name category
+    let category = await categoryService.getOneCategory({ _id });
+    let nameCategory;
+    nameCategory = category.nameCategory;
 
     // get one category icon
     const categoryType = { nameCategory };
@@ -64,7 +65,7 @@ module.exports.getCoursesCategory = async (req, res) => {
 
     if (nameCategory != "Tout") {
       // get category courses
-      const coursesType = { categoryCourse: nameCategory };
+      const coursesType = { categoryCourse: _id };
       manyCourses = await courseService.getAllCourses(coursesType);
     }
 
@@ -175,23 +176,19 @@ module.exports.getOnecourse = async (req, res) => {
       requestCourse == "Autre"
     ) {
       // get category course
-      const coursesType = { categoryCourse: requestCourse };
+      const coursesType = { categoryCourse: _id };
       oneCourse = await courseService.getOneCourseCountSkip(coursesType);
     } else {
       // get one course
-      const courseType = { _id: requestCourse };
+      const courseType = { _id };
       oneCourse = await courseService.getOneCourse(courseType);
     }
 
     ////////////////////////////////////////////////////
     // find related courses and icon according latest, random or one course
 
-    // get icon category
-    const categoryType = { nameCategory: oneCourse.categoryCourse };
-    let iconCategory = await categoryService.getOneCategory(categoryType);
-
     // get related courses
-    const coursesTypeRelated = { categoryCourse: oneCourse.categoryCourse };
+    const coursesTypeRelated = { categoryCourse: oneCourse.categoryCourse._id };
     const sortNumberRelated = -1;
     const limitNumberRelated = 5;
     let relatedCourses = await courseService.getAllCoursesSortLimit(
@@ -205,7 +202,6 @@ module.exports.getOnecourse = async (req, res) => {
       showHeader: true,
       authUser: req.user,
       requestCourse,
-      iconCategory,
       oneCourse,
       relatedCourses,
     });

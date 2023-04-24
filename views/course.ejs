@@ -25,9 +25,8 @@
               class="icon_imageContent_course"
             ></iconify-icon>
             <div>
-              <%= oneCourse.getBackUrl(oneCourse.instructorCourse.firstnameUser)
-              %> <%=
-              oneCourse.getBackUrl(oneCourse.instructorCourse.lastnameUser) %>
+              <%= oneCourse.instructorCourse.firstnameUser %> <%=
+              oneCourse.instructorCourse.lastnameUser %>
             </div>
           </div>
         </li>
@@ -51,7 +50,7 @@
         </li>
         <li class="style_imageContent_course">
           <div class="icon_imageCategory_course">
-            <%- iconCategory.iconCategory %>
+            <%- oneCourse.categoryCourse.iconCategory %>
           </div>
         </li>
         <li>
@@ -94,7 +93,7 @@
       <div class="ctn_title_display ctn_title_displayCourse">
         <div class="centralA icon_title_display">
           <i class="uil uil-book-alt"></i>
-          <h2 class="title_display"><%= oneCourse.getNameCourse() %></h2>
+          <h2 class="title_display"><%= oneCourse.nameCourse %></h2>
         </div>
         <% if (authUser && authUser.roleUser == "student" &&
         !authUser.idCoursesRegistered.some(function (idCourseRegistered) {
@@ -113,7 +112,7 @@
       </div>
 
       <div class="ctn_intro_course">
-        <p><%= oneCourse.getDescriptionCourse() %></p>
+        <p><%= oneCourse.descriptionCourse %></p>
       </div>
 
       <div class="ctn_title_display ctn_title_displayCourse">
@@ -152,7 +151,7 @@
 
   <% } else { %>
 
-  <p>Aucun résultat pour <%= oneCourse.getBackUrl(requestCourse) %></p>
+  <p>Aucun résultat pour <%= requestCourse %></p>
   . <% } %>
 </section>
 
@@ -162,14 +161,17 @@
 <section class="section_display section_mid">
   <div class="errorAxios"></div>
   <div class="ctn_display">
+    <% if(oneCourse) { %>
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
-        <%- iconCategory.iconCategory %>
-        <h2 class="title_display"><%= iconCategory.getNameCategory() %></h2>
+        <%- oneCourse.categoryCourse.iconCategory %>
+        <h2 class="title_display">
+          <%= oneCourse.categoryCourse.nameCategory %>
+        </h2>
       </div>
       <div class="mid_display">
         <a
-          href="/course/onecourse/<%= iconCategory._id %>"
+          href="/course/onecourse/<%= oneCourse.categoryCourse._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
           <iconify-icon
@@ -179,6 +181,7 @@
         </a>
       </div>
     </div>
+    <% } %>
     <div>
       <ul class="ul_template">
         <% if(typeof relatedCourses !== 'undefined' && relatedCourses != null &&
@@ -204,7 +207,7 @@
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= relatedCourse._id %>"
-                    ><%= relatedCourse.getNameCourse() %>
+                    ><%= relatedCourse.nameCourse %>
                   </a>
                 </div>
               </li>
@@ -281,7 +284,7 @@
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
           <strong>
-            Aucun résultat pour <%= iconCategory.getNameCategory() %>.
+            Aucun résultat pour <%= oneCourse.categoryCourse.nameCategory %>.
           </strong>
         </div>
         <% } %>

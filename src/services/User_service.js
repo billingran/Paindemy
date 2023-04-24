@@ -451,6 +451,7 @@ class UserService extends DbService {
     bcrypt
   ) {
     // validation student profile
+
     const validationResultStudentProfile = await this.studentProfileValidation(
       firstnameUser,
       lastnameUser,
@@ -479,7 +480,7 @@ class UserService extends DbService {
       }
     ).exec();
 
-    req.flash("success_msg", "Updated Successfully.");
+    req.flash("success_msg", "Mis à jour avec succès.");
     res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
   }
 

@@ -30,17 +30,31 @@ module.exports.patchStudentProfile = async (req, res) => {
       confirmPasswordUser,
     } = req.body;
 
-    await userService.setStudentProfile(
-      firstnameUser.trim(),
-      lastnameUser.trim(),
-      emailUser.trim(),
-      passwordUser.trim(),
-      confirmPasswordUser.trim(),
-      validator,
-      req,
-      res,
-      bcrypt
-    );
+    if (req.user.googleIDUser) {
+      await userService.setStudentProfile(
+        firstnameUser.trim(),
+        lastnameUser.trim(),
+        emailUser.trim(),
+        "",
+        "",
+        validator,
+        req,
+        res,
+        bcrypt
+      );
+    } else {
+      await userService.setStudentProfile(
+        firstnameUser.trim(),
+        lastnameUser.trim(),
+        emailUser.trim(),
+        passwordUser.trim(),
+        confirmPasswordUser.trim(),
+        validator,
+        req,
+        res,
+        bcrypt
+      );
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

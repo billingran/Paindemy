@@ -8,7 +8,9 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "4 Rue Bonaparte, 20000 Ajaccio, Corse-du-Sud, France",
         descriptionCourse: `La baguette est un type de pain français emblématique, reconnaissable à sa forme allongée et fine. Elle est fabriquée à partir d'une pâte simple composée de farine, d'eau, de sel et de levure, et est cuite à haute température pour obtenir une croûte croustillante et dorée. La baguette est un aliment de base dans la cuisine française et est souvent consommée au petit-déjeuner, au déjeuner ou au dîner. Elle est idéale pour accompagner une grande variété de plats, comme les fromages, les charcuteries et les soupes. La baguette est également un symbole culturel de la France, appréciée dans le monde entier pour son goût et sa texture uniques.`,
-        categoryCourse: "Bakery",
+        categoryCourse: {
+          _id: "642b25e9e4f201d77621c6bc",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -20,7 +22,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["baguette.png", "baguette_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f96",
         },
 
         studentsCourse: ["123456"],
@@ -32,7 +34,9 @@ async function insertDymmyRecipeData() {
         addressCourse: "47 Rue Devosge, 21000 Dijon, Côte-d'Or, France",
         descriptionCourse:
           "Le pain de mie est un pain blanc tranché à mie serrée, très utilisé pour les sandwichs et les toasts. Il est préparé à partir d'une pâte levée, qui est cuite dans une boîte à pain spéciale pour donner sa forme caractéristique. Le pain de mie est souvent plus doux et plus léger que les autres pains et peut être consommé grillé, beurré ou garni de divers ingrédients. Il est également couramment utilisé pour la préparation de plats tels que le pain perdu, les croûtons ou les croûtons. Sa texture moelleuse et sa forme régulière en font un choix populaire pour les sandwichs, en particulier dans les pays anglo-saxons.",
-        categoryCourse: "Bakery",
+        categoryCourse: {
+          _id: "642b25e9e4f201d77621c6bc",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine de force",
@@ -43,9 +47,9 @@ async function insertDymmyRecipeData() {
           "Eau",
           "Beurre",
         ],
-        imageCourse: ["pain_de_mie.png", "pain_de_mie.png_R.png"],
+        imageCourse: ["pain_de_mie.png", "pain_de_mie_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f98",
         },
         studentsCourse: ["123456"],
       },
@@ -55,12 +59,14 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "1 Rue Pradier, 75019 Paris, Paris, France",
         descriptionCourse: `Le pain au levain est un pain fabriqué à partir d'une pâte fermentée naturellement avec un levain, plutôt que d'une levure commerciale. Cette méthode traditionnelle donne au pain une saveur légèrement acidulée et une texture plus dense et mâchée. Le levain est créé en mélangeant de la farine et de l'eau, puis en laissant fermenter naturellement pendant plusieurs jours, ce qui permet aux levures et aux bactéries naturellement présentes dans l'air et sur les grains de se développer. Le pain au levain est souvent considéré comme plus sain que le pain commercial, car il contient des nutriments plus nombreux et est plus facilement digéré. Il est apprécié pour sa saveur complexe et son aspect rustique.`,
-        categoryCourse: "Bakery",
+        categoryCourse: {
+          _id: "642b25e9e4f201d77621c6bc",
+        },
         caloriesCourse: 400,
         ingredientsCourse: ["Farine T65", "Eau", "Sel", "Levain"],
         imageCourse: ["pain_au_levain.png", "pain_au_levain_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9a",
         },
         studentsCourse: ["123456"],
       },
@@ -71,7 +77,9 @@ async function insertDymmyRecipeData() {
         addressCourse:
           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
         descriptionCourse: `Nordika est un type de pain originaire de Scandinavie et désormais apprécié dans de nombreuses régions du monde. C'est un pain dense et sombre fait de farine de seigle et contenant souvent d'autres grains et graines tels que des graines de tournesol et de lin. Nordika est un pain consistant, riche en fibres, en protéines et autres nutriments. La pâte à pain pour Nordika est généralement préparée avec un levain naturel, ce qui contribue à la saveur distincte du pain et améliore sa durée de conservation. La pâte est laissée fermenter pendant plusieurs heures, voire plusieurs jours, ce qui contribue à la texture dense et à la saveur acidulée du pain. Nordika est souvent coupé en fines tranches et utilisé comme base pour les sandwichs ouverts, connus sous le nom de smørrebrød en Scandinavie. Il est également délicieux grillé et servi avec du beurre et de la confiture ou utilisé comme base consistante pour le toast à l'avocat. Nordika est un choix populaire pour ceux qui cherchent un pain savoureux et riche en nutriments qui est à la fois délicieux et satisfaisant.`,
-        categoryCourse: "Bakery",
+        categoryCourse: {
+          _id: "642b25e9e4f201d77621c6bc",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T80",
@@ -83,7 +91,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["nordika.png", "nordika_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9b",
         },
         studentsCourse: ["123456"],
       },
@@ -93,7 +101,9 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "4 Rue Bonaparte, 20000 Ajaccio, Corse-du-Sud, France",
         descriptionCourse: `Le Pain au Khorazan est un type de pain français fait avec de la farine de khorazan, une variété ancienne de blé d'origine iranienne. Cette farine est riche en nutriments, en fibres et en saveurs, et donne une texture moelleuse et une saveur noisette au pain. Le pain au Khorazan est souvent associé à une alimentation saine et équilibrée, car il est plus facilement digestible que les pains traditionnels. Il est parfait pour accompagner une grande variété de plats, ou simplement pour être dégusté avec du beurre ou de la confiture. Le pain au Khorazan est de plus en plus populaire dans les boulangeries et les restaurants, en raison de ses qualités nutritives et gustatives uniques.`,
-        categoryCourse: "Bakery",
+        categoryCourse: {
+          _id: "642b25e9e4f201d77621c6bc",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine Khorazan",
@@ -107,7 +117,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_au_khorazan.png", "pain_au_khorazan_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f96",
         },
         studentsCourse: ["123456"],
       },
@@ -118,7 +128,9 @@ async function insertDymmyRecipeData() {
         addressCourse: "1 Quai Eugene Meslin, 14000 Caen, Calvados, France",
         descriptionCourse:
           "Le croissant est une pâtisserie d'origine autrichienne, mais qui est devenue emblématique de la France. Cette viennoiserie en forme de croissant de lune est composée de pâte feuilletée légère et croustillante, et est traditionnellement servie au petit-déjeuner ou au brunch. Le croissant est souvent accompagné de beurre, de confiture ou de miel, et se marie parfaitement avec un café ou un thé. Sa fabrication nécessite un savoir-faire particulier, incluant de nombreux tours de pâte pour créer les fines couches de feuilletage. Le croissant est un symbole de la culture française et est apprécié dans le monde entier pour sa texture croustillante et son goût délicieux.",
-        categoryCourse: "Pastry",
+        categoryCourse: {
+          _id: "642b25f3e4f201d77621c6bd",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -131,7 +143,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["croissant.png", "croissant_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9d",
         },
         studentsCourse: ["123456"],
       },
@@ -143,7 +155,9 @@ async function insertDymmyRecipeData() {
           "149 Rue Anatole France, 92300 Levallois-Perret, Hauts-de-Seine, France",
         descriptionCourse:
           "Le pain au chocolat est une viennoiserie française, composée d'une pâte feuilletée croustillante et d'une barre de chocolat fondant en son centre. C'est une pâtisserie populaire en France, souvent consommée au petit-déjeuner ou au goûter, accompagnée d'un café ou d'un chocolat chaud. Le pain au chocolat est apprécié pour sa texture légère et feuilletée, ainsi que pour la générosité de sa garniture chocolatée. Il peut être consommé chaud ou froid, et est souvent présenté en forme de croissant allongé. Le pain au chocolat est un classique de la boulangerie française, qui est apprécié dans le monde entier.",
-        categoryCourse: "Pastry",
+        categoryCourse: {
+          _id: "642b25f3e4f201d77621c6bd",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -158,7 +172,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_au_chocolate.png", "pain_au_chocolate_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9c",
         },
         studentsCourse: ["123456"],
       },
@@ -169,7 +183,9 @@ async function insertDymmyRecipeData() {
         addressCourse:
           "14 Rue Paul Louis Lande, 33000 Bordeaux, Gironde, France",
         descriptionCourse: `Le pain au raisin est une viennoiserie française, qui se compose d'une pâte levée feuilletée garnie de crème pâtissière et de raisins secs. C'est une pâtisserie généralement consommée au petit-déjeuner ou au goûter, accompagnée d'une tasse de café ou de thé. Le pain au raisin est reconnaissable à sa forme spirale et à ses raisins gonflés qui se détachent joliment sur sa surface dorée. Sa pâte feuilletée croustillante et sa garniture douce et crémeuse font de cette viennoiserie un vrai délice pour les amateurs de pâtisseries. Le pain au raisin est un classique de la boulangerie française, qui reste très apprécié aujourd'hui.`,
-        categoryCourse: "Pastry",
+        categoryCourse: {
+          _id: "642b25f3e4f201d77621c6bd",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -187,7 +203,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_au_raisins.png", "pain_au_raisins_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f99",
         },
         studentsCourse: ["123456"],
       },
@@ -198,7 +214,9 @@ async function insertDymmyRecipeData() {
         addressCourse:
           "25 Avenue Pierre Beregovoy, 58000 Nevers, Nièvre, France",
         descriptionCourse: `La brioche est une viennoiserie française, moelleuse et délicieusement parfumée, qui est souvent consommée au petit-déjeuner ou au goûter. Elle est faite à partir d'une pâte levée riche en beurre, en œufs et en sucre, qui lui donne une texture tendre et fondante en bouche. La brioche peut être aromatisée avec des ingrédients tels que la vanille, le zeste d'orange ou le rhum, pour ajouter de la saveur. Elle peut être dégustée telle quelle ou toastée et tartinée de confiture ou de pâte à tartiner. La brioche est une pâtisserie incontournable de la tradition française, appréciée pour son goût délicat et sa texture légère.`,
-        categoryCourse: "Pastry",
+        categoryCourse: {
+          _id: "642b25f3e4f201d77621c6bd",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine de force",
@@ -210,7 +228,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["brioche.png", "brioche_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f97",
         },
         studentsCourse: ["123456"],
       },
@@ -221,7 +239,9 @@ async function insertDymmyRecipeData() {
         addressCourse:
           "9 Rue du Pilori, 64100 Bayonne, Pyrénées-Atlantiques, France",
         descriptionCourse: `La brioche au sucre est une pâtisserie française, moelleuse et légèrement sucrée, qui est souvent consommée au petit-déjeuner ou au goûter. Elle est faite à partir d'une pâte levée riche en beurre, qui lui donne une texture tendre et fondante en bouche. La brioche est traditionnellement saupoudrée de sucre en grains avant d'être cuite au four, ce qui lui confère une croûte croustillante et dorée. Elle peut être dégustée telle quelle ou agrémentée de confiture, de pâte à tartiner ou de fruits frais. La brioche au sucre est une pâtisserie délicieuse et réconfortante, qui incarne parfaitement la tradition française de la boulangerie.`,
-        categoryCourse: "Pastry",
+        categoryCourse: {
+          _id: "642b25f3e4f201d77621c6bd",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine de force",
@@ -233,7 +253,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["brioche_au_sucre.png", "brioche_au_sucre_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f95",
         },
         studentsCourse: ["123456"],
       },
@@ -243,7 +263,9 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "47 Rue Devosge, 21000 Dijon, Côte-d'Or, France",
         descriptionCourse: `La pizza est un plat italien emblématique, composé d'une pâte à pizza recouverte de sauce tomate et garnie de divers ingrédients, tels que du fromage, de la viande, des légumes ou des herbes aromatiques. La pizza est cuite au four et peut être dégustée chaude ou froide. Elle est souvent considérée comme un plat convivial à partager entre amis ou en famille. La pizza a connu une grande popularité dans le monde entier et il existe aujourd'hui de nombreuses variantes de ce plat traditionnel italien.`,
-        categoryCourse: "Other",
+        categoryCourse: {
+          _id: "642b25fbe4f201d77621c6be",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -256,7 +278,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pizza.png", "pizza_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f98",
         },
         studentsCourse: ["123456"],
       },
@@ -266,7 +288,9 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "Rue du Caducee, 34090 Montpellier, Hérault, France",
         descriptionCourse: `Le gua bao est un petit pain taïwanais cuit à la vapeur et farci de viande de porc braisée, de légumes et d'herbes aromatiques. Sa texture moelleuse et légère en fait une option de street food populaire dans de nombreux pays asiatiques. On le trouve souvent sous forme de sandwich, avec le pain ouvert en deux pour accueillir les garnitures savoureuses. Le gua bao est également souvent accompagné de sauces sucrées et salées pour ajouter une touche de saveur supplémentaire.`,
-        categoryCourse: "Other",
+        categoryCourse: {
+          _id: "642b25fbe4f201d77621c6be",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -279,7 +303,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["gua_bao.png", "gua_bao_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f95",
         },
         studentsCourse: ["123456"],
       },
@@ -289,7 +313,9 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "1 Rue Pradier, 75019 Paris, Paris, France",
         descriptionCourse: `Le pain naan est un pain traditionnel originaire d'Asie centrale et du sud. C'est un pain plat et rond, cuit au four tandoor, qui peut être dégusté nature, aromatisé ou fourré. Il est souvent utilisé pour accompagner des plats indiens ou moyen-orientaux tels que les curry, les tandoori et les kebabs. La pâte est généralement faite avec de la farine de blé, du yaourt et de la levure, ce qui donne une texture légèrement moelleuse et aérée. Le pain naan peut également être garni de fromage, d'oignons ou d'autres ingrédients avant d'être cuit pour créer des variantes savoureuses.`,
-        categoryCourse: "Other",
+        categoryCourse: {
+          _id: "642b25fbe4f201d77621c6be",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -303,7 +329,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["nann.png", "nann_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9a",
         },
         studentsCourse: ["123456"],
       },
@@ -315,7 +341,9 @@ async function insertDymmyRecipeData() {
           "14 Rue Saint-Denis, 92700 Colombes, Hauts-de-Seine, France",
         descriptionCourse: `La tortilla est un plat traditionnel de la cuisine mexicaine, qui se présente sous forme d'une galette plate faite de maïs ou de farine de blé. Elle est généralement utilisée comme base pour des plats tels que les tacos, les enchiladas ou les quesadillas, et peut être garnie avec une variété d'ingrédients tels que de la viande, des légumes, du fromage et des sauces. La tortilla est souvent considérée comme un aliment de base dans la cuisine mexicaine et peut être consommée à tout moment de la journée, que ce soit pour le petit déjeuner, le déjeuner ou le dîner. Elle est également devenue populaire dans le monde entier en tant que plat savoureux et facile à préparer.
           `,
-        categoryCourse: "Other",
+        categoryCourse: {
+          _id: "642b25fbe4f201d77621c6be",
+        },
         caloriesCourse: 400,
         ingredientsCourse: [
           "Farine T65",
@@ -326,7 +354,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["tortillas.png", "tortillas_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9b",
         },
         studentsCourse: ["123456"],
       },
@@ -336,12 +364,14 @@ async function insertDymmyRecipeData() {
         timeCourse: "14:30",
         addressCourse: "Rue du Caducee, 34090 Montpellier, Hérault, France",
         descriptionCourse: `Le dumpling est un plat traditionnel de la cuisine asiatique, constitué d'une petite boulette de pâte farcie de viande, de légumes ou de fruits de mer. On le cuit généralement à la vapeur, à la poêle ou dans un bouillon. Il existe de nombreuses variantes de dumplings selon les régions d'Asie, les ingrédients et les méthodes de cuisson utilisées. Les dumplings peuvent être dégustés en apéritif, en plat principal ou en collation. Ils sont souvent accompagnés d'une sauce soja, d'une sauce aigre-douce ou d'une sauce pimentée pour leur donner plus de saveur.`,
-        categoryCourse: "Other",
+        categoryCourse: {
+          _id: "642b25fbe4f201d77621c6be",
+        },
         caloriesCourse: 400,
         ingredientsCourse: ["Farine T65", "Eau", "Sel"],
         imageCourse: ["dumping.png", "dumping_R.png"],
         instructorCourse: {
-          _id: "6408d89aaf9308838ec8e85a",
+          _id: "642cb627dfdb57af71101f9e",
         },
         studentsCourse: ["123456"],
       },

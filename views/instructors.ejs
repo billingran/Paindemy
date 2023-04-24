@@ -16,18 +16,13 @@
         >
           <div class="filter_instructors"></div>
           <div class="left_instructors">
-            <h2>
-              “ <%= allinstructors[0].getBackUrl(allinstructors[0].fathUser) %>
-              ”
-            </h2>
+            <h2>“ <%= allinstructors[0].fathUser %> ”</h2>
             <a
               href="/course/instructor/<%= allinstructors[0]._id %>"
               class="central"
             >
-              -- <%=
-              allinstructors[0].getBackUrl(allinstructors[0].firstnameUser) %>
-              <%= allinstructors[0].getBackUrl(allinstructors[0].lastnameUser)
-              %>
+              -- <%= allinstructors[0].firstnameUser %> <%=
+              allinstructors[0].lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -38,8 +33,8 @@
             <img
               src="/uploads/<%= allinstructors[0].imageUser[1] %>"
               class="d-block"
-              alt="<%= allinstructors[0].getBackUrl(allinstructors[0].firstnameUser) %> <%=
-              allinstructors[0].getBackUrl(allinstructors[0].lastnameUser) %>"
+              alt="<%= allinstructors[0].firstnameUser %> <%=
+              allinstructors[0].lastnameUser %>"
             />
           </div>
         </div>
@@ -55,10 +50,9 @@
           <div class="filter_instructors"></div>
 
           <div class="left_instructors">
-            <h2>“ <%= instructor.getBackUrl(instructor.fathUser) %> ”</h2>
+            <h2>“ <%= instructor.fathUser %> ”</h2>
             <a href="/course/instructor/<%= instructor._id %>" class="central">
-              -- <%= instructor.getBackUrl(instructor.firstnameUser) %> <%=
-              instructor.getBackUrl(instructor.lastnameUser) %>
+              -- <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -69,7 +63,7 @@
             <img
               src="/uploads/<%= instructor.imageUser[1] %>"
               class="d-block"
-              alt="<%= instructor.getFirstnameUser() %>"
+              alt="<%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
             />
           </div>
         </div>
@@ -118,9 +112,7 @@
                   background-image: url('/uploads/<%= instructor.imageUser[0] %>');
                 "
               ></div>
-              <h3 class="title_instructors">
-                <%= instructor.getFirstnameUser() %>
-              </h3>
+              <h3 class="title_instructors"><%= instructor.firstnameUser %></h3>
             </div>
           </a>
         </li>

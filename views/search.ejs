@@ -52,7 +52,7 @@
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= result._id %>"
-                    ><%= result.getNameCourse() %>
+                    ><%= result.nameCourse %>
                   </a>
                 </div>
               </li>
@@ -67,11 +67,8 @@
                 <div>
                   <a
                     href="/course/instructor/<%= result.instructorCourse[0]._id %>"
-                    ><%=
-                    result.getBackUrl(result.instructorCourse[0].firstnameUser)
-                    %> <%=
-                    result.getBackUrl(result.instructorCourse[0].lastnameUser)
-                    %>
+                    ><%= result.instructorCourse[0].firstnameUser %> <%=
+                    result.instructorCourse[0].lastnameUser %>
                   </a>
                 </div>
               </li>

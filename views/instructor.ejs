@@ -45,7 +45,7 @@
             <li class="centralA">
               <div class="style_number">
                 <i class="uil uil-graduation-cap icon_number"></i>
-                <%= coursesInstructor.length %>
+                <%= numberStudentOneInstructor %>
               </div>
             </li>
           </ul>
@@ -104,7 +104,7 @@
         null && coursesInstructor.length > 0) { %> <%
         coursesInstructor.forEach((course) => { %>
         <li class="ctn_template mid_template">
-          <a href="#">
+          <a href="/course/onecourse/<%= course._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -122,7 +122,9 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.getNameCourse() %> </a>
+                  <a href="/course/onecourse/<%= course._id %>">
+                    <%= course.nameCourse %>
+                  </a>
                 </div>
               </li>
 
@@ -134,11 +136,10 @@
                   ></iconify-icon>
                 </div>
                 <div>
-                  <a href="#"
-                    ><%=
-                    course.getBackUrl(course.instructorCourse.firstnameUser) %>
-                    <%= course.getBackUrl(course.instructorCourse.lastnameUser)
-                    %>
+                  <a
+                    href="/course/instructor/<%= course.instructorCourse._id %>"
+                    ><%= course.instructorCourse.firstnameUser %> <%=
+                    course.instructorCourse.lastnameUser %>
                   </a>
                 </div>
               </li>
@@ -148,7 +149,7 @@
                   <i class="uil uil-calender icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#">
+                  <a href="">
                     <%= course.dateCourse %> / <%= course.timeCourse %>
                   </a>
                 </div>
@@ -159,7 +160,7 @@
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.addressCourse %> </a>
+                  <a href=""> <%= course.addressCourse %> </a>
                 </div>
               </li>
 
@@ -185,7 +186,7 @@
                   </div>
                   <% } %>
                   <div class="btns_template icon_more_template">
-                    <a href="/course/<%= course._id %>">
+                    <a href="/course/onecourse/<%= course._id %>">
                       <i class="uil uil-ellipsis-h"></i>
                     </a>
                   </div>
