@@ -9,6 +9,7 @@
       Mon espace
     </h2>
 
+    <% if(courseFavorite) { %>
     <div class="mid_info_mySpace">
       <a href="#">
         <iconify-icon
@@ -24,7 +25,7 @@
       </a>
       <a>
         <i class="uil uil-folder mid_icon_mySpace"></i>
-        <%= courseFavorite.categoryCourse %>
+        <%= courseFavorite.categoryCourse.nameCategory %>
       </a>
     </div>
 
@@ -40,10 +41,43 @@
           class="txt_field_auth txt_my_space"
           style="margin: 2.8rem 0 0; width: 50%"
         >
-          <input id="firstnameUser" type="text" name="firstnameUser" required />
+          <input id="nameFavorite" type="text" name="nameFavorite" required />
           <span></span>
           <i class="uil uil-heart-alt up_joinus"></i>
-          <label for="firstnameUser" class="up_joinus">Nom</label>
+          <label for="nameFavorite" class="up_joinus">Nom</label>
+        </div>
+
+        <div
+          class="txt_field_auth txt_my_space"
+          style="margin: 2.8rem 0 0; width: 50%"
+        >
+          <input
+            id="quantityFavorite"
+            type="text"
+            name="quantityFavorite"
+            required
+          />
+          <span></span>
+          <i class="uil uil-balance-scale up_joinus"></i>
+          <label for="quantityFavorite" class="up_joinus">Quantité (kg)</label>
+        </div>
+      </div>
+
+      <% if(typeof courseFavorite.ingredientsCourse !== 'undefined' &&
+      courseFavorite.ingredientsCourse != null &&
+      courseFavorite.ingredientsCourse.length > 0) { %> <%
+      courseFavorite.ingredientsCourse.forEach((ingredient) => { %>
+      <div class="ctn_input_fifty">
+        <div
+          class="txt_field_auth txt_my_space"
+          style="margin: 2.8rem 0 0; width: 50%"
+        >
+          <input id="firstnameUser" type="text" name="firstnameUser" required />
+          <span></span>
+          <i class="up_joinus">
+            <iconify-icon icon="lucide:wheat"></iconify-icon>
+          </i>
+          <label for="firstnameUser" class="up_joinus"><%= ingredient %></label>
         </div>
 
         <div
@@ -52,21 +86,11 @@
         >
           <input id="lastnameUser" type="text" name="lastnameUser" required />
           <span></span>
-          <i class="uil uil-balance-scale up_joinus"></i>
-          <label for="lastnameUser" class="up_joinus">Quantité</label>
+          <i class="uil uil-percentage up_joinus"></i>
+          <label for="lastnameUser" class="up_joinus"></label>
         </div>
       </div>
-
-      <div class="txt_field_auth txt_my_space">
-        <textarea
-          name="introductionUser"
-          id="introductionUser"
-          required
-        ></textarea>
-        <span></span>
-        <i class="uil uil-file-alt up_joinus"></i>
-        <label for="introductionUser" class="up_joinus">Notes</label>
-      </div>
+      <% }) %> <% } %>
 
       <div class="ingredient_list">
         <div class="txt_field_auth ingredient_div txt_my_space">
@@ -92,6 +116,17 @@
         </button>
       </div>
 
+      <div class="txt_field_auth txt_my_space">
+        <textarea
+          name="introductionUser"
+          id="introductionUser"
+          required
+        ></textarea>
+        <span></span>
+        <i class="uil uil-file-alt up_joinus"></i>
+        <label for="introductionUser" class="up_joinus">Notes</label>
+      </div>
+
       <div class="txt_field_auth joinUs_div txt_my_space">
         <input
           id="imageUser"
@@ -104,13 +139,14 @@
         />
         <span></span>
         <label for="imageUser" class="upload_joinus a_NBorder"
-          ><i class="uil uil-image"></i>+ Image</label
-        >
+          ><i class="uil uil-image"></i>+ Image
+        </label>
       </div>
 
       <div class="img_list img_list_mySpace"></div>
 
       <input type="submit" value="Sauvegarder" />
     </form>
+    <% } %>
   </div>
 </section>

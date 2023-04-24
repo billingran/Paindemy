@@ -428,7 +428,7 @@ async function insertDymmyCategoryData() {
         passwordUser: "12345678",
         introductionUser:
           "Je m’appelle Auguste. Je travaille dans la pâtisserie depuis 3 ans. Depuis tout jeune, j'ai toujours été passionné par la cuisine et surtout par la pâtisserie. Après avoir terminé mes études dans l’art culinaire, j’ai décidé de poursuivre mon rêve de devenir pâtissier. C’est un métier qui demande beaucoup d’innovation afin de créer de nouvelles recettes pour nos clients. J’adore me dépasser et faire de mon mieux pour satisfaire tout le monde. Ma spécialité sont les brioches au sucre  mais j’aimerais beaucoup m’améliorer pour pouvoir faire d'autres pâtisseries plus complexes.",
-        imageUser: ["Auguste_Lefebvre", "Auguste_Lefebvre_R"],
+        imageUser: ["Auguste_Lefebvre.png", "Auguste_Lefebvre_R.png"],
         roleUser: "instructor",
       },
       {

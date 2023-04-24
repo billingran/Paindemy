@@ -4,6 +4,7 @@ class DbService {
     this.Course = require("../models/Course_model");
     this.User = require("../models/User_model");
   }
+
   // url parser //////////////////////////////////////////////////
   // url parsed to toLowerCase
   urlParsed(url) {

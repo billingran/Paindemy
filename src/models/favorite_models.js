@@ -6,13 +6,13 @@ const favoriteSchema = new mongoose.Schema({
     required: true,
     maxlength: 255,
   },
+  ingredientsFavorite: {
+    type: objet,
+    required: true,
+  },
   notesFavorite: {
     type: String,
     require: true,
-  },
-  ingredientsFavorite: {
-    type: [{}],
-    required: true,
   },
   imageFavorite: {
     type: [String],
