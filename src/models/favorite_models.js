@@ -10,13 +10,17 @@ const favoriteSchema = new mongoose.Schema({
     type: {},
     required: true,
   },
-  notesFavorite: {
+  noteFavorite: {
     type: String,
     require: true,
   },
   imageFavorite: {
     type: [String],
     required: true,
+  },
+  authorFavorite: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course",
   },
   originFavorite: {
     type: mongoose.Schema.Types.ObjectId,
