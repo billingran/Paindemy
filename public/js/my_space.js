@@ -1,4 +1,4 @@
-const quantityDough = document.querySelector("input.quantityDough");
+const quantityDoughInput = document.querySelector("input.quantityDough");
 const percentageIngredients = document.querySelectorAll(
   "input.percentageIngredient"
 );
@@ -17,8 +17,11 @@ function addAndTransformPercentage(event) {
       100
     ).toFixed(2);
   } else {
-    percentageLabel.textContent = (0).toFixed(2);
+    // put input ingredients 0
     event.target.value = (0).toFixed(2);
+
+    // put label percentage 0
+    percentageLabel.textContent = (0).toFixed(2);
   }
 }
 
@@ -30,7 +33,8 @@ percentageIngredients.forEach((percentageIngredient) => {
 // caculate result percentage for each ingredient
 function calculatePercentage(event) {
   // get quantity dough
-  let quantityDough = event.target.value;
+  let quantityDough = Number(event.target.value);
+
   // get total percentage
   let totalPercentage = 0;
 
@@ -38,17 +42,29 @@ function calculatePercentage(event) {
     let value = percentageIngredient.value;
     let valuePercentage = Number(value);
 
-    // get total percentage
-    if (!isNaN(valuePercentage) && !isNaN(quantityDough)) {
+    // get total percentage and calculate the percentage
+    if (!isNaN(quantityDough) && !isNaN(valuePercentage)) {
       totalPercentage += valuePercentage;
 
       let resultPercentage =
         (valuePercentage / totalPercentage) * quantityDough;
 
-      console.log(resultPercentage.toFixed(3));
+      const resultPercentageInput =
+        percentageIngredient.parentElement.nextElementSibling.querySelector(
+          "input.resultPercentage"
+        );
+
+      if (!isNaN(resultPercentage)) {
+        resultPercentageInput.value = resultPercentage.toFixed(3);
+      } else {
+        resultPercentageInput.value = (0).toFixed(3);
+      }
+    } else {
+      // put input dough 0
+      event.target.value = (0).toFixed(2);
     }
   });
 }
 
 // caculate result percentage for each ingredient
-quantityDough.addEventListener("input", calculatePercentage);
+quantityDoughInput.addEventListener("input", calculatePercentage);
