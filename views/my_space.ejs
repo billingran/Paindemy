@@ -12,16 +12,16 @@
     <% if(courseFavorite) { %>
     <div class="mid_info_mySpace">
       <a href="#">
+        <i class="uil uil-book-alt mid_icon_mySpace"></i>
+        <%= courseFavorite.nameCourse %>
+      </a>
+      <a href="#">
         <iconify-icon
           icon="tabler:chef-hat"
           class="mid_icon_mySpace"
         ></iconify-icon>
         <%= courseFavorite.instructorCourse.firstnameUser %> <%=
         courseFavorite.instructorCourse.lastnameUser %>
-      </a>
-      <a href="#">
-        <i class="uil uil-book-alt mid_icon_mySpace"></i>
-        <%= courseFavorite.nameCourse %>
       </a>
       <a>
         <i class="uil uil-folder mid_icon_mySpace"></i>

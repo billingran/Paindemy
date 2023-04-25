@@ -44,7 +44,7 @@ h2.title_my_space {
 }
 
 .mid_info_mySpace {
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 1.5rem auto;
 
   display: flex;
   align-items: center;
@@ -93,5 +93,12 @@ h2.title_my_space {
 @media screen and (max-width: 880px) {
   .center_my_space {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mid_info_mySpace {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
