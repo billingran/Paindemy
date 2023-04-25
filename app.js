@@ -152,5 +152,5 @@ app.use("/student", authCheckStudent, studentRoutes);
 app.use("/", homePage);
 
 app.listen(5000, () => {
-  console.log("Server running on port 8080");
+  console.log("Server running on port 5000");
 });

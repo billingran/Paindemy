@@ -1,17 +1,26 @@
+const quantityDough = document.querySelector("input.quantityDough");
 const percentageIngredients = document.querySelectorAll(
   "input.percentageIngredient"
 );
 
-function addAndTransformPercentage(percentageIngredient) {
+// add and transform for percentage label
+function addAndTransformPercentage(event) {
   const percentageLabel =
-    percentageIngredient.parentElement.nextElementSibling.querySelector(
-      "label"
-    );
+    event.target.parentElement.nextElementSibling.querySelector("label");
 
-  percentageLabel.textContent = percentageIngredient.value;
+  let valuePercentageIngredient = event.target.value;
+
+  if (!isNaN(valuePercentageIngredient)) {
+    percentageLabel.textContent = (
+      (Number(valuePercentageIngredient) / 1) *
+      100
+    ).toFixed(2);
+  } else {
+    percentageLabel.textContent = (0).toFixed(2);
+  }
 }
 
 percentageIngredients.forEach((percentageIngredient) => {
-  //   percentageIngredient.addEventListener("change", addAndTransformPercentage);
-  console.log(percentageIngredient.parentElement);
+  // add and transform for percentage label
+  percentageIngredient.addEventListener("input", addAndTransformPercentage);
 });

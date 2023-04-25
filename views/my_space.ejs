@@ -51,15 +51,10 @@
           class="txt_field_auth txt_my_space"
           style="margin: 2.8rem 0 0; width: 50%"
         >
-          <input
-            id="quantityFavorite"
-            type="text"
-            name="quantityFavorite"
-            required
-          />
+          <input id="quantityDough" type="text" name="quantityDough" required />
           <span></span>
           <i class="uil uil-balance-scale up_joinus"></i>
-          <label for="quantityFavorite" class="up_joinus">Quantité (kg)</label>
+          <label for="quantityDough" class="up_joinus">Pâte (kg)</label>
         </div>
       </div>
 
@@ -74,7 +69,7 @@
         >
           <input
             id="<%= ingredient %>"
-            type="number"
+            type="text"
             name="<%= ingredient %>"
             class="percentageIngredient"
             required
@@ -94,13 +89,13 @@
         >
           <input
             id="percentageFavorite"
-            type="number"
+            type="text"
             name="percentageFavorite"
             required
           />
           <span></span>
           <i class="uil uil-percentage up_joinus"></i>
-          <label for="percentageFavorite" class="up_joinus">30</label>
+          <label for="percentageFavorite" class="up_joinus">0.00</label>
         </div>
       </div>
       <% }) %> <% } %>
