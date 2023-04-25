@@ -7,7 +7,7 @@ const favoriteSchema = new mongoose.Schema({
     maxlength: 255,
   },
   ingredientsFavorite: {
-    type: objet,
+    type: {},
     required: true,
   },
   notesFavorite: {
