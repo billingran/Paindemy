@@ -682,7 +682,7 @@ class DbService {
 
     const mailOptions = userStudent.map((student) => ({
       from: process.env.GMAIL_USER,
-      to: student[0].emailUser,
+      to: student,
       subject: "Notification de fermeture de cours",
       html: juice(`<!DOCTYPE html>
     <html lang="en">

@@ -21,6 +21,11 @@ class CourseService extends DbService {
         "themeColorUser",
         "emailUser",
       ])
+      .populate("studentsCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
       .exec();
 
     return new CourseEntity(course);
@@ -44,6 +49,11 @@ class CourseService extends DbService {
         "firstnameUser",
         "lastnameUser",
         "themeColorUser",
+        "emailUser",
+      ])
+      .populate("studentsCourse", [
+        "firstnameUser",
+        "lastnameUser",
         "emailUser",
       ])
       .exec();
@@ -75,6 +85,11 @@ class CourseService extends DbService {
         "themeColorUser",
         "emailUser",
       ])
+      .populate("studentsCourse", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
       .exec();
 
     let courses = [];
@@ -101,6 +116,11 @@ class CourseService extends DbService {
         "firstnameUser",
         "lastnameUser",
         "themeColorUser",
+        "emailUser",
+      ])
+      .populate("studentsCourse", [
+        "firstnameUser",
+        "lastnameUser",
         "emailUser",
       ])
       .exec();
@@ -590,7 +610,7 @@ class CourseService extends DbService {
         // get students in unregistered course
         let userStudents = await Promise.all(
           courseUnregistered.studentsCourse.map(async (student) => {
-            return await this.User.find({ _id: student });
+            return student.emailUser;
           })
         );
 

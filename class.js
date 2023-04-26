@@ -76,7 +76,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9a",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Nordika",
@@ -437,7 +441,7 @@ async function insertDymmyRecipeData() {
   }
 }
 
-// insertDymmyRecipeData();
+insertDymmyRecipeData();
 
 // category;
 // async function insertDymmyCategoryData() {
