@@ -20,7 +20,7 @@ const favoriteSchema = new mongoose.Schema({
   },
   authorFavorite: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Course",
+    ref: "User",
   },
   originFavorite: {
     type: mongoose.Schema.Types.ObjectId,

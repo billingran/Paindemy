@@ -47,6 +47,23 @@
 /* input */
 .ctn_input_fifty {
   display: flex;
+
+  transition: all 0.3;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
+  }
 }
 
 /* textarea */

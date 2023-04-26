@@ -119,15 +119,77 @@ quantityDoughInput.addEventListener("input", calculatePercentage);
 /* /////////////////////////////////////////////// */
 //add and delete ingredients my space
 
-let ingredientListMyspace = document.querySelector(".ingredient_list_mySpace");
-let addIngredientsBtnMyspace = document.querySelector(
+let ingredientListMySpace = document.querySelector(".ingredient_list_mySpace");
+let addIngredientsBtnMySpace = document.querySelector(
   ".addIngredients_btn_mySpace"
 );
-let ingredientDivMyspace = document.querySelectorAll(".ingredient_div_mySpace");
+let ingredientDivMySpace = document.querySelectorAll(".ingredient_div_mySpace");
 
-function addIngredientsMyspace(e) {
-  console.log(e.target);
+// func generate dlt ingredient btn my space
+function dltIngredientBtnMySpace() {
+  //create delet button of ingredients my space
+  let deleteIngredientBtnMySpace = document.createElement("button");
+  deleteIngredientBtnMySpace.setAttribute("type", "button");
+  deleteIngredientBtnMySpace.classList.add("dlt_ingredientsBtn_mySpace");
+  deleteIngredientBtnMySpace.classList.add("minus_btn");
+  deleteIngredientBtnMySpace.classList.add("a_NBorder");
+  deleteIngredientBtnMySpace.innerHTML =
+    '<i class="uil uil-times up_joinus"></i>';
+
+  return deleteIngredientBtnMySpace;
+}
+
+//func remove ingredient my space
+function animateIngredientsMySpace(dltIngredient) {
+  // remove ingredient my space
+  dltIngredient.target.remove();
+}
+
+//func -ingredient my space
+function deleteIngredientsMySpace(e) {
+  e.preventDefault();
+
+  let dltIngredientMySpace = e.target.parentElement.parentElement;
+
+  dltIngredientMySpace.addEventListener(
+    "animationend",
+    animateIngredientsMySpace
+  );
+
+  dltIngredientMySpace.style.animation = "scaleDown 0.3s forwards";
+}
+
+//func +ingredient my space
+function addIngredientsMySpace(e) {
+  e.preventDefault();
+
+  // clone ctn ingredient my space
+  let newIngredientsMySpace = ingredientDivMySpace[0].cloneNode(true);
+
+  // clear input value of new ingredient my space
+  Array.from(newIngredientsMySpace.getElementsByTagName("input")).forEach(
+    (inputMySpace) => {
+      inputMySpace.value = "";
+    }
+  );
+
+  //create delet button of ingredients
+  let ctnDeleteIngredientBtnMySpace =
+    newIngredientsMySpace.getElementsByTagName("div")[1];
+  let deleteIngredientBtnMySpace = dltIngredientBtnMySpace();
+
+  // append dlt bun of ingredient my space and ctn ingredient my space into list of ingredient my space
+  ctnDeleteIngredientBtnMySpace.appendChild(deleteIngredientBtnMySpace);
+  ingredientListMySpace.appendChild(newIngredientsMySpace);
+
+  newIngredientsMySpace.style.animation = "scaleUp 0.3s forwards";
+
+  // -ingredient my space ///////////////////////////////////////////
+  deleteIngredientBtnMySpace.addEventListener(
+    "click",
+    deleteIngredientsMySpace
+  );
 }
 
 // +ingredient my space
-addIngredientsBtnMyspace.addEventListener("click", addIngredientsMyspace);
+addIngredientsBtnMySpace.addEventListener("click", addIngredientsMySpace);
