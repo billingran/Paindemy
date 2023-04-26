@@ -25,7 +25,11 @@ async function insertDymmyRecipeData() {
           _id: "642cb627dfdb57af71101f96",
         },
 
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Pain de mie",
@@ -51,7 +55,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f98",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Pain au levain",
@@ -93,7 +101,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9b",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Pain au khorazan",
@@ -119,7 +131,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f96",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Croissant",
@@ -145,7 +161,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9d",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Pain au chocolate",
@@ -174,7 +194,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9c",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Pain au raisins",
@@ -205,7 +229,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f99",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Brioche",
@@ -230,7 +258,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f97",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Brioche au sucre",
@@ -255,7 +287,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f95",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Pizza",
@@ -280,7 +316,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f98",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Gua Bao",
@@ -305,7 +345,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f95",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Nann",
@@ -331,7 +375,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9a",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Tortillas",
@@ -356,7 +404,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9b",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
       {
         nameCourse: "Dumpings",
@@ -373,7 +425,11 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "642cb627dfdb57af71101f9e",
         },
-        studentsCourse: ["123456"],
+        studentsCourse: [
+          {
+            _id: "64492cf4821681cd69e98a88",
+          },
+        ],
       },
     ]);
   } catch (error) {
