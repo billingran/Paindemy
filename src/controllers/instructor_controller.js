@@ -287,14 +287,26 @@ module.exports.postInstructorMyspace = async (req, res) => {
     // concat name ingredients instructor and name ingredients student
     let nameIngredients;
 
-    // if (nameIngredientsStudent) {
-    //   nameIngredients =
-    //     courseNameIngredientsInstructor.ingredientsCourse.concat(
-    //       nameIngredientsStudent
-    //     );
-    // } else {
-    //   nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
-    // }
+    if (nameIngredientsStudent) {
+      // turn objet into arry if name ingredient student only has one
+      if (!Array.isArray(nameIngredientsStudent)) {
+        nameIngredientsStudent = nameIngredientsStudent.split();
+      }
+
+      nameIngredients =
+        courseNameIngredientsInstructor.ingredientsCourse.concat(
+          nameIngredientsStudent
+        );
+    } else {
+      nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
+    }
+
+    // turn objet into arry if percentage ingredient only has one
+    if (!Array.isArray(percentageIngredients)) {
+      percentageIngredients = percentageIngredients.split();
+    }
+
+    console.log(percentageIngredients);
 
     // await favoriteService.setMySpace(
     //   _id,
