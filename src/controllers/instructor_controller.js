@@ -290,7 +290,15 @@ module.exports.postInstructorMyspace = async (req, res) => {
         nameIngredientsStudent
       );
 
-    await favoriteService.setMySpace();
+    await favoriteService.setMySpace(
+      nameFavorite,
+      nameIngredients,
+      percentageIngredients,
+      noteFavorite,
+      req,
+      res,
+      path
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

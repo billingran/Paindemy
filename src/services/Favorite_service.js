@@ -6,8 +6,18 @@ class FavoriteService extends DbService {
     super();
   }
 
-  async setMySpace() {
+  async setMySpace(
+    nameFavorite,
+    nameIngredients,
+    percentageIngredients,
+    noteFavorite,
+    req,
+    res,
+    path
+  ) {
     // validation my space
+
+    console.log(nameFavorite);
   }
 }
 
