@@ -21,10 +21,12 @@ const favoriteSchema = new mongoose.Schema({
   authorFavorite: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+    required: true,
   },
   originFavorite: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
+    required: true,
   },
   createdAt: {
     type: Date,

@@ -5,6 +5,8 @@ const CourseService = require("../services/Course_service");
 const courseService = new CourseService();
 const UserService = require("../services/User_service");
 const userService = new UserService();
+const FavoriteService = require("../services/Favorite_service");
+const favoriteService = new FavoriteService();
 
 // validation
 const validator = require("validator");
@@ -287,6 +289,8 @@ module.exports.postInstructorMyspace = async (req, res) => {
       courseNameIngredientsInstructor.ingredientsCourse.concat(
         nameIngredientsStudent
       );
+
+    await favoriteService.setMySpace();
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

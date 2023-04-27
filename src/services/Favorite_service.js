@@ -5,6 +5,10 @@ class FavoriteService extends DbService {
   constructor() {
     super();
   }
+
+  async setMySpace() {
+    // validation my space
+  }
 }
 
 module.exports = FavoriteService;
