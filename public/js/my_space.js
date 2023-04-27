@@ -2,7 +2,7 @@
 // calculation my space
 const quantityDoughInput = document.querySelector("input.quantityDough");
 const percentageIngredients = document.querySelectorAll(
-  "input.percentageIngredient"
+  "input.percentageIngredients"
 );
 
 // add, transform for percentage label and calculate percentage ingredient
@@ -117,29 +117,6 @@ function calculatePercentage(e) {
 quantityDoughInput.addEventListener("input", calculatePercentage);
 
 /* /////////////////////////////////////////////// */
-//add first name dosage ingredient my space
-
-// const firstNameIngredientMySpace = document.querySelector(
-//   "input.nameIngredient_my_space"
-// );
-
-// // func add name attribute for dosage ingredient
-// function addNameDosageIngredientMySpace(e) {
-//   const dosageIngredientMySpace =
-//     e.target.parentElement.nextElementSibling.querySelector(
-//       "input.dosageIngredient_my_space"
-//     );
-
-//   dosageIngredientMySpace.setAttribute("name", e.target.value);
-// }
-
-// set first input lisnter for first name ingredient my space
-// firstNameIngredientMySpace.addEventListener(
-//   "input",
-//   addNameDosageIngredientMySpace
-// );
-
-/* /////////////////////////////////////////////// */
 //add, delete ingredients and also give "input listener" my space
 
 let ingredientListMySpace = document.querySelector(".ingredient_list_mySpace");
@@ -147,19 +124,6 @@ let addIngredientsBtnMySpace = document.querySelector(
   ".addIngredients_btn_mySpace"
 );
 let ingredientDivMySpace = document.querySelectorAll(".ingredient_div_mySpace");
-
-// func set second input lisnter for name ingredient my space
-// function setSecondInputListener(newIngredientsMySpace) {
-//   const secondNameIngredientMySpace = newIngredientsMySpace.querySelector(
-//     "input.nameIngredient_my_space"
-//   );
-
-//   // set second input lisnter for second name ingredient my space
-//   secondNameIngredientMySpace.addEventListener(
-//     "input",
-//     addNameDosageIngredientMySpace
-//   );
-// }
 
 // func generate dlt ingredient btn my space
 function dltIngredientBtnMySpace() {
@@ -202,16 +166,12 @@ function addIngredientsMySpace(e) {
   // clone ctn ingredient my space
   let newIngredientsMySpace = ingredientDivMySpace[0].cloneNode(true);
 
-  // clear input value and name attribute of new ingredient my space
+  // clear input value of new ingredient my space
   Array.from(newIngredientsMySpace.getElementsByTagName("input")).forEach(
     (inputMySpace) => {
       inputMySpace.value = "";
-      // inputMySpace.removeAttribute("name");
     }
   );
-
-  // set second input lisnter for second name ingredient my space
-  // setSecondInputListener(newIngredientsMySpace);
 
   //create delet button of ingredients
   let ctnDeleteIngredientBtnMySpace =

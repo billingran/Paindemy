@@ -267,7 +267,26 @@ module.exports.instructorMyspace = async (req, res) => {
 //post instructor my space
 module.exports.postInstructorMyspace = async (req, res) => {
   try {
-    console.log(req.body);
+    let { _id } = req.params;
+
+    // get one course for the name ingredients instructor
+    const courseTypeNameIngredientsInstructor = { _id };
+    let courseNameIngredientsInstructor = await courseService.getOneCourse(
+      courseTypeNameIngredientsInstructor
+    );
+
+    let {
+      nameFavorite,
+      percentageIngredients,
+      nameIngredientsStudent,
+      noteFavorite,
+    } = req.body;
+
+    // concat name ingredients instructor and name ingredients student
+    let nameIngredients =
+      courseNameIngredientsInstructor.ingredientsCourse.concat(
+        nameIngredientsStudent
+      );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
