@@ -17,7 +17,12 @@ class FavoriteService extends DbService {
   ) {
     // validation my space
 
-    console.log(nameFavorite);
+    // params img uploaded new class
+    let objectImagesFile = req.files;
+    let arrayImagesFile;
+    if (objectImagesFile) {
+      arrayImagesFile = Object.keys(req.files.imageCourse);
+    }
   }
 }
 

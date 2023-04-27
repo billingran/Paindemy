@@ -4,7 +4,10 @@
   <div class="center_auth center_my_space">
     <h2 class="title_my_space">
       <div class="ctn_icon_mySpace">
-        <iconify-icon icon="carbon:wheat" class="icon_my_space"></iconify-icon>
+        <iconify-icon
+          icon="tabler:chef-hat"
+          class="icon_my_space"
+        ></iconify-icon>
       </div>
       Mon espace
     </h2>
@@ -67,7 +70,7 @@
       courseFavorite.ingredientsCourse != null &&
       courseFavorite.ingredientsCourse.length > 0) { %> <%
       courseFavorite.ingredientsCourse.forEach((ingredient) => { %>
-      <div class="ctn_input_fifty">
+      <div class="ctn_input_fifty ingredient_div_mySpace">
         <div
           class="txt_field_auth txt_my_space"
           style="margin: 2.8rem 0 0; width: 50%"
@@ -77,7 +80,6 @@
             type="text"
             name="percentageIngredients"
             class="percentageIngredients"
-            required
           />
           <span></span>
           <i class="up_joinus">
@@ -105,44 +107,7 @@
       </div>
       <% }) %> <% } %>
 
-      <div class="ingredient_list_mySpace">
-        <div class="ctn_input_fifty ingredient_div_mySpace">
-          <div
-            class="txt_field_auth txt_my_space"
-            style="margin: 2.8rem 0 0; width: 50%"
-          >
-            <input
-              id="nameIngredientsStudent"
-              type="text"
-              name="nameIngredientsStudent"
-              class="nameIngredientsStudent"
-            />
-            <span></span>
-            <i class="up_joinus">
-              <iconify-icon icon="lucide:wheat"></iconify-icon>
-            </i>
-            <label for="nameIngredientsStudent" class="up_joinus">
-              Ingredient
-            </label>
-          </div>
-
-          <div
-            class="txt_field_auth txt_my_space"
-            style="margin: 2.8rem 0 0; width: 50%"
-          >
-            <input
-              id="percentageIngredients"
-              type="text"
-              name="percentageIngredients"
-              class="percentageIngredients"
-              required
-            />
-            <span></span>
-            <i class="uil uil-percentage up_joinus"></i>
-            <label for="percentageIngredients" class="up_joinus">Dosage </label>
-          </div>
-        </div>
-      </div>
+      <div class="ingredient_list_mySpace"></div>
 
       <div class="ctn_plus_btn">
         <button

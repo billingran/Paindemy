@@ -285,10 +285,16 @@ module.exports.postInstructorMyspace = async (req, res) => {
     } = req.body;
 
     // concat name ingredients instructor and name ingredients student
-    let nameIngredients =
-      courseNameIngredientsInstructor.ingredientsCourse.concat(
-        nameIngredientsStudent
-      );
+    let nameIngredients;
+
+    if (nameIngredientsStudent) {
+      nameIngredients =
+        courseNameIngredientsInstructor.ingredientsCourse.concat(
+          nameIngredientsStudent
+        );
+    } else {
+      nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
+    }
 
     await favoriteService.setMySpace(
       nameFavorite,

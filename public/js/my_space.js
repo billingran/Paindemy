@@ -173,6 +173,19 @@ function addIngredientsMySpace(e) {
     }
   );
 
+  // change name attribute value of inputs of new ingredient my space
+  newIngredientsMySpace
+    .getElementsByTagName("input")[0]
+    .setAttribute("name", "nameIngredientsStudent");
+  newIngredientsMySpace
+    .getElementsByTagName("input")[1]
+    .setAttribute("name", "percentageIngredients");
+
+  // change label text content value of new ingredient my space
+  newIngredientsMySpace.getElementsByTagName("label")[0].textContent =
+    "Ingredient";
+  newIngredientsMySpace.getElementsByTagName("label")[1].textContent = "Dosage";
+
   //create delet button of ingredients
   let ctnDeleteIngredientBtnMySpace =
     newIngredientsMySpace.getElementsByTagName("div")[1];
