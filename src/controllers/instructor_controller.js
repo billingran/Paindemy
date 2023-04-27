@@ -287,24 +287,25 @@ module.exports.postInstructorMyspace = async (req, res) => {
     // concat name ingredients instructor and name ingredients student
     let nameIngredients;
 
-    if (nameIngredientsStudent) {
-      nameIngredients =
-        courseNameIngredientsInstructor.ingredientsCourse.concat(
-          nameIngredientsStudent
-        );
-    } else {
-      nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
-    }
+    // if (nameIngredientsStudent) {
+    //   nameIngredients =
+    //     courseNameIngredientsInstructor.ingredientsCourse.concat(
+    //       nameIngredientsStudent
+    //     );
+    // } else {
+    //   nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
+    // }
 
-    await favoriteService.setMySpace(
-      nameFavorite,
-      nameIngredients,
-      percentageIngredients,
-      noteFavorite,
-      req,
-      res,
-      path
-    );
+    // await favoriteService.setMySpace(
+    //   _id,
+    //   nameFavorite,
+    //   nameIngredients,
+    //   percentageIngredients,
+    //   noteFavorite,
+    //   req,
+    //   res,
+    //   path
+    // );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

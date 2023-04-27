@@ -265,8 +265,253 @@ class CourseService extends DbService {
 
   // CREATE //////////////////////////////////////////////////
 
-  // validation new class and update class
+  // validation new class
   async classValidation(
+    nameCourse,
+    dateCourse,
+    timeCourse,
+    addressCourse,
+    descriptionCourse,
+    categoryCourse,
+    caloriesCourse,
+    ingredientsCourse,
+    objectImagesFile,
+    arrayImagesFile,
+    moment,
+    req,
+    path
+  ) {
+    let newDataClass = {};
+
+    //validate class name
+    if (nameCourse) {
+      if (nameCourse[0] !== nameCourse[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Nom du cours, première lettre en majuscule.",
+        };
+      }
+
+      newDataClass.nameCourse = nameCourse;
+    } else {
+      return {
+        success: false,
+        message: "Nom du cours, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class date
+    if (dateCourse) {
+      const newDateCourse = moment(dateCourse);
+      const currentDate = moment().format("YYYY-MM-DD");
+      if (newDateCourse.isBefore(currentDate)) {
+        return {
+          success: false,
+          message: "Date, Date antérieure non autorisée.",
+        };
+      }
+
+      newDataClass.dateCourse = dateCourse;
+    } else {
+      return {
+        success: false,
+        message: "Date, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class time
+    if (timeCourse) {
+      newDataClass.timeCourse = timeCourse;
+    } else {
+      return {
+        success: false,
+        message: "Heure du cours, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class address
+    if (addressCourse) {
+      newDataClass.addressCourse = addressCourse;
+    } else {
+      return {
+        success: false,
+        message: "Adresse du cours, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class description
+    if (descriptionCourse) {
+      if (descriptionCourse[0] !== descriptionCourse[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Description, première lettre en majuscule.",
+        };
+      }
+
+      newDataClass.descriptionCourse = descriptionCourse;
+    } else {
+      return {
+        success: false,
+        message: "Description, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class category
+    if (categoryCourse) {
+      if (
+        categoryCourse !== "642b25e9e4f201d77621c6bc" &&
+        categoryCourse !== "642b25f3e4f201d77621c6bd" &&
+        categoryCourse !== "642b25fbe4f201d77621c6be"
+      ) {
+        return {
+          success: false,
+          message:
+            "Catégorie, seulement « Boulangerie », « Pâtisserie » ou « Autre ».",
+        };
+      }
+
+      newDataClass.categoryCourse = categoryCourse;
+    } else {
+      return {
+        success: false,
+        message: "Catégorie, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class calories
+    if (caloriesCourse) {
+      if (isNaN(caloriesCourse)) {
+        return {
+          success: false,
+          message: "Calories, seuls les nombres sont autorisés.",
+        };
+      }
+
+      caloriesCourse = Number(caloriesCourse);
+
+      if (caloriesCourse < 0) {
+        return {
+          success: false,
+          message:
+            "Calories, Les nombres doivent être plus grands ou égaux à zéro.",
+        };
+      }
+
+      newDataClass.caloriesCourse = caloriesCourse;
+    } else {
+      return {
+        success: false,
+        message: "Calories, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate class ingredients
+    if (ingredientsCourse) {
+      if (!Array.isArray(ingredientsCourse)) {
+        ingredientsCourse = ingredientsCourse.split();
+      }
+
+      ingredientsCourse.forEach((ingredient, index, ingredientsCourse) => {
+        ingredientsCourse[index] =
+          ingredient.charAt(0).toUpperCase() +
+          ingredient.slice(1).toLowerCase();
+      });
+
+      newDataClass.ingredientsCourse = ingredientsCourse;
+    } else {
+      return {
+        success: false,
+        message: "Ingredients, cette case ne doit pas être vide.",
+      };
+    }
+
+    // validate class img uploaded
+    if (objectImagesFile && arrayImagesFile) {
+      if (objectImagesFile.imageCourse.length != 2) {
+        return {
+          success: false,
+          message: "Image, deux images nécessaires.",
+        };
+      }
+
+      //class img upload
+      const courseImageName = req.user._id;
+      const imageFile = "imageCourse";
+
+      newDataClass.imageCourse = await super.uploadImgs(
+        objectImagesFile.imageCourse,
+        courseImageName,
+        path
+      );
+    } else {
+      return {
+        success: false,
+        message: "Image, cette case ne doit pas être vide.",
+      };
+    }
+
+    newDataClass.instructorCourse = req.user._id;
+    return { success: true, newDataClass };
+  }
+
+  // post new class
+  async setNewClass(
+    nameCourse,
+    dateCourse,
+    timeCourse,
+    addressCourse,
+    descriptionCourse,
+    categoryCourse,
+    caloriesCourse,
+    ingredientsCourse,
+    moment,
+    req,
+    res,
+    path
+  ) {
+    // validation new class
+
+    // params img uploaded new class
+    let objectImagesFile = req.files;
+    let arrayImagesFile;
+    if (objectImagesFile) {
+      arrayImagesFile = Object.keys(req.files.imageCourse);
+    }
+
+    const validationResultNewClass = await this.classValidation(
+      nameCourse,
+      dateCourse,
+      timeCourse,
+      addressCourse,
+      descriptionCourse,
+      categoryCourse,
+      caloriesCourse,
+      ingredientsCourse,
+      objectImagesFile,
+      arrayImagesFile,
+      moment,
+      req,
+      path
+    );
+
+    if (!validationResultNewClass.success) {
+      req.flash("error_msg", validationResultNewClass.message);
+      return res.redirect("/instructor/newclass");
+    }
+
+    // save new class
+    let newCourse = new this.Course(validationResultNewClass.newDataClass);
+
+    await newCourse.save();
+
+    req.flash("success_msg", "Nouveau cours, publié avec succès.");
+    res.redirect("/instructor/newclass");
+  }
+
+  // CREATE //////////////////////////////////////////////////
+
+  // validation update class
+  async updateClassValidation(
     nameCourse,
     dateCourse,
     timeCourse,
@@ -372,6 +617,10 @@ class CourseService extends DbService {
 
     //validate class ingredients
     if (ingredientsCourse) {
+      if (!Array.isArray(ingredientsCourse)) {
+        ingredientsCourse = ingredientsCourse.split();
+      }
+
       ingredientsCourse.forEach((ingredient, index, ingredientsCourse) => {
         ingredientsCourse[index] =
           ingredient.charAt(0).toUpperCase() +
@@ -404,62 +653,6 @@ class CourseService extends DbService {
     newDataClass.instructorCourse = req.user._id;
     return { success: true, newDataClass };
   }
-
-  // post new class
-  async setNewClass(
-    nameCourse,
-    dateCourse,
-    timeCourse,
-    addressCourse,
-    descriptionCourse,
-    categoryCourse,
-    caloriesCourse,
-    ingredientsCourse,
-    moment,
-    req,
-    res,
-    path
-  ) {
-    // validation new class
-
-    // params img uploaded new class
-    let objectImagesFile = req.files;
-    let arrayImagesFile;
-    if (objectImagesFile) {
-      arrayImagesFile = Object.keys(req.files.imageCourse);
-    }
-
-    const validationResultNewClass = await this.classValidation(
-      nameCourse,
-      dateCourse,
-      timeCourse,
-      addressCourse,
-      descriptionCourse,
-      categoryCourse,
-      caloriesCourse,
-      ingredientsCourse,
-      objectImagesFile,
-      arrayImagesFile,
-      moment,
-      req,
-      path
-    );
-
-    if (!validationResultNewClass.success) {
-      req.flash("error_msg", validationResultNewClass.message);
-      return res.redirect("/instructor/newclass");
-    }
-
-    // save new class
-    let newCourse = new this.Course(validationResultNewClass.newDataClass);
-
-    await newCourse.save();
-
-    req.flash("success_msg", "Nouveau cours, publié avec succès.");
-    res.redirect("/instructor/newclass");
-  }
-
-  // CREATE //////////////////////////////////////////////////
 
   // patch update class
   async setUpdateClass(
@@ -495,7 +688,7 @@ class CourseService extends DbService {
       await super.deleteImgs(courseImageName, path, fs);
     }
 
-    const validationResultUpdateClass = await this.classValidation(
+    const validationResultUpdateClass = await this.updateClassValidation(
       nameCourse,
       dateCourse,
       timeCourse,

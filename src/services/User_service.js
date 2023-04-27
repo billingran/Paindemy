@@ -40,7 +40,458 @@ class UserService extends DbService {
 
   // CREATE //////////////////////////////////////////////////
   // Auth//////////////////////////////////////////////////
-  // validation sign up and student profile
+
+  // validation sign up
+  async signUpValidation(
+    firstnameUser,
+    lastnameUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    validator,
+    bcrypt
+  ) {
+    let newDataStudentProfile = {};
+
+    //validate firstname
+    if (firstnameUser) {
+      if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Prénom, Première lettre en majuscule.",
+        };
+      }
+      newDataStudentProfile.firstnameUser = firstnameUser;
+    } else {
+      return {
+        success: false,
+        message: "Prénom, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate lastname
+    if (lastnameUser) {
+      if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Nom de famille, Première lettre en majuscule.",
+        };
+      }
+      newDataStudentProfile.lastnameUser = lastnameUser;
+    } else {
+      return {
+        success: false,
+        message: "Nom de famille, cette case ne doit pas être vide.",
+      };
+    }
+
+    // validate email
+    if (emailUser) {
+      if (!validator.isEmail(emailUser)) {
+        return {
+          success: false,
+          message: "Adresse mail, L’adresse mail n’est pas valide.",
+        };
+      }
+      newDataStudentProfile.emailUser = emailUser;
+    } else {
+      return {
+        success: false,
+        message: "Adresse mail, cette case ne doit pas être vide.",
+      };
+    }
+
+    // validate password
+    if (passwordUser && confirmPasswordUser) {
+      if (passwordUser !== confirmPasswordUser) {
+        return {
+          success: false,
+          message:
+            "Mot de passe, Le mot de passe et la confirmation mot de passe ne sont pas les même.",
+        };
+      } else if (passwordUser.trim().length < 8) {
+        return {
+          success: false,
+          message: "Mot de passe, Au moins 8 lettres ou chiffres.",
+        };
+      }
+      const hashValue = await bcrypt.hash(passwordUser, 12);
+      passwordUser = hashValue;
+      newDataStudentProfile.passwordUser = passwordUser;
+    } else {
+      return {
+        success: false,
+        message:
+          "Mot de passe et La confirmation mot de passe, Ces cases ne doivent pas être vides.",
+      };
+    }
+
+    return { success: true, newDataStudentProfile };
+  }
+
+  async setSignUp(
+    firstnameUser,
+    lastnameUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    validator,
+    req,
+    res,
+    bcrypt
+  ) {
+    // validate email exist
+    const emailFound = await this.User.findOne({ emailUser }).exec();
+    if (emailFound) {
+      req.flash("error_msg", "Adresse mail, compte existant.");
+      return res.redirect("/auth/signup");
+    }
+
+    // validation sign up
+    const validationResultSignUp = await this.signUpValidation(
+      firstnameUser,
+      lastnameUser,
+      emailUser,
+      passwordUser,
+      confirmPasswordUser,
+      validator,
+      bcrypt
+    );
+
+    if (!validationResultSignUp.success) {
+      req.flash("error_msg", validationResultSignUp.message);
+      return res.redirect("/auth/signup");
+    }
+
+    // // save user
+    validationResultSignUp.newDataStudentProfile.roleUser = "student";
+
+    let studentUser = new this.User(
+      validationResultSignUp.newDataStudentProfile
+    );
+
+    await studentUser.save();
+
+    req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
+    res.redirect("/auth/login");
+  }
+
+  // validation join us
+  async joinUsValidation(
+    firstnameUser,
+    lastnameUser,
+    themeColorUser,
+    fathUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    introductionUser,
+    objectImagesFile,
+    arrayImagesFile,
+    validator,
+    res,
+    path,
+    bcrypt
+  ) {
+    let newDataInstructorProfile = {};
+
+    //validate firstname
+    if (firstnameUser) {
+      if (firstnameUser[0] !== firstnameUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Prénom, Première lettre en majuscule.",
+        };
+      }
+      newDataInstructorProfile.firstnameUser = firstnameUser;
+    } else {
+      return {
+        success: false,
+        message: "Prénom, cette case ne doit pas être vide.",
+      };
+    }
+
+    //validate lastname
+    if (lastnameUser) {
+      if (lastnameUser[0] !== lastnameUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Nom de famille, Première lettre en majuscule.",
+        };
+      }
+      newDataInstructorProfile.lastnameUser = lastnameUser;
+    } else {
+      return {
+        success: false,
+        message: "Nom de famille, cette case ne doit pas être vide.",
+      };
+    }
+
+    // validate theme color
+    if (themeColorUser) {
+      newDataInstructorProfile.themeColorUser = themeColorUser;
+    }
+
+    //validate faith
+    if (fathUser) {
+      if (fathUser[0] !== fathUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Devise, Première lettre en majuscule.",
+        };
+      }
+      if (fathUser.length > 50) {
+        return {
+          success: false,
+          message: "Devise, Pas plus de 50 caractères, espaces inclus.",
+        };
+      }
+      newDataInstructorProfile.fathUser = fathUser;
+    }
+
+    // validate email
+    if (emailUser) {
+      if (!validator.isEmail(emailUser)) {
+        return {
+          success: false,
+          message: "Adresse mail, L’adresse mail n’est pas valide.",
+        };
+      }
+      newDataInstructorProfile.emailUser = emailUser;
+    } else {
+      return {
+        success: false,
+        message: "Adresse mail, cette case ne doit pas être vide.",
+      };
+    }
+
+    // validate password
+    if (passwordUser && confirmPasswordUser) {
+      if (passwordUser !== confirmPasswordUser) {
+        return {
+          success: false,
+          message:
+            "Mot de passe, Le mot de passe et la confirmation mot de passe ne sont pas les même.",
+        };
+      } else if (passwordUser.trim().length < 8) {
+        return {
+          success: false,
+          message: "Mot de passe, Au moins 8 lettres ou chiffres.",
+        };
+      }
+
+      const hashValue = await bcrypt.hash(passwordUser, 12);
+      passwordUser = hashValue;
+      newDataInstructorProfile.passwordUser = passwordUser;
+    } else {
+      return {
+        success: false,
+        message:
+          "Mot de passe et La confirmation mot de passe, Ces cases ne doivent pas être vides.",
+      };
+    }
+
+    //validate introduction
+    if (introductionUser) {
+      if (introductionUser[0] !== introductionUser[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Introduction, Première lettre en majuscule.",
+        };
+      }
+
+      newDataInstructorProfile.introductionUser = introductionUser;
+    } else {
+      return {
+        success: false,
+        message: "Introduction, cette case ne doit pas être vide.",
+      };
+    }
+
+    // validate img uploaded
+    if (objectImagesFile && arrayImagesFile) {
+      if (objectImagesFile.imageUser.length != 2) {
+        return {
+          success: false,
+          message: "Image, 2 images nécessaires.",
+        };
+      }
+
+      // img upload
+      const instructorImageName = emailUser.replace("@", "").replace(".", "");
+
+      newDataInstructorProfile.imageUser = await super.uploadImgs(
+        objectImagesFile.imageUser,
+        instructorImageName,
+        path
+      );
+    } else {
+      return {
+        success: false,
+        message: "Image, cette case ne doit pas être vide.",
+      };
+    }
+
+    newDataInstructorProfile.roleUser = "instructor";
+    return { success: true, newDataInstructorProfile };
+  }
+
+  // post join us
+  async setJoinUs(
+    firstnameUser,
+    lastnameUser,
+    themeColorUser,
+    fathUser,
+    emailUser,
+    passwordUser,
+    confirmPasswordUser,
+    introductionUser,
+    validator,
+    req,
+    res,
+    path,
+    bcrypt
+  ) {
+    // validate email exist
+    const emailFound = await this.User.findOne({ emailUser }).exec();
+    if (emailFound) {
+      req.flash("error_msg", "Adresse mail, adresse mail existante.");
+      return res.redirect("/auth/joinus");
+    }
+
+    // validation join us
+
+    // params img uploaded join us
+    let objectImagesFile = req.files;
+    let arrayImagesFile;
+    if (objectImagesFile) {
+      arrayImagesFile = Object.keys(req.files.imageUser);
+    }
+
+    const validationResultJoinUs = await this.joinUsValidation(
+      firstnameUser,
+      lastnameUser,
+      themeColorUser,
+      fathUser,
+      emailUser,
+      passwordUser,
+      confirmPasswordUser,
+      introductionUser,
+      objectImagesFile,
+      arrayImagesFile,
+      validator,
+      res,
+      path,
+      bcrypt
+    );
+
+    if (!validationResultJoinUs.success) {
+      req.flash("error_msg", validationResultJoinUs.message);
+      return res.redirect("/auth/joinus");
+    }
+
+    // save user
+    let instructorUser = new this.User(
+      validationResultJoinUs.newDataInstructorProfile
+    );
+
+    await instructorUser.save();
+
+    req.flash(
+      "success_msg",
+      "Félicitations, vous êtes désormais un enseignant."
+    );
+    res.redirect("/auth/login");
+  }
+
+  // local login
+  async setLocalLogin(username, bcrypt, password, done) {
+    let userFound = await this.User.findOne({
+      emailUser: username.trim(),
+    }).exec();
+
+    if (userFound) {
+      let passwordCompared = await bcrypt.compare(
+        password.trim(),
+        userFound.passwordUser
+      );
+
+      if (passwordCompared) {
+        // func serializeUser
+        done(null, userFound);
+      } else {
+        done(null, false);
+      }
+    } else {
+      done(null, false);
+    }
+  }
+
+  //post local login redirect
+  setLocalLoginRedirect(user, res) {
+    return res.redirect(`/`);
+  }
+
+  //google login
+  async setGoogleLogin(profile, userTypeGoogle, done) {
+    let userFound = await this.User.findOne(userTypeGoogle).exec();
+
+    if (userFound) {
+      // func serializeUser
+      // save user on session, sign id of user, and then send it in cookie
+      done(null, userFound);
+    } else {
+      // validate email exist
+      const emailFound = await this.User.findOne({
+        emailUser: profile.emails[0].value,
+      }).exec();
+
+      if (emailFound) {
+        done(null, false);
+      } else {
+        userFound = new this.User({
+          firstnameUser: profile.name.givenName,
+          lastnameUser: profile.name.familyName || "   ",
+          emailUser: profile.emails[0].value,
+          googleIDUser: profile.id,
+          imageUser: profile.photos[0].value,
+          roleUser: "student",
+        });
+
+        let userGoogle = await userFound.save();
+
+        // func serializeUser
+        // save user on session, sign id of user, and then send it in cookie
+        done(null, userGoogle);
+      }
+    }
+  }
+
+  //google login redirect
+  setGoogleLoginRedirect(user, res) {
+    return res.redirect(`/`);
+  }
+
+  // serializeUser
+  async serializeUser(passport) {
+    passport.serializeUser((user, done) => {
+      // func deserializeuser
+      //set req.user = user, req.isAuthenticated() = true, req.logout is generated
+      done(null, user._id);
+    });
+  }
+
+  // deserializeUser
+  async deserializeUser(passport) {
+    passport.deserializeUser(async (_id, done) => {
+      let foundUser = await this.User.findOne({ _id }).exec();
+      done(null, foundUser);
+    });
+  }
+
+  // UPDATE //////////////////////////////////////////////////
+
+  // validation student profile
   async studentProfileValidation(
     firstnameUser,
     lastnameUser,
@@ -107,7 +558,8 @@ class UserService extends DbService {
     return { success: true, newDataStudentProfile };
   }
 
-  async setSignUp(
+  //patch student profile
+  async setStudentProfile(
     firstnameUser,
     lastnameUser,
     emailUser,
@@ -118,15 +570,9 @@ class UserService extends DbService {
     res,
     bcrypt
   ) {
-    // validate email exist
-    const emailFound = await this.User.findOne({ emailUser }).exec();
-    if (emailFound) {
-      req.flash("error_msg", "Adresse mail, compte existant.");
-      return res.redirect("/auth/signup");
-    }
+    // validation student profile
 
-    // validation sign up
-    const validationResultSignUp = await this.studentProfileValidation(
+    const validationResultStudentProfile = await this.studentProfileValidation(
       firstnameUser,
       lastnameUser,
       emailUser,
@@ -136,25 +582,29 @@ class UserService extends DbService {
       bcrypt
     );
 
-    if (!validationResultSignUp.success) {
-      req.flash("error_msg", validationResultSignUp.message);
-      return res.redirect("/auth/signup");
+    if (!validationResultStudentProfile.success) {
+      req.flash("error_msg", validationResultStudentProfile.message);
+      return res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
     }
 
-    // // save user
-    validationResultSignUp.newDataStudentProfile.roleUser = "student";
+    // update user
+    let { _id } = req.user;
+    const userTypeStudentProfile = { _id };
 
-    let studentUser = new this.User(
-      validationResultSignUp.newDataStudentProfile
-    );
+    await this.User.findOneAndUpdate(
+      userTypeStudentProfile,
+      validationResultStudentProfile.newDataStudentProfile,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
 
-    await studentUser.save();
-
-    req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
-    res.redirect("/auth/login");
+    req.flash("success_msg", "Mis à jour avec succès.");
+    res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
   }
 
-  // validation join us and instructor profile
+  // validation instructor profile
   async instructorProfileValidation(
     firstnameUser,
     lastnameUser,
@@ -281,207 +731,6 @@ class UserService extends DbService {
 
     newDataInstructorProfile.roleUser = "instructor";
     return { success: true, newDataInstructorProfile };
-  }
-
-  // post join us
-  async setJoinUs(
-    firstnameUser,
-    lastnameUser,
-    themeColorUser,
-    fathUser,
-    emailUser,
-    passwordUser,
-    confirmPasswordUser,
-    introductionUser,
-    validator,
-    req,
-    res,
-    path,
-    bcrypt
-  ) {
-    // validate email exist
-    const emailFound = await this.User.findOne({ emailUser }).exec();
-    if (emailFound) {
-      req.flash("error_msg", "Adresse mail, adresse mail existante.");
-      return res.redirect("/auth/joinus");
-    }
-
-    // validation join us
-
-    // params img uploaded join us
-    let objectImagesFile = req.files;
-    let arrayImagesFile;
-    if (objectImagesFile) {
-      arrayImagesFile = Object.keys(req.files.imageUser);
-    }
-
-    const validationResultJoinUs = await this.instructorProfileValidation(
-      firstnameUser,
-      lastnameUser,
-      themeColorUser,
-      fathUser,
-      emailUser,
-      passwordUser,
-      confirmPasswordUser,
-      introductionUser,
-      objectImagesFile,
-      arrayImagesFile,
-      validator,
-      res,
-      path,
-      bcrypt
-    );
-
-    if (!validationResultJoinUs.success) {
-      req.flash("error_msg", validationResultJoinUs.message);
-      return res.redirect("/auth/joinus");
-    }
-
-    // save user
-    let instructorUser = new this.User(
-      validationResultJoinUs.newDataInstructorProfile
-    );
-
-    await instructorUser.save();
-
-    req.flash(
-      "success_msg",
-      "Félicitations, vous êtes désormais un enseignant."
-    );
-    res.redirect("/auth/login");
-  }
-
-  // local login
-  async setLocalLogin(username, bcrypt, password, done) {
-    let userFound = await this.User.findOne({
-      emailUser: username.trim(),
-    }).exec();
-
-    if (userFound) {
-      let passwordCompared = await bcrypt.compare(
-        password.trim(),
-        userFound.passwordUser
-      );
-
-      if (passwordCompared) {
-        // func serializeUser
-        done(null, userFound);
-      } else {
-        done(null, false);
-      }
-    } else {
-      done(null, false);
-    }
-  }
-
-  //post local login redirect
-  setLocalLoginRedirect(user, res) {
-    return res.redirect(`/`);
-  }
-
-  //google login
-  async setGoogleLogin(profile, userTypeGoogle, done) {
-    let userFound = await this.User.findOne(userTypeGoogle).exec();
-
-    if (userFound) {
-      // func serializeUser
-      // save user on session, sign id of user, and then send it in cookie
-      done(null, userFound);
-    } else {
-      // validate email exist
-      const emailFound = await this.User.findOne({
-        emailUser: profile.emails[0].value,
-      }).exec();
-
-      if (emailFound) {
-        done(null, false);
-      } else {
-        userFound = new this.User({
-          firstnameUser: profile.name.givenName,
-          lastnameUser: profile.name.familyName || "   ",
-          emailUser: profile.emails[0].value,
-          googleIDUser: profile.id,
-          imageUser: profile.photos[0].value,
-          roleUser: "student",
-        });
-
-        let userGoogle = await userFound.save();
-
-        // func serializeUser
-        // save user on session, sign id of user, and then send it in cookie
-        done(null, userGoogle);
-      }
-    }
-  }
-
-  //google login redirect
-  setGoogleLoginRedirect(user, res) {
-    return res.redirect(`/`);
-  }
-
-  // serializeUser
-  async serializeUser(passport) {
-    passport.serializeUser((user, done) => {
-      // func deserializeuser
-      //set req.user = user, req.isAuthenticated() = true, req.logout is generated
-      done(null, user._id);
-    });
-  }
-
-  // deserializeUser
-  async deserializeUser(passport) {
-    passport.deserializeUser(async (_id, done) => {
-      let foundUser = await this.User.findOne({ _id }).exec();
-      done(null, foundUser);
-    });
-  }
-
-  // UPDATE //////////////////////////////////////////////////
-
-  //patch student profile
-  async setStudentProfile(
-    firstnameUser,
-    lastnameUser,
-    emailUser,
-    passwordUser,
-    confirmPasswordUser,
-    validator,
-    req,
-    res,
-    bcrypt
-  ) {
-    // validation student profile
-
-    const validationResultStudentProfile = await this.studentProfileValidation(
-      firstnameUser,
-      lastnameUser,
-      emailUser,
-      passwordUser,
-      confirmPasswordUser,
-      validator,
-      bcrypt
-    );
-
-    if (!validationResultStudentProfile.success) {
-      req.flash("error_msg", validationResultStudentProfile.message);
-      return res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
-    }
-
-    // update user
-    let { _id } = req.user;
-    const userTypeStudentProfile = { _id };
-
-    await this.User.findOneAndUpdate(
-      userTypeStudentProfile,
-      validationResultStudentProfile.newDataStudentProfile,
-      {
-        new: true,
-        runValidators: true,
-      }
-    ).exec();
-
-    req.flash("success_msg", "Mis à jour avec succès.");
-    res.redirect(`/${req.user.roleUser}/profile/${req.user._id}`);
   }
 
   //patch instructor profile
