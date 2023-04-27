@@ -30,7 +30,7 @@
     </div>
 
     <form
-      action="/<%= authUser.roleUser %>/myspace/<%= courseFavorite._id %>?_method=PATCH"
+      action="/<%= authUser.roleUser %>/myspace/<%= courseFavorite._id %>"
       enctype="multipart/form-data"
       method="POST"
     >
@@ -54,7 +54,6 @@
           <input
             id="quantityDough"
             type="text"
-            name="quantityDough"
             class="quantityDough"
             required
           />
@@ -74,9 +73,9 @@
           style="margin: 2.8rem 0 0; width: 50%"
         >
           <input
-            id="<%= ingredient %>"
+            id="percentageIngredient"
             type="text"
-            name="<%= ingredient %>"
+            name="percentageIngredient"
             class="percentageIngredient"
             required
           />
@@ -84,7 +83,7 @@
           <i class="up_joinus">
             <iconify-icon icon="lucide:wheat"></iconify-icon>
           </i>
-          <label for="<%= ingredient %>" class="up_joinus"
+          <label for="percentageIngredient" class="up_joinus"
             ><%= ingredient %>
           </label>
         </div>
@@ -96,7 +95,6 @@
           <input
             id="resultPercentage"
             type="text"
-            name="resultPercentage"
             class="resultPercentage"
             required
           />
@@ -113,12 +111,20 @@
             class="txt_field_auth txt_my_space"
             style="margin: 2.8rem 0 0; width: 50%"
           >
-            <input id="" type="text" name="" required />
+            <input
+              id="nameIngredient_my_space"
+              type="text"
+              name="percentageIngredient"
+              class="nameIngredient_my_space"
+              required
+            />
             <span></span>
             <i class="up_joinus">
               <iconify-icon icon="lucide:wheat"></iconify-icon>
             </i>
-            <label for="Ingredient" class="up_joinus">Ingredient</label>
+            <label for="nameIngredient_my_space" class="up_joinus"
+              >Ingredient
+            </label>
           </div>
 
           <div
@@ -126,14 +132,16 @@
             style="margin: 2.8rem 0 0; width: 50%"
           >
             <input
-              id="resultPercentage"
+              id="dosageIngredient_my_space"
               type="text"
-              name="resultPercentage"
+              class="dosageIngredient_my_space"
               required
             />
             <span></span>
             <i class="uil uil-percentage up_joinus"></i>
-            <label for="resultPercentage" class="up_joinus">Dosage</label>
+            <label for="dosageIngredient_my_space" class="up_joinus"
+              >Dosage
+            </label>
           </div>
         </div>
       </div>
@@ -154,7 +162,7 @@
         <label for="noteFavorite" class="up_joinus">Notes</label>
       </div>
 
-      <div class="txt_field_auth joinUs_div txt_my_space">
+      <div class="txt_field_auth txt_my_space imgMySpace_div">
         <input
           id="imageFavorite"
           type="file"

@@ -372,6 +372,12 @@ class CourseService extends DbService {
 
     //validate class ingredients
     if (ingredientsCourse) {
+      ingredientsCourse.forEach((ingredient, index, ingredientsCourse) => {
+        ingredientsCourse[index] =
+          ingredient.charAt(0).toUpperCase() +
+          ingredient.slice(1).toLowerCase();
+      });
+
       newDataClass.ingredientsCourse = ingredientsCourse;
     }
 

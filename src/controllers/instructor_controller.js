@@ -246,6 +246,7 @@ module.exports.instructorMyspace = async (req, res) => {
   try {
     let { _id } = req.params;
 
+    // get one course for the calculation of ingredients
     const courseTypeCourseFavorite = { _id };
     let courseFavorite = await courseService.getOneCourse(
       courseTypeCourseFavorite
@@ -257,6 +258,16 @@ module.exports.instructorMyspace = async (req, res) => {
       authUser: req.user,
       courseFavorite,
     });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+//post instructor my space
+module.exports.postInstructorMyspace = async (req, res) => {
+  try {
+    console.log(req.body);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

@@ -6,21 +6,6 @@ class DbService {
     this.Favorite = require("../models/favorite_model");
   }
 
-  // url parser //////////////////////////////////////////////////
-  // url parsed to toLowerCase
-  urlParsed(url) {
-    const urlParsed = url.toLowerCase().replace(/\s+/g, "-");
-
-    return urlParsed;
-  }
-
-  // url parsed to toUpperCase
-  getBackUrl(urlParsed) {
-    let url = urlParsed.replace(/-/g, " ");
-
-    return `${url.charAt(0).toUpperCase()}${url.slice(1).toLowerCase()}`;
-  }
-
   // imgs dealer //////////////////////////////////////////////////
   //upload imgs
   async uploadImgs(objectImagesFile, imageName, path) {

@@ -31,4 +31,7 @@ router.get("/mycourses/:_id", instructorController.instructorMycourses);
 // instructor my space
 router.get("/myspace/:_id", instructorController.instructorMyspace);
 
+// post instructor my space
+router.post("/myspace/:_id", instructorController.postInstructorMyspace);
+
 module.exports = router;

@@ -140,7 +140,7 @@
           oneCourse.ingredientsCourse != null &&
           oneCourse.ingredientsCourse.length > 0) { %> <%
           oneCourse.ingredientsCourse.forEach((course) => { %>
-          <li><%= oneCourse.getBackUrl(course); %></li>
+          <li><%= course %></li>
           <% }) %> <% } else { %>
           <p>No ingredient</p>
           <% } %>

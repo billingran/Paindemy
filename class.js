@@ -22,7 +22,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["baguette.png", "baguette_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f96",
+          _id: "6446f6df1f2da5e321045877",
         },
 
         studentsCourse: [
@@ -53,7 +53,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_de_mie.png", "pain_de_mie_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f98",
+          _id: "6446f6e01f2da5e321045879",
         },
         studentsCourse: [
           {
@@ -74,7 +74,7 @@ async function insertDymmyRecipeData() {
         ingredientsCourse: ["Farine T65", "Eau", "Sel", "Levain"],
         imageCourse: ["pain_au_levain.png", "pain_au_levain_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9a",
+          _id: "6446f6e01f2da5e32104587b",
         },
         studentsCourse: [
           {
@@ -103,7 +103,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["nordika.png", "nordika_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9b",
+          _id: "6446f6e01f2da5e32104587c",
         },
         studentsCourse: [
           {
@@ -133,7 +133,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_au_khorazan.png", "pain_au_khorazan_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f96",
+          _id: "6446f6df1f2da5e321045877",
         },
         studentsCourse: [
           {
@@ -163,7 +163,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["croissant.png", "croissant_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9d",
+          _id: "6446f6e01f2da5e32104587e",
         },
         studentsCourse: [
           {
@@ -196,7 +196,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_au_chocolate.png", "pain_au_chocolate_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9c",
+          _id: "6446f6e01f2da5e32104587d",
         },
         studentsCourse: [
           {
@@ -231,7 +231,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pain_au_raisins.png", "pain_au_raisins_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f99",
+          _id: "6446f6e01f2da5e32104587a",
         },
         studentsCourse: [
           {
@@ -260,7 +260,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["brioche.png", "brioche_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f97",
+          _id: "6446f6e01f2da5e321045878",
         },
         studentsCourse: [
           {
@@ -289,7 +289,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["brioche_au_sucre.png", "brioche_au_sucre_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f95",
+          _id: "6446f6df1f2da5e321045876",
         },
         studentsCourse: [
           {
@@ -318,7 +318,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["pizza.png", "pizza_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f98",
+          _id: "6446f6e01f2da5e321045879",
         },
         studentsCourse: [
           {
@@ -347,7 +347,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["gua_bao.png", "gua_bao_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f95",
+          _id: "6446f6e01f2da5e32104587f",
         },
         studentsCourse: [
           {
@@ -377,7 +377,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["nann.png", "nann_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9a",
+          _id: "6446f6e01f2da5e32104587b",
         },
         studentsCourse: [
           {
@@ -406,7 +406,7 @@ async function insertDymmyRecipeData() {
         ],
         imageCourse: ["tortillas.png", "tortillas_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9b",
+          _id: "6446f6e01f2da5e32104587c",
         },
         studentsCourse: [
           {
@@ -427,7 +427,7 @@ async function insertDymmyRecipeData() {
         ingredientsCourse: ["Farine T65", "Eau", "Sel"],
         imageCourse: ["dumping.png", "dumping_R.png"],
         instructorCourse: {
-          _id: "642cb627dfdb57af71101f9e",
+          _id: "6446f6e01f2da5e32104587f",
         },
         studentsCourse: [
           {
