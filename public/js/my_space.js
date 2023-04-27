@@ -119,25 +119,25 @@ quantityDoughInput.addEventListener("input", calculatePercentage);
 /* /////////////////////////////////////////////// */
 //add first name dosage ingredient my space
 
-const firstNameIngredientMySpace = document.querySelector(
-  "input.nameIngredient_my_space"
-);
+// const firstNameIngredientMySpace = document.querySelector(
+//   "input.nameIngredient_my_space"
+// );
 
-// func add name attribute for dosage ingredient
-function addNameDosageIngredientMySpace(e) {
-  const dosageIngredientMySpace =
-    e.target.parentElement.nextElementSibling.querySelector(
-      "input.dosageIngredient_my_space"
-    );
+// // func add name attribute for dosage ingredient
+// function addNameDosageIngredientMySpace(e) {
+//   const dosageIngredientMySpace =
+//     e.target.parentElement.nextElementSibling.querySelector(
+//       "input.dosageIngredient_my_space"
+//     );
 
-  dosageIngredientMySpace.setAttribute("name", e.target.value);
-}
+//   dosageIngredientMySpace.setAttribute("name", e.target.value);
+// }
 
 // set first input lisnter for first name ingredient my space
-firstNameIngredientMySpace.addEventListener(
-  "input",
-  addNameDosageIngredientMySpace
-);
+// firstNameIngredientMySpace.addEventListener(
+//   "input",
+//   addNameDosageIngredientMySpace
+// );
 
 /* /////////////////////////////////////////////// */
 //add, delete ingredients and also give "input listener" my space
@@ -149,17 +149,17 @@ let addIngredientsBtnMySpace = document.querySelector(
 let ingredientDivMySpace = document.querySelectorAll(".ingredient_div_mySpace");
 
 // func set second input lisnter for name ingredient my space
-function setSecondInputListener(newIngredientsMySpace) {
-  const secondNameIngredientMySpace = newIngredientsMySpace.querySelector(
-    "input.nameIngredient_my_space"
-  );
+// function setSecondInputListener(newIngredientsMySpace) {
+//   const secondNameIngredientMySpace = newIngredientsMySpace.querySelector(
+//     "input.nameIngredient_my_space"
+//   );
 
-  // set second input lisnter for second name ingredient my space
-  secondNameIngredientMySpace.addEventListener(
-    "input",
-    addNameDosageIngredientMySpace
-  );
-}
+//   // set second input lisnter for second name ingredient my space
+//   secondNameIngredientMySpace.addEventListener(
+//     "input",
+//     addNameDosageIngredientMySpace
+//   );
+// }
 
 // func generate dlt ingredient btn my space
 function dltIngredientBtnMySpace() {
@@ -206,12 +206,12 @@ function addIngredientsMySpace(e) {
   Array.from(newIngredientsMySpace.getElementsByTagName("input")).forEach(
     (inputMySpace) => {
       inputMySpace.value = "";
-      inputMySpace.removeAttribute("name");
+      // inputMySpace.removeAttribute("name");
     }
   );
 
   // set second input lisnter for second name ingredient my space
-  setSecondInputListener(newIngredientsMySpace);
+  // setSecondInputListener(newIngredientsMySpace);
 
   //create delet button of ingredients
   let ctnDeleteIngredientBtnMySpace =
