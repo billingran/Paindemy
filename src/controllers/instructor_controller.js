@@ -306,18 +306,16 @@ module.exports.postInstructorMyspace = async (req, res) => {
       percentageIngredients = percentageIngredients.split();
     }
 
-    console.log(percentageIngredients);
-
-    // await favoriteService.setMySpace(
-    //   _id,
-    //   nameFavorite,
-    //   nameIngredients,
-    //   percentageIngredients,
-    //   noteFavorite,
-    //   req,
-    //   res,
-    //   path
-    // );
+    await favoriteService.setMySpace(
+      _id,
+      nameFavorite,
+      nameIngredients,
+      percentageIngredients,
+      noteFavorite,
+      req,
+      res,
+      path
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

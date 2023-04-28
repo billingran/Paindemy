@@ -411,6 +411,7 @@ class CourseService extends DbService {
         ingredientsCourse = ingredientsCourse.split();
       }
 
+      // turn first letter of name ingredients into uppercase
       ingredientsCourse.forEach((ingredient, index, ingredientsCourse) => {
         ingredientsCourse[index] =
           ingredient.charAt(0).toUpperCase() +

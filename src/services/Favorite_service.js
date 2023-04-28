@@ -39,8 +39,10 @@ class FavoriteService extends DbService {
     //validate name ingredients and percentage ingredients
     if (
       nameIngredients &&
+      Array.isArray(nameIngredients) &&
       nameIngredients.length > 0 &&
       percentageIngredients &&
+      Array.isArray(percentageIngredients) &&
       percentageIngredients.length > 0
     ) {
       if (
@@ -55,7 +57,20 @@ class FavoriteService extends DbService {
         };
       }
 
-      newDataFavorite.nameIngredients = nameIngredients;
+      // turn first letter of name ingredients into uppercase
+      nameIngredients.forEach((ingredient, index, ingredientsFavorite) => {
+        ingredientsFavorite[index] =
+          ingredient.charAt(0).toUpperCase() +
+          ingredient.slice(1).toLowerCase();
+      });
+
+      // turn nameIngredients and percentageIngredients into one objet
+      const ingredientsFavorite = nameIngredients.reduce((acc, curr, index) => {
+        acc[curr] = percentageIngredients[index];
+        return acc;
+      }, {});
+
+      newDataFavorite.ingredientsFavorite = ingredientsFavorite;
     } else {
       return {
         success: false,
@@ -80,6 +95,8 @@ class FavoriteService extends DbService {
         message: "Notes, cette case ne doit pas être vide.",
       };
     }
+
+    return { success: true, newDataFavorite };
   }
 
   // post my space
