@@ -51,6 +51,26 @@
         href="/<%= authUser.roleUser %>/mycourses/<%= authUser._id %>"
         class="ctn_image_header"
       >
+        <i class="uil uil-heart icon_header"></i>
+
+        <div class="ctn_favorite_number">
+          0 <% if (authUser.roleUser == "instructor" &&
+          authUser.coursesRegistered.length > 0 ) { %>
+          <div class="favorite_number">
+            <%= authUser.coursesRegistered.length%>
+          </div>
+          <% } %> <% if (authUser.roleUser == "student" &&
+          authUser.coursesRegistered.length > 0) { %>
+          <div class="favorite_number">
+            <%= authUser.coursesRegistered.length %>
+          </div>
+          <% } %>
+        </div>
+      </a>
+      <a
+        href="/<%= authUser.roleUser %>/mycourses/<%= authUser._id %>"
+        class="ctn_image_header"
+      >
         <span><%= authUser.firstnameUser[0] %></span>
         <span><%= authUser.lastnameUser[0] %></span>
 
@@ -130,6 +150,19 @@
           <% } %> <% if (authUser.roleUser == "student" &&
           authUser.coursesRegistered.length > 0) { %>
           <div class="courseNumber_sidebar">
+            <%= authUser.coursesRegistered.length %>
+          </div>
+          <% } %>
+        </div>
+        <div class="ctn_favoriteNumber_sidebar">
+          0 <% if (authUser.roleUser == "instructor" &&
+          authUser.coursesRegistered.length > 0) { %>
+          <div class="favoriteNumber_sidebar">
+            <%= authUser.coursesRegistered.length %>
+          </div>
+          <% } %> <% if (authUser.roleUser == "student" &&
+          authUser.coursesRegistered.length > 0) { %>
+          <div class="favoriteNumber_sidebar">
             <%= authUser.coursesRegistered.length %>
           </div>
           <% } %>

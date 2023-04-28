@@ -133,6 +133,7 @@ label[for="search_homeOne_sideBar"] {
   font-size: 1.5rem;
 }
 
+/* course number */
 .ctn_course_number {
   overflow: hidden;
   border-radius: 5rem;
@@ -171,6 +172,62 @@ label[for="search_homeOne_sideBar"] {
 }
 
 .new_course_number {
+  background-color: var(--C-6E1D0E);
+
+  width: 1rem;
+  height: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: turnRed 0.3s;
+}
+
+/* favorite number */
+.ctn_favorite_number {
+  overflow: hidden;
+  border-radius: 5rem;
+  background-color: var(--C-6E1D0E);
+  font-size: 0.85rem;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: -8px;
+  right: -5px;
+
+  transition: all 0.3s;
+}
+
+.favorite_number {
+  background-color: var(--C-6E1D0E);
+
+  width: 1rem;
+  height: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.new_favorite_number {
   background-color: var(--C-6E1D0E);
 
   width: 1rem;
@@ -401,6 +458,7 @@ header .ctn_burger {
   transition: all 0.3s;
 }
 
+/* course number */
 .ctn_courseNumber_sidebar {
   border-radius: 5rem;
   background-color: var(--C-DCA47D);
@@ -415,8 +473,7 @@ header .ctn_burger {
   align-items: center;
 
   position: absolute;
-  top: -27.5px;
-  right: 0;
+  right: -2rem;
 
   transition: all 0.3s;
 }
@@ -439,6 +496,61 @@ header .ctn_burger {
 }
 
 .new_courseNumber_sidebar {
+  background-color: var(--C-DCA47D);
+
+  width: 2rem;
+  height: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: turnRed 0.3s;
+}
+
+/* favorite number */
+.ctn_favoriteNumber_sidebar {
+  border-radius: 5rem;
+  background-color: var(--C-DCA47D);
+  font-size: 1.3rem;
+  overflow: hidden;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  left: -2rem;
+
+  transition: all 0.3s;
+}
+
+.favoriteNumber_sidebar {
+  background-color: var(--C-DCA47D);
+
+  width: 2rem;
+  height: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.new_favoriteNumber_sidebar {
   background-color: var(--C-DCA47D);
 
   width: 2rem;

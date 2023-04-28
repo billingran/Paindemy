@@ -34,6 +34,8 @@ const Course = require("./src/models/Course_model");
 // Class Services
 const CourseService = require("./src/services/Course_service");
 const courseService = new CourseService();
+const FavoriteService = require("./src/services/Favorite_service");
+const favoriteService = new FavoriteService();
 
 // routes
 const authRoutes = require("./src/routes/auth_routes");
@@ -118,6 +120,28 @@ app.use(async (req, res, next) => {
       req.user.coursesRegistered = await courseService.getAllCourses(
         coursesTypeInstructor
       );
+
+      next();
+    } else {
+      next();
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+});
+
+// get all favorites
+app.use(async (req, res, next) => {
+  try {
+    if (req.user) {
+      // all favorites
+      // const allFavoritesType = { authorFavorite: req.user._id };
+      // req.user.allFavorites = await favoriteService.getAllFavorites(
+      //   allFavoritesType
+      // );
+
+      // console.log(allFavoritesType);
 
       next();
     } else {

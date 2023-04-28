@@ -6,6 +6,48 @@ class FavoriteService extends DbService {
     super();
   }
   // READ //////////////////////////////////////////////////
+  // get one favorite
+  async getOneFavorite(favoriteType) {
+    const favorite = await this.Fvorite.findOne(courseType)
+      .populate("authorFavorite", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
+      .populate("originFavorite", [
+        "nameCourse",
+        "categoryCourse",
+        "instructorCourse",
+      ])
+      .exec();
+
+    return new FavoriteEntity(favorite);
+  }
+
+  // get all courses (all courses, courses category, courses carousel)
+  async getAllFavorites(FavoritesType) {
+    const allFavorites = await this.Favorite.find(FavoritesType)
+      .populate("authorFavorite", [
+        "firstnameUser",
+        "lastnameUser",
+        "emailUser",
+      ])
+      .populate("originFavorite", [
+        "nameCourse",
+        "categoryCourse",
+        "instructorCourse",
+      ])
+      .exec();
+
+    let favorites = [];
+
+    allFavorites.forEach((favorite) => {
+      const favoriteEntity = new FavoriteEntity(favorite);
+      favorites.push(favoriteEntity);
+    });
+
+    return favorites;
+  }
 
   // CREATE //////////////////////////////////////////////////
   // validation my space
