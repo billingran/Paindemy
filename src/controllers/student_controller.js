@@ -92,16 +92,27 @@ module.exports.postStudentDelete = async (req, res) => {
 module.exports.studentMyCourses = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
+    // courses
     // find all student courses
 
     let allStudentCourses = req.user.coursesRegistered;
 
-    ////////////////////////////////////////////////////
     // find student random course
 
     const mycourseStudentRandom = await courseService.getOneCourseFloorMath(
       allStudentCourses
     );
+
+    ////////////////////////////////////////////////////
+    // favorites
+    // find all student favorites
+
+    let allStudentFavorites = req.user.allFavorites;
+
+    // find student random favorite
+
+    const myFavoriteStudentRandom =
+      await favoriteService.getOneFavoriteFloorMath(allStudentFavorites);
 
     res.render("my_courses", {
       title: "Student my courses",
@@ -109,6 +120,8 @@ module.exports.studentMyCourses = async (req, res) => {
       authUser: req.user,
       allStudentCourses,
       mycourseStudentRandom,
+      allStudentFavorites,
+      myFavoriteStudentRandom,
     });
   } catch (error) {
     console.log(error);
@@ -198,23 +211,10 @@ module.exports.postStudentMySpace = async (req, res) => {
 //student my favorites
 module.exports.studentMyFavorites = async (req, res) => {
   try {
-    ////////////////////////////////////////////////////
-    // find all student favorites
-
-    let allStudentFavorites = req.user.allFavorites;
-
-    ////////////////////////////////////////////////////
-    // find student random favorite
-
-    const myFavoriteStudentRandom =
-      await favoriteService.getOneFavoriteFloorMath(allStudentFavorites);
-
     res.render("my_courses", {
       title: "Student my favorites",
       showHeader: true,
       authUser: req.user,
-      allStudentFavorites,
-      myFavoriteStudentRandom,
     });
   } catch (error) {
     console.log(error);

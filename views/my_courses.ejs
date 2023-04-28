@@ -56,7 +56,7 @@
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= course._id %>"
-                    ><%= course.getNameCourse() %>
+                    ><%= course.nameCourse %>
                   </a>
                 </div>
               </li>
@@ -147,10 +147,10 @@
         <i class="uil uil-heart"></i>
         <h2 class="title_display">Mes favoris</h2>
       </div>
-      <% if (allInstructorCourses && allInstructorCourses.length > 0) { %>
+      <% if (allInstructorFavorites && allInstructorFavorites.length > 0) { %>
       <div class="mid_display">
         <a
-          href="/<%= authUser.roleUser %>/myspace/<%= mycourseInstructorRandom._id %>"
+          href="/<%= authUser.roleUser %>/myfavorite/<%= myFavoriteInstructorRandom._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
           <iconify-icon
@@ -163,17 +163,17 @@
     </div>
     <div>
       <ul class="ul_template_two">
-        <% if(typeof allInstructorCourses !== 'undefined' &&
-        allInstructorCourses != null && allInstructorCourses.length > 0) { %> <%
-        allInstructorCourses.forEach(function(course){ %>
+        <% if(typeof allInstructorFavorites !== 'undefined' &&
+        allInstructorFavorites != null && allInstructorFavorites.length > 0) {
+        %> <% allInstructorFavorites.forEach(function(favorite){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/onecourse/<%= course._id %>">
+          <a href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>">
             <div class="ctn_image_template">
               <div
                 loading="lazy"
                 class="image_template"
                 style="
-                  background-image: url('/uploads/<%= course.imageCourse[0] %>');
+                  background-image: url('/uploads/<%= favorite.imageFavorite[0] %>');
                 "
               ></div>
             </div>
@@ -185,8 +185,9 @@
                   <i class="uil uil-heart icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/onecourse/<%= course._id %>"
-                    ><%= course.getNameCourse() %>
+                  <a
+                    href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>"
+                    ><%= favorite.nameFavorite %>
                   </a>
                 </div>
               </li>
@@ -196,10 +197,8 @@
                   <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
-                  <a
-                    href="/course/instructor/<%= course.instructorCourse._id %>"
-                    ><%= course.instructorCourse.firstnameUser %> <%=
-                    course.instructorCourse.lastnameUser %>
+                  <a href="#"
+                    ><%= Object.keys(favorite.ingredientsFavorite).length %>
                   </a>
                 </div>
               </li>
@@ -209,9 +208,7 @@
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"
-                    ><%= course.dateCourse %> / <%= course.timeCourse %>
-                  </a>
+                  <a href="#"><%= favorite.originFavorite.nameCourse %> </a>
                 </div>
               </li>
 
@@ -220,20 +217,22 @@
                   <i class="uil uil-file-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.studentsCourse.length %> </a>
+                  <a href="#"> <%= favorite.noteFavorite %> </a>
                 </div>
               </li>
 
               <li class="ctn_btns_template">
                 <div class="createdAt_template">
                   <div>
-                    <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                    <i class="uil uil-clock"></i> <%= favorite.getCreatedAt() %>
                   </div>
                 </div>
                 <div class="centralA">
                   <% if (authUser && authUser.roleUser == "instructor") { %>
                   <div class="btns_template icon_update_template">
-                    <a href="/instructor/updateclass/<%= course._id %>">
+                    <a
+                      href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>"
+                    >
                       <i class="uil uil-redo"></i>
                     </a>
                   </div>
@@ -241,7 +240,7 @@
                     <a
                       href="#"
                       class="btn_unregister_OneCourse"
-                      id="<%= course._id %>"
+                      id="<%= favorite._id %>"
                     >
                       <i class="uil uil-times"></i>
                     </a>

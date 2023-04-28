@@ -30,11 +30,7 @@ class UserEntity {
   }
 
   getFirstnameUser() {
-    this.firstnameUser.replace(/-/g, " ");
-
-    return `${this.firstnameUser.charAt(0).toUpperCase()}${this.firstnameUser
-      .slice(1)
-      .toLowerCase()}`;
+    return this.firstnameUser;
   }
 
   setFirstnameUser(firstnameUser) {

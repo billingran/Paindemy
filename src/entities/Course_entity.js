@@ -65,11 +65,7 @@ class CourseEntity {
   }
 
   getDescriptionCourse() {
-    this.descriptionCourse.replace(/-/g, " ");
-
-    return `${this.descriptionCourse
-      .charAt(0)
-      .toUpperCase()}${this.descriptionCourse.slice(1).toLowerCase()}`;
+    return this.descriptionCourse;
   }
 
   setDescriptionCourse(descriptionCourse) {

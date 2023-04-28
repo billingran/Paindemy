@@ -228,16 +228,27 @@ module.exports.postInstructorDelete = async (req, res) => {
 module.exports.instructorMyCourses = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
+    // courses
     // find all instructor courses
 
     let allInstructorCourses = req.user.coursesRegistered;
 
-    ////////////////////////////////////////////////////
     // find instructor random course
 
     const mycourseInstructorRandom = await courseService.getOneCourseFloorMath(
       allInstructorCourses
     );
+
+    ////////////////////////////////////////////////////
+    // favorites
+    // find all instructor favorites
+
+    let allInstructorFavorites = req.user.allFavorites;
+
+    // find instructor random favorite
+
+    const myFavoriteInstructorRandom =
+      await favoriteService.getOneFavoriteFloorMath(allInstructorFavorites);
 
     res.render("my_courses", {
       title: "Instructor my courses",
@@ -245,6 +256,8 @@ module.exports.instructorMyCourses = async (req, res) => {
       authUser: req.user,
       allInstructorCourses,
       mycourseInstructorRandom,
+      allInstructorFavorites,
+      myFavoriteInstructorRandom,
     });
   } catch (error) {
     console.log(error);
@@ -334,23 +347,10 @@ module.exports.postInstructorMySpace = async (req, res) => {
 //instructor my favorites
 module.exports.instructorMyFavorites = async (req, res) => {
   try {
-    ////////////////////////////////////////////////////
-    // find all instructor favorites
-
-    let allInstructorFavorites = req.user.allFavorites;
-
-    ////////////////////////////////////////////////////
-    // find instructor random favorite
-
-    const myFavoriteInstructorRandom =
-      await favoriteService.getOneFavoriteFloorMath(allInstructorFavorites);
-
     res.render("my_courses", {
-      title: "Instructor my favorite",
+      title: "Instructor my favorites",
       showHeader: true,
       authUser: req.user,
-      allInstructorFavorites,
-      myFavoriteInstructorRandom,
     });
   } catch (error) {
     console.log(error);
