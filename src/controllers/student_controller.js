@@ -3,12 +3,18 @@ const UserService = require("../services/User_service");
 const userService = new UserService();
 const CourseService = require("../services/Course_service");
 const courseService = new CourseService();
+const FavoriteService = require("../services/Favorite_service");
+const favoriteService = new FavoriteService();
 
 // validation
 const validator = require("validator");
 
 // bcrypt
 const bcrypt = require("bcrypt");
+
+// image upload
+const path = require("path");
+const fs = require("fs");
 
 // student profile
 module.exports.studentProfile = (req, res) => {
@@ -113,11 +119,76 @@ module.exports.studentMycourses = async (req, res) => {
 //student my space
 module.exports.studentMyspace = async (req, res) => {
   try {
+    let { _id } = req.params;
+
+    // get one course for the calculation of ingredients
+    const courseTypeCourseFavorite = { _id };
+    let courseFavorite = await courseService.getOneCourse(
+      courseTypeCourseFavorite
+    );
+
     res.render("my_space", {
       title: "Student my space",
       showHeader: true,
       authUser: req.user,
+      courseFavorite,
     });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+//post student my space
+module.exports.postStudentMyspace = async (req, res) => {
+  try {
+    let { _id } = req.params;
+
+    // get one course for the name ingredients instructor
+    const courseTypeNameIngredientsInstructor = { _id };
+    let courseNameIngredientsInstructor = await courseService.getOneCourse(
+      courseTypeNameIngredientsInstructor
+    );
+
+    let {
+      nameFavorite,
+      percentageIngredients,
+      nameIngredientsStudent,
+      noteFavorite,
+    } = req.body;
+
+    // concat name ingredients instructor and name ingredients student
+    let nameIngredients;
+
+    if (nameIngredientsStudent) {
+      // turn objet into arry if name ingredient student only has one
+      if (!Array.isArray(nameIngredientsStudent)) {
+        nameIngredientsStudent = nameIngredientsStudent.split();
+      }
+
+      nameIngredients =
+        courseNameIngredientsInstructor.ingredientsCourse.concat(
+          nameIngredientsStudent
+        );
+    } else {
+      nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
+    }
+
+    // turn objet into arry if percentage ingredient only has one
+    if (!Array.isArray(percentageIngredients)) {
+      percentageIngredients = percentageIngredients.split();
+    }
+
+    await favoriteService.setMySpace(
+      _id,
+      nameFavorite,
+      nameIngredients,
+      percentageIngredients,
+      noteFavorite,
+      req,
+      res,
+      path
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

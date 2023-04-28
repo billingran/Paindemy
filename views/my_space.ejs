@@ -1,5 +1,7 @@
 <!-- /////////////////////////////////////////////// -->
 <!-- my space instructor -->
+<% if (authUser && authUser.roleUser == 'instructor') { %>
+
 <section class="section_my_space">
   <div class="center_auth center_my_space">
     <h2 class="title_my_space">
@@ -8,6 +10,159 @@
           icon="tabler:chef-hat"
           class="icon_my_space"
         ></iconify-icon>
+      </div>
+      Mon espace
+    </h2>
+
+    <% if(courseFavorite) { %>
+    <div class="mid_info_mySpace">
+      <a href="#">
+        <i class="uil uil-book-alt mid_icon_mySpace"></i>
+        <%= courseFavorite.nameCourse %>
+      </a>
+      <a href="#">
+        <iconify-icon
+          icon="tabler:chef-hat"
+          class="mid_icon_mySpace"
+        ></iconify-icon>
+        <%= courseFavorite.instructorCourse.firstnameUser %> <%=
+        courseFavorite.instructorCourse.lastnameUser %>
+      </a>
+      <a>
+        <i class="uil uil-folder mid_icon_mySpace"></i>
+        <%= courseFavorite.categoryCourse.nameCategory %>
+      </a>
+    </div>
+
+    <form
+      action="/<%= authUser.roleUser %>/myspace/<%= courseFavorite._id %>"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      <%- include("partials/message") %>
+
+      <div class="ctn_input_fifty">
+        <div
+          class="txt_field_auth txt_my_space"
+          style="margin: 2.8rem 0 0; width: 50%"
+        >
+          <input id="nameFavorite" type="text" name="nameFavorite" required />
+          <span></span>
+          <i class="uil uil-heart-alt up_joinus"></i>
+          <label for="nameFavorite" class="up_joinus">Nom</label>
+        </div>
+
+        <div
+          class="txt_field_auth txt_my_space"
+          style="margin: 2.8rem 0 0; width: 50%"
+        >
+          <input
+            id="quantityDough"
+            type="text"
+            class="quantityDough"
+            required
+          />
+          <span></span>
+          <i class="uil uil-balance-scale up_joinus"></i>
+          <label for="quantityDough" class="up_joinus">Pâte (kg)</label>
+        </div>
+      </div>
+
+      <% if(typeof courseFavorite.ingredientsCourse !== 'undefined' &&
+      courseFavorite.ingredientsCourse != null &&
+      courseFavorite.ingredientsCourse.length > 0) { %> <%
+      courseFavorite.ingredientsCourse.forEach((ingredient) => { %>
+      <div class="ctn_input_fifty ingredient_div_mySpace">
+        <div
+          class="txt_field_auth txt_my_space"
+          style="margin: 2.8rem 0 0; width: 50%"
+        >
+          <input
+            id="percentageIngredients"
+            type="text"
+            name="percentageIngredients"
+            class="percentageIngredients"
+            required
+          />
+          <span></span>
+          <i class="up_joinus">
+            <iconify-icon icon="lucide:wheat"></iconify-icon>
+          </i>
+          <label for="percentageIngredients" class="up_joinus"
+            ><%= ingredient %>
+          </label>
+        </div>
+
+        <div
+          class="txt_field_auth txt_my_space"
+          style="margin: 2.8rem 0 0; width: 50%"
+        >
+          <input
+            id="resultPercentage"
+            type="text"
+            class="resultPercentage"
+            required
+          />
+          <span></span>
+          <i class="uil uil-percentage up_joinus"></i>
+          <label for="resultPercentage" class="up_joinus">0.00</label>
+        </div>
+      </div>
+      <% }) %> <% } %>
+
+      <div class="ingredient_list_mySpace"></div>
+
+      <div class="ctn_plus_btn">
+        <button
+          type="button"
+          class="addIngredients_btn_mySpace plus_btn a_NBorder"
+        >
+          + Ingredient
+        </button>
+      </div>
+
+      <div class="txt_field_auth txt_my_space">
+        <textarea name="noteFavorite" id="noteFavorite" required></textarea>
+        <span></span>
+        <i class="uil uil-file-alt up_joinus"></i>
+        <label for="noteFavorite" class="up_joinus">Notes</label>
+      </div>
+
+      <div class="txt_field_auth txt_my_space imgMySpace_div">
+        <input
+          id="imageFavorite"
+          type="file"
+          name="imageFavorite"
+          accept="image/*"
+          multiple
+          style="opacity: 0"
+          required
+        />
+        <span></span>
+        <label for="imageFavorite" class="upload_joinus a_NBorder"
+          ><i class="uil uil-image"></i>+ Image
+        </label>
+      </div>
+
+      <div class="img_list img_list_mySpace"></div>
+
+      <input type="submit" value="Envoyer" />
+    </form>
+    <% } %>
+  </div>
+</section>
+
+<% } %>
+
+<!-- /////////////////////////////////////////////// -->
+<!-- my space student -->
+<% if (authUser && authUser.roleUser == 'student') { %>
+
+<section class="section_my_space">
+  <div class="center_auth center_my_space">
+    <h2 class="title_my_space">
+      <div class="ctn_icon_mySpace">
+        <i class="uil uil-graduation-cap icon_my_space"></i>
       </div>
       Mon espace
     </h2>
@@ -132,8 +287,10 @@
 
       <div class="img_list img_list_mySpace"></div>
 
-      <input type="submit" value="Sauvegarder" />
+      <input type="submit" value="Envoyer" />
     </form>
     <% } %>
   </div>
 </section>
+
+<% } %>

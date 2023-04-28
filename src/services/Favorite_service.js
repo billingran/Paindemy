@@ -8,6 +8,7 @@ class FavoriteService extends DbService {
 
   // validation my space
   async favoriteValidation(
+    _id,
     nameFavorite,
     nameIngredients,
     percentageIngredients,
@@ -57,6 +58,13 @@ class FavoriteService extends DbService {
         };
       }
 
+      if (percentageIngredients.some((dosage) => isNaN(dosage))) {
+        return {
+          success: false,
+          message: "Dosage, dosage doit être un numéro.",
+        };
+      }
+
       // turn first letter of name ingredients into uppercase
       nameIngredients.forEach((ingredient, index, ingredientsFavorite) => {
         ingredientsFavorite[index] =
@@ -96,6 +104,42 @@ class FavoriteService extends DbService {
       };
     }
 
+    //validate image favorite
+    if (objectImagesFile && arrayImagesFile) {
+      let imagesFavorite = [];
+
+      if (!Array.isArray(objectImagesFile.imageFavorite)) {
+        imagesFavorite.push(objectImagesFile.imageFavorite);
+      } else {
+        objectImagesFile.imageFavorite.forEach((image) => {
+          imagesFavorite.push(image);
+        });
+      }
+
+      if (imagesFavorite.length != 1) {
+        return {
+          success: false,
+          message: "Image, une image nécessaire.",
+        };
+      }
+
+      //image favorite upload
+      const favoriteImageName = req.user._id;
+
+      newDataFavorite.imageFavorite = await super.uploadImgs(
+        imagesFavorite,
+        favoriteImageName,
+        path
+      );
+    } else {
+      return {
+        success: false,
+        message: "Image, cette case ne doit pas être vide.",
+      };
+    }
+
+    newDataFavorite.authorFavorite = req.user._id;
+    newDataFavorite.originFavorite = _id;
     return { success: true, newDataFavorite };
   }
 
@@ -119,30 +163,35 @@ class FavoriteService extends DbService {
       arrayImagesFile = Object.keys(req.files.imageFavorite);
     }
 
-    console.log(objectImagesFile);
-    // console.log(Array.isArray(arrayImagesFile));
+    const validationResultMySpace = await this.favoriteValidation(
+      _id,
+      nameFavorite,
+      nameIngredients,
+      percentageIngredients,
+      noteFavorite,
+      objectImagesFile,
+      arrayImagesFile,
+      req,
+      path
+    );
 
-    // const validationResultMySpace = await this.favoriteValidation(
-    //   nameFavorite,
-    //   nameIngredients,
-    //   percentageIngredients,
-    //   noteFavorite,
-    //   objectImagesFile,
-    //   arrayImagesFile,
-    //   req,
-    //   path
-    // );
+    if (!validationResultMySpace.success) {
+      req.flash("error_msg", validationResultMySpace.message);
+      return res.redirect(`/${req.user.roleUser}/myspace/${_id}`);
+    }
 
-    // if (!validationResultMySpace.success) {
-    //   req.flash("error_msg", validationResultMySpace.message);
-    //   return res.redirect(`/instructor/myspace/${_id}`);
-    // }
+    // save new favorite
+    let newFavorite = new this.Favorite(
+      validationResultMySpace.newDataFavorite
+    );
+
+    await newFavorite.save();
 
     req.flash(
       "success_msg",
       "Votre recette favorite à été enregistrée avec succès."
     );
-    res.redirect(`/instructor/myspace/${_id}`);
+    res.redirect(`/${req.user.roleUser}/myspace/${_id}`);
   }
 }
 
