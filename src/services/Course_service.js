@@ -428,7 +428,17 @@ class CourseService extends DbService {
 
     // validate class img uploaded
     if (objectImagesFile && arrayImagesFile) {
-      if (objectImagesFile.imageCourse.length != 2) {
+      let imagesCourse = [];
+
+      if (!Array.isArray(objectImagesFile.imageCourse)) {
+        imagesCourse.push(objectImagesFile.imageCourse);
+      } else {
+        objectImagesFile.imageCourse.forEach((image) => {
+          imagesCourse.push(image);
+        });
+      }
+
+      if (imagesCourse.length != 2) {
         return {
           success: false,
           message: "Image, deux images nécessaires.",
@@ -437,10 +447,9 @@ class CourseService extends DbService {
 
       //class img upload
       const courseImageName = req.user._id;
-      const imageFile = "imageCourse";
 
       newDataClass.imageCourse = await super.uploadImgs(
-        objectImagesFile.imageCourse,
+        imagesCourse,
         courseImageName,
         path
       );
@@ -509,11 +518,12 @@ class CourseService extends DbService {
     res.redirect("/instructor/newclass");
   }
 
-  // CREATE //////////////////////////////////////////////////
+  // UPDATE //////////////////////////////////////////////////
 
   // validation update class
   async updateClassValidation(
     nameCourse,
+    courseOldDateCourse,
     dateCourse,
     timeCourse,
     addressCourse,
@@ -544,12 +554,28 @@ class CourseService extends DbService {
     //validate class date
     if (dateCourse) {
       const newDateCourse = moment(dateCourse);
+      const oldDateCourse = moment(
+        courseOldDateCourse.dateCourse,
+        "YYYY-MM-DD"
+      );
       const currentDate = moment().format("YYYY-MM-DD");
-      if (newDateCourse.isBefore(currentDate)) {
-        return {
-          success: false,
-          message: "Date, Date antérieure non autorisée.",
-        };
+
+      if (oldDateCourse.isSameOrBefore(currentDate)) {
+        if (newDateCourse.isBefore(oldDateCourse)) {
+          return {
+            success: false,
+            message: `Date, Interdiction de mettre une date antérieure au ${oldDateCourse.format(
+              "YYYY-MM-DD"
+            )}`,
+          };
+        }
+      } else {
+        if (newDateCourse.isBefore(currentDate)) {
+          return {
+            success: false,
+            message: "Date, Date antérieure non autorisée.",
+          };
+        }
       }
 
       newDataClass.dateCourse = dateCourse;
@@ -633,7 +659,17 @@ class CourseService extends DbService {
 
     // validate class img uploaded
     if (objectImagesFile && arrayImagesFile) {
-      if (objectImagesFile.imageCourse.length != 2) {
+      let imagesCourse = [];
+
+      if (!Array.isArray(objectImagesFile.imageCourse)) {
+        imagesCourse.push(objectImagesFile.imageCourse);
+      } else {
+        objectImagesFile.imageCourse.forEach((image) => {
+          imagesCourse.push(image);
+        });
+      }
+
+      if (imagesCourse.length != 2) {
         return {
           success: false,
           message: "Image, deux images nécessaires.",
@@ -642,10 +678,9 @@ class CourseService extends DbService {
 
       //class img upload
       const courseImageName = req.user._id;
-      const imageFile = "imageCourse";
 
       newDataClass.imageCourse = await super.uploadImgs(
-        objectImagesFile.imageCourse,
+        imagesCourse,
         courseImageName,
         path
       );
@@ -689,8 +724,15 @@ class CourseService extends DbService {
       await super.deleteImgs(courseImageName, path, fs);
     }
 
+    // get old date course
+    const courseTypeOldDateCourse = { _id };
+    const courseOldDateCourse = await this.getOneCourse(
+      courseTypeOldDateCourse
+    );
+
     const validationResultUpdateClass = await this.updateClassValidation(
       nameCourse,
+      courseOldDateCourse,
       dateCourse,
       timeCourse,
       addressCourse,

@@ -310,10 +310,20 @@ class UserService extends DbService {
 
     // validate img uploaded
     if (objectImagesFile && arrayImagesFile) {
-      if (objectImagesFile.imageUser.length != 2) {
+      let imagesUser = [];
+
+      if (!Array.isArray(objectImagesFile.imageUser)) {
+        imagesUser.push(objectImagesFile.imageUser);
+      } else {
+        objectImagesFile.imageUser.forEach((image) => {
+          imagesUser.push(image);
+        });
+      }
+
+      if (imagesUser.length != 2) {
         return {
           success: false,
-          message: "Image, 2 images nécessaires.",
+          message: "Image, deux images nécessaires.",
         };
       }
 
@@ -321,7 +331,7 @@ class UserService extends DbService {
       const instructorImageName = emailUser.replace("@", "").replace(".", "");
 
       newDataInstructorProfile.imageUser = await super.uploadImgs(
-        objectImagesFile.imageUser,
+        imagesUser,
         instructorImageName,
         path
       );
@@ -712,10 +722,20 @@ class UserService extends DbService {
 
     // validate img uploaded
     if (objectImagesFile && arrayImagesFile) {
-      if (objectImagesFile.imageUser.length != 2) {
+      let imagesUser = [];
+
+      if (!Array.isArray(objectImagesFile.imageUser)) {
+        imagesUser.push(objectImagesFile.imageUser);
+      } else {
+        objectImagesFile.imageUser.forEach((image) => {
+          imagesUser.push(image);
+        });
+      }
+
+      if (imagesUser.length != 2) {
         return {
           success: false,
-          message: "Image, 2 images nécessaires.",
+          message: "Image, deux images nécessaires.",
         };
       }
 
@@ -723,7 +743,7 @@ class UserService extends DbService {
       const instructorImageName = emailUser.replace("@", "").replace(".", "");
 
       newDataInstructorProfile.imageUser = await super.uploadImgs(
-        objectImagesFile.imageUser,
+        imagesUser,
         instructorImageName,
         path
       );

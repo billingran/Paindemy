@@ -37,35 +37,34 @@ module.exports.instructorProfile = (req, res) => {
 
 // patch instructor profile
 module.exports.patchInstructorProfile = async (req, res) => {
-  let {
-    firstnameUser,
-    lastnameUser,
-    themeColorUser,
-    fathUser,
-    emailUser,
-    passwordUser,
-    confirmPasswordUser,
-    introductionUser,
-  } = req.body;
-
-  await userService.setInstructorProfile(
-    firstnameUser.trim(),
-    lastnameUser.trim(),
-    themeColorUser,
-    fathUser,
-    emailUser.trim(),
-    passwordUser.trim(),
-    confirmPasswordUser.trim(),
-    introductionUser,
-    validator,
-    req,
-    res,
-    path,
-    fs,
-    bcrypt
-  );
-
   try {
+    let {
+      firstnameUser,
+      lastnameUser,
+      themeColorUser,
+      fathUser,
+      emailUser,
+      passwordUser,
+      confirmPasswordUser,
+      introductionUser,
+    } = req.body;
+
+    await userService.setInstructorProfile(
+      firstnameUser.trim(),
+      lastnameUser.trim(),
+      themeColorUser,
+      fathUser,
+      emailUser.trim(),
+      passwordUser.trim(),
+      confirmPasswordUser.trim(),
+      introductionUser,
+      validator,
+      req,
+      res,
+      path,
+      fs,
+      bcrypt
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
@@ -74,21 +73,26 @@ module.exports.patchInstructorProfile = async (req, res) => {
 
 // new class
 module.exports.newClass = async (req, res) => {
-  const currentDate = moment().format("YYYY-MM-DD");
+  try {
+    const currentDate = moment().format("YYYY-MM-DD");
 
-  // get all categories needed
-  const allCategories = await categoryService.getAllCategories({});
-  const allCategoriesNeeded = allCategories.filter((category) => {
-    return category.nameCategory !== "Tout";
-  });
+    // get all categories needed
+    const allCategories = await categoryService.getAllCategories({});
+    const allCategoriesNeeded = allCategories.filter((category) => {
+      return category.nameCategory !== "Tout";
+    });
 
-  res.render("new_class", {
-    title: "New class",
-    showHeader: false,
-    authUser: req.user,
-    currentDate,
-    allCategoriesNeeded,
-  });
+    res.render("new_class", {
+      title: "New class",
+      showHeader: false,
+      authUser: req.user,
+      currentDate,
+      allCategoriesNeeded,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
 };
 
 // post new class
@@ -196,11 +200,16 @@ module.exports.patchUpdateClass = async (req, res) => {
 
 //instrutor delete
 module.exports.instructorDelete = async (req, res) => {
-  res.render("delete_account", {
-    title: "Instructor Delete",
-    showHeader: true,
-    authUser: req.user,
-  });
+  try {
+    res.render("delete_account", {
+      title: "Instructor Delete",
+      showHeader: true,
+      authUser: req.user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
 };
 
 //post instrutor delete

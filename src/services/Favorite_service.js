@@ -119,21 +119,30 @@ class FavoriteService extends DbService {
       arrayImagesFile = Object.keys(req.files.imageFavorite);
     }
 
-    const validationResultMySpace = await this.favoriteValidation(
-      nameFavorite,
-      nameIngredients,
-      percentageIngredients,
-      noteFavorite,
-      objectImagesFile,
-      arrayImagesFile,
-      req,
-      path
-    );
+    console.log(objectImagesFile);
+    // console.log(Array.isArray(arrayImagesFile));
 
-    if (!validationResultMySpace.success) {
-      req.flash("error_msg", validationResultMySpace.message);
-      return res.redirect(`/instructor/myspace/${_id}`);
-    }
+    // const validationResultMySpace = await this.favoriteValidation(
+    //   nameFavorite,
+    //   nameIngredients,
+    //   percentageIngredients,
+    //   noteFavorite,
+    //   objectImagesFile,
+    //   arrayImagesFile,
+    //   req,
+    //   path
+    // );
+
+    // if (!validationResultMySpace.success) {
+    //   req.flash("error_msg", validationResultMySpace.message);
+    //   return res.redirect(`/instructor/myspace/${_id}`);
+    // }
+
+    req.flash(
+      "success_msg",
+      "Votre recette favorite à été enregistrée avec succès."
+    );
+    res.redirect(`/instructor/myspace/${_id}`);
   }
 }
 
