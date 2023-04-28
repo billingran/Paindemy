@@ -54,16 +54,8 @@
         <i class="uil uil-heart icon_header"></i>
 
         <div class="ctn_favorite_number">
-          0 <% if (authUser.roleUser == "instructor" &&
-          authUser.coursesRegistered.length > 0 ) { %>
-          <div class="favorite_number">
-            <%= authUser.coursesRegistered.length%>
-          </div>
-          <% } %> <% if (authUser.roleUser == "student" &&
-          authUser.coursesRegistered.length > 0) { %>
-          <div class="favorite_number">
-            <%= authUser.coursesRegistered.length %>
-          </div>
+          0 <% if ( authUser.allFavorites.length > 0 ) { %>
+          <div class="favorite_number"><%= authUser.allFavorites.length%></div>
           <% } %>
         </div>
       </a>
@@ -155,15 +147,9 @@
           <% } %>
         </div>
         <div class="ctn_favoriteNumber_sidebar">
-          0 <% if (authUser.roleUser == "instructor" &&
-          authUser.coursesRegistered.length > 0) { %>
+          0 <% if ( authUser.allFavorites.length > 0) { %>
           <div class="favoriteNumber_sidebar">
-            <%= authUser.coursesRegistered.length %>
-          </div>
-          <% } %> <% if (authUser.roleUser == "student" &&
-          authUser.coursesRegistered.length > 0) { %>
-          <div class="favoriteNumber_sidebar">
-            <%= authUser.coursesRegistered.length %>
+            <%= authUser.allFavorites.length %>
           </div>
           <% } %>
         </div>

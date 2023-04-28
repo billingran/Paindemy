@@ -6,7 +6,7 @@ class FavoriteService extends DbService {
     super();
   }
   // READ //////////////////////////////////////////////////
-  // get one favorite
+  // get one favorite (one favorite)
   async getOneFavorite(favoriteType) {
     const favorite = await this.Fvorite.findOne(courseType)
       .populate("authorFavorite", [
@@ -14,17 +14,33 @@ class FavoriteService extends DbService {
         "lastnameUser",
         "emailUser",
       ])
-      .populate("originFavorite", [
-        "nameCourse",
-        "categoryCourse",
-        "instructorCourse",
-      ])
+      .populate({
+        path: "originFavorite",
+        populate: [
+          { path: "categoryCourse", select: ["nameCategory", "iconCategory"] },
+          {
+            path: "instructorCourse",
+            select: ["firstnameUser", "lastnameUser", "emailUser"],
+          },
+        ],
+        select: ["nameCourse"],
+      })
       .exec();
 
     return new FavoriteEntity(favorite);
   }
 
-  // get all courses (all courses, courses category, courses carousel)
+  // get one favorite (show random all users favorites,)
+  getOneFavoriteFloorMath(favorites) {
+    let countFavorites = favorites.length;
+    let numberFavorites = Math.floor(Math.random() * countFavorites);
+
+    const favorite = favorites[numberFavorites];
+
+    return favorite;
+  }
+
+  // get all courses (all favorites)
   async getAllFavorites(FavoritesType) {
     const allFavorites = await this.Favorite.find(FavoritesType)
       .populate("authorFavorite", [
@@ -32,11 +48,17 @@ class FavoriteService extends DbService {
         "lastnameUser",
         "emailUser",
       ])
-      .populate("originFavorite", [
-        "nameCourse",
-        "categoryCourse",
-        "instructorCourse",
-      ])
+      .populate({
+        path: "originFavorite",
+        populate: [
+          { path: "categoryCourse", select: ["nameCategory", "iconCategory"] },
+          {
+            path: "instructorCourse",
+            select: ["firstnameUser", "lastnameUser", "emailUser"],
+          },
+        ],
+        select: ["nameCourse"],
+      })
       .exec();
 
     let favorites = [];

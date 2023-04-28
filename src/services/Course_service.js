@@ -64,9 +64,9 @@ class CourseService extends DbService {
   // get one course (show random all instructor courses,)
   getOneCourseFloorMath(courses) {
     let countCourses = courses.length;
-    let numberCoursess = Math.floor(Math.random() * countCourses);
+    let numberCourses = Math.floor(Math.random() * countCourses);
 
-    const course = courses[numberCoursess];
+    const course = courses[numberCourses];
 
     return course;
   }

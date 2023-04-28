@@ -199,21 +199,22 @@ module.exports.postStudentMySpace = async (req, res) => {
 module.exports.studentMyFavorites = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
-    // find all student courses
+    // find all student favorites
 
-    // let allStudentCourses = req.user.coursesRegistered;
+    let allStudentFavorites = req.user.allFavorites;
 
     ////////////////////////////////////////////////////
-    // find student random course
+    // find student random favorite
 
-    // const mycourseStudentRandom = await courseService.getOneCourseFloorMath(
-    //   allStudentCourses
-    // );
+    const myFavoriteStudentRandom =
+      await favoriteService.getOneFavoriteFloorMath(allStudentFavorites);
 
     res.render("my_courses", {
       title: "Student my favorites",
       showHeader: true,
       authUser: req.user,
+      allStudentFavorites,
+      myFavoriteStudentRandom,
     });
   } catch (error) {
     console.log(error);

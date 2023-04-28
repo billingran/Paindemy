@@ -136,12 +136,10 @@ app.use(async (req, res, next) => {
   try {
     if (req.user) {
       // all favorites
-      // const allFavoritesType = { authorFavorite: req.user._id };
-      // req.user.allFavorites = await favoriteService.getAllFavorites(
-      //   allFavoritesType
-      // );
-
-      // console.log(allFavoritesType);
+      const allFavoritesType = { authorFavorite: req.user._id };
+      req.user.allFavorites = await favoriteService.getAllFavorites(
+        allFavoritesType
+      );
 
       next();
     } else {

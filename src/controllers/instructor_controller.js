@@ -335,21 +335,22 @@ module.exports.postInstructorMySpace = async (req, res) => {
 module.exports.instructorMyFavorites = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
-    // find all instructor courses
+    // find all instructor favorites
 
-    // let allInstructorCourses = req.user.coursesRegistered;
+    let allInstructorFavorites = req.user.allFavorites;
 
     ////////////////////////////////////////////////////
-    // find instructor random course
+    // find instructor random favorite
 
-    // const mycourseInstructorRandom = await courseService.getOneCourseFloorMath(
-    //   allInstructorCourses
-    // );
+    const myFavoriteInstructorRandom =
+      await favoriteService.getOneFavoriteFloorMath(allInstructorFavorites);
 
     res.render("my_courses", {
       title: "Instructor my favorite",
       showHeader: true,
       authUser: req.user,
+      allInstructorFavorites,
+      myFavoriteInstructorRandom,
     });
   } catch (error) {
     console.log(error);
