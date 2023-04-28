@@ -63,17 +63,10 @@
 
               <li class="content_template">
                 <div>
-                  <iconify-icon
-                    icon="tabler:chef-hat"
-                    class="icon_content_template"
-                  ></iconify-icon>
+                  <i class="uil uil-graduation-cap icon_content_template"></i>
                 </div>
                 <div>
-                  <a
-                    href="/course/instructor/<%= course.instructorCourse._id %>"
-                    ><%= course.instructorCourse.firstnameUser %> <%=
-                    course.instructorCourse.lastnameUser %>
-                  </a>
+                  <a href="#"><%= course.studentsCourse.length %> </a>
                 </div>
               </li>
 
@@ -90,10 +83,10 @@
 
               <li class="content_template address_template">
                 <div>
-                  <i class="uil uil-graduation-cap icon_content_template"></i>
+                  <i class="uil uil-file-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.studentsCourse.length %> </a>
+                  <a href="#"> <%= course.descriptionCourse %> </a>
                 </div>
               </li>
 
@@ -151,13 +144,13 @@
   <div class="ctn_display">
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
-        <i class="uil uil-book-alt"></i>
+        <i class="uil uil-heart"></i>
         <h2 class="title_display">Mes favoris</h2>
       </div>
       <% if (allInstructorCourses && allInstructorCourses.length > 0) { %>
       <div class="mid_display">
         <a
-          href="/<%= auth.roleUser %>/myspace/<%= mycourseInstructorRandom._id %>"
+          href="/<%= authUser.roleUser %>/myspace/<%= mycourseInstructorRandom._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
           <iconify-icon
@@ -189,7 +182,7 @@
             <ul>
               <li class="content_template">
                 <div>
-                  <i class="uil uil-book-alt icon_content_template"></i>
+                  <i class="uil uil-heart icon_content_template"></i>
                 </div>
                 <div>
                   <a href="/course/onecourse/<%= course._id %>"
@@ -200,10 +193,7 @@
 
               <li class="content_template">
                 <div>
-                  <iconify-icon
-                    icon="tabler:chef-hat"
-                    class="icon_content_template"
-                  ></iconify-icon>
+                  <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
                   <a
@@ -216,7 +206,7 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
                 <div>
                   <a href="#"
@@ -227,7 +217,7 @@
 
               <li class="content_template address_template">
                 <div>
-                  <i class="uil uil-graduation-cap icon_content_template"></i>
+                  <i class="uil uil-file-alt icon_content_template"></i>
                 </div>
                 <div>
                   <a href="#"> <%= course.studentsCourse.length %> </a>
@@ -247,11 +237,6 @@
                       <i class="uil uil-redo"></i>
                     </a>
                   </div>
-                  <div class="btns_template icon_calculate_template">
-                    <a href="/instructor/myspace/<%= course._id %>">
-                      <i class="uil uil-calculator-alt"></i>
-                    </a>
-                  </div>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"
@@ -262,11 +247,6 @@
                     </a>
                   </div>
                   <% } %>
-                  <div class="btns_template icon_more_template">
-                    <a href="/course/onecourse/<%= course._id %>">
-                      <i class="uil uil-ellipsis-h"></i>
-                    </a>
-                  </div>
                 </div>
               </li>
             </ul>
@@ -274,7 +254,7 @@
         </li>
         <% }) %> <% } else { %>
         <div class="ctn_msg error_msg">
-          <strong>Aucun cours ajouté</strong>
+          <strong>Aucun favoris ajouté</strong>
         </div>
         <% } %>
       </ul>

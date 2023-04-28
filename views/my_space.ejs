@@ -85,9 +85,7 @@
             required
           />
           <span></span>
-          <i class="up_joinus">
-            <iconify-icon icon="lucide:wheat"></iconify-icon>
-          </i>
+          <i class="uil uil-cell up_joinus"></i>
           <label for="percentageIngredients" class="up_joinus"
             ><%= ingredient %>
           </label>
@@ -199,7 +197,7 @@
           class="txt_field_auth txt_my_space"
           style="margin: 2.8rem 0 0; width: 50%"
         >
-          <input id="nameFavorite" type="text" name="nameFavorite" />
+          <input id="nameFavorite" type="text" name="nameFavorite" required />
           <span></span>
           <i class="uil uil-heart-alt up_joinus"></i>
           <label for="nameFavorite" class="up_joinus">Nom</label>
@@ -209,7 +207,12 @@
           class="txt_field_auth txt_my_space"
           style="margin: 2.8rem 0 0; width: 50%"
         >
-          <input id="quantityDough" type="text" class="quantityDough" />
+          <input
+            id="quantityDough"
+            type="text"
+            class="quantityDough"
+            required
+          />
           <span></span>
           <i class="uil uil-balance-scale up_joinus"></i>
           <label for="quantityDough" class="up_joinus">Pâte (kg)</label>
@@ -230,11 +233,10 @@
             type="text"
             name="percentageIngredients"
             class="percentageIngredients"
+            required
           />
           <span></span>
-          <i class="up_joinus">
-            <iconify-icon icon="lucide:wheat"></iconify-icon>
-          </i>
+          <i class="uil uil-cell up_joinus"></i>
           <label for="percentageIngredients" class="up_joinus"
             ><%= ingredient %>
           </label>
@@ -244,7 +246,12 @@
           class="txt_field_auth txt_my_space"
           style="margin: 2.8rem 0 0; width: 50%"
         >
-          <input id="resultPercentage" type="text" class="resultPercentage" />
+          <input
+            id="resultPercentage"
+            type="text"
+            class="resultPercentage"
+            required
+          />
           <span></span>
           <i class="uil uil-percentage up_joinus"></i>
           <label for="resultPercentage" class="up_joinus">0.00</label>
@@ -264,7 +271,7 @@
       </div>
 
       <div class="txt_field_auth txt_my_space">
-        <textarea name="noteFavorite" id="noteFavorite"></textarea>
+        <textarea name="noteFavorite" id="noteFavorite" required></textarea>
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
         <label for="noteFavorite" class="up_joinus">Notes</label>
@@ -278,6 +285,7 @@
           accept="image/*"
           multiple
           style="opacity: 0"
+          required
         />
         <span></span>
         <label for="imageFavorite" class="upload_joinus a_NBorder"
