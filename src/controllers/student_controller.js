@@ -89,7 +89,7 @@ module.exports.postStudentDelete = async (req, res) => {
 };
 
 //student my courses
-module.exports.studentMycourses = async (req, res) => {
+module.exports.studentMyCourses = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
     // find all student courses
@@ -117,7 +117,7 @@ module.exports.studentMycourses = async (req, res) => {
 };
 
 //student my space
-module.exports.studentMyspace = async (req, res) => {
+module.exports.studentMySpace = async (req, res) => {
   try {
     let { _id } = req.params;
 
@@ -140,7 +140,7 @@ module.exports.studentMyspace = async (req, res) => {
 };
 
 //post student my space
-module.exports.postStudentMyspace = async (req, res) => {
+module.exports.postStudentMySpace = async (req, res) => {
   try {
     let { _id } = req.params;
 
@@ -189,6 +189,32 @@ module.exports.postStudentMyspace = async (req, res) => {
       res,
       path
     );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+//student my favorites
+module.exports.studentMyFavorites = async (req, res) => {
+  try {
+    ////////////////////////////////////////////////////
+    // find all student courses
+
+    // let allStudentCourses = req.user.coursesRegistered;
+
+    ////////////////////////////////////////////////////
+    // find student random course
+
+    // const mycourseStudentRandom = await courseService.getOneCourseFloorMath(
+    //   allStudentCourses
+    // );
+
+    res.render("my_courses", {
+      title: "Student my favorites",
+      showHeader: true,
+      authUser: req.user,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

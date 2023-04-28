@@ -26,12 +26,15 @@ router.get("/delete/:_id", instructorController.instructorDelete);
 router.delete("/delete/:_id", instructorController.postInstructorDelete);
 
 // instructor my courses
-router.get("/mycourses/:_id", instructorController.instructorMycourses);
+router.get("/mycourses/:_id", instructorController.instructorMyCourses);
 
 // instructor my space
-router.get("/myspace/:_id", instructorController.instructorMyspace);
+router.get("/myspace/:_id", instructorController.instructorMySpace);
 
 // post instructor my space
-router.post("/myspace/:_id", instructorController.postInstructorMyspace);
+router.post("/myspace/:_id", instructorController.postInstructorMySpace);
+
+// instructor my favorites
+router.get("/myfavorites/:_id", instructorController.instructorMyFavorites);
 
 module.exports = router;

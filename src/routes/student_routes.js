@@ -14,12 +14,15 @@ router.get("/delete/:_id", studentController.studentDelete);
 router.delete("/delete/:_id", studentController.postStudentDelete);
 
 // student my courses
-router.get("/mycourses/:_id", studentController.studentMycourses);
+router.get("/mycourses/:_id", studentController.studentMyCourses);
 
 // student my space
-router.get("/myspace/:_id", studentController.studentMyspace);
+router.get("/myspace/:_id", studentController.studentMySpace);
 
 // post student my space
-router.post("/myspace/:_id", studentController.postStudentMyspace);
+router.post("/myspace/:_id", studentController.postStudentMySpace);
+
+// student my favorites
+router.get("/myfavorites/:_id", studentController.studentMyFavorites);
 
 module.exports = router;

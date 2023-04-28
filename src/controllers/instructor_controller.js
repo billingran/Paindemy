@@ -225,7 +225,7 @@ module.exports.postInstructorDelete = async (req, res) => {
 };
 
 //instructor my courses
-module.exports.instructorMycourses = async (req, res) => {
+module.exports.instructorMyCourses = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
     // find all instructor courses
@@ -253,7 +253,7 @@ module.exports.instructorMycourses = async (req, res) => {
 };
 
 //instructor my space
-module.exports.instructorMyspace = async (req, res) => {
+module.exports.instructorMySpace = async (req, res) => {
   try {
     let { _id } = req.params;
 
@@ -276,7 +276,7 @@ module.exports.instructorMyspace = async (req, res) => {
 };
 
 //post instructor my space
-module.exports.postInstructorMyspace = async (req, res) => {
+module.exports.postInstructorMySpace = async (req, res) => {
   try {
     let { _id } = req.params;
 
@@ -325,6 +325,32 @@ module.exports.postInstructorMyspace = async (req, res) => {
       res,
       path
     );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+//instructor my favorites
+module.exports.instructorMyFavorites = async (req, res) => {
+  try {
+    ////////////////////////////////////////////////////
+    // find all instructor courses
+
+    // let allInstructorCourses = req.user.coursesRegistered;
+
+    ////////////////////////////////////////////////////
+    // find instructor random course
+
+    // const mycourseInstructorRandom = await courseService.getOneCourseFloorMath(
+    //   allInstructorCourses
+    // );
+
+    res.render("my_courses", {
+      title: "Instructor my favorite",
+      showHeader: true,
+      authUser: req.user,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

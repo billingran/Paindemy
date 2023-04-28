@@ -144,6 +144,143 @@
     </div>
   </div>
 </section>
+
+<!-- /////////////////////////////////////////////// -->
+<!-- my favorite instructor display and template-->
+<section class="section_display section_mid">
+  <div class="ctn_display">
+    <div class="ctn_title_display">
+      <div class="centralA icon_title_display">
+        <i class="uil uil-book-alt"></i>
+        <h2 class="title_display">Mes favoris</h2>
+      </div>
+      <% if (allInstructorCourses && allInstructorCourses.length > 0) { %>
+      <div class="mid_display">
+        <a
+          href="/<%= auth.roleUser %>/myspace/<%= mycourseInstructorRandom._id %>"
+          class="ctn_viceTitle_display"
+          >Aléatoire
+          <iconify-icon
+            icon="fa:random"
+            class="icon_viceTitle_display"
+          ></iconify-icon>
+        </a>
+      </div>
+      <% } %>
+    </div>
+    <div>
+      <ul class="ul_template_two">
+        <% if(typeof allInstructorCourses !== 'undefined' &&
+        allInstructorCourses != null && allInstructorCourses.length > 0) { %> <%
+        allInstructorCourses.forEach(function(course){ %>
+        <li class="ctn_template mid_template">
+          <a href="/course/onecourse/<%= course._id %>">
+            <div class="ctn_image_template">
+              <div
+                loading="lazy"
+                class="image_template"
+                style="
+                  background-image: url('/uploads/<%= course.imageCourse[0] %>');
+                "
+              ></div>
+            </div>
+          </a>
+          <div class="ctn_content_template">
+            <ul>
+              <li class="content_template">
+                <div>
+                  <i class="uil uil-book-alt icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="/course/onecourse/<%= course._id %>"
+                    ><%= course.getNameCourse() %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template">
+                <div>
+                  <iconify-icon
+                    icon="tabler:chef-hat"
+                    class="icon_content_template"
+                  ></iconify-icon>
+                </div>
+                <div>
+                  <a
+                    href="/course/instructor/<%= course.instructorCourse._id %>"
+                    ><%= course.instructorCourse.firstnameUser %> <%=
+                    course.instructorCourse.lastnameUser %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template">
+                <div>
+                  <i class="uil uil-calender icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="#"
+                    ><%= course.dateCourse %> / <%= course.timeCourse %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template address_template">
+                <div>
+                  <i class="uil uil-graduation-cap icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="#"> <%= course.studentsCourse.length %> </a>
+                </div>
+              </li>
+
+              <li class="ctn_btns_template">
+                <div class="createdAt_template">
+                  <div>
+                    <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                  </div>
+                </div>
+                <div class="centralA">
+                  <% if (authUser && authUser.roleUser == "instructor") { %>
+                  <div class="btns_template icon_update_template">
+                    <a href="/instructor/updateclass/<%= course._id %>">
+                      <i class="uil uil-redo"></i>
+                    </a>
+                  </div>
+                  <div class="btns_template icon_calculate_template">
+                    <a href="/instructor/myspace/<%= course._id %>">
+                      <i class="uil uil-calculator-alt"></i>
+                    </a>
+                  </div>
+                  <div class="btns_template icon_plus_template">
+                    <a
+                      href="#"
+                      class="btn_unregister_OneCourse"
+                      id="<%= course._id %>"
+                    >
+                      <i class="uil uil-times"></i>
+                    </a>
+                  </div>
+                  <% } %>
+                  <div class="btns_template icon_more_template">
+                    <a href="/course/onecourse/<%= course._id %>">
+                      <i class="uil uil-ellipsis-h"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <% }) %> <% } else { %>
+        <div class="ctn_msg error_msg">
+          <strong>Aucun cours ajouté</strong>
+        </div>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</section>
 <% } %>
 
 <!-- /////////////////////////////////////////////// -->

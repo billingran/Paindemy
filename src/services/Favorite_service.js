@@ -5,7 +5,9 @@ class FavoriteService extends DbService {
   constructor() {
     super();
   }
+  // READ //////////////////////////////////////////////////
 
+  // CREATE //////////////////////////////////////////////////
   // validation my space
   async favoriteValidation(
     _id,
