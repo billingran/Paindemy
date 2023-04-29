@@ -770,7 +770,7 @@ class CourseService extends DbService {
 
   // Axios //////////////////////////////////////////////////
 
-  // register a course
+  // register one course
   async registerOneCourse(_id, req, res, nodeMailer, juice) {
     // check if it's a user student
     if (req.user && req.user.roleUser == "student") {
@@ -822,12 +822,12 @@ class CourseService extends DbService {
         "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
       );
 
-      let coursesRegistered = { message: "error not a user student." };
+      let coursesRegistered = { message: "error not a user." };
       return res.send(coursesRegistered);
     }
   }
 
-  // unregister a course
+  // unregister one course
   async unRegisterOneCourse(_id, req, res, path, fs, nodeMailer, juice) {
     // check if it's a user
     if (req.user) {
@@ -906,10 +906,10 @@ class CourseService extends DbService {
       // error not a user student
       req.flash(
         "error_msg",
-        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
+        "Incrisption échouée : Vous n’avez pas le droit de vous desinscrire au cours."
       );
 
-      let coursesUnregistered = { message: "error not a user student." };
+      let coursesUnregistered = { message: "error not a user." };
       return res.send(coursesUnregistered);
     }
   }

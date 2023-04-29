@@ -272,3 +272,16 @@ module.exports.postUnregisterOneCourse = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+// post deletele one favorite
+module.exports.postDeleteOneFavorite = async (req, res) => {
+  try {
+    // favorite id
+    let { _id } = req.body;
+
+    await favoriteService.deleteOneFavorite(_id, req, res, path, fs);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};

@@ -190,7 +190,7 @@ label[for="search_homeOne_sideBar"] {
 }
 
 /* favorite number */
-.ctn_favorite_number {
+.ctn_allFavorites_number {
   overflow: hidden;
   border-radius: 5rem;
   background-color: var(--C-6E1D0E);
@@ -210,7 +210,7 @@ label[for="search_homeOne_sideBar"] {
   transition: all 0.3s;
 }
 
-.favorite_number {
+.allFavorites_number {
   background-color: var(--C-6E1D0E);
 
   width: 1rem;
@@ -227,7 +227,7 @@ label[for="search_homeOne_sideBar"] {
   z-index: 0;
 }
 
-.new_favorite_number {
+.new_allFavorites_number {
   background-color: var(--C-6E1D0E);
 
   width: 1rem;
@@ -514,7 +514,7 @@ header .ctn_burger {
 }
 
 /* favorite number */
-.ctn_favoriteNumber_sidebar {
+.ctn_allFavoritesNumber_sidebar {
   border-radius: 5rem;
   background-color: var(--C-DCA47D);
   font-size: 1.3rem;
@@ -533,7 +533,7 @@ header .ctn_burger {
   transition: all 0.3s;
 }
 
-.favoriteNumber_sidebar {
+.allFavoritesNumber_sidebar {
   background-color: var(--C-DCA47D);
 
   width: 2rem;
@@ -550,7 +550,7 @@ header .ctn_burger {
   z-index: 0;
 }
 
-.new_favoriteNumber_sidebar {
+.new_allFavoritesNumber_sidebar {
   background-color: var(--C-DCA47D);
 
   width: 2rem;

@@ -27,4 +27,7 @@ router.post("/registeronecourse", courseController.postRegisterOneCourse);
 // post unregister one course
 router.post("/unregisteronecourse", courseController.postUnregisterOneCourse);
 
+// post delete one favorite
+router.post("/deleteonefavorite", courseController.postDeleteOneFavorite);
+
 module.exports = router;

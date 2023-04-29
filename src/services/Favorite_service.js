@@ -259,6 +259,96 @@ class FavoriteService extends DbService {
     );
     res.redirect(`/${req.user.roleUser}/myspace/${_id}`);
   }
+
+  // Axios //////////////////////////////////////////////////
+
+  // delete one favorite
+  async deleteOneFavorite(_id, req, res, path, fs) {
+    // check if it's a user
+    if (req.user) {
+      if (req.user.roleUser == "instructor") {
+        // delete user's image favorite
+        const favoriteTypeDeleteImage = { _id };
+        const favoriteDeleteImage = await this.getOneFavorite(
+          favoriteTypeDeleteImage
+        );
+
+        let favoriteImageName =
+          favoriteDeleteImage.imageFavorite[0].split("-")[1];
+
+        await super.deleteImgs(favoriteImageName, path, fs);
+
+        // send email to students
+        // get unregistered course
+        const coursesTypecourseUnregistered = { _id };
+        let courseUnregistered = await this.getOneCourse(
+          coursesTypecourseUnregistered
+        );
+
+        // get students in unregistered course
+        let userStudents = await Promise.all(
+          courseUnregistered.studentsCourse.map(async (student) => {
+            return student.emailUser;
+          })
+        );
+
+        await super.unregisterOneCourseMailerInstructor(
+          nodeMailer,
+          juice,
+          userStudents,
+          courseUnregistered
+        );
+
+        // delete user instructor's course
+        await this.Course.deleteOne({ _id }).exec();
+
+        // get new number courses of user instructor
+        const coursesTypeInstructor = { instructorCourse: req.user._id };
+        let coursesUnregistered = await this.getAllCourses(
+          coursesTypeInstructor
+        );
+
+        // send new number courses of user
+        return res.send(coursesUnregistered);
+      } else if (req.user.roleUser == "student") {
+        // send email to instructor
+        // get unregistered course
+        const coursesTypecourseUnregistered = { _id };
+        const userStudent = req.user;
+        let courseUnregistered = await this.getOneCourse(
+          coursesTypecourseUnregistered
+        );
+        await super.unregisterOneCourseMailerStudent(
+          nodeMailer,
+          juice,
+          userStudent,
+          courseUnregistered
+        );
+
+        // delete user student from course registered
+        await this.Course.updateOne(
+          { _id },
+          { $pull: { studentsCourse: req.user._id } }
+        ).exec();
+
+        // get new number courses of user student
+        const coursesTypeStudent = { studentsCourse: req.user._id };
+        let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
+
+        // send new number courses of user
+        return res.send(coursesUnregistered);
+      }
+    } else {
+      // error not a user
+      req.flash(
+        "error_msg",
+        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
+      );
+
+      let coursesUnregistered = { message: "error not a user." };
+      return res.send(coursesUnregistered);
+    }
+  }
 }
 
 module.exports = FavoriteService;

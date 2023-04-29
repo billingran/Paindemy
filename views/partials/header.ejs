@@ -53,9 +53,11 @@
       >
         <i class="uil uil-heart icon_header"></i>
 
-        <div class="ctn_favorite_number">
+        <div class="ctn_allFavorites_number">
           0 <% if ( authUser.allFavorites.length > 0 ) { %>
-          <div class="favorite_number"><%= authUser.allFavorites.length%></div>
+          <div class="allFavorites_number">
+            <%= authUser.allFavorites.length%>
+          </div>
           <% } %>
         </div>
       </a>
@@ -146,9 +148,9 @@
           </div>
           <% } %>
         </div>
-        <div class="ctn_favoriteNumber_sidebar">
+        <div class="ctn_allFavoritesNumber_sidebar">
           0 <% if ( authUser.allFavorites.length > 0) { %>
-          <div class="favoriteNumber_sidebar">
+          <div class="allFavoritesNumber_sidebar">
             <%= authUser.allFavorites.length %>
           </div>
           <% } %>

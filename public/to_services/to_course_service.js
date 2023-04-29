@@ -6,7 +6,7 @@ const ctnNumberCourseRegisteredSidebar = document.querySelector(
   ".ctn_courseNumber_sidebar"
 );
 
-// register a course//////////////////////////////////////////////////
+// register one course//////////////////////////////////////////////////
 const btnRegisterOneCourse = document.querySelectorAll(
   ".btn_register_OneCourse"
 );
@@ -37,14 +37,14 @@ async function requestRegisterOneCourse(e) {
 
       ctnRegisterCourse.style.animation = "scaleDown 0.3s forwards";
     } else if (typeof numberCourseRegistered == "string") {
-      // erro of adding a course twice
+      // erro of adding one course twice
       errorAxios.forEach((erro) => {
         erro.innerHTML = `<div class="ctn_msg error_msg">
         <strong>${numberCourseRegistered}</strong>
       </div>`;
       });
     } else if (numberCourseRegistered.message) {
-      // erro of not a user student
+      // erro of not one user student
       let redirectUrlRegisterOnecCourse = "/auth/login";
       window.location.href = redirectUrlRegisterOnecCourse;
     }
@@ -58,9 +58,9 @@ btnRegisterOneCourse.forEach((btn) => {
   btn.addEventListener("click", requestRegisterOneCourse);
 });
 
-// unregister a course//////////////////////////////////////////////////
+// unregister one course//////////////////////////////////////////////////
 const btnUnregisterOneCourse = document.querySelectorAll(
-  ".btn_unregister_OneCourse"
+  ".btn_unregister_oneCourse"
 );
 
 async function requestUnregisterOneCourse(e) {
