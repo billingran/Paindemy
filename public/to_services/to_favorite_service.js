@@ -19,6 +19,9 @@ async function requestDeleteOneFavorite(e) {
     });
 
     const numberAllFavorites = response.data;
+
+    console.log(response);
+    console.log(numberAllFavorites);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

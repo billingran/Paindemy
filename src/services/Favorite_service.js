@@ -8,7 +8,7 @@ class FavoriteService extends DbService {
   // READ //////////////////////////////////////////////////
   // get one favorite (one favorite)
   async getOneFavorite(favoriteType) {
-    const favorite = await this.Fvorite.findOne(courseType)
+    const favorite = await this.Favorite.findOne(favoriteType)
       .populate("authorFavorite", [
         "firstnameUser",
         "lastnameUser",
@@ -266,78 +266,28 @@ class FavoriteService extends DbService {
   async deleteOneFavorite(_id, req, res, path, fs) {
     // check if it's a user
     if (req.user) {
-      if (req.user.roleUser == "instructor") {
-        // delete user's image favorite
-        const favoriteTypeDeleteImage = { _id };
-        const favoriteDeleteImage = await this.getOneFavorite(
-          favoriteTypeDeleteImage
-        );
+      // delete user's image favorite
+      const favoriteTypeDeleteImage = { _id };
+      const favoriteDeleteImage = await this.getOneFavorite(
+        favoriteTypeDeleteImage
+      );
 
-        let favoriteImageName =
-          favoriteDeleteImage.imageFavorite[0].split("-")[1];
+      let favoriteImageName =
+        favoriteDeleteImage.imageFavorite[0].split("-")[1];
 
-        await super.deleteImgs(favoriteImageName, path, fs);
+      await super.deleteImgs(favoriteImageName, path, fs);
 
-        // send email to students
-        // get unregistered course
-        const coursesTypecourseUnregistered = { _id };
-        let courseUnregistered = await this.getOneCourse(
-          coursesTypecourseUnregistered
-        );
+      // delete user instructor's favorite
+      await this.Favorite.deleteOne({ _id }).exec();
 
-        // get students in unregistered course
-        let userStudents = await Promise.all(
-          courseUnregistered.studentsCourse.map(async (student) => {
-            return student.emailUser;
-          })
-        );
+      // get new number favorites of user
+      const favoritesTypeNumberFavorites = { authorFavorite: req.user._id };
+      let allFavorites = await this.getAllFavorites(
+        favoritesTypeNumberFavorites
+      );
 
-        await super.unregisterOneCourseMailerInstructor(
-          nodeMailer,
-          juice,
-          userStudents,
-          courseUnregistered
-        );
-
-        // delete user instructor's course
-        await this.Course.deleteOne({ _id }).exec();
-
-        // get new number courses of user instructor
-        const coursesTypeInstructor = { instructorCourse: req.user._id };
-        let coursesUnregistered = await this.getAllCourses(
-          coursesTypeInstructor
-        );
-
-        // send new number courses of user
-        return res.send(coursesUnregistered);
-      } else if (req.user.roleUser == "student") {
-        // send email to instructor
-        // get unregistered course
-        const coursesTypecourseUnregistered = { _id };
-        const userStudent = req.user;
-        let courseUnregistered = await this.getOneCourse(
-          coursesTypecourseUnregistered
-        );
-        await super.unregisterOneCourseMailerStudent(
-          nodeMailer,
-          juice,
-          userStudent,
-          courseUnregistered
-        );
-
-        // delete user student from course registered
-        await this.Course.updateOne(
-          { _id },
-          { $pull: { studentsCourse: req.user._id } }
-        ).exec();
-
-        // get new number courses of user student
-        const coursesTypeStudent = { studentsCourse: req.user._id };
-        let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
-
-        // send new number courses of user
-        return res.send(coursesUnregistered);
-      }
+      // send new number courses of user
+      return res.send(allFavorites);
     } else {
       // error not a user
       req.flash(
