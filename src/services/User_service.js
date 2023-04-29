@@ -831,14 +831,22 @@ class UserService extends DbService {
   // DELETE //////////////////////////////////////////////////
   //post instrutor delete
   async deleteInstructor(_id, req, res, path, fs) {
-    // delete instructor and courses imgs
+    // delete instructor and courses, favorites imgs
     const instructorImageName = req.user.emailUser
       .replace("@", "")
       .replace(".", "");
 
-    const courseImageName = req.user._id;
+    const coursesAndFavoritesImageName = req.user._id;
 
-    await super.deleteBothImgs(instructorImageName, courseImageName, path, fs);
+    await super.deleteBothImgs(
+      instructorImageName,
+      coursesAndFavoritesImageName,
+      path,
+      fs
+    );
+
+    // delete instructor favorites
+    await this.Favorite.deleteMany({ authorFavorite: req.user._id });
 
     // delete instructor courses
     await this.Course.deleteMany({ instructorCourse: _id });
@@ -853,12 +861,29 @@ class UserService extends DbService {
   }
 
   //post student delete
-  async deleteStudent(_id, req, res) {
+  async deleteStudent(_id, req, res, path, fs) {
+    // delete student and favorites imgs
+    const studentImageName = req.user.emailUser
+      .replace("@", "")
+      .replace(".", "");
+
+    const coursesAndFavoritesImageName = req.user._id;
+
+    await super.deleteBothImgs(
+      studentImageName,
+      coursesAndFavoritesImageName,
+      path,
+      fs
+    );
+
     // delete student from courses
     await this.Course.updateMany(
       { studentsCourse: _id },
       { $pull: { studentsCourse: _id } }
     ).exec();
+
+    // delete student favorites
+    await this.Favorite.deleteMany({ authorFavorite: req.user._id });
 
     // delete student
     await this.User.deleteOne({ _id });

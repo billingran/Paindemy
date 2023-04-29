@@ -81,14 +81,14 @@ module.exports.postStudentDelete = async (req, res) => {
   try {
     let { _id } = req.params;
 
-    await userService.deleteStudent(_id, req, res);
+    await userService.deleteStudent(_id, req, res, path, fs);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
   }
 };
 
-//student my courses
+//student my courses and favorites
 module.exports.studentMyCourses = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
@@ -115,7 +115,7 @@ module.exports.studentMyCourses = async (req, res) => {
       await favoriteService.getOneFavoriteFloorMath(allStudentFavorites);
 
     res.render("my_courses", {
-      title: "Student my courses",
+      title: "Student my courses and favorites",
       showHeader: true,
       authUser: req.user,
       allStudentCourses,

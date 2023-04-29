@@ -224,7 +224,7 @@ module.exports.postInstructorDelete = async (req, res) => {
   }
 };
 
-//instructor my courses
+//instructor my courses and favorites
 module.exports.instructorMyCourses = async (req, res) => {
   try {
     ////////////////////////////////////////////////////
@@ -251,7 +251,7 @@ module.exports.instructorMyCourses = async (req, res) => {
       await favoriteService.getOneFavoriteFloorMath(allInstructorFavorites);
 
     res.render("my_courses", {
-      title: "Instructor my courses",
+      title: "Instructor my courses and favorites",
       showHeader: true,
       authUser: req.user,
       allInstructorCourses,
