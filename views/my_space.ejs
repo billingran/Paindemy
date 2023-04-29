@@ -87,7 +87,7 @@
           <span></span>
           <i class="uil uil-cell up_joinus"></i>
           <label for="percentageIngredients" class="up_joinus"
-            ><%= ingredient %>
+            ><%= ingredient %> (g)
           </label>
         </div>
 
@@ -124,6 +124,22 @@
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
         <label for="noteFavorite" class="up_joinus">Notes</label>
+      </div>
+
+      <div class="txt_field_auth txt_my_space">
+        <select id="categoryFavorite" name="categoryFavorite" required>
+          <option value="">-- Sélectionner une catégorie --</option>
+          <% if(typeof allCategoriesNeeded !== 'undefined' &&
+          allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
+          allCategoriesNeeded.forEach((category) => { %>
+          <option value="<%= category._id %>">
+            <%= category.nameCategory %>
+          </option>
+          <% }) %> <% } %>
+        </select>
+        <span></span>
+        <i class="uil uil-folder up_joinus"></i>
+        <label for="categoryFavorite" class="up_joinus">Catégorie</label>
       </div>
 
       <div class="txt_field_auth txt_my_space imgMySpace_div">
@@ -275,6 +291,22 @@
         <span></span>
         <i class="uil uil-file-alt up_joinus"></i>
         <label for="noteFavorite" class="up_joinus">Notes</label>
+      </div>
+
+      <div class="txt_field_auth txt_my_space">
+        <select id="categoryFavorite" name="categoryFavorite" required>
+          <option value="">-- Sélectionner une catégorie --</option>
+          <% if(typeof allCategoriesNeeded !== 'undefined' &&
+          allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
+          allCategoriesNeeded.forEach((category) => { %>
+          <option value="<%= category._id %>">
+            <%= category.nameCategory %>
+          </option>
+          <% }) %> <% } %>
+        </select>
+        <span></span>
+        <i class="uil uil-folder up_joinus"></i>
+        <label for="categoryFavorite" class="up_joinus">Catégorie</label>
       </div>
 
       <div class="txt_field_auth txt_my_space imgMySpace_div">

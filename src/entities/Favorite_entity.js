@@ -9,7 +9,7 @@ class FavoriteEntity {
     this.noteFavorite = "";
     this.imageFavorite = [];
     this.authorFavorite = null;
-    this.originFavorite = null;
+    this.categoryFavorite = null;
     this.createdAt = new Date();
 
     for (let prop in favorite) {
@@ -67,12 +67,12 @@ class FavoriteEntity {
     this.authorFavorite = authorFavorite;
   }
 
-  getOriginFavorite() {
-    return this.originFavorite;
+  getCategoryFavorite() {
+    return this.categoryFavorite;
   }
 
-  setOriginFavorite(originFavorite) {
-    this.originFavorite = originFavorite;
+  setCategoryFavorite(categoryFavorite) {
+    this.categoryFavorite = categoryFavorite;
   }
 
   getCreatedAt() {

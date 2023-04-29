@@ -23,9 +23,9 @@ const favoriteSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  originFavorite: {
+  categoryFavorite: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Course",
+    ref: "Category",
     required: true,
   },
   createdAt: {

@@ -1,4 +1,6 @@
 // Class Services
+const CategoryService = require("../services/Category_service");
+const categoryService = new CategoryService();
 const UserService = require("../services/User_service");
 const userService = new UserService();
 const CourseService = require("../services/Course_service");
@@ -140,11 +142,18 @@ module.exports.studentMySpace = async (req, res) => {
       courseTypeCourseFavorite
     );
 
+    // get all categories needed
+    const allCategories = await categoryService.getAllCategories({});
+    const allCategoriesNeeded = allCategories.filter((category) => {
+      return category.nameCategory !== "Tout";
+    });
+
     res.render("my_space", {
       title: "Student my space",
       showHeader: true,
       authUser: req.user,
       courseFavorite,
+      allCategoriesNeeded,
     });
   } catch (error) {
     console.log(error);
@@ -167,6 +176,7 @@ module.exports.postStudentMySpace = async (req, res) => {
       nameFavorite,
       percentageIngredients,
       nameIngredientsStudent,
+      categoryFavorite,
       noteFavorite,
     } = req.body;
 
@@ -198,6 +208,7 @@ module.exports.postStudentMySpace = async (req, res) => {
       nameIngredients,
       percentageIngredients,
       noteFavorite,
+      categoryFavorite,
       req,
       res,
       path

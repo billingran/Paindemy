@@ -276,11 +276,18 @@ module.exports.instructorMySpace = async (req, res) => {
       courseTypeCourseFavorite
     );
 
+    // get all categories needed
+    const allCategories = await categoryService.getAllCategories({});
+    const allCategoriesNeeded = allCategories.filter((category) => {
+      return category.nameCategory !== "Tout";
+    });
+
     res.render("my_space", {
       title: "Instructor my space",
       showHeader: true,
       authUser: req.user,
       courseFavorite,
+      allCategoriesNeeded,
     });
   } catch (error) {
     console.log(error);
@@ -303,6 +310,7 @@ module.exports.postInstructorMySpace = async (req, res) => {
       nameFavorite,
       percentageIngredients,
       nameIngredientsStudent,
+      categoryFavorite,
       noteFavorite,
     } = req.body;
 
@@ -334,6 +342,7 @@ module.exports.postInstructorMySpace = async (req, res) => {
       nameIngredients,
       percentageIngredients,
       noteFavorite,
+      categoryFavorite,
       req,
       res,
       path

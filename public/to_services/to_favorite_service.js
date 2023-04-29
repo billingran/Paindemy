@@ -20,8 +20,26 @@ async function requestDeleteOneFavorite(e) {
 
     const numberAllFavorites = response.data;
 
-    console.log(response);
-    console.log(numberAllFavorites);
+    if (Array.isArray(numberAllFavorites)) {
+      // get new number favorites of user
+      ctnNumberAllFavorite.innerHTML = `<div class="new_allFavorites_number">${numberAllFavorites.length}</div>`;
+      ctnNumberAllFavoriteSidebar.innerHTML = `<div class="new_allFavoritesNumber_sidebar">${numberAllFavorites.length}</div>`;
+
+      // hide and remove favorites template
+      let ctnDeleteOneFavorite =
+        e.target.parentElement.parentElement.parentElement.parentElement
+          .parentElement.parentElement;
+
+      ctnDeleteOneFavorite.addEventListener("animationend", () => {
+        ctnDeleteOneFavorite.remove();
+      });
+
+      ctnDeleteOneFavorite.style.animation = "scaleDown 0.3s forwards";
+    } else if (numberAllFavorites.message) {
+      // erro of not a user
+      let redirectUrlDeleteOneFavorite = "/auth/login";
+      window.location.href = redirectUrlDeleteOneFavorite;
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

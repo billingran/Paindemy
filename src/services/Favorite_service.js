@@ -14,17 +14,11 @@ class FavoriteService extends DbService {
         "lastnameUser",
         "emailUser",
       ])
-      .populate({
-        path: "originFavorite",
-        populate: [
-          { path: "categoryCourse", select: ["nameCategory", "iconCategory"] },
-          {
-            path: "instructorCourse",
-            select: ["firstnameUser", "lastnameUser", "emailUser"],
-          },
-        ],
-        select: ["nameCourse"],
-      })
+      .populate("categoryFavorite", [
+        "nameCategory",
+        "imageCategory",
+        "iconCategory",
+      ])
       .exec();
 
     return new FavoriteEntity(favorite);
@@ -48,17 +42,11 @@ class FavoriteService extends DbService {
         "lastnameUser",
         "emailUser",
       ])
-      .populate({
-        path: "originFavorite",
-        populate: [
-          { path: "categoryCourse", select: ["nameCategory", "iconCategory"] },
-          {
-            path: "instructorCourse",
-            select: ["firstnameUser", "lastnameUser", "emailUser"],
-          },
-        ],
-        select: ["nameCourse"],
-      })
+      .populate("categoryFavorite", [
+        "nameCategory",
+        "imageCategory",
+        "iconCategory",
+      ])
       .exec();
 
     let favorites = [];
@@ -79,6 +67,7 @@ class FavoriteService extends DbService {
     nameIngredients,
     percentageIngredients,
     noteFavorite,
+    categoryFavorite,
     objectImagesFile,
     arrayImagesFile,
     req,
@@ -170,6 +159,28 @@ class FavoriteService extends DbService {
       };
     }
 
+    //validate category favorite
+    if (categoryFavorite) {
+      if (
+        categoryFavorite !== "642b25e9e4f201d77621c6bc" &&
+        categoryFavorite !== "642b25f3e4f201d77621c6bd" &&
+        categoryFavorite !== "642b25fbe4f201d77621c6be"
+      ) {
+        return {
+          success: false,
+          message:
+            "Catégorie, seulement « Boulangerie », « Pâtisserie » ou « Autre ».",
+        };
+      }
+
+      newDataFavorite.categoryFavorite = categoryFavorite;
+    } else {
+      return {
+        success: false,
+        message: "Catégorie, cette case ne doit pas être vide.",
+      };
+    }
+
     //validate image favorite
     if (objectImagesFile && arrayImagesFile) {
       let imagesFavorite = [];
@@ -216,6 +227,7 @@ class FavoriteService extends DbService {
     nameIngredients,
     percentageIngredients,
     noteFavorite,
+    categoryFavorite,
     req,
     res,
     path
@@ -235,6 +247,7 @@ class FavoriteService extends DbService {
       nameIngredients,
       percentageIngredients,
       noteFavorite,
+      categoryFavorite,
       objectImagesFile,
       arrayImagesFile,
       req,
@@ -292,11 +305,11 @@ class FavoriteService extends DbService {
       // error not a user
       req.flash(
         "error_msg",
-        "Incrisption échouée : Vous n’avez pas le droit de vous inscrire au cours."
+        "Incrisption échouée : Vous n’avez pas le droit de suprimer cette recette."
       );
 
-      let coursesUnregistered = { message: "error not a user." };
-      return res.send(coursesUnregistered);
+      let allFavorites = { message: "error not a user." };
+      return res.send(allFavorites);
     }
   }
 }

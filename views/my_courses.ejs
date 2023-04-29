@@ -63,15 +63,6 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-graduation-cap icon_content_template"></i>
-                </div>
-                <div>
-                  <a href="#"><%= course.studentsCourse.length %> </a>
-                </div>
-              </li>
-
-              <li class="content_template">
-                <div>
                   <i class="uil uil-calender icon_content_template"></i>
                 </div>
                 <div>
@@ -81,12 +72,21 @@
                 </div>
               </li>
 
-              <li class="content_template address_template">
+              <li class="content_template">
                 <div>
-                  <i class="uil uil-file-alt icon_content_template"></i>
+                  <i class="uil uil-graduation-cap icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.descriptionCourse %> </a>
+                  <a href="#"><%= course.studentsCourse.length %> </a>
+                </div>
+              </li>
+
+              <li class="content_template address_template">
+                <div>
+                  <i class="uil uil-cell icon_content_template"></i>
+                </div>
+                <div>
+                  <a href="#"> <%= course.ingredientsCourse.length %> </a>
                 </div>
               </li>
 
@@ -194,22 +194,20 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-cell icon_content_template"></i>
+                  <i class="uil uil-folder icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"
-                    ><%= Object.keys(favorite.ingredientsFavorite).length %>
-                  </a>
+                  <a href="#"><%= favorite.categoryFavorite.nameCategory %> </a>
                 </div>
               </li>
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-book-alt icon_content_template"></i>
+                  <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/onecourse/<%= favorite.originFavorite._id %>"
-                    ><%= favorite.originFavorite.nameCourse %>
+                  <a href="#"
+                    ><%= Object.keys(favorite.ingredientsFavorite).length %>
                   </a>
                 </div>
               </li>
@@ -466,22 +464,20 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-cell icon_content_template"></i>
+                  <i class="uil uil-folder icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"
-                    ><%= Object.keys(favorite.ingredientsFavorite).length %>
-                  </a>
+                  <a href="#"><%= favorite.categoryFavorite.nameCategory %> </a>
                 </div>
               </li>
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-book-alt icon_content_template"></i>
+                  <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="/course/onecourse/<%= favorite.originFavorite._id %>"
-                    ><%= favorite.originFavorite.nameCourse %>
+                  <a href="#"
+                    ><%= Object.keys(favorite.ingredientsFavorite).length %>
                   </a>
                 </div>
               </li>

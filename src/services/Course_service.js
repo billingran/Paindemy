@@ -774,7 +774,7 @@ class CourseService extends DbService {
   async registerOneCourse(_id, req, res, nodeMailer, juice) {
     // check if it's a user student
     if (req.user && req.user.roleUser == "student") {
-      // add user into course registered
+      // add user student into course registered
       const idStudent = req.user._id;
 
       const courseTypeRegisterOneCourse = { _id };
@@ -795,7 +795,7 @@ class CourseService extends DbService {
         return res.send(coursesRegistered);
       }
 
-      // get new number courses of user
+      // get new number courses of user student
       const coursesTypeStudent = { studentsCourse: req.user._id };
       coursesRegistered = await this.getAllCourses(coursesTypeStudent);
 
@@ -813,7 +813,7 @@ class CourseService extends DbService {
         courseRegistered
       );
 
-      // send new number courses of user
+      // send new number courses of user student
       return res.send(coursesRegistered);
     } else {
       // error not a user student
@@ -872,7 +872,7 @@ class CourseService extends DbService {
           coursesTypeInstructor
         );
 
-        // send new number courses of user
+        // send new number courses of user instructor
         return res.send(coursesUnregistered);
       } else if (req.user.roleUser == "student") {
         // send email to instructor
@@ -899,11 +899,11 @@ class CourseService extends DbService {
         const coursesTypeStudent = { studentsCourse: req.user._id };
         let coursesUnregistered = await this.getAllCourses(coursesTypeStudent);
 
-        // send new number courses of user
+        // send new number courses of user student
         return res.send(coursesUnregistered);
       }
     } else {
-      // error not a user student
+      // error not a user
       req.flash(
         "error_msg",
         "Incrisption échouée : Vous n’avez pas le droit de vous desinscrire au cours."

@@ -24,7 +24,7 @@ async function requestRegisterOneCourse(e) {
     const numberCourseRegistered = response.data;
 
     if (Array.isArray(numberCourseRegistered)) {
-      // get new number courses of user
+      // get new number courses of user student
       ctnNumberCourseRegistered.innerHTML = `<div class="new_course_number">${numberCourseRegistered.length}</div>`;
       ctnNumberCourseRegisteredSidebar.innerHTML = `<div class="new_courseNumber_sidebar">${numberCourseRegistered.length}</div>`;
 
@@ -44,7 +44,7 @@ async function requestRegisterOneCourse(e) {
       </div>`;
       });
     } else if (numberCourseRegistered.message) {
-      // erro of not one user student
+      // erro of not one user
       let redirectUrlRegisterOnecCourse = "/auth/login";
       window.location.href = redirectUrlRegisterOnecCourse;
     }
@@ -91,7 +91,7 @@ async function requestUnregisterOneCourse(e) {
 
       ctnUnregisterCourse.style.animation = "scaleDown 0.3s forwards";
     } else if (numberCourseUnregistered.message) {
-      // erro of not a user student
+      // erro of not a user
       let redirectUrlUnegisterOnecCourse = "/auth/login";
       window.location.href = redirectUrlUnegisterOnecCourse;
     }
