@@ -364,6 +364,11 @@ module.exports.instructorMyFavorite = async (req, res) => {
     // id of one favorite
     let { _id } = req.params;
 
+    const favoriteTypeMyFavorite = { _id };
+    let = myFavorite = await favoriteService.getOneFavorite(
+      favoriteTypeMyFavorite
+    );
+
     // get all categories needed
     const allCategories = await categoryService.getAllCategories({});
     const allCategoriesNeeded = allCategories.filter((category) => {
@@ -374,7 +379,21 @@ module.exports.instructorMyFavorite = async (req, res) => {
       title: "Instructor my favorite",
       showHeader: true,
       authUser: req.user,
+      myFavorite,
+      allCategories,
+      allCategoriesNeeded,
     });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+//patch instructor my favorite
+module.exports.patchInstructorMyFavorite = async (req, res) => {
+  try {
+    // id of one favorite
+    let { _id } = req.params;
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

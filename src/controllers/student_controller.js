@@ -235,3 +235,14 @@ module.exports.studentMyFavorite = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+//patch student my favorite
+module.exports.patchStudentMyFavorite = async (req, res) => {
+  try {
+    // id of one favorite
+    let { _id } = req.params;
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};

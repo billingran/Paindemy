@@ -25,4 +25,7 @@ router.post("/myspace/:_id", studentController.postStudentMySpace);
 // student my favorite
 router.get("/myfavorite/:_id", studentController.studentMyFavorite);
 
+// patch student my favorite
+router.patch("/myfavorite/:_id", studentController.patchStudentMyFavorite);
+
 module.exports = router;
