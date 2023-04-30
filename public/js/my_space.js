@@ -7,7 +7,7 @@ const percentageIngredients = document.querySelectorAll(
 
 // add, transform for percentage label and calculate percentage ingredient
 function addAndTransformPercentage(e) {
-  // add, transform for percentage label
+  // add, transform for percentage label of the input of new percentage ingredient
   const percentageLabel =
     e.target.parentElement.nextElementSibling.querySelector("label");
 
@@ -70,6 +70,28 @@ function addAndTransformPercentage(e) {
 percentageIngredients.forEach((percentageIngredient) => {
   // add, transform for percentage label and calculate percentage ingredient
   percentageIngredient.addEventListener("input", addAndTransformPercentage);
+
+  // add, transform for percentage label of the beginning loading of the page
+  const percentageLabel =
+    percentageIngredient.parentElement.nextElementSibling.querySelector(
+      "label"
+    );
+
+  let value = percentageIngredient.value;
+  let valuePercentageIngredient = Number(value);
+
+  if (!isNaN(valuePercentageIngredient)) {
+    percentageLabel.textContent = (
+      (valuePercentageIngredient / 1) *
+      100
+    ).toFixed(2);
+  } else {
+    // put input ingredients 0
+    e.target.value = (0).toFixed(3);
+
+    // put label percentage 0
+    percentageLabel.textContent = (0).toFixed(2);
+  }
 });
 
 // calculate the percentage of quantity dough
@@ -179,6 +201,9 @@ function addIngredientsMySpace(e) {
     .setAttribute("name", "nameIngredientsStudent");
   newIngredientsMySpace
     .getElementsByTagName("input")[1]
+    .removeAttribute("name");
+  newIngredientsMySpace
+    .getElementsByTagName("input")[2]
     .setAttribute("name", "percentageIngredients");
 
   // change label text content value of new ingredient my space

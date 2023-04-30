@@ -53,7 +53,7 @@
           style="margin: 2.8rem 0 0; width: 50%"
         >
           <input value="<%= myFavorite.nameFavorite || "" %>" id="nameFavorite"
-          type="text" name="nameFavorite" required />
+          type="text" name="nameFavorite" />
           <span></span>
           <i class="uil uil-heart-alt up_joinus"></i>
           <label for="nameFavorite" class="up_joinus">Nom</label>
@@ -67,7 +67,6 @@
             id="quantityDough"
             type="text"
             class="quantityDough"
-            required
           />
           <span></span>
           <i class="uil uil-balance-scale up_joinus"></i>
@@ -86,12 +85,17 @@
         >
           <input value="<%= myFavorite.ingredientsFavorite[ingredient] || "" %>"
           id="percentageIngredients" type="text" name="percentageIngredients"
-          class="percentageIngredients" required />
+          class="percentageIngredients"/>
           <span></span>
           <i class="uil uil-cell up_joinus"></i>
           <label for="percentageIngredients" class="up_joinus"
             ><%= ingredient %> (g)
           </label>
+          <input
+            type="hidden"
+            name="nameIngredientsInstructor"
+            value="<%= ingredient %>"
+          />
         </div>
 
         <div
@@ -102,7 +106,6 @@
             id="resultPercentage"
             type="text"
             class="resultPercentage"
-            required
           />
           <span></span>
           <i class="uil uil-percentage up_joinus"></i>
@@ -123,7 +126,7 @@
       </div>
 
       <div class="txt_field_auth txt_my_space">
-        <textarea name="noteFavorite" id="noteFavorite" required>
+        <textarea name="noteFavorite" id="noteFavorite">
         <%= myFavorite.noteFavorite || "" %> 
         </textarea>
         <span></span>
@@ -132,7 +135,7 @@
       </div>
 
       <div class="txt_field_auth txt_my_space">
-        <select id="categoryFavorite" name="categoryFavorite" required>
+        <select id="categoryFavorite" name="categoryFavorite">
           <option value="">-- Sélectionner une catégorie --</option>
           <% if(typeof allCategoriesNeeded !== 'undefined' &&
           allCategoriesNeeded != null && allCategoriesNeeded.length > 0) { %> <%
@@ -156,7 +159,6 @@
           accept="image/*"
           multiple
           style="opacity: 0"
-          required
         />
         <span></span>
         <label for="imageFavorite" class="upload_joinus a_NBorder"

@@ -305,15 +305,10 @@ module.exports.postInstructorMySpace = async (req, res) => {
     // id of one course
     let { _id } = req.params;
 
-    // get one course for the name ingredients instructor
-    const courseTypeNameIngredientsInstructor = { _id };
-    let courseNameIngredientsInstructor = await courseService.getOneCourse(
-      courseTypeNameIngredientsInstructor
-    );
-
     let {
       nameFavorite,
       percentageIngredients,
+      nameIngredientsInstructor,
       nameIngredientsStudent,
       categoryFavorite,
       noteFavorite,
@@ -322,22 +317,29 @@ module.exports.postInstructorMySpace = async (req, res) => {
     // concat name ingredients instructor and name ingredients student
     let nameIngredients;
 
-    if (nameIngredientsStudent) {
+    // turn objet into arry if name ingredient instructor only has one
+    if (
+      nameIngredientsInstructor &&
+      !Array.isArray(nameIngredientsInstructor)
+    ) {
+      nameIngredientsInstructor = nameIngredientsInstructor.split();
+    }
+
+    if (nameIngredientsInstructor && nameIngredientsStudent) {
       // turn objet into arry if name ingredient student only has one
       if (!Array.isArray(nameIngredientsStudent)) {
         nameIngredientsStudent = nameIngredientsStudent.split();
       }
 
-      nameIngredients =
-        courseNameIngredientsInstructor.ingredientsCourse.concat(
-          nameIngredientsStudent
-        );
+      nameIngredients = nameIngredientsInstructor.concat(
+        nameIngredientsStudent
+      );
     } else {
-      nameIngredients = courseNameIngredientsInstructor.ingredientsCourse;
+      nameIngredients = nameIngredientsInstructor;
     }
 
     // turn objet into arry if percentage ingredient only has one
-    if (!Array.isArray(percentageIngredients)) {
+    if (percentageIngredients && !Array.isArray(percentageIngredients)) {
       percentageIngredients = percentageIngredients.split();
     }
 
@@ -380,7 +382,6 @@ module.exports.instructorMyFavorite = async (req, res) => {
       showHeader: true,
       authUser: req.user,
       myFavorite,
-      allCategories,
       allCategoriesNeeded,
     });
   } catch (error) {
@@ -394,6 +395,8 @@ module.exports.patchInstructorMyFavorite = async (req, res) => {
   try {
     // id of one favorite
     let { _id } = req.params;
+
+    console.log(req.body);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
