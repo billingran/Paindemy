@@ -396,7 +396,56 @@ module.exports.patchInstructorMyFavorite = async (req, res) => {
     // id of one favorite
     let { _id } = req.params;
 
-    console.log(req.body);
+    let {
+      nameFavorite,
+      percentageIngredients,
+      nameIngredientsInstructor,
+      nameIngredientsStudent,
+      categoryFavorite,
+      noteFavorite,
+    } = req.body;
+
+    // concat name ingredients instructor and name ingredients student
+    let nameIngredients;
+
+    // turn objet into arry if name ingredient instructor only has one
+    if (
+      nameIngredientsInstructor &&
+      !Array.isArray(nameIngredientsInstructor)
+    ) {
+      nameIngredientsInstructor = nameIngredientsInstructor.split();
+    }
+
+    if (nameIngredientsInstructor && nameIngredientsStudent) {
+      // turn objet into arry if name ingredient student only has one
+      if (!Array.isArray(nameIngredientsStudent)) {
+        nameIngredientsStudent = nameIngredientsStudent.split();
+      }
+
+      nameIngredients = nameIngredientsInstructor.concat(
+        nameIngredientsStudent
+      );
+    } else {
+      nameIngredients = nameIngredientsInstructor;
+    }
+
+    // turn objet into arry if percentage ingredient only has one
+    if (percentageIngredients && !Array.isArray(percentageIngredients)) {
+      percentageIngredients = percentageIngredients.split();
+    }
+
+    await favoriteService.setMyFavorite(
+      _id,
+      nameFavorite,
+      nameIngredients,
+      percentageIngredients,
+      noteFavorite,
+      categoryFavorite,
+      req,
+      res,
+      path,
+      fs
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

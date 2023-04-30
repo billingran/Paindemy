@@ -61,7 +61,7 @@ class FavoriteService extends DbService {
 
   // CREATE //////////////////////////////////////////////////
   // validation my space
-  async favoriteValidation(
+  async mySpaceValidation(
     _id,
     nameFavorite,
     nameIngredients,
@@ -216,7 +216,6 @@ class FavoriteService extends DbService {
     }
 
     newDataFavorite.authorFavorite = req.user._id;
-    newDataFavorite.originFavorite = _id;
     return { success: true, newDataFavorite };
   }
 
@@ -241,7 +240,7 @@ class FavoriteService extends DbService {
       arrayImagesFile = Object.keys(req.files.imageFavorite);
     }
 
-    const validationResultMySpace = await this.favoriteValidation(
+    const validationResultMySpace = await this.mySpaceValidation(
       _id,
       nameFavorite,
       nameIngredients,
@@ -271,6 +270,210 @@ class FavoriteService extends DbService {
       "Votre recette favorite à été enregistrée avec succès."
     );
     res.redirect(`/${req.user.roleUser}/myspace/${_id}`);
+  }
+
+  // UPDATE //////////////////////////////////////////////////
+  async myFavoriteValidation(
+    _id,
+    nameFavorite,
+    nameIngredients,
+    percentageIngredients,
+    noteFavorite,
+    categoryFavorite,
+    objectImagesFile,
+    arrayImagesFile,
+    req,
+    path
+  ) {
+    let newDataFavorite = {};
+
+    //validate name favorite
+    if (nameFavorite) {
+      if (nameFavorite[0] !== nameFavorite[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Nom, première lettre en majuscule.",
+        };
+      }
+
+      newDataFavorite.nameFavorite = nameFavorite;
+    }
+
+    //validate name ingredients and percentage ingredients
+    if (
+      nameIngredients &&
+      Array.isArray(nameIngredients) &&
+      nameIngredients.length > 0 &&
+      percentageIngredients &&
+      Array.isArray(percentageIngredients) &&
+      percentageIngredients.length > 0
+    ) {
+      if (
+        nameIngredients.includes("") ||
+        percentageIngredients.includes("") ||
+        nameIngredients.length !== percentageIngredients.length
+      ) {
+        return {
+          success: false,
+          message:
+            "Noms des ingrédients et Dosage des ingrédients, ingrédients ou dosages manquants et inégaux.",
+        };
+      }
+
+      if (percentageIngredients.some((dosage) => isNaN(dosage))) {
+        return {
+          success: false,
+          message: "Dosage, dosage doit être un numéro.",
+        };
+      }
+
+      // turn first letter of name ingredients into uppercase
+      nameIngredients.forEach((ingredient, index, ingredientsFavorite) => {
+        ingredientsFavorite[index] =
+          ingredient.charAt(0).toUpperCase() +
+          ingredient.slice(1).toLowerCase();
+      });
+
+      // turn nameIngredients and percentageIngredients into one objet
+      const ingredientsFavorite = nameIngredients.reduce((acc, curr, index) => {
+        acc[curr] = percentageIngredients[index];
+        return acc;
+      }, {});
+
+      newDataFavorite.ingredientsFavorite = ingredientsFavorite;
+    }
+
+    //validate note favorite
+    if (noteFavorite) {
+      if (noteFavorite[0] !== noteFavorite[0].toUpperCase()) {
+        return {
+          success: false,
+          message: "Notes, première lettre en majuscule.",
+        };
+      }
+
+      newDataFavorite.noteFavorite = noteFavorite;
+    }
+
+    //validate category favorite
+    if (categoryFavorite) {
+      if (
+        categoryFavorite !== "642b25e9e4f201d77621c6bc" &&
+        categoryFavorite !== "642b25f3e4f201d77621c6bd" &&
+        categoryFavorite !== "642b25fbe4f201d77621c6be"
+      ) {
+        return {
+          success: false,
+          message:
+            "Catégorie, seulement « Boulangerie », « Pâtisserie » ou « Autre ».",
+        };
+      }
+
+      newDataFavorite.categoryFavorite = categoryFavorite;
+    }
+
+    //validate image favorite
+    if (objectImagesFile && arrayImagesFile) {
+      let imagesFavorite = [];
+
+      if (!Array.isArray(objectImagesFile.imageFavorite)) {
+        imagesFavorite.push(objectImagesFile.imageFavorite);
+      } else {
+        objectImagesFile.imageFavorite.forEach((image) => {
+          imagesFavorite.push(image);
+        });
+      }
+
+      if (imagesFavorite.length != 1) {
+        return {
+          success: false,
+          message: "Image, une image nécessaire.",
+        };
+      }
+
+      //image favorite upload
+      const favoriteImageName = req.user._id;
+
+      newDataFavorite.imageFavorite = await super.uploadImgs(
+        imagesFavorite,
+        favoriteImageName,
+        path
+      );
+    }
+
+    newDataFavorite.authorFavorite = req.user._id;
+    return { success: true, newDataFavorite };
+  }
+
+  async setMyFavorite(
+    _id,
+    nameFavorite,
+    nameIngredients,
+    percentageIngredients,
+    noteFavorite,
+    categoryFavorite,
+    req,
+    res,
+    path,
+    fs
+  ) {
+    // validation my favorite
+
+    // params img uploaded my favorite
+    let objectImagesFile = req.files;
+    let arrayImagesFile;
+    if (objectImagesFile) {
+      arrayImagesFile = Object.keys(req.files.imageFavorite);
+
+      if (!Array.isArray(objectImagesFile.imageFavorite)) {
+        // delete myFavorite imgs
+        const myFavoriteTypeDeleteImage = { _id };
+        const myFavoriteDeleteImage = await this.getOneFavorite(
+          myFavoriteTypeDeleteImage
+        );
+
+        let myFavoriteImageName =
+          myFavoriteDeleteImage.imageFavorite[0].split("-")[1];
+
+        await super.deleteImgs(myFavoriteImageName, path, fs);
+      }
+    }
+
+    const validationResultMyFavorite = await this.myFavoriteValidation(
+      _id,
+      nameFavorite,
+      nameIngredients,
+      percentageIngredients,
+      noteFavorite,
+      categoryFavorite,
+      objectImagesFile,
+      arrayImagesFile,
+      req,
+      path
+    );
+
+    if (!validationResultMyFavorite.success) {
+      req.flash("error_msg", validationResultMyFavorite.message);
+      return res.redirect(`/${req.user.roleUser}/myfavorite/${_id}`);
+    }
+
+    // update my favorite
+    const myFavoriteTypeUpdateMyFavorite = { _id };
+
+    await this.Favorite.findOneAndUpdate(
+      myFavoriteTypeUpdateMyFavorite,
+      validationResultMyFavorite.newDataFavorite,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).exec();
+
+    req.flash(
+      "success_msg",
+      "Votre recette favorite à été mise à jour avec succès."
+    );
+    res.redirect(`/${req.user.roleUser}/myfavorite/${_id}`);
   }
 
   // Axios //////////////////////////////////////////////////

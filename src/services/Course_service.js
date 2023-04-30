@@ -715,13 +715,20 @@ class CourseService extends DbService {
     if (objectImagesFile) {
       arrayImagesFile = Object.keys(req.files.imageCourse);
 
-      // delete courseUpdate imgs
-      const courseTypeDeleteImage = { _id };
-      const courseDeleteImage = await this.getOneCourse(courseTypeDeleteImage);
+      if (
+        Array.isArray(objectImagesFile.imageCourse) &&
+        objectImagesFile.imageCourse.length == 2
+      ) {
+        // delete courseUpdate imgs
+        const courseTypeDeleteImage = { _id };
+        const courseDeleteImage = await this.getOneCourse(
+          courseTypeDeleteImage
+        );
 
-      let courseImageName = courseDeleteImage.imageCourse[0].split("-")[1];
+        let courseImageName = courseDeleteImage.imageCourse[0].split("-")[1];
 
-      await super.deleteImgs(courseImageName, path, fs);
+        await super.deleteImgs(courseImageName, path, fs);
+      }
     }
 
     // get old date course
