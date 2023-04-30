@@ -25,7 +25,7 @@ class FavoriteService extends DbService {
   }
 
   // get one favorite (show random all users favorites,)
-  getOneFavoriteFloorMath(favorites) {
+  async getOneFavoriteFloorMath(favorites) {
     let countFavorites = favorites.length;
     let numberFavorites = Math.floor(Math.random() * countFavorites);
 
