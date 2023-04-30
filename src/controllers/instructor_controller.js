@@ -367,7 +367,7 @@ module.exports.instructorMyFavorite = async (req, res) => {
     let { _id } = req.params;
 
     const favoriteTypeMyFavorite = { _id };
-    let = myFavorite = await favoriteService.getOneFavorite(
+    let myFavoriteInstructor = await favoriteService.getOneFavorite(
       favoriteTypeMyFavorite
     );
 
@@ -381,7 +381,7 @@ module.exports.instructorMyFavorite = async (req, res) => {
       title: "Instructor my favorite",
       showHeader: true,
       authUser: req.user,
-      myFavorite,
+      myFavoriteInstructor,
       allCategoriesNeeded,
     });
   } catch (error) {

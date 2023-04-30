@@ -265,8 +265,13 @@
           <span></span>
           <i class="uil uil-cell up_joinus"></i>
           <label for="percentageIngredients" class="up_joinus"
-            ><%= ingredient %>
+            ><%= ingredient %> (g)
           </label>
+          <input
+            type="hidden"
+            name="nameIngredientsInstructor"
+            value="<%= ingredient %>"
+          />
         </div>
 
         <div
