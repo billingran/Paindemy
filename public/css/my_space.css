@@ -98,6 +98,12 @@ h2.title_my_space {
 }
 
 @media screen and (max-width: 420px) {
+  .ctn_info_mySpace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .mid_info_mySpace {
     flex-direction: column;
     align-items: flex-start;

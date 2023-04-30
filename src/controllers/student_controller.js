@@ -81,6 +81,7 @@ module.exports.studentDelete = async (req, res) => {
 //post student delete
 module.exports.postStudentDelete = async (req, res) => {
   try {
+    // id of one student
     let { _id } = req.params;
 
     await userService.deleteStudent(_id, req, res, path, fs);
@@ -134,6 +135,7 @@ module.exports.studentMyCourses = async (req, res) => {
 //student my space
 module.exports.studentMySpace = async (req, res) => {
   try {
+    // id of one course
     let { _id } = req.params;
 
     // get one course for the calculation of ingredients
@@ -164,6 +166,7 @@ module.exports.studentMySpace = async (req, res) => {
 //post student my space
 module.exports.postStudentMySpace = async (req, res) => {
   try {
+    // id of one course
     let { _id } = req.params;
 
     // get one course for the name ingredients instructor
@@ -219,11 +222,11 @@ module.exports.postStudentMySpace = async (req, res) => {
   }
 };
 
-//student my favorites
-module.exports.studentMyFavorites = async (req, res) => {
+//student my favorite
+module.exports.studentMyFavorite = async (req, res) => {
   try {
-    res.render("my_courses", {
-      title: "Student my favorites",
+    res.render("my_favorite", {
+      title: "Student my favorite",
       showHeader: true,
       authUser: req.user,
     });

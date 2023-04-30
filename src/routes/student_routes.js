@@ -22,7 +22,7 @@ router.get("/myspace/:_id", studentController.studentMySpace);
 // post student my space
 router.post("/myspace/:_id", studentController.postStudentMySpace);
 
-// student my favorites
-router.get("/myfavorites/:_id", studentController.studentMyFavorites);
+// student my favorite
+router.get("/myfavorite/:_id", studentController.studentMyFavorite);
 
 module.exports = router;

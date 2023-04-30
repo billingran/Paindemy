@@ -34,7 +34,7 @@ router.get("/myspace/:_id", instructorController.instructorMySpace);
 // post instructor my space
 router.post("/myspace/:_id", instructorController.postInstructorMySpace);
 
-// instructor my favorites
-router.get("/myfavorites/:_id", instructorController.instructorMyFavorites);
+// instructor my favorite
+router.get("/myfavorite/:_id", instructorController.instructorMyFavorite);
 
 module.exports = router;

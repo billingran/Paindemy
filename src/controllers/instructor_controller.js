@@ -132,6 +132,7 @@ module.exports.postNewClass = async (req, res) => {
 // update class
 module.exports.updateClass = async (req, res) => {
   try {
+    // id of one course
     let { _id } = req.params;
 
     // get course update
@@ -174,6 +175,7 @@ module.exports.patchUpdateClass = async (req, res) => {
       ingredientsCourse,
     } = req.body;
 
+    // id of one course
     let { _id } = req.params;
 
     await courseService.setUpdateClass(
@@ -215,6 +217,7 @@ module.exports.instructorDelete = async (req, res) => {
 //post instrutor delete
 module.exports.postInstructorDelete = async (req, res) => {
   try {
+    // id of one instructor
     let { _id } = req.params;
 
     await userService.deleteInstructor(_id, req, res, path, fs);
@@ -268,6 +271,7 @@ module.exports.instructorMyCourses = async (req, res) => {
 //instructor my space
 module.exports.instructorMySpace = async (req, res) => {
   try {
+    // id of one course
     let { _id } = req.params;
 
     // get one course for the calculation of ingredients
@@ -298,6 +302,7 @@ module.exports.instructorMySpace = async (req, res) => {
 //post instructor my space
 module.exports.postInstructorMySpace = async (req, res) => {
   try {
+    // id of one course
     let { _id } = req.params;
 
     // get one course for the name ingredients instructor
@@ -353,11 +358,20 @@ module.exports.postInstructorMySpace = async (req, res) => {
   }
 };
 
-//instructor my favorites
-module.exports.instructorMyFavorites = async (req, res) => {
+//instructor my favorite
+module.exports.instructorMyFavorite = async (req, res) => {
   try {
-    res.render("my_courses", {
-      title: "Instructor my favorites",
+    // id of one favorite
+    let { _id } = req.params;
+
+    // get all categories needed
+    const allCategories = await categoryService.getAllCategories({});
+    const allCategoriesNeeded = allCategories.filter((category) => {
+      return category.nameCategory !== "Tout";
+    });
+
+    res.render("my_favorite", {
+      title: "Instructor my favorite",
       showHeader: true,
       authUser: req.user,
     });
