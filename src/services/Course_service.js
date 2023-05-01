@@ -8,6 +8,7 @@ class CourseService extends DbService {
   // READ //////////////////////////////////////////////////
   // Course////////////////////////////////////////////////
   // get one course (one course)
+
   async getOneCourse(courseType) {
     const course = await this.Course.findOne(courseType)
       .populate("categoryCourse", [

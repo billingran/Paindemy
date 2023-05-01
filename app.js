@@ -29,7 +29,7 @@ const cors = require("cors");
 // models
 const Category = require("./src/models/Category_model");
 const User = require("./src/models/User_model");
-const Course = require("./src/models/Course_model");
+const Course = require("./src/models/course_model");
 
 // Class Services
 const CourseService = require("./src/services/Course_service");
