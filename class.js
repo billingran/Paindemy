@@ -24,12 +24,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6df1f2da5e321045877",
         },
-
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Pain de mie",
@@ -55,11 +49,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e321045879",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Pain au levain",
@@ -76,11 +65,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587b",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Nordika",
@@ -105,11 +89,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587c",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Pain au khorazan",
@@ -135,11 +114,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6df1f2da5e321045877",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Croissant",
@@ -165,11 +139,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587e",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Pain au chocolate",
@@ -198,11 +167,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587d",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Pain au raisins",
@@ -233,11 +197,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587a",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Brioche",
@@ -262,11 +221,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e321045878",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Brioche au sucre",
@@ -291,11 +245,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6df1f2da5e321045876",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Pizza",
@@ -320,11 +269,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e321045879",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Gua Bao",
@@ -349,11 +293,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587f",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Nann",
@@ -379,11 +318,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587b",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Tortillas",
@@ -408,11 +342,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587c",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
       {
         nameCourse: "Dumpings",
@@ -429,11 +358,6 @@ async function insertDymmyRecipeData() {
         instructorCourse: {
           _id: "6446f6e01f2da5e32104587f",
         },
-        studentsCourse: [
-          {
-            _id: "64492cf4821681cd69e98a88",
-          },
-        ],
       },
     ]);
   } catch (error) {

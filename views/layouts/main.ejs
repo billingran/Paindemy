@@ -52,13 +52,9 @@
     <title><%- title %></title>
   </head>
   <body>
-    <div class="wrapper">
-      <% if (showHeader) { %> <%- include("../partials/header") %> <% } %>
+    <% if (showHeader) { %> <%- include("../partials/header") %> <% } %>
 
-      <main><%- body -%></main>
-
-      <%- include("../partials/footer") %>
-    </div>
+    <main><%- body -%></main>
 
     <!-- axious -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
@@ -74,15 +70,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <!-- front js -->
-    <script src="/js/join_us.js"></script>
-    <script src="/js/new_class.js"></script>
-    <script src="/js/header.js"></script>
-    <script src="/js/my_space.js"></script>
-    <script src="/js/my_favorite.js"></script>
-    <!-- axios js -->
-    <script src="/to_services/to_course_service.js"></script>
-    <script src="/to_services/to_favorite_service.js"></script>
+
     <!-- bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
