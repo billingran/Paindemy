@@ -50,8 +50,8 @@ const courseSchema = new mongoose.Schema({
   studentsCourse: {
     type: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        _id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        registeredAt: { type: Date, default: Date.now },
       },
     ],
     default: [],
