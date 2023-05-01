@@ -92,28 +92,6 @@ h2.title_my_space {
 }
 
 /* /////////////////////////////////////////////// */
-/* responive */
-
-@media screen and (max-width: 880px) {
-  .center_my_space {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .ctn_info_mySpace {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .mid_info_mySpace {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* /////////////////////////////////////////////// */
 /* my student */
 
 .section_my_students {
@@ -146,17 +124,15 @@ h2.title_my_space {
 }
 
 /* list my students */
-.student_list {
-  font-weight: 600;
-
+.myStudent_list {
   padding: 0 2.5rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 }
 
 .ctn_my_students {
+  font-weight: 600;
+
   margin: 2.8rem 0;
 
   width: 100%;
@@ -165,22 +141,44 @@ h2.title_my_space {
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   transition: all 0.3s;
 }
 
-.name_my_students {
-  width: 50%;
+@keyframes scaleDown {
+  to {
+    transform: scale(0);
+  }
+}
+
+.info_my_students {
+  width: 65%;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.name_my_students {
+  font-size: 1rem;
+  color: var(--C-6C757D);
+
+  display: flex;
+  align-items: center;
+
+  transition: all 0.3s;
 }
 
 .email_my_students {
-  width: 50%;
+  font-size: 1rem;
+  color: var(--C-6C757D);
 
   display: flex;
   align-items: center;
+
+  transition: all 0.3s;
 }
 
 .icon_my_students {
@@ -190,4 +188,67 @@ h2.title_my_space {
   margin: 0 0.5rem 0 0;
 
   transition: all 0.3s;
+}
+
+/* minus btn my students */
+.ctn_my_students .minus_btn {
+  background-color: var(--C-6E1D0E);
+
+  height: 2.2rem;
+  width: 2.2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.3s;
+}
+
+.ctn_my_students .minus_btn i {
+  color: var(--C-6C757D);
+  font-size: 2.2rem;
+
+  transition: all 0.3s;
+}
+
+.ctn_my_students .minus_btn:hover {
+  background-color: var(--C-DCA47D);
+}
+.ctn_my_students .minus_btn:hover i {
+  color: var(--C-FF0066);
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 880px) {
+  /* my space */
+  .center_my_space {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* my students */
+  .myStudent_list {
+    padding: 0 0.85rem;
+  }
+
+  .info_my_students {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  /* my space */
+  .ctn_info_mySpace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mid_info_mySpace {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

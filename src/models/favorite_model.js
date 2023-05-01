@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+// mongoose.models = {};
+// mongoose.modelSchemas = {};
+
 const favoriteSchema = new mongoose.Schema({
   nameFavorite: {
     type: String,

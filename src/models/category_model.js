@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+// mongoose.models = {};
+// mongoose.modelSchemas = {};
+
 const categorySchema = new mongoose.Schema({
   nameCategory: {
     type: String,

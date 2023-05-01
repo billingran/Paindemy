@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-mongoose.models = {};
-mongoose.modelSchemas = {};
+// mongoose.models = {};
+// mongoose.modelSchemas = {};
 
 const courseSchema = new mongoose.Schema({
   nameCourse: {
@@ -53,8 +53,8 @@ const courseSchema = new mongoose.Schema({
   studentsCourse: {
     type: [
       {
-        _id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-        registeredAt: { type: Date, default: Date.now },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
       },
     ],
     default: [],

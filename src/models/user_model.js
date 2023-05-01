@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+// mongoose.models = {};
+// mongoose.modelSchemas = {};
+
 const userSchema = new mongoose.Schema({
   firstnameUser: {
     type: String,
