@@ -159,6 +159,15 @@ h2.title_my_space {
   transition: all 0.3s;
 }
 
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @keyframes scaleDown {
   to {
     transform: scale(0);

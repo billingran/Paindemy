@@ -45,8 +45,8 @@ async function requestRegisterOneCourse(e) {
       });
     } else if (numberCourseRegistered.message) {
       // erro of not one user
-      let redirectUrlRegisterOnecCourse = "/auth/login";
-      window.location.href = redirectUrlRegisterOnecCourse;
+      let redirectUrlRegisterOneCourse = "/auth/login";
+      window.location.href = redirectUrlRegisterOneCourse;
     }
   } catch (error) {
     console.log(error);
@@ -92,8 +92,8 @@ async function requestUnregisterOneCourse(e) {
       ctnUnregisterCourse.style.animation = "scaleDown 0.3s forwards";
     } else if (numberCourseUnregistered.message) {
       // erro of not a user
-      let redirectUrlUnegisterOnecCourse = "/auth/login";
-      window.location.href = redirectUrlUnegisterOnecCourse;
+      let redirectUrlUnegisterOneCourse = "/auth/login";
+      window.location.href = redirectUrlUnegisterOneCourse;
     }
   } catch (error) {
     console.log(error);

@@ -154,10 +154,10 @@ module.exports.postDeleteOneStudent = async (req, res) => {
 // post delete one student
 module.exports.postAddOneStudent = async (req, res) => {
   try {
-    // student id
-    let { student_id, course_id } = req.body;
+    // the course id and student email
+    let { _id, emailUser } = req.body;
 
-    // await userService.addOneStudent(student_id, course_id, req, res);
+    await userService.addOneStudent(_id, emailUser, validator, req, res);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

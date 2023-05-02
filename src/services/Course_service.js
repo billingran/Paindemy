@@ -798,7 +798,7 @@ class CourseService extends DbService {
       let coursesRegistered;
 
       if (result.modifiedCount === 0) {
-        // erro of adding a course twice
+        // erro of adding one course twice
         coursesRegistered = "Vous vous êtes déjà inscrit à ce cours.";
         return res.send(coursesRegistered);
       }

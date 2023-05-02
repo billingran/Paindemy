@@ -928,7 +928,69 @@ class UserService extends DbService {
   }
 
   // post add one student
-  async deleteOneStudent() {}
+  async addOneStudent(_id, emailUser, validator, req, res) {
+    if (req.user && req.user.roleUser == "instructor") {
+      let courseAddOneStudent;
+
+      // validation of the student email
+      if (emailUser) {
+        if (!validator.isEmail(emailUser)) {
+          // erro of not a valid email
+          courseAddOneStudent =
+            "Adresse mail, L’adresse mail n’est pas valide.";
+          return res.send(courseAddOneStudent);
+        }
+      }
+
+      // get the student added
+      const userTypeStudentAdded = { emailUser };
+      const studentAdded = await this.getOneUser(userTypeStudentAdded);
+
+      // validation of the student exist or not
+      if (studentAdded._id == null) {
+        // erro of student doesn't exist
+        courseAddOneStudent = "Adresse mail, L’élève n'existe pas.";
+        return res.send(courseAddOneStudent);
+      }
+
+      // add user student into the course
+      const idStudent = studentAdded._id;
+
+      const courseTypeAddOneStudent = { _id };
+
+      let result = await this.Course.updateOne(
+        courseTypeAddOneStudent,
+        { $addToSet: { studentsCourse: idStudent } },
+        { runValidators: true }
+      ).exec();
+
+      // validation of add user student into the course
+      if (result.modifiedCount === 0) {
+        // erro of adding one student twice
+        courseAddOneStudent = "Adresse mail, L’élève existe déjà.";
+        return res.send(courseAddOneStudent);
+      }
+
+      // get the new number students of the course
+      const courseTypeNewNumberMyStudents = { _id };
+      let newNumberMyStudents = await this.Course.findOne(
+        courseTypeNewNumberMyStudents
+      );
+
+      // send new number students of the course and info student
+      courseAddOneStudent = { newNumberMyStudents, studentAdded };
+      return res.send(courseAddOneStudent);
+    } else {
+      // error not a instructor
+      req.flash(
+        "error_msg",
+        "Incrisption échouée : Vous n’avez pas le droit d'ajouter  les élèves du cours."
+      );
+
+      let courseAddOneStudent = { message: "error not a instructor." };
+      return res.send(courseAddOneStudent);
+    }
+  }
 }
 
 module.exports = UserService;
