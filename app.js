@@ -116,6 +116,9 @@ app.use(async (req, res, next) => {
         coursesTypeInstructor
       );
 
+      // id registered courses instructor
+      req.user.idCoursesRegistered = [];
+
       next();
     } else {
       next();

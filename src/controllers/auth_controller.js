@@ -13,7 +13,7 @@ const bcrypt = require("bcrypt");
 // sign up
 module.exports.signUp = (req, res) => {
   return res.render("sign_up", {
-    title: "Sign up",
+    title: "Créer un compte",
     showHeader: false,
     authUser: req.user,
   });
@@ -50,7 +50,7 @@ module.exports.postSignUp = async (req, res) => {
 // join us
 module.exports.joinUs = (req, res) => {
   return res.render("join_us", {
-    title: "Join us",
+    title: "Rejoignez-nous",
     showHeader: false,
     authUser: req.user,
   });
@@ -94,7 +94,7 @@ module.exports.postJoinUs = async (req, res) => {
 //local login
 module.exports.login = (req, res) => {
   return res.render("login", {
-    title: "Login",
+    title: "Se connecter",
     showHeader: false,
     authUser: req.user,
   });

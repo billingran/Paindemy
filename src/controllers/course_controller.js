@@ -19,6 +19,9 @@ const nodeMailer = require("nodemailer");
 const juice = require("juice");
 const { Console } = require("console");
 
+// time controller
+const moment = require("moment");
+
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
   try {
@@ -71,6 +74,9 @@ module.exports.getCoursesCategory = async (req, res) => {
       manyCourses = await courseService.getAllCourses(coursesType);
     }
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     return res.render("courses", {
       title: "Courses",
       showHeader: true,
@@ -78,6 +84,8 @@ module.exports.getCoursesCategory = async (req, res) => {
       allCourses,
       manyCourses,
       iconCategory,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);
@@ -121,6 +129,9 @@ module.exports.getOneinstructor = async (req, res) => {
       numberStudentOneInstructor += course.studentsCourse.length;
     });
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     return res.render("instructor", {
       title: "Instructor",
       showHeader: true,
@@ -129,6 +140,8 @@ module.exports.getOneinstructor = async (req, res) => {
       coursesInstructor,
       courseRandomInstructor,
       numberStudentOneInstructor,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);
@@ -199,6 +212,9 @@ module.exports.getOnecourse = async (req, res) => {
       limitNumberRelated
     );
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     return res.render("course", {
       title: `Course`,
       showHeader: true,
@@ -206,6 +222,8 @@ module.exports.getOnecourse = async (req, res) => {
       requestCourse,
       oneCourse,
       relatedCourses,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);
@@ -225,13 +243,18 @@ module.exports.postGetSearchTerm = async (req, res) => {
 
     let result = courseService.getOneResultFloorMath(results);
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     return res.render("search", {
-      title: "Search",
+      title: "Rechercher",
       showHeader: true,
       authUser: req.user,
       results,
       result,
       searchTerm,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);

@@ -2,7 +2,7 @@
 <!-- course -->
 
 <section class="section_course">
-  <% if(oneCourse) { %>
+  <% if(authUser && oneCourse) { %>
   <div class="ctn_course">
     <div class="ctn_midimage_course">
       <a href="/course/onecourse/<%= oneCourse._id %>">
@@ -33,7 +33,11 @@
         <li class="ctn_imagedate_course">
           <div class="centralA">
             <i class="uil uil-calender icon_imageContent_course"></i>
-            <div><%= oneCourse.dateCourse %> / <%= oneCourse.timeCourse %></div>
+            <div
+              style="<%= moment(oneCourse.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(oneCourse.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+            >
+              <%= oneCourse.dateCourse %> / <%= oneCourse.timeCourse %>
+            </div>
           </div>
         </li>
         <li class="ctn_imageAddress_course centralA">
@@ -97,8 +101,8 @@
         </div>
         <% if (authUser && authUser.roleUser == "student" &&
         !authUser.idCoursesRegistered.some(function (idCourseRegistered) {
-        return idCourseRegistered.toString() === oneCourse._id.toString() ; }))
-        { %>
+        return idCourseRegistered.toString() === oneCourse._id.toString() ; })&&
+        moment(oneCourse.dateCourse).isSameOrAfter(currentDate)) { %>
         <div class="mid_display mid_display_course">
           <a
             href="#"
@@ -120,12 +124,14 @@
           <i class="uil uil-cell"></i>
           <h2 class="title_display">Ingredients</h2>
         </div>
-        <% if (authUser && authUser.roleUser == "student" &&
-        !authUser.idCoursesRegistered.some(function (idCourseRegistered) {
-        return idCourseRegistered.toString() === oneCourse._id.toString() ; }))
-        { %>
+        <% if ( authUser.idCoursesRegistered.some(function (idCourseRegistered)
+        { return idCourseRegistered.toString() === oneCourse._id.toString() ;
+        })) { %>
         <div class="mid_display mid_display_course">
-          <a href="#" class="a_NBorder a_NBorder_course right_btns">
+          <a
+            href="/<%= authUser.roleUser %>/myspace/<%= oneCourse._id %>"
+            class="a_NBorder a_NBorder_course right_btns"
+          >
             <i class="uil uil-calculator-alt"></i> Calculer
           </a>
         </div>
@@ -228,10 +234,15 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(relatedCourse.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(relatedCourse.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="#"
+                    style="<%= moment(relatedCourse.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(relatedCourse.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= relatedCourse.dateCourse %> / <%=
                     relatedCourse.timeCourse %>
                   </a>
@@ -258,7 +269,9 @@
                   <% if (authUser && authUser.roleUser == "student" &&
                   !authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
-                  === relatedCourse._id.toString() ; })) { %>
+                  === relatedCourse._id.toString() ; })&&
+                  moment(relatedCourse.dateCourse).isSameOrAfter(currentDate)) {
+                  %>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"

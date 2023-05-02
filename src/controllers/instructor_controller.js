@@ -25,7 +25,7 @@ const bcrypt = require("bcrypt");
 module.exports.instructorProfile = (req, res) => {
   try {
     res.render("my_profile", {
-      title: "Instructor profile",
+      title: "Instructeur profile",
       showHeader: true,
       authUser: req.user,
     });
@@ -84,7 +84,7 @@ module.exports.newClass = async (req, res) => {
     });
 
     res.render("new_class", {
-      title: "New class",
+      title: "Nouveau cours",
       showHeader: false,
       authUser: req.user,
       currentDate,
@@ -149,7 +149,7 @@ module.exports.updateClass = async (req, res) => {
     });
 
     res.render("update_class", {
-      title: "Update class",
+      title: "Mettre à jour le cours",
       showHeader: true,
       authUser: req.user,
       courseUpdate,
@@ -205,7 +205,7 @@ module.exports.patchUpdateClass = async (req, res) => {
 module.exports.instructorDelete = async (req, res) => {
   try {
     res.render("delete_account", {
-      title: "Instructor Delete",
+      title: "Instructeur surpprimer",
       showHeader: true,
       authUser: req.user,
     });
@@ -254,14 +254,19 @@ module.exports.instructorMyCourses = async (req, res) => {
     const myFavoriteInstructorRandom =
       await favoriteService.getOneFavoriteFloorMath(allInstructorFavorites);
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     res.render("my_courses", {
-      title: "Instructor my courses and favorites",
+      title: "Instructeur mes cours et favoris",
       showHeader: true,
       authUser: req.user,
       allInstructorCourses,
       mycourseInstructorRandom,
       allInstructorFavorites,
       myFavoriteInstructorRandom,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);
@@ -288,7 +293,7 @@ module.exports.instructorMySpace = async (req, res) => {
     });
 
     res.render("my_space", {
-      title: "Instructor my space",
+      title: "Instructeur mon espace",
       showHeader: true,
       authUser: req.user,
       courseFavorite,
@@ -379,7 +384,7 @@ module.exports.instructorMyFavorite = async (req, res) => {
     });
 
     res.render("my_favorite", {
-      title: "Instructor my favorite",
+      title: "Instructeur mon favoris",
       showHeader: true,
       authUser: req.user,
       myFavoriteInstructor,

@@ -63,10 +63,15 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="#"
+                    style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= course.dateCourse %> / <%= course.timeCourse %>
                   </a>
                 </div>
@@ -344,10 +349,15 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="#"
+                    style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= course.dateCourse %> / <%= course.timeCourse %>
                   </a>
                 </div>

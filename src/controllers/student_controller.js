@@ -18,10 +18,13 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const fs = require("fs");
 
+// time controller
+const moment = require("moment");
+
 // student profile
 module.exports.studentProfile = (req, res) => {
   res.render("my_profile", {
-    title: "Student profile",
+    title: "Élève profile",
     showHeader: true,
     authUser: req.user,
   });
@@ -72,7 +75,7 @@ module.exports.patchStudentProfile = async (req, res) => {
 //student delete
 module.exports.studentDelete = async (req, res) => {
   res.render("delete_account", {
-    title: "Student Delete",
+    title: "Élève surpprimer",
     showHeader: true,
     authUser: req.user,
   });
@@ -117,14 +120,19 @@ module.exports.studentMyCourses = async (req, res) => {
     const myFavoriteStudentRandom =
       await favoriteService.getOneFavoriteFloorMath(allStudentFavorites);
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     res.render("my_courses", {
-      title: "Student my courses and favorites",
+      title: "Élève mon favoris",
       showHeader: true,
       authUser: req.user,
       allStudentCourses,
       mycourseStudentRandom,
       allStudentFavorites,
       myFavoriteStudentRandom,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);
@@ -151,7 +159,7 @@ module.exports.studentMySpace = async (req, res) => {
     });
 
     res.render("my_space", {
-      title: "Student my space",
+      title: "Élève mon espace",
       showHeader: true,
       authUser: req.user,
       courseFavorite,
@@ -239,7 +247,7 @@ module.exports.studentMyFavorite = async (req, res) => {
       return category.nameCategory !== "Tout";
     });
     res.render("my_favorite", {
-      title: "Student my favorite",
+      title: "Élève mon favoris",
       showHeader: true,
       authUser: req.user,
       myFavoriteStudent,

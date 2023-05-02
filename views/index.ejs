@@ -122,10 +122,16 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(courseB.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(courseB.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
                 </div>
                 <div>
-                  <a href="#">
+                  <a
+                    href="#"
+                    style="<%= moment(courseB.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(courseB.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  >
                     <%= courseB.dateCourse %> / <%= courseB.timeCourse %>
                   </a>
                 </div>
@@ -150,7 +156,8 @@
                   <% if (authUser && authUser.roleUser == "student" &&
                   !authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
-                  === courseB._id.toString() ; })) { %>
+                  === courseB._id.toString() ; }) &&
+                  moment(courseB.dateCourse).isSameOrAfter(currentDate)) { %>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"
@@ -251,10 +258,15 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(courseP.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(courseP.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="#"
+                    style="<%= moment(courseP.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(courseP.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= courseP.dateCourse %> / <%= courseP.timeCourse %>
                   </a>
                 </div>
@@ -279,7 +291,8 @@
                   <% if (authUser && authUser.roleUser == "student" &&
                   !authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
-                  === courseP._id.toString() ; })) { %>
+                  === courseP._id.toString() ; }) &&
+                  moment(courseP.dateCourse).isSameOrAfter(currentDate)) { %>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"
@@ -381,10 +394,15 @@
 
               <li class="content_template">
                 <div>
-                  <i class="uil uil-calender icon_content_template"></i>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(courseO.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(courseO.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
+                    href="#"
+                    style="<%= moment(courseO.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(courseO.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= courseO.dateCourse %> / <%= courseO.timeCourse %>
                   </a>
                 </div>
@@ -409,7 +427,8 @@
                   <% if (authUser && authUser.roleUser == "student" &&
                   !authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
-                  === courseO._id.toString() ; })) { %>
+                  === courseO._id.toString() ; }) &&
+                  moment(courseO.dateCourse).isSameOrAfter(currentDate)) { %>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"
