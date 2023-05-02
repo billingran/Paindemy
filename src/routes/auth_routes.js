@@ -56,4 +56,7 @@ router.get("/logout", authController.logout);
 // post delete one student
 router.post("/deleteonestudent", authController.postDeleteOneStudent);
 
+// post add one student
+router.post("/addonestudent", authController.postAddOneStudent);
+
 module.exports = router;

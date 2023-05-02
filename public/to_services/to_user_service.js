@@ -5,7 +5,7 @@ const ctnNumberStudentAddedOrDeleted = document.querySelector(
   ".ctn_number_myStudents"
 );
 
-// register one course//////////////////////////////////////////////////
+// delete one student//////////////////////////////////////////////////
 const btnDeleteStudents = document.querySelectorAll(
   ".btn_deleteOneStudent_myStudents"
 );
@@ -32,7 +32,7 @@ async function requestDeleteOneStudent(e) {
       // get new number students of the course
       ctnNumberStudentAddedOrDeleted.getElementsByTagName("div")[0].remove;
 
-      ctnNumberStudentAddedOrDeleted.innerHTML = `<div class="new_number_myStudents">${numberStudentsMyStudents.studentsCourse.length}</div>`;
+      ctnNumberStudentAddedOrDeleted.innerHTML = ` <div class="new_number_myStudents">${numberStudentsMyStudents.studentsCourse.length}</div>`;
 
       // hide and remove info sutdent deleted
       let ctnInfoStudentDeleted = e.target.parentElement;
@@ -52,3 +52,16 @@ async function requestDeleteOneStudent(e) {
 btnDeleteStudents.forEach((btn) => {
   btn.addEventListener("click", requestDeleteOneStudent);
 });
+
+// add one student//////////////////////////////////////////////////
+async function requestAddOneStudent(e) {
+  e.preventDefault();
+
+  // get the data of the form to add one student
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+}
+
+document
+  .getElementById("add_oneStudent_form")
+  .addEventListener("submit", requestAddOneStudent);

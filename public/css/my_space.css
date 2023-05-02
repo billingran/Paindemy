@@ -105,31 +105,21 @@ h2.title_my_space {
 }
 
 /* number my students */
+
 .ctn_number_myStudents {
   position: relative;
 }
 
 .number_myStudents {
-  background-color: var(--C-DEDEDE);
-  z-index: -1;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .new_number_myStudents {
-  background-color: var(--C-DEDEDE);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
 
   transition: all 0.3s;
 
@@ -164,6 +154,7 @@ h2.title_my_space {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   transition: all 0.3s;
 }
@@ -175,17 +166,16 @@ h2.title_my_space {
 }
 
 .info_my_students {
-  width: 65%;
-
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .name_my_students {
   font-size: 1rem;
   color: var(--C-6C757D);
+
+  word-break: break-all;
+  overflow-wrap: break-word;
 
   display: flex;
   align-items: center;
@@ -196,6 +186,9 @@ h2.title_my_space {
 .email_my_students {
   font-size: 1rem;
   color: var(--C-6C757D);
+
+  word-break: break-all;
+  overflow-wrap: break-word;
 
   display: flex;
   align-items: center;

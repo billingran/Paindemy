@@ -926,6 +926,9 @@ class UserService extends DbService {
       return res.send(courseDeleteOneStudent);
     }
   }
+
+  // post add one student
+  async deleteOneStudent() {}
 }
 
 module.exports = UserService;

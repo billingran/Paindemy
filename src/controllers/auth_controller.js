@@ -150,3 +150,16 @@ module.exports.postDeleteOneStudent = async (req, res) => {
     return res.status(500).send(error);
   }
 };
+
+// post delete one student
+module.exports.postAddOneStudent = async (req, res) => {
+  try {
+    // student id
+    let { student_id, course_id } = req.body;
+
+    // await userService.addOneStudent(student_id, course_id, req, res);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
