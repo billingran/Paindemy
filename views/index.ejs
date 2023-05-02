@@ -150,9 +150,7 @@
                   <% if (authUser && authUser.roleUser == "student" &&
                   !authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
-                  === courseB._id.toString() ; })) { %> <% if
-                  (courseB.dateCourse &&
-                  moment(courseB.dateCourse).isBefore(currentDate)) { %>
+                  === courseB._id.toString() ; })) { %>
                   <div class="btns_template icon_plus_template">
                     <a
                       href="#"
@@ -162,7 +160,7 @@
                       <i class="uil uil-plus"></i>
                     </a>
                   </div>
-                  <% } %> <% } %>
+                  <% } %>
                   <div class="btns_template icon_more_template">
                     <a href="/course/onecourse/<%= courseB._id %>">
                       <i class="uil uil-ellipsis-h"></i>
