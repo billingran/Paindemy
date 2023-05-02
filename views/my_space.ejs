@@ -192,13 +192,10 @@
 
     <div class="ctn_info_mySpace">
       <div class="mid_info_mySpace">
-        <a>
+        <a class="centralA">
           <i class="uil uil-graduation-cap mid_icon_mySpace"></i>
           <div class="ctn_number_myStudents">
             <div class="number_myStudents">
-              <%= courseFavorite.studentsCourse.length %>
-            </div>
-            <div class="new_number_myStudents">
               <%= courseFavorite.studentsCourse.length %>
             </div>
           </div>
@@ -239,39 +236,35 @@
     </form>
 
     <div class="myStudent_list">
+      <% if(typeof courseFavorite.studentsCourse !== 'undefined' &&
+      courseFavorite.studentsCourse != null &&
+      courseFavorite.studentsCourse.length > 0) { %> <%
+      courseFavorite.studentsCourse.forEach(function(student){ %>
       <div class="ctn_my_students">
         <div class="info_my_students">
           <div class="name_my_students">
-            <i class="uil uil-graduation-cap icon_my_students"></i> Manon
-            Lambert
+            <i class="uil uil-graduation-cap icon_my_students"></i> <%=
+            student.firstnameUser %> <%= student.lastnameUser %>
           </div>
           <div class="email_my_students">
             <i class="uil uil-envelope-alt icon_my_students"></i>
-            billingran@gmail.com
-          </div>
-        </div>
-        <button class="dlt_ingredientsBtn_myFavorite minus_btn a_NBorder">
-          <i class="uil uil-times"></i>
-        </button>
-      </div>
-      <div class="ctn_my_students">
-        <div class="info_my_students">
-          <div class="name_my_students">
-            <i class="uil uil-graduation-cap icon_my_students"></i> Manon
-            Lambert
-          </div>
-          <div class="email_my_students">
-            <i class="uil uil-envelope-alt icon_my_students"></i>
-            billingran@gmail.com
+            <%= student.emailUser %>
           </div>
         </div>
         <a
+          href="#"
           class="btn_deleteOneStudent_myStudents minus_btn a_NBorder"
-          id="<%= authUser._id %>"
+          student-id="<%= student._id %>"
+          course-id="<%= courseFavorite._id %>"
         >
           <i class="uil uil-times"></i>
         </a>
       </div>
+      <% }) %> <% } else { %>
+      <div class="ctn_msg error_msg">
+        <strong>Aucun élève</strong>
+      </div>
+      <% } %>
     </div>
 
     <% } %>

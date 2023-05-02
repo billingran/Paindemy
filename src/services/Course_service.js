@@ -778,7 +778,7 @@ class CourseService extends DbService {
 
   // Axios //////////////////////////////////////////////////
 
-  // register one course
+  // post register one course
   async registerOneCourse(_id, req, res, nodeMailer, juice) {
     // check if it's a user student
     if (req.user && req.user.roleUser == "student") {
@@ -835,7 +835,7 @@ class CourseService extends DbService {
     }
   }
 
-  // unregister one course
+  // post unregister one course
   async unRegisterOneCourse(_id, req, res, path, fs, nodeMailer, juice) {
     // check if it's a user
     if (req.user) {

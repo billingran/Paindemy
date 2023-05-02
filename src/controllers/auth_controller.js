@@ -135,3 +135,18 @@ module.exports.logout = (req, res) => {
     }
   });
 };
+
+//AXIOS //////////////////////////////////////////////////
+
+// post delete one student
+module.exports.postDeleteOneStudent = async (req, res) => {
+  try {
+    // student id
+    let { student_id, course_id } = req.body;
+
+    await userService.deleteOneStudent(student_id, course_id, req, res);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};

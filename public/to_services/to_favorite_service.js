@@ -3,7 +3,7 @@ const ctnNumberAllFavoriteSidebar = document.querySelector(
   ".ctn_allFavoritesNumber_sidebar"
 );
 
-// delete a favorite//////////////////////////////////////////////////
+// delete one favorite//////////////////////////////////////////////////
 const btnDeleteOneFavorite = document.querySelectorAll(
   ".btn_delete_oneFavorite"
 );

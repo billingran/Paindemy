@@ -478,7 +478,7 @@ class FavoriteService extends DbService {
 
   // Axios //////////////////////////////////////////////////
 
-  // delete one favorite
+  // post delete one favorite
   async deleteOneFavorite(_id, req, res, path, fs) {
     // check if it's a user
     if (req.user) {

@@ -51,4 +51,9 @@ router.get(
 // logout
 router.get("/logout", authController.logout);
 
+//AXIOS //////////////////////////////////////////////////
+
+// post delete one student
+router.post("/deleteonestudent", authController.postDeleteOneStudent);
+
 module.exports = router;

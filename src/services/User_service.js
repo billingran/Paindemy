@@ -898,6 +898,34 @@ class UserService extends DbService {
 
     res.redirect("/");
   }
+
+  // Axios //////////////////////////////////////////////////
+  // post delete one student
+  async deleteOneStudent(student_id, course_id, req, res) {
+    if (req.user && req.user.roleUser == "instructor") {
+      // delete user student from the course and get new number students of the course
+      let courseDeleteOneStudent = await this.Course.findOneAndUpdate(
+        { _id: course_id },
+        { $pull: { studentsCourse: student_id } },
+        {
+          runValidators: true,
+          new: true,
+        }
+      ).exec();
+
+      // send new number students of the course
+      return res.send(courseDeleteOneStudent);
+    } else {
+      // error not a instructor
+      req.flash(
+        "error_msg",
+        "Incrisption échouée : Vous n’avez pas le droit de supprimer les élèves du cours."
+      );
+
+      let courseDeleteOneStudent = { message: "error not a instructor." };
+      return res.send(courseDeleteOneStudent);
+    }
+  }
 }
 
 module.exports = UserService;
