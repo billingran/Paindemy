@@ -74,6 +74,7 @@ module.exports.patchInstructorProfile = async (req, res) => {
 // new class
 module.exports.newClass = async (req, res) => {
   try {
+    // get current date
     const currentDate = moment().format("YYYY-MM-DD");
 
     // get all categories needed

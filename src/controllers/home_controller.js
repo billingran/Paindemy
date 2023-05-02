@@ -5,6 +5,9 @@ const categoryService = new CategoryService();
 const CourseService = require("../services/Course_service");
 const courseService = new CourseService();
 
+// time controller
+const moment = require("moment");
+
 // Home page
 module.exports.homePage = async (req, res) => {
   try {
@@ -39,6 +42,9 @@ module.exports.homePage = async (req, res) => {
       limitNumberCourses
     );
 
+    // get current date
+    const currentDate = moment().format("YYYY-MM-DD");
+
     return res.render("index", {
       title: "Home page",
       showHeader: true,
@@ -47,6 +53,8 @@ module.exports.homePage = async (req, res) => {
       coursesB,
       coursesP,
       coursesO,
+      currentDate,
+      moment,
     });
   } catch (error) {
     console.log(error);
