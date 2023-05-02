@@ -17,6 +17,7 @@
       </div>
       <div class="mid_display">
         <a
+          title="Aléatoire dans <%= searchTerm %>"
           href="/course/onecourse/<%= result._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
@@ -33,7 +34,10 @@
         <% if(typeof results !== 'undefined' && results != null &&
         results.length > 0) { %> <% results.forEach(function(result){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/onecourse/<%= result._id %>">
+          <a
+            title="<%= <%= result.nameCourse %> %>"
+            href="/course/onecourse/<%= result._id %>"
+          >
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -46,7 +50,7 @@
           </a>
           <div class="ctn_content_template">
             <ul>
-              <li class="content_template">
+              <li class="content_template" title="Nom du cours">
                 <div>
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
@@ -57,7 +61,7 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Instructeur du cours">
                 <div>
                   <iconify-icon
                     icon="tabler:chef-hat"
@@ -73,7 +77,7 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Date et heure du cours">
                 <div>
                   <i
                     class="uil uil-calender icon_content_template"
@@ -89,7 +93,10 @@
                 </div>
               </li>
 
-              <li class="content_template address_template">
+              <li
+                class="content_template address_template"
+                title="Adresse du cours"
+              >
                 <div>
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
@@ -110,7 +117,10 @@
                   (idCourseRegistered) { return idCourseRegistered.toString()
                   === result._id.toString() ; })&&
                   moment(result.dateCourse).isSameOrAfter(currentDate)) { %>
-                  <div class="btns_template icon_plus_template">
+                  <div
+                    class="btns_template icon_plus_template"
+                    title="Enregistrer"
+                  >
                     <a
                       href="#"
                       class="btn_register_OneCourse"
@@ -120,7 +130,10 @@
                     </a>
                   </div>
                   <% } %>
-                  <div class="btns_template icon_more_template">
+                  <div
+                    class="btns_template icon_more_template"
+                    title="Voir plus"
+                  >
                     <a href="/course/onecourse/<%= result._id %>">
                       <i class="uil uil-ellipsis-h"></i>
                     </a>

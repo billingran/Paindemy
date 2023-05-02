@@ -111,11 +111,11 @@
         <% if(typeof allinstructors !== 'undefined' && allinstructors != null &&
         allinstructors.length > 0) { %> <% allinstructors.forEach(instructor =>
         { %>
-        <li class="mid_image">
-          <a
-            title="Instructeur <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
-            href="/course/instructor/<%= instructor._id %>"
-          >
+        <li
+          class="mid_image"
+          title="Instructeur <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
+        >
+          <a href="/course/instructor/<%= instructor._id %>">
             <div class="ctn_image ctn_image_instructors">
               <div
                 loading="lazy"

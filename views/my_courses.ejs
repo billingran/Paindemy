@@ -20,6 +20,7 @@
       <% if (allInstructorCourses && allInstructorCourses.length > 0) { %>
       <div class="mid_display">
         <a
+          title="Aléatoire dans Mes cours"
           href="/course/onecourse/<%= mycourseInstructorRandom._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
@@ -37,7 +38,10 @@
         allInstructorCourses != null && allInstructorCourses.length > 0) { %> <%
         allInstructorCourses.forEach(function(course){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/onecourse/<%= course._id %>">
+          <a
+            title="<%= course.nameCourse %>"
+            href="/course/onecourse/<%= course._id %>"
+          >
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -50,7 +54,7 @@
           </a>
           <div class="ctn_content_template">
             <ul>
-              <li class="content_template">
+              <li class="content_template" title="Nom du cours">
                 <div>
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
@@ -61,7 +65,7 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Date et heure du cours">
                 <div>
                   <i
                     class="uil uil-calender icon_content_template"
@@ -70,28 +74,30 @@
                 </div>
                 <div>
                   <a
-                    href="#"
                     style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= course.dateCourse %> / <%= course.timeCourse %>
                   </a>
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Nombre d'élèves du cours">
                 <div>
                   <i class="uil uil-graduation-cap icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= course.studentsCourse.length %> </a>
+                  <a><%= course.studentsCourse.length %> </a>
                 </div>
               </li>
 
-              <li class="content_template address_template">
+              <li
+                class="content_template address_template"
+                title="Nombre d'ingredients du cours"
+              >
                 <div>
                   <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.ingredientsCourse.length %> </a>
+                  <a> <%= course.ingredientsCourse.length %> </a>
                 </div>
               </li>
 
@@ -103,17 +109,26 @@
                 </div>
                 <div class="centralA">
                   <% if (authUser && authUser.roleUser == "instructor") { %>
-                  <div class="btns_template icon_update_template">
+                  <div
+                    class="btns_template icon_update_template"
+                    title="Mettre à jour le cours"
+                  >
                     <a href="/instructor/updateclass/<%= course._id %>">
                       <i class="uil uil-redo"></i>
                     </a>
                   </div>
-                  <div class="btns_template icon_calculate_template">
+                  <div
+                    class="btns_template icon_calculate_template"
+                    title="Mon espace"
+                  >
                     <a href="/instructor/myspace/<%= course._id %>">
                       <i class="uil uil-calculator-alt"></i>
                     </a>
                   </div>
-                  <div class="btns_template icon_plus_template">
+                  <div
+                    class="btns_template icon_plus_template"
+                    title="surpprimer le cours"
+                  >
                     <a
                       href="#"
                       class="btn_unregister_oneCourse"
@@ -123,7 +138,10 @@
                     </a>
                   </div>
                   <% } %>
-                  <div class="btns_template icon_more_template">
+                  <div
+                    class="btns_template icon_more_template"
+                    title="Voir plus"
+                  >
                     <a href="/course/onecourse/<%= course._id %>">
                       <i class="uil uil-ellipsis-h"></i>
                     </a>
@@ -155,6 +173,7 @@
       <% if (allInstructorFavorites && allInstructorFavorites.length > 0) { %>
       <div class="mid_display">
         <a
+          title="Aléatoire dans Mes favoris"
           href="/<%= authUser.roleUser %>/myfavorite/<%= myFavoriteInstructorRandom._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
@@ -172,7 +191,10 @@
         allInstructorFavorites != null && allInstructorFavorites.length > 0) {
         %> <% allInstructorFavorites.forEach(function(favorite){ %>
         <li class="ctn_template mid_template">
-          <a href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>">
+          <a
+            title="<%= favorite.nameFavorite %>"
+            href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>"
+          >
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -185,7 +207,7 @@
           </a>
           <div class="ctn_content_template">
             <ul>
-              <li class="content_template">
+              <li class="content_template" title="Nom de la recette">
                 <div>
                   <i class="uil uil-heart icon_content_template"></i>
                 </div>
@@ -197,32 +219,38 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Catégorie de la recette">
                 <div>
                   <i class="uil uil-folder icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= favorite.categoryFavorite.nameCategory %> </a>
+                  <a><%= favorite.categoryFavorite.nameCategory %> </a>
                 </div>
               </li>
 
-              <li class="content_template">
+              <li
+                class="content_template"
+                title="Nombre d'ingredients de la recette"
+              >
                 <div>
                   <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
                     ><%= Object.keys(favorite.ingredientsFavorite).length %>
                   </a>
                 </div>
               </li>
 
-              <li class="content_template address_template">
+              <li
+                class="content_template address_template"
+                title="Notes de la recette"
+              >
                 <div>
                   <i class="uil uil-file-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= favorite.noteFavorite %> </a>
+                  <a> <%= favorite.noteFavorite %> </a>
                 </div>
               </li>
 
@@ -234,14 +262,20 @@
                 </div>
                 <div class="centralA">
                   <% if (authUser && authUser.roleUser == "instructor") { %>
-                  <div class="btns_template icon_calculate_template">
+                  <div
+                    class="btns_template icon_calculate_template"
+                    title="Mettre à jour la recette"
+                  >
                     <a
                       href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>"
                     >
                       <i class="uil uil-calculator-alt"></i>
                     </a>
                   </div>
-                  <div class="btns_template icon_plus_template">
+                  <div
+                    class="btns_template icon_plus_template"
+                    title="surpprimer le recette"
+                  >
                     <a
                       href="#"
                       class="btn_delete_oneFavorite"
@@ -290,6 +324,7 @@
       <% if (allStudentCourses && allStudentCourses.length > 0) { %>
       <div class="mid_display">
         <a
+          title="Aléatoire dans Mes cours"
           href="/course/onecourse/<%= mycourseStudentRandom._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
@@ -307,7 +342,10 @@
         null && allStudentCourses.length > 0) { %> <%
         allStudentCourses.forEach(function(course){ %>
         <li class="ctn_template mid_template">
-          <a href="/course/onecourse/<%= course._id %>">
+          <a
+            title="<%= course.nameCourse %>"
+            href="/course/onecourse/<%= course._id %>"
+          >
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -320,7 +358,7 @@
           </a>
           <div class="ctn_content_template">
             <ul>
-              <li class="content_template">
+              <li class="content_template" title="Nom du cours">
                 <div>
                   <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
@@ -331,7 +369,7 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Instructeur du cours">
                 <div>
                   <iconify-icon
                     icon="tabler:chef-hat"
@@ -347,7 +385,7 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Date et heure du cours">
                 <div>
                   <i
                     class="uil uil-calender icon_content_template"
@@ -363,12 +401,19 @@
                 </div>
               </li>
 
-              <li class="content_template address_template">
+              <li
+                class="content_template address_template"
+                title="Adresse du cours"
+              >
                 <div>
                   <i class="uil uil-map-marker icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= course.addressCourse %> </a>
+                  <a
+                    href="https://www.google.com/maps?q=<%= course.addressCourse %>"
+                  >
+                    <%= course.addressCourse %>
+                  </a>
                 </div>
               </li>
 
@@ -383,12 +428,18 @@
                   authUser.idCoursesRegistered.some(function
                   (idCourseRegistered) { return idCourseRegistered.toString()
                   === course._id.toString() ; })) { %>
-                  <div class="btns_template icon_calculate_template">
+                  <div
+                    class="btns_template icon_calculate_template"
+                    title="Mon espace"
+                  >
                     <a href="/student/myspace/<%= course._id %>">
                       <i class="uil uil-calculator-alt"></i>
                     </a>
                   </div>
-                  <div class="btns_template icon_plus_template">
+                  <div
+                    class="btns_template icon_plus_template"
+                    title="surpprimer le cours"
+                  >
                     <a
                       href="#"
                       class="btn_unregister_oneCourse"
@@ -399,7 +450,10 @@
                   </div>
                   <% } %>
                   <div class="btns_template icon_more_template">
-                    <a href="/course/onecourse/<%= course._id %>">
+                    <a
+                      title="Voir plus"
+                      href="/course/onecourse/<%= course._id %>"
+                    >
                       <i class="uil uil-ellipsis-h"></i>
                     </a>
                   </div>
@@ -425,11 +479,12 @@
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <i class="uil uil-book-alt"></i>
-        <h2 class="title_display">Mes cours</h2>
+        <h2 class="title_display">Mes favoris</h2>
       </div>
       <% if (allStudentFavorites && allStudentFavorites.length > 0) { %>
       <div class="mid_display">
         <a
+          title="Aléatoire dans Mes favoris"
           href="/<%= authUser.roleUser %>/myfavorite/<%= myFavoriteStudentRandom._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
@@ -447,7 +502,10 @@
         != null && allStudentFavorites.length > 0) { %> <%
         allStudentFavorites.forEach(function(favorite){ %>
         <li class="ctn_template mid_template">
-          <a href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>">
+          <a
+            title="<%= favorite.nameFavorite %>"
+            href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>"
+          >
             <div class="ctn_image_template">
               <div
                 loading="lazy"
@@ -460,7 +518,7 @@
           </a>
           <div class="ctn_content_template">
             <ul>
-              <li class="content_template">
+              <li class="content_template" title="Nom de la recette">
                 <div>
                   <i class="uil uil-heart icon_content_template"></i>
                 </div>
@@ -472,7 +530,7 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li class="content_template" title="Catégorie de la recette">
                 <div>
                   <i class="uil uil-folder icon_content_template"></i>
                 </div>
@@ -481,7 +539,10 @@
                 </div>
               </li>
 
-              <li class="content_template">
+              <li
+                class="content_template"
+                title="Nombre d'ingredients de la recette"
+              >
                 <div>
                   <i class="uil uil-cell icon_content_template"></i>
                 </div>
@@ -492,7 +553,10 @@
                 </div>
               </li>
 
-              <li class="content_template address_template">
+              <li
+                class="content_template address_template"
+                title="Notes de la recette"
+              >
                 <div>
                   <i class="uil uil-file-alt icon_content_template"></i>
                 </div>
@@ -509,14 +573,20 @@
                 </div>
                 <div class="centralA">
                   <% if (authUser && authUser.roleUser == "student") { %>
-                  <div class="btns_template icon_calculate_template">
+                  <div
+                    class="btns_template icon_calculate_template"
+                    title="Mettre à jour la recette"
+                  >
                     <a
                       href="/<%= authUser.roleUser %>/myfavorite/<%= favorite._id %>"
                     >
                       <i class="uil uil-calculator-alt"></i>
                     </a>
                   </div>
-                  <div class="btns_template icon_plus_template">
+                  <div
+                    class="btns_template icon_plus_template"
+                    title="surpprimer le recette"
+                  >
                     <a
                       href="#"
                       class="btn_delete_oneFavorite"

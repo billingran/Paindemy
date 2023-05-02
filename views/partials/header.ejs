@@ -187,38 +187,37 @@
       </div>
     </li>
     <% } %> <% if (!authUser) { %>
-    <li class="ctn_sidbar_signup">
-      <a
-        title="Créer un
+    <li
+      class="ctn_sidbar_signup"
+      title="Créer un
         compte"
-        href="/auth/signup"
-        class="centralA"
+    >
+      <a href="/auth/signup" class="centralA"
         ><i class="uil uil-illustration icon_sideBar_header"></i> Créer un
         compte
       </a>
     </li>
-    <li class="ctn_sidbar_login">
-      <a title="Se connecter" href="/auth/login" class="centralA"
+    <li class="ctn_sidbar_login" title="Se connecter">
+      <a href="/auth/login" class="centralA"
         ><i class="uil uil-signin icon_sideBar_header"></i> Se connecter
       </a>
     </li>
     <% } %> <% if (authUser) { %> <% if (authUser.roleUser == 'instructor') { %>
 
-    <li>
-      <a title="Nouveau cours" href="/instructor/newclass" class="centralA"
+    <li title="Nouveau cours">
+      <a href="/instructor/newclass" class="centralA"
         ><i class="uil uil-book-alt icon_sideBar_header"></i>Nouveau cours
       </a>
     </li>
     <% } %>
 
-    <li>
-      <a title="Se déconnecter" href="/auth/logout" class="centralA"
+    <li title="Se déconnecter">
+      <a href="/auth/logout" class="centralA"
         ><i class="uil uil-signout icon_sideBar_header"></i> Se déconnecter
       </a>
     </li>
-    <li>
+    <li title="Fermer le compte">
       <a
-        title="Fermer le compte"
         href="/<%= authUser.roleUser %>/delete/<%= authUser._id %>"
         class="centralA"
       >

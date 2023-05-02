@@ -129,10 +129,12 @@
       <% if (authUser) { %>
       <div class="link_auth">
         Retour aux cours de
-        <a href="/instructor/mycourses/<%= authUser._id %>"
+        <a
+          title="Instructeur <%= authUser.firstnameUser %> <%= authUser.lastnameUser %>"
+          href="/instructor/mycourses/<%= authUser._id %>"
           ><%= authUser.firstnameUser %> <%= authUser.lastnameUser %>
         </a>
-        ou <a href="/">Menu</a>
+        ou <a title="Menu" href="/">Menu</a>
       </div>
       <% } %>
     </form>
