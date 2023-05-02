@@ -20,7 +20,10 @@
           <div class="left_courses">
             <h2>
               “ <%= allCourses[0].descriptionCourse.slice(0, 480) %> ...
-              <a href="/course/onecourse/<%= allCourses[0]._id %>">
+              <a
+                title="Voir plus"
+                href="/course/onecourse/<%= allCourses[0]._id %>"
+              >
                 Voir plus
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -30,6 +33,7 @@
               ”
             </h2>
             <a
+              title="Instructeur du cours"
               href="/course/instructor/<%= allCourses[0].instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
@@ -65,7 +69,7 @@
           <div class="left_courses">
             <h2>
               “ <%= course.descriptionCourse.slice(0, 480) %> ...
-              <a href="/course/oneCourse/<%= course._id %>">
+              <a title="Voir plus" href="/course/oneCourse/<%= course._id %>">
                 Voir plus
                 <iconify-icon
                   icon="mdi:more-circle"
@@ -75,6 +79,7 @@
               ”
             </h2>
             <a
+              title="Instructeur du cours"
               href="/course/instructor/<%= course.instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
@@ -115,6 +120,7 @@
       </div>
       <div class="mid_display">
         <a
+          title="Aléatoire dans <%= iconCategory.nameCategory %>"
           href="/course/onecourse/<%= iconCategory._id %>"
           class="ctn_viceTitle_display"
           >Aléatoire
@@ -132,7 +138,10 @@
       <% if(typeof manyCourses !== 'undefined' && manyCourses != null &&
       manyCourses.length > 0) { %> <% manyCourses.forEach(function(course){ %>
       <li class="ctn_template mid_template">
-        <a href="/course/onecourse/<%= course._id %>">
+        <a
+          title="<%= course.nameCourse %>"
+          href="/course/onecourse/<%= course._id %>"
+        >
           <div class="ctn_image_template">
             <div
               loading="lazy"
@@ -150,7 +159,9 @@
                 <i class="uil uil-book-alt icon_content_template"></i>
               </div>
               <div>
-                <a href="/course/onecourse/<%= course._id %>"
+                <a
+                  title="Nom du cours"
+                  href="/course/onecourse/<%= course._id %>"
                   ><%= course.nameCourse %>
                 </a>
               </div>
@@ -164,7 +175,9 @@
                 ></iconify-icon>
               </div>
               <div>
-                <a href="/course/instructor/<%= course.instructorCourse._id %>"
+                <a
+                  title="Instructeur du cours"
+                  href="/course/instructor/<%= course.instructorCourse._id %>"
                   ><%= course.instructorCourse.firstnameUser %> <%=
                   course.instructorCourse.lastnameUser %>
                 </a>
@@ -180,7 +193,7 @@
               </div>
               <div>
                 <a
-                  href="#"
+                  title="Date et heure du cours"
                   style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                   ><%= course.dateCourse %> / <%= course.timeCourse %>
                 </a>
@@ -192,7 +205,12 @@
                 <i class="uil uil-map-marker icon_content_template"></i>
               </div>
               <div>
-                <a href="#"> <%= course.addressCourse %> </a>
+                <a
+                  title="Adresse du cours"
+                  href="https://www.google.com/maps?q=<%= course.addressCourse %>"
+                >
+                  <%= course.addressCourse %>
+                </a>
               </div>
             </li>
 
@@ -210,6 +228,7 @@
                 %>
                 <div class="btns_template icon_plus_template">
                   <a
+                    title="Enregistrer"
                     href="#"
                     class="btn_register_OneCourse"
                     id="<%= course._id %>"
@@ -219,7 +238,10 @@
                 </div>
                 <% } %>
                 <div class="btns_template icon_more_template">
-                  <a href="/course/onecourse/<%= course._id %>">
+                  <a
+                    title="Voir plus"
+                    href="/course/onecourse/<%= course._id %>"
+                  >
                     <i class="uil uil-ellipsis-h"></i>
                   </a>
                 </div>
