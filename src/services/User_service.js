@@ -93,6 +93,17 @@ class UserService extends DbService {
           message: "Adresse mail, L’adresse mail n’est pas valide.",
         };
       }
+
+      // validate email exist
+      const emailFound = await this.User.findOne({ emailUser }).exec();
+
+      if (emailFound) {
+        return {
+          success: false,
+          message: "Adresse mail, Un compte existe déjà avec cet email.",
+        };
+      }
+
       newDataStudentProfile.emailUser = emailUser;
     } else {
       return {
@@ -140,13 +151,6 @@ class UserService extends DbService {
     res,
     bcrypt
   ) {
-    // validate email exist
-    const emailFound = await this.User.findOne({ emailUser }).exec();
-    if (emailFound) {
-      req.flash("error_msg", "Adresse mail, compte existant.");
-      return res.redirect("/auth/signup");
-    }
-
     // validation sign up
     const validationResultSignUp = await this.signUpValidation(
       firstnameUser,
@@ -257,6 +261,17 @@ class UserService extends DbService {
           message: "Adresse mail, L’adresse mail n’est pas valide.",
         };
       }
+
+      // validate email exist
+      const emailFound = await this.User.findOne({ emailUser }).exec();
+
+      if (emailFound) {
+        return {
+          success: false,
+          message: "Adresse mail, Un compte existe déjà avec cet email.",
+        };
+      }
+
       newDataInstructorProfile.emailUser = emailUser;
     } else {
       return {
@@ -362,13 +377,6 @@ class UserService extends DbService {
     path,
     bcrypt
   ) {
-    // validate email exist
-    const emailFound = await this.User.findOne({ emailUser }).exec();
-    if (emailFound) {
-      req.flash("error_msg", "Adresse mail, adresse mail existante.");
-      return res.redirect("/auth/joinus");
-    }
-
     // validation join us
 
     // params img uploaded join us
@@ -543,6 +551,18 @@ class UserService extends DbService {
           message: "Adresse mail, L’adresse mail n’est pas valide.",
         };
       }
+
+      // validate email if the same
+      const emailFound = await this.User.findOne({ emailUser }).exec();
+
+      if (emailFound && emailFound.emailUser == emailUser) {
+        return {
+          success: false,
+          message:
+            "Adresse mail, L’adresse mail doit être différente de la précédente.",
+        };
+      }
+
       newDataStudentProfile.emailUser = emailUser;
     }
 
@@ -685,6 +705,18 @@ class UserService extends DbService {
           message: "Adresse mail, L’adresse mail n’est pas valide.",
         };
       }
+
+      // validate email if the same
+      const emailFound = await this.User.findOne({ emailUser }).exec();
+
+      if (emailFound && emailFound.emailUser == emailUser) {
+        return {
+          success: false,
+          message:
+            "Adresse mail, L’adresse mail doit être différente de la précédente.",
+        };
+      }
+
       newDataInstructorProfile.emailUser = emailUser;
     }
 

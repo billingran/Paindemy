@@ -17,15 +17,19 @@
     <% if(myFavoriteInstructor) { %>
     <div class="ctn_info_mySpace">
       <div class="mid_info_mySpace">
-        <a>
+        <a title="La base">
           <i class="uil uil-balance-scale mid_icon_mySpace"></i>
           1 kg = 1000 g
         </a>
-        <a href="#">
+        <a 
+        title="Nom de la recette"
+        href="/instructor/myfavorite/<%= myFavoriteInstructor._id %>">
           <i class="uil uil-book-alt mid_icon_mySpace"></i>
           <%= myFavoriteInstructor.nameFavorite %>
         </a>
-        <a href="#">
+        <a title="a
+        Auteur/Autrice de la recette"
+        href="/course/instructor/<%= myFavoriteInstructor.authorFavorite._id %>">
           <iconify-icon
             icon="tabler:chef-hat"
             class="mid_icon_mySpace"
@@ -33,7 +37,7 @@
           <%= myFavoriteInstructor.authorFavorite.firstnameUser %> <%=
           myFavoriteInstructor.authorFavorite.lastnameUser %>
         </a>
-        <a>
+        <a title="Catégorie de la recette">
           <i class="uil uil-folder mid_icon_mySpace"></i>
           <%= myFavoriteInstructor.categoryFavorite.nameCategory %>
         </a>
@@ -196,20 +200,22 @@
     <% if(myFavoriteStudent) { %>
     <div class="ctn_info_mySpace">
       <div class="mid_info_mySpace">
-        <a>
+        <a title="La base">
           <i class="uil uil-balance-scale mid_icon_mySpace"></i>
           1 kg = 1000 g
         </a>
-        <a href="#">
+        <a title="Nom de la recette"
+        href="/student/myfavorite/<%= myFavoriteStudent._id %>">
           <i class="uil uil-book-alt mid_icon_mySpace"></i>
           <%= myFavoriteStudent.nameFavorite %>
         </a>
-        <a href="#">
+        <a title="Auteur/Autrice de la recette"
+        >
           <i class="uil uil-graduation-cap mid_icon_mySpace"></i>
           <%= myFavoriteStudent.authorFavorite.firstnameUser %> <%=
           myFavoriteStudent.authorFavorite.lastnameUser %>
         </a>
-        <a>
+        <a title="Catégorie de la recette">
           <i class="uil uil-folder mid_icon_mySpace"></i>
           <%= myFavoriteStudent.categoryFavorite.nameCategory %>
         </a>

@@ -29,7 +29,7 @@
     <ul class="ul_categories">
       <% if(typeof categories !== 'undefined' && categories != null &&
       categories.length > 0) { %> <% categories.forEach((category) => { %>
-      <li class="mid_image" title="<%= category.nameCategory %>">
+      <li class="mid_image" title="Catégorie <%= category.nameCategory %>">
         <a href="/course/courses/<%= category._id %>">
           <div class="ctn_image ctn_image_category">
             <div
@@ -107,7 +107,10 @@
                 </div>
               </li>
 
-              <li class="content_template" title="Instructeur du cours">
+              <li
+                class="content_template"
+                title="Instructeur/Instructrice du cours"
+              >
                 <div>
                   <iconify-icon
                     icon="tabler:chef-hat"
@@ -260,7 +263,10 @@
                 </div>
               </li>
 
-              <li class="content_template" title="Instructeur du cours">
+              <li
+                class="content_template"
+                title="Instructeur/Instructrice du cours"
+              >
                 <div>
                   <iconify-icon
                     icon="tabler:chef-hat"
@@ -412,7 +418,10 @@
                 </div>
               </li>
 
-              <li class="content_template" title="Instructeur du cours">
+              <li
+                class="content_template"
+                title="Instructeur/Instructrice du cours"
+              >
                 <div>
                   <iconify-icon
                     icon="tabler:chef-hat"

@@ -18,7 +18,7 @@
           <div class="left_instructors">
             <h2>“ <%= allinstructors[0].fathUser %> ”</h2>
             <a
-              title="Instructeur <%= allinstructors[0].firstnameUser %> <%=
+              title="Instructeur/Instructrice <%= allinstructors[0].firstnameUser %> <%=
               allinstructors[0].lastnameUser %>"
               href="/course/instructor/<%= allinstructors[0]._id %>"
               class="central"
@@ -54,7 +54,7 @@
           <div class="left_instructors">
             <h2>“ <%= instructor.fathUser %> ”</h2>
             <a
-              title="Instructeur <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
+              title="Instructeur/Instructrice <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
               href="/course/instructor/<%= instructor._id %>"
               class="central"
             >
@@ -113,7 +113,7 @@
         { %>
         <li
           class="mid_image"
-          title="Instructeur <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
+          title="Instructeur/Instructrice <%= instructor.firstnameUser %> <%= instructor.lastnameUser %>"
         >
           <a href="/course/instructor/<%= instructor._id %>">
             <div class="ctn_image ctn_image_instructors">

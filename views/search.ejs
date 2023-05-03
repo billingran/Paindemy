@@ -35,7 +35,7 @@
         results.length > 0) { %> <% results.forEach(function(result){ %>
         <li class="ctn_template mid_template">
           <a
-            title="<%= <%= result.nameCourse %> %>"
+            title="<%= result.nameCourse %>"
             href="/course/onecourse/<%= result._id %>"
           >
             <div class="ctn_image_template">
@@ -61,7 +61,10 @@
                 </div>
               </li>
 
-              <li class="content_template" title="Instructeur du cours">
+              <li
+                class="content_template"
+                title="Instructeur/Instructrice du cours"
+              >
                 <div>
                   <iconify-icon
                     icon="tabler:chef-hat"

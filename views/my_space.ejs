@@ -17,15 +17,21 @@
     <% if(courseFavorite) { %>
     <div class="ctn_info_mySpace">
       <div class="mid_info_mySpace">
-        <a>
+        <a title="La base">
           <i class="uil uil-balance-scale mid_icon_mySpace"></i>
           1 kg = 1000 g
         </a>
-        <a href="#">
+        <a
+          title="Nom du cours"
+          href="/course/onecourse/<%= courseFavorite._id %>"
+        >
           <i class="uil uil-book-alt mid_icon_mySpace"></i>
           <%= courseFavorite.nameCourse %>
         </a>
-        <a href="#">
+        <a
+          title="Instructeur/Instructrice du cours"
+          href="/course/instructor/<%= courseFavorite.instructorCourse._id %>"
+        >
           <iconify-icon
             icon="tabler:chef-hat"
             class="mid_icon_mySpace"
@@ -33,7 +39,7 @@
           <%= courseFavorite.instructorCourse.firstnameUser %> <%=
           courseFavorite.instructorCourse.lastnameUser %>
         </a>
-        <a>
+        <a title="Catégorie du cours">
           <i class="uil uil-folder mid_icon_mySpace"></i>
           <%= courseFavorite.categoryCourse.nameCategory %>
         </a>
@@ -192,7 +198,7 @@
 
     <div class="ctn_info_mySpace">
       <div class="mid_info_mySpace">
-        <a class="centralA">
+        <a title="Nombre d'élèves du cours">
           <i class="uil uil-graduation-cap mid_icon_mySpace"></i>
           <div class="ctn_number_myStudents">
             <div class="number_myStudents">
@@ -200,11 +206,17 @@
             </div>
           </div>
         </a>
-        <a href="#">
+        <a
+          href="/course/onecourse/<%= courseFavorite._id %>"
+          title="Nom du cours"
+        >
           <i class="uil uil-book-alt mid_icon_mySpace"></i>
           <%= courseFavorite.nameCourse %>
         </a>
-        <a href="#">
+        <a
+          href="/course/instructor/<%= courseFavorite.instructorCourse._id %>"
+          title="Instructeur/Instructrice du cours"
+        >
           <iconify-icon
             icon="tabler:chef-hat"
             class="mid_icon_mySpace"
@@ -212,7 +224,7 @@
           <%= courseFavorite.instructorCourse.firstnameUser %> <%=
           courseFavorite.instructorCourse.lastnameUser %>
         </a>
-        <a>
+        <a title="Catégorie du cours">
           <i class="uil uil-folder mid_icon_mySpace"></i>
           <%= courseFavorite.categoryCourse.nameCategory %>
         </a>
@@ -290,11 +302,21 @@
 
     <% if(courseFavorite) { %>
     <div class="mid_info_mySpace">
-      <a href="#">
+      <a title="La base">
+        <i class="uil uil-balance-scale mid_icon_mySpace"></i>
+        1 kg = 1000 g
+      </a>
+      <a
+        title="Nom du cours"
+        href="/course/onecourse/<%= courseFavorite._id %>"
+      >
         <i class="uil uil-book-alt mid_icon_mySpace"></i>
         <%= courseFavorite.nameCourse %>
       </a>
-      <a href="#">
+      <a
+        title="Instructeur/Instructrice du cours"
+        href="/course/instructor/<%= courseFavorite.instructorCourse._id %>"
+      >
         <iconify-icon
           icon="tabler:chef-hat"
           class="mid_icon_mySpace"
@@ -302,7 +324,7 @@
         <%= courseFavorite.instructorCourse.firstnameUser %> <%=
         courseFavorite.instructorCourse.lastnameUser %>
       </a>
-      <a>
+      <a title="Catégorie du cours">
         <i class="uil uil-folder mid_icon_mySpace"></i>
         <%= courseFavorite.categoryCourse.nameCategory %>
       </a>

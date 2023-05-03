@@ -264,6 +264,10 @@ label[for="search_homeOne_sideBar"] {
   transition: all 0.3s;
 }
 
+.ctn_auth_header span {
+  color: var(--C-565E64);
+}
+
 /* hover */
 .ctn_auth_header a:hover {
   color: var(--C-FF0066);
