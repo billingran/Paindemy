@@ -127,9 +127,9 @@
           <i class="uil uil-cell"></i>
           <h2 class="title_display">Ingredients</h2>
         </div>
-        <% if ( authUser.idCoursesRegistered.some(function (idCourseRegistered)
-        { return idCourseRegistered.toString() === oneCourse._id.toString() ;
-        })) { %>
+        <% if (authUser && authUser.idCoursesRegistered.some(function
+        (idCourseRegistered) { return idCourseRegistered.toString() ===
+        oneCourse._id.toString() ; })) { %>
         <div class="mid_display mid_display_course" title="Calculer">
           <a
             href="/<%= authUser.roleUser %>/myspace/<%= oneCourse._id %>"
