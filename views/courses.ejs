@@ -110,9 +110,9 @@
 <!-- /////////////////////////////////////////////// -->
 <!-- courses display and template-->
 <section class="section_display section_mid">
-  <% if (iconCategory) { %>
   <div class="errorAxios"></div>
   <div class="ctn_display">
+    <% if (iconCategory) { %>
     <div class="ctn_title_display">
       <div class="centralA icon_title_display">
         <%- iconCategory.iconCategory %>
@@ -131,130 +131,136 @@
         </a>
       </div>
     </div>
-  </div>
-  <% } %>
-  <div>
-    <ul class="ul_template">
-      <% if(typeof manyCourses !== 'undefined' && manyCourses != null &&
-      manyCourses.length > 0) { %> <% manyCourses.forEach(function(course){ %>
-      <li class="ctn_template mid_template">
-        <a
-          title="<%= course.nameCourse %>"
-          href="/course/onecourse/<%= course._id %>"
-        >
-          <div class="ctn_image_template">
-            <div
-              loading="lazy"
-              class="image_template"
-              style="
-                background-image: url('/uploads/<%= course.imageCourse[0] %>');
-              "
-            ></div>
-          </div>
-        </a>
-        <div class="ctn_content_template">
-          <ul>
-            <li class="content_template" title="Nom du cours">
-              <div>
-                <i class="uil uil-book-alt icon_content_template"></i>
-              </div>
-              <div>
-                <a href="/course/onecourse/<%= course._id %>"
-                  ><%= course.nameCourse %>
-                </a>
-              </div>
-            </li>
-
-            <li
-              class="content_template"
-              title="Instructeur/Instructrice du cours"
-            >
-              <div>
-                <iconify-icon
-                  icon="tabler:chef-hat"
-                  class="icon_content_template"
-                ></iconify-icon>
-              </div>
-              <div>
-                <a href="/course/instructor/<%= course.instructorCourse._id %>"
-                  ><%= course.instructorCourse.firstnameUser %> <%=
-                  course.instructorCourse.lastnameUser %>
-                </a>
-              </div>
-            </li>
-
-            <li class="content_template" title="Date et heure du cours">
-              <div>
-                <i
-                  class="uil uil-calender icon_content_template"
-                  style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
-                ></i>
-              </div>
-              <div>
-                <a
-                  style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
-                  ><%= course.dateCourse %> / <%= course.timeCourse %>
-                </a>
-              </div>
-            </li>
-
-            <li
-              class="content_template address_template"
-              title="Adresse du cours"
-            >
-              <div>
-                <i class="uil uil-map-marker icon_content_template"></i>
-              </div>
-              <div>
-                <a
-                  href="https://www.google.com/maps?q=<%= course.addressCourse %>"
-                >
-                  <%= course.addressCourse %>
-                </a>
-              </div>
-            </li>
-
-            <li class="ctn_btns_template">
-              <div class="createdAt_template">
+    <% } %>
+    <div>
+      <ul class="ul_template">
+        <% if(typeof manyCourses !== 'undefined' && manyCourses != null &&
+        manyCourses.length > 0) { %> <% manyCourses.forEach(function(course){ %>
+        <li class="ctn_template mid_template">
+          <a
+            title="<%= course.nameCourse %>"
+            href="/course/onecourse/<%= course._id %>"
+          >
+            <div class="ctn_image_template">
+              <div
+                loading="lazy"
+                class="image_template"
+                style="
+                  background-image: url('/uploads/<%= course.imageCourse[0] %>');
+                "
+              ></div>
+            </div>
+          </a>
+          <div class="ctn_content_template">
+            <ul>
+              <li class="content_template" title="Nom du cours">
                 <div>
-                  <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                  <i class="uil uil-book-alt icon_content_template"></i>
                 </div>
-              </div>
-              <div class="centralA">
-                <% if (authUser && authUser.roleUser == "student" &&
-                !authUser.idCoursesRegistered.some(function (idCourseRegistered)
-                { return idCourseRegistered.toString() === course._id.toString()
-                ; }) && moment(course.dateCourse).isSameOrAfter(currentDate)) {
-                %>
-                <div
-                  class="btns_template icon_plus_template"
-                  title="Enregistrer"
-                >
+                <div>
+                  <a href="/course/onecourse/<%= course._id %>"
+                    ><%= course.nameCourse %>
+                  </a>
+                </div>
+              </li>
+
+              <li
+                class="content_template"
+                title="Instructeur/Instructrice du cours"
+              >
+                <div>
+                  <iconify-icon
+                    icon="tabler:chef-hat"
+                    class="icon_content_template"
+                  ></iconify-icon>
+                </div>
+                <div>
                   <a
-                    href="#"
-                    class="btn_register_OneCourse"
-                    id="<%= course._id %>"
+                    href="/course/instructor/<%= course.instructorCourse._id %>"
+                    ><%= course.instructorCourse.firstnameUser %> <%=
+                    course.instructorCourse.lastnameUser %>
+                  </a>
+                </div>
+              </li>
+
+              <li class="content_template" title="Date et heure du cours">
+                <div>
+                  <i
+                    class="uil uil-calender icon_content_template"
+                    style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                  ></i>
+                </div>
+                <div>
+                  <a
+                    style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
+                    ><%= course.dateCourse %> / <%= course.timeCourse %>
+                  </a>
+                </div>
+              </li>
+
+              <li
+                class="content_template address_template"
+                title="Adresse du cours"
+              >
+                <div>
+                  <i class="uil uil-map-marker icon_content_template"></i>
+                </div>
+                <div>
+                  <a
+                    href="https://www.google.com/maps?q=<%= course.addressCourse %>"
                   >
-                    <i class="uil uil-plus"></i>
+                    <%= course.addressCourse %>
                   </a>
                 </div>
-                <% } %>
-                <div class="btns_template icon_more_template" title="Voir plus">
-                  <a href="/course/onecourse/<%= course._id %>">
-                    <i class="uil uil-ellipsis-h"></i>
-                  </a>
+              </li>
+
+              <li class="ctn_btns_template">
+                <div class="createdAt_template">
+                  <div>
+                    <i class="uil uil-clock"></i> <%= course.getCreatedAt() %>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
+                <div class="centralA">
+                  <% if (authUser && authUser.roleUser == "student" &&
+                  !authUser.idCoursesRegistered.some(function
+                  (idCourseRegistered) { return idCourseRegistered.toString()
+                  === course._id.toString() ; }) &&
+                  moment(course.dateCourse).isSameOrAfter(currentDate)) { %>
+                  <div
+                    class="btns_template icon_plus_template"
+                    title="Enregistrer"
+                  >
+                    <a
+                      href="#"
+                      class="btn_register_OneCourse"
+                      id="<%= course._id %>"
+                    >
+                      <i class="uil uil-plus"></i>
+                    </a>
+                  </div>
+                  <% } %>
+                  <div
+                    class="btns_template icon_more_template"
+                    title="Voir plus"
+                  >
+                    <a href="/course/onecourse/<%= course._id %>">
+                      <i class="uil uil-ellipsis-h"></i>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <% }) %> <% } else { %>
+        <div class="ctn_msg error_msg">
+          <strong>
+            Aucun résultat pour <%= iconCategory.nameCategory %>.
+          </strong>
         </div>
-      </li>
-      <% }) %> <% } else { %>
-      <div class="ctn_msg error_msg">
-        <strong> Aucun résultat pour <%= iconCategory.nameCategory %>. </strong>
-      </div>
-      <% } %>
-    </ul>
+        <% } %>
+      </ul>
+    </div>
   </div>
 </section>
 
