@@ -261,15 +261,10 @@ class DbService {
                 <a data-flickr-embed="true" href="" title="logo_footer"
                   ><img
                     src="https://live.staticflickr.com/65535/52833961800_d6324ebf89_w.jpg"
-                    width="100"
-                    height="115"
+                    width="65"
+                    height="75"
                     alt="logo_footer"
                 /></a>
-                <script
-                  async
-                  src="//embedr.flickr.com/assets/client-code.js"
-                  charset="utf-8"
-                ></script>
               </div>
             </div>
       
@@ -364,7 +359,13 @@ class DbService {
               Copyright © 2023 Paîndemy. Tous droits réservés. 
             </p>
           </div>
-      
+          
+          <!-- logo -->
+          <script
+          async
+          src="//embedr.flickr.com/assets/client-code.js"
+          charset="utf-8"
+          ></script>
           <!-- user -->
           <script
             async
@@ -796,15 +797,10 @@ class DbService {
               <a data-flickr-embed="true" href="" title="logo_footer"
                 ><img
                   src="https://live.staticflickr.com/65535/52833961800_d6324ebf89_w.jpg"
-                  width="100"
-                  height="115"
+                  width="65"
+                  height="75"
                   alt="logo_footer"
               /></a>
-              <script
-                async
-                src="//embedr.flickr.com/assets/client-code.js"
-                charset="utf-8"
-              ></script>
             </div>
           </div>
     
@@ -900,6 +896,12 @@ class DbService {
           </p>
         </div>
     
+        <!-- logo -->
+          <script
+          async
+          src="//embedr.flickr.com/assets/client-code.js"
+          charset="utf-8"
+          ></script>
         <!-- user -->
         <script
           async
@@ -1074,15 +1076,10 @@ class DbService {
                 <a data-flickr-embed="true" href="" title="logo_footer"
                   ><img
                     src="https://live.staticflickr.com/65535/52833961800_d6324ebf89_w.jpg"
-                    width="100"
-                    height="115"
+                    width="65"
+                    height="75"
                     alt="logo_footer"
                 /></a>
-                <script
-                  async
-                  src="//embedr.flickr.com/assets/client-code.js"
-                  charset="utf-8"
-                ></script>
               </div>
             </div>
       
@@ -1181,6 +1178,12 @@ class DbService {
             </p>
           </div>
       
+          <!-- logo -->
+          <script
+          async
+          src="//embedr.flickr.com/assets/client-code.js"
+          charset="utf-8"
+          ></script>
           <!-- user student -->
           <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
           <!-- course -->
