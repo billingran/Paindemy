@@ -273,7 +273,16 @@ module.exports.postRegisterOneCourse = async (req, res) => {
     // course id
     let { _id } = req.body;
 
-    await courseService.registerOneCourse(_id, req, res, nodeMailer, juice);
+    await courseService.registerOneCourse(
+      _id,
+      req,
+      res,
+      nodeMailer,
+      juice,
+      fs,
+      ejs,
+      path
+    );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
