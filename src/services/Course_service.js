@@ -836,7 +836,7 @@ class CourseService extends DbService {
   }
 
   // post unregister one course
-  async unRegisterOneCourse(_id, req, res, path, fs, nodeMailer, juice) {
+  async unRegisterOneCourse(_id, req, res, path, fs, nodeMailer, juice, ejs) {
     // check if it's a user
     if (req.user) {
       if (req.user.roleUser == "instructor") {
@@ -872,7 +872,10 @@ class CourseService extends DbService {
           nodeMailer,
           juice,
           userStudents,
-          courseUnregistered
+          courseUnregistered,
+          fs,
+          ejs,
+          path
         );
 
         // delete user instructor's course
@@ -898,7 +901,10 @@ class CourseService extends DbService {
           nodeMailer,
           juice,
           userStudent,
-          courseUnregistered
+          courseUnregistered,
+          fs,
+          ejs,
+          path
         );
 
         // delete user student from course registered

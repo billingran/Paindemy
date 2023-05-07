@@ -15,6 +15,9 @@ const fs = require("fs");
 //node mailer
 const nodeMailer = require("nodemailer");
 
+//ejs
+const ejs = require("ejs");
+
 // juice
 const juice = require("juice");
 const { Console } = require("console");
@@ -290,7 +293,8 @@ module.exports.postUnregisterOneCourse = async (req, res) => {
       path,
       fs,
       nodeMailer,
-      juice
+      juice,
+      ejs
     );
   } catch (error) {
     console.log(error);
