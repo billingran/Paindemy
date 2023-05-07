@@ -288,7 +288,7 @@ class DbService {
                 <h2>${courseRegistered.nameCourse}</h2>
               </div>
               <ul>
-                <li><strong>Enseignants : </strong>${
+                <li><strong>Instructeur : </strong>${
                   courseRegistered.instructorCourse.firstnameUser
                 } ${courseRegistered.instructorCourse.lastnameUser}</li>
                 <li><strong>Adresse mail : </strong>${
@@ -299,7 +299,7 @@ class DbService {
                 <li><strong>Adresse : </strong>${
                   courseRegistered.addressCourse
                 }</li>
-                <li>
+                <li style="text-align: justify;">
                   <strong>Description : </strong>${
                     courseRegistered.descriptionCourse
                   }
@@ -513,8 +513,8 @@ class DbService {
                 <a data-flickr-embed="true" href="" title="logo_footer"
                   ><img
                     src="https://live.staticflickr.com/65535/52833961800_d6324ebf89_w.jpg"
-                    width="100"
-                    height="115"
+                    width="65"
+                    height="75"
                     alt="logo_footer"
                 /></a>
                 <script
@@ -545,7 +545,7 @@ class DbService {
                 <h2>${courseRegistered.nameCourse}</h2>
               </div>
               <ul>
-                <li><strong>Enseignants : </strong>${
+                <li><strong>Instructeur : </strong>${
                   courseRegistered.instructorCourse.firstnameUser
                 } ${courseRegistered.instructorCourse.lastnameUser}</li>
                 <li><strong>Adresse mail : </strong>${
@@ -556,7 +556,7 @@ class DbService {
                 <li><strong>Adresse : </strong>${
                   courseRegistered.addressCourse
                 }</li>
-                <li>
+                <li style="text-align: justify;">
                   <strong>Description : </strong>${
                     courseRegistered.descriptionCourse
                   }
@@ -668,7 +668,7 @@ class DbService {
 
     const mailOptions = userStudent.map((student) => ({
       from: process.env.GMAIL_USER,
-      to: student,
+      to: student.emailUser,
       subject: "Notification de fermeture de cours",
       html: juice(`<!DOCTYPE html>
     <html lang="en">
@@ -786,11 +786,11 @@ class DbService {
                     alt="Screenshot 2023-04-21 at 16-42-39 Unicons icon library Line Monochrome Solid Thin Line(1)"
                   />
                 </a>
-                <h2>${student[0].firstnameUser} ${student[0].lastnameUser}</h2>
+                <h2>${student.firstnameUser} ${student.lastnameUser}</h2>
               </div>
     
               <ul>
-                <li><strong>Adresse mail : </strong>${student[0].emailUser}</li>
+                <li><strong>Adresse mail : </strong>${student.emailUser}</li>
               </ul>
             </div>
             <div class="logo_registerOneCourse">
@@ -824,7 +824,7 @@ class DbService {
               <h2>${courseRegistered.nameCourse}</h2>
             </div>
             <ul>
-              <li><strong>Enseignants : </strong>${
+              <li><strong>Instructeur : </strong>${
                 courseRegistered.instructorCourse.firstnameUser
               } ${courseRegistered.instructorCourse.lastnameUser}</li>
               <li><strong>Adresse mail : </strong>${
@@ -835,7 +835,7 @@ class DbService {
               <li><strong>Adresse : </strong>${
                 courseRegistered.addressCourse
               }</li>
-              <li>
+              <li style="text-align: justify;">
                 <strong>Description : </strong>${
                   courseRegistered.descriptionCourse
                 }
@@ -1103,7 +1103,7 @@ class DbService {
                 <h2>${courseRegistered.nameCourse}</h2>
               </div>
               <ul>
-                <li><strong>Enseignants : </strong>${
+                <li><strong>Instructeur : </strong>${
                   courseRegistered.instructorCourse.firstnameUser
                 } ${courseRegistered.instructorCourse.lastnameUser}</li>
                 <li><strong>Adresse mail : </strong>${
@@ -1114,7 +1114,7 @@ class DbService {
                 <li><strong>Adresse : </strong>${
                   courseRegistered.addressCourse
                 }</li>
-                <li>
+                <li style="text-align: justify;">
                   <strong>Description : </strong>${
                     courseRegistered.descriptionCourse
                   }

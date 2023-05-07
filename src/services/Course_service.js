@@ -860,7 +860,11 @@ class CourseService extends DbService {
         // get students in unregistered course
         let userStudents = await Promise.all(
           courseUnregistered.studentsCourse.map(async (student) => {
-            return student.emailUser;
+            return {
+              emailUser: student.emailUser,
+              firstnameUser: student.firstnameUser,
+              lastnameUser: student.lastnameUser,
+            };
           })
         );
 
