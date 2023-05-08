@@ -69,11 +69,33 @@ module.exports.postSignUp = async (req, res) => {
 
 // confirm email sign up
 module.exports.confirmEmailSignUp = (req, res) => {
+  // get jwt token of confirme email sign up
+  let { token } = req.query;
+
   return res.render("confirm_email_signup", {
     title: "Élève confirmation d’adresse mail",
     showHeader: true,
     authUser: req.user,
+    token,
   });
+};
+
+// post confirm email sign up
+module.exports.postConfirmEmailSignUp = (req, res) => {
+  // get jwt token of confirme email sign up
+  let { token } = req.body;
+
+  userService.setConfirmEmailSignUp(
+    token,
+    req,
+    res,
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
+  );
 };
 
 // confirmed email sign up
@@ -119,12 +141,12 @@ module.exports.postJoinUs = async (req, res) => {
       validator,
       req,
       res,
-      path,
       bcrypt,
       nodeMailer,
       juice,
       jwt,
       fs,
+      path,
       ejs
     );
   } catch (error) {
@@ -149,8 +171,19 @@ module.exports.confirmEmailJoinUs = (req, res) => {
 // post confirm email join us
 module.exports.postConfirmEmailJoinUs = (req, res) => {
   // get jwt token of confirme email join us
-  // let { token } = req.query;
-  console.log(req.body);
+  let { token } = req.body;
+
+  userService.setConfirmEmailJoinUs(
+    token,
+    req,
+    res,
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
+  );
 };
 
 // confirmed email join us

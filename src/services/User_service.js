@@ -141,6 +141,7 @@ class UserService extends DbService {
     return { success: true, newDataStudentProfile };
   }
 
+  // post sign up
   async setSignUp(
     firstnameUser,
     lastnameUser,
@@ -196,6 +197,60 @@ class UserService extends DbService {
     res.redirect(`/auth/confirmemailsignup?token=${tokenSignUp}`);
   }
 
+  // post confirm email sign up
+  async setConfirmEmailSignUp(
+    token,
+    req,
+    res,
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
+  ) {
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET,
+      async (err, decodedTokenSignUp) => {
+        // validation of the token sign up
+        if (err) {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Le lien n'est plus valid."
+          );
+          return res.redirect("/auth/signup");
+        }
+
+        // resend token sign up
+        delete decodedTokenSignUp.iat;
+        delete decodedTokenSignUp.exp;
+
+        // creat payload sign up
+        const payloadSignUp = decodedTokenSignUp;
+
+        // creat jwt token sign up
+        const tokenSignUp = jwt.sign(payloadSignUp, process.env.JWT_SECRET, {
+          expiresIn: "1m",
+        });
+
+        // send confirmation email sign up
+        super.sendConfirmationEmailSignUpMailer(
+          nodeMailer,
+          juice,
+          payloadSignUp,
+          tokenSignUp,
+          fs,
+          path,
+          ejs
+        );
+
+        req.flash("success_msg", "Le lien a été renvoyé avec succès");
+        res.redirect(`/auth/confirmemailsignup?token=${token}`);
+      }
+    );
+  }
+
   // confirmed email sign up
   async setConfirmedEmailSignUp(token, jwt, req, res) {
     jwt.verify(
@@ -206,7 +261,7 @@ class UserService extends DbService {
         if (err) {
           req.flash(
             "error_msg",
-            "Incrisption échouée : Ce lien n'est plus valid."
+            "Incrisption échouée : Le lien n'est plus valid."
           );
           return res.redirect("/auth/signup");
         }
@@ -427,12 +482,12 @@ class UserService extends DbService {
     validator,
     req,
     res,
-    path,
     bcrypt,
     nodeMailer,
     juice,
     jwt,
     fs,
+    path,
     ejs
   ) {
     // validation join us
@@ -488,6 +543,60 @@ class UserService extends DbService {
     res.redirect(`/auth/confirmemailjoinus?token=${tokenJoinUs}`);
   }
 
+  // post confirm email join us
+  async setConfirmEmailJoinUs(
+    token,
+    req,
+    res,
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
+  ) {
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET,
+      async (err, decodedTokenJoinUs) => {
+        // validation of the token join us
+        if (err) {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Le lien n'est plus valid."
+          );
+          return res.redirect("/auth/joinus");
+        }
+
+        // resend token join us
+        delete decodedTokenJoinUs.iat;
+        delete decodedTokenJoinUs.exp;
+
+        // creat payload join us
+        const payloadJoinUs = decodedTokenJoinUs;
+
+        // creat jwt token join us
+        const tokenJoinUs = jwt.sign(payloadJoinUs, process.env.JWT_SECRET, {
+          expiresIn: "1m",
+        });
+
+        // send confirmation email sign up
+        super.sendConfirmationEmailJoinUsMailer(
+          nodeMailer,
+          juice,
+          payloadJoinUs,
+          tokenJoinUs,
+          fs,
+          path,
+          ejs
+        );
+
+        req.flash("success_msg", "Le lien a été renvoyé avec succès");
+        res.redirect(`/auth/confirmemailjoinus?token=${token}`);
+      }
+    );
+  }
+
   // confirmed email join us
   async setConfirmedEmailJoinUs(token, jwt, req, res) {
     jwt.verify(
@@ -498,7 +607,7 @@ class UserService extends DbService {
         if (err) {
           req.flash(
             "error_msg",
-            "Incrisption échouée : Ce lien n'est plus valid."
+            "Incrisption échouée : Le lien n'est plus valid."
           );
           return res.redirect("/auth/joinus");
         }
