@@ -440,7 +440,7 @@ class UserService extends DbService {
 
   // confirmed email
   async setConfirmedEmail(token, jwt, req, res) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       // validation of the token
       if (err) {
         req.flash(
@@ -449,18 +449,25 @@ class UserService extends DbService {
         );
         return res.redirect("/auth/signup");
       }
-
-      console.log(decodedToken);
-
       // save user
-      // let studentUser = new this.User(
-      //   validationResultSignUp.newDataStudentProfile
-      // );
 
-      // await studentUser.save();
+      let { firstnameUser, lastnameUser, emailUser, passwordUser, roleUser } =
+        decodedToken;
 
-      // req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
-      // res.redirect("/auth/login");
+      const newDataStudentProfile = {
+        firstnameUser,
+        lastnameUser,
+        emailUser,
+        passwordUser,
+        roleUser,
+      };
+
+      let studentUser = new this.User(newDataStudentProfile);
+
+      await studentUser.save();
+
+      req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
+      res.redirect("/auth/login");
     });
   }
 
