@@ -927,7 +927,7 @@ class CourseService extends DbService {
       // error not a user
       req.flash(
         "error_msg",
-        "Incrisption échouée : Vous n’avez pas le droit de vous desinscrire au cours."
+        "Désincrisption échouée : Vous n’avez pas le droit de vous desinscrire au cours."
       );
 
       let coursesUnregistered = { message: "error not a user." };

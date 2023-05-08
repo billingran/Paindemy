@@ -193,17 +193,7 @@ class UserService extends DbService {
       ejs
     );
 
-    res.redirect("/auth/confirmemail");
-
-    // save user
-    // let studentUser = new this.User(
-    //   validationResultSignUp.newDataStudentProfile
-    // );
-
-    // await studentUser.save();
-
-    // req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
-    // res.redirect("/auth/login");
+    res.redirect(`/auth/confirmemail?token=${token}`);
   }
 
   // validation join us
@@ -446,6 +436,32 @@ class UserService extends DbService {
       "Félicitations, vous êtes désormais un enseignant."
     );
     res.redirect("/auth/login");
+  }
+
+  // confirmed email
+  async setConfirmedEmail(token, jwt) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+      // validation of the token
+      if (err) {
+        req.flash(
+          "error_msg",
+          "Incrisption échouée : Ce lien n'est plus valid."
+        );
+        return res.redirect("/auth/signup");
+      }
+
+      console.log(decodedToken);
+
+      // save user
+      // let studentUser = new this.User(
+      //   validationResultSignUp.newDataStudentProfile
+      // );
+
+      // await studentUser.save();
+
+      // req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
+      // res.redirect("/auth/login");
+    });
   }
 
   // local login
@@ -977,7 +993,7 @@ class UserService extends DbService {
       // error not a instructor
       req.flash(
         "error_msg",
-        "Incrisption échouée : Vous n’avez pas le droit de supprimer les élèves du cours."
+        "suppression échouée : Vous n’avez pas le droit de supprimer les élèves du cours."
       );
 
       let courseDeleteOneStudent = { message: "error not a instructor." };
@@ -1042,7 +1058,7 @@ class UserService extends DbService {
       // error not a instructor
       req.flash(
         "error_msg",
-        "Incrisption échouée : Vous n’avez pas le droit d'ajouter  les élèves du cours."
+        "ajout échoué : Vous n’avez pas le droit d'ajouter les élèves du cours."
       );
 
       let courseAddOneStudent = { message: "error not a instructor." };

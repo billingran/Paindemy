@@ -67,20 +67,6 @@ module.exports.postSignUp = async (req, res) => {
   }
 };
 
-// confirm email
-module.exports.confirmEmail = (req, res) => {
-  return res.render("confirm_email", {
-    title: "Confirmation d’adresse mail",
-    showHeader: true,
-    authUser: req.user,
-  });
-};
-
-// confirmed email
-module.exports.confirmedEmail = (req, res) => {
-  console.log(req.query);
-};
-
 // join us
 module.exports.joinUs = (req, res) => {
   return res.render("join_us", {
@@ -123,6 +109,23 @@ module.exports.postJoinUs = async (req, res) => {
     console.log(error);
     return res.status(500).send(error);
   }
+};
+
+// confirm email
+module.exports.confirmEmail = (req, res) => {
+  return res.render("confirm_email", {
+    title: "Confirmation d’adresse mail",
+    showHeader: true,
+    authUser: req.user,
+  });
+};
+
+// confirmed email
+module.exports.confirmedEmail = (req, res) => {
+  // get jwt token of confirmed email
+  let { token } = req.query;
+
+  userService.setConfirmedEmail(token, jwt);
 };
 
 //local login

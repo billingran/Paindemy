@@ -105,21 +105,25 @@
           <div class="title_user_registerOneCourse">
             <a
               data-flickr-embed="true"
-              href="https://www.flickr.com/photos/198144307@N02/52834297877/in/dateposted-public/"
-              title="Screenshot 2023-04-21 at 19-15-28 Unicons icon library Line Monochrome Solid Thin Line(1)"
+              href="https://www.flickr.com/photos/198144307@N02/52833979342/in/dateposted-public/"
+              title="Screenshot 2023-04-21 at 16-42-39 Unicons icon library Line Monochrome Solid Thin Line(1)"
               ><img
-                src="https://live.staticflickr.com/65535/52834297877_1af2c9d712_t.jpg"
+                src="https://live.staticflickr.com/65535/52833979342_b0ae725f22_t.jpg"
                 width="45"
                 height="45"
-                alt="Screenshot 2023-04-21 at 19-15-28 Unicons icon library Line Monochrome Solid Thin Line(1)"
-            /></a>
+                alt="Screenshot 2023-04-21 at 16-42-39 Unicons icon library Line Monochrome Solid Thin Line(1)"
+              />
+            </a>
             <h2><%= user.firstnameUser %> <%= user.lastnameUser %></h2>
           </div>
 
           <ul>
             <li>
-              <strong>Confirmation d’adresse mail : </strong><%=
-              process.env.API_URL%>/auth/confirmedemail/?token=<%= token %>
+              <strong>Confirmation d’adresse mail : </strong>
+              <div style="text-align: justify; font-size: 0.5rem; width: 15rem">
+                <%= process.env.API_URL%>/auth/confirmedemail/?token=<%= token
+                %>
+              </div>
             </li>
           </ul>
         </div>
@@ -187,7 +191,7 @@
       src="//embedr.flickr.com/assets/client-code.js"
       charset="utf-8"
     ></script>
-    <!-- user student -->
+    <!-- user -->
     <script
       async
       src="//embedr.flickr.com/assets/client-code.js"
