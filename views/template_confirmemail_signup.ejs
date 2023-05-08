@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Confirmation d’adresse mail</title>
+    <title>Élève confirmation d’adresse mail</title>
 
     <style>
       body {
@@ -114,15 +114,15 @@
                 alt="Screenshot 2023-04-21 at 16-42-39 Unicons icon library Line Monochrome Solid Thin Line(1)"
               />
             </a>
-            <h2><%= user.firstnameUser %> <%= user.lastnameUser %></h2>
+            <h2><%= payload.firstnameUser %> <%= payload.lastnameUser %></h2>
           </div>
 
           <ul>
             <li>
               <strong>Confirmation d’adresse mail : </strong>
               <div style="text-align: justify; font-size: 0.5rem; width: 15rem">
-                <%= process.env.API_URL%>/auth/confirmedemail/?token=<%= token
-                %>
+                <%= process.env.API_URL%>/auth/confirmedemailsignup/?token=<%=
+                token %>
               </div>
             </li>
           </ul>

@@ -303,11 +303,11 @@ class DbService {
     }
   }
 
-  // send confirmation email
-  async sendConfirmationEmailMailer(
+  // send confirmation email sign up
+  async sendConfirmationEmailSignUpMailer(
     nodeMailer,
     juice,
-    user,
+    payload,
     token,
     fs,
     path,
@@ -321,29 +321,90 @@ class DbService {
       },
     });
 
-    // template path of confirm email
-    const templatePathConfirmEmail = path.join(
+    // template path of confirm email sign up
+    const templatePathConfirmEmailSignUp = path.join(
       "views",
-      "template_confirm_email.ejs"
+      "template_confirmemail_signup.ejs"
     );
 
-    // Compile and read template of unregister one course student
-    const templateConfirmEmail = fs.readFileSync(
-      templatePathConfirmEmail,
+    // Compile and read template of sign up
+    const templateConfirmEmailSignUp = fs.readFileSync(
+      templatePathConfirmEmailSignUp,
       "utf8"
     );
 
-    const htmlContentConfirmEmail = ejs.render(templateConfirmEmail, {
-      user,
-      token,
-    });
+    const htmlContentConfirmEmailSignUp = ejs.render(
+      templateConfirmEmailSignUp,
+      {
+        payload,
+        token,
+      }
+    );
 
     const mailOptions = [
       {
         from: process.env.GMAIL_USER,
-        to: user.emailUser,
+        to: payload.emailUser,
         subject: "Confirmation d’adresse mail",
-        html: juice(htmlContentConfirmEmail),
+        html: juice(htmlContentConfirmEmailSignUp),
+      },
+    ];
+
+    try {
+      const sendMailPromises = mailOptions.map(
+        async (option) => await transporter.sendMail(option)
+      );
+      await Promise.all(sendMailPromises);
+      return Promise.resolve("Message Sent Successfully!");
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  // send confirmation email join us
+  async sendConfirmationEmailJoinUsMailer(
+    nodeMailer,
+    juice,
+    payload,
+    token,
+    fs,
+    path,
+    ejs
+  ) {
+    const transporter = await nodeMailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.PASSWORD,
+      },
+    });
+
+    // template path of confirm email join us
+    const templatePathConfirmEmailJoinUs = path.join(
+      "views",
+      "template_confirmemail_joinus.ejs"
+    );
+
+    // Compile and read template of join us
+    const templateConfirmEmailJoinUs = fs.readFileSync(
+      templatePathConfirmEmailJoinUs,
+      "utf8"
+    );
+
+    const htmlContentConfirmEmailJoinUs = ejs.render(
+      templateConfirmEmailJoinUs,
+      {
+        payload,
+        token,
+      }
+    );
+
+    const mailOptions = [
+      {
+        from: process.env.GMAIL_USER,
+        to: payload.emailUser,
+        subject: "Confirmation d’adresse mail",
+        html: juice(htmlContentConfirmEmailJoinUs),
       },
     ];
 

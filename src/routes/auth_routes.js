@@ -8,17 +8,26 @@ router.get("/signup", authController.signUp);
 // post sign up
 router.post("/signup", authController.postSignUp);
 
+// confirm email sign up
+router.get("/confirmemailsignup", authController.confirmEmailSignUp);
+
+// confirmed email sign up
+router.get("/confirmedemailsignup", authController.confirmedEmailSignUp);
+
 // join us
 router.get("/joinus", authController.joinUs);
 
 // post join us
 router.post("/joinus", authController.postJoinUs);
 
-// confirm email
-router.get("/confirmemail", authController.confirmEmail);
+// confirm email join us
+router.get("/confirmemailjoinus", authController.confirmEmailJoinUs);
 
-// confirmed email
-router.get("/confirmedemail", authController.confirmedEmail);
+// post confirm email join us
+router.post("/confirmemailjoinus", authController.postConfirmEmailJoinUs);
+
+// confirmed email join us
+router.get("/confirmedemailjoinus", authController.confirmedEmailJoinUs);
 
 // login
 router.get("/login", authController.login);

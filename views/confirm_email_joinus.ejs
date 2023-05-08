@@ -1,0 +1,21 @@
+<!-- /////////////////////////////////////////////// -->
+<!--  title confirm email join us-->
+<section class="section_title">
+  <h2 class="title central">
+    <i class="uil uil-user-circle icon_title"></i> Confirmation d’adresse mail !
+  </h2>
+</section>
+
+<section class="section_delete">
+  <h2 class="warning_delete">Notification :</h2>
+  <div class="content_delete">
+    Vérifier votre bôite mail sous 15 min pour confirmer votre adresse mail.
+  </div>
+
+  <% if(token) { %>
+  <form action="/auth/confirmemailjoinus" method="POST">
+    <input type="hidden" value="<%= token %>" name="token" />
+    <input type="submit" value="Renvoyer" class="btn_delete" />
+  </form>
+  <% } %>
+</section>
