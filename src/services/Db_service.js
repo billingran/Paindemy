@@ -304,7 +304,15 @@ class DbService {
   }
 
   // send confirmation email
-  async sendConfirmationEmailMailer(user, token) {
+  async sendConfirmationEmailMailer(
+    nodeMailer,
+    juice,
+    user,
+    token,
+    fs,
+    path,
+    ejs
+  ) {
     const transporter = await nodeMailer.createTransport({
       service: "Gmail",
       auth: {

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const API_URL = process.env.API_URL;
 const errorAxios = document.querySelectorAll(".errorAxios");
 
 const ctnNumberCourseRegistered = document.querySelector(".ctn_course_number");

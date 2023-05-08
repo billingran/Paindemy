@@ -8,19 +8,19 @@ const userService = new UserService();
 const FavoriteService = require("../services/Favorite_service");
 const favoriteService = new FavoriteService();
 
-// image upload
-const path = require("path");
-const fs = require("fs");
-
 //node mailer
 const nodeMailer = require("nodemailer");
-
-//ejs
-const ejs = require("ejs");
 
 // juice
 const juice = require("juice");
 const { Console } = require("console");
+
+// image upload
+const path = require("path");
+const fs = require("fs");
+
+//ejs
+const ejs = require("ejs");
 
 // time controller
 const moment = require("moment");

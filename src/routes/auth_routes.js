@@ -14,6 +14,12 @@ router.get("/joinus", authController.joinUs);
 // post join us
 router.post("/joinus", authController.postJoinUs);
 
+// confirm email
+router.get("/confirmemail", authController.confirmEmail);
+
+// confirmed email
+router.get("/confirmedemail", authController.confirmedEmail);
+
 // login
 router.get("/login", authController.login);
 

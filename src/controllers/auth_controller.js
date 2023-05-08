@@ -1,17 +1,28 @@
 const UserService = require("../services/User_service");
 const userService = new UserService();
 
-// image upload
-const path = require("path");
-
 // validation
 const validator = require("validator");
 
 // bcrypt
 const bcrypt = require("bcrypt");
 
+//node mailer
+const nodeMailer = require("nodemailer");
+
+// juice
+const juice = require("juice");
+const { Console } = require("console");
+
+// image upload
+const path = require("path");
+const fs = require("fs");
+
 // jwt
 const jwt = require("jsonwebtoken");
+
+//ejs
+const ejs = require("ejs");
 
 // sign up
 module.exports.signUp = (req, res) => {
@@ -43,7 +54,12 @@ module.exports.postSignUp = async (req, res) => {
       req,
       res,
       bcrypt,
-      jwt
+      nodeMailer,
+      juice,
+      jwt,
+      fs,
+      path,
+      ejs
     );
   } catch (error) {
     console.log(error);
@@ -58,6 +74,11 @@ module.exports.confirmEmail = (req, res) => {
     showHeader: true,
     authUser: req.user,
   });
+};
+
+// confirmed email
+module.exports.confirmedEmail = (req, res) => {
+  console.log(req.query);
 };
 
 // join us

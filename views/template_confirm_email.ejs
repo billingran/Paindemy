@@ -113,15 +113,13 @@
                 height="45"
                 alt="Screenshot 2023-04-21 at 19-15-28 Unicons icon library Line Monochrome Solid Thin Line(1)"
             /></a>
-            <h2>
-              <%= userStudent.firstnameUser %> <%= userStudent.lastnameUser %>
-            </h2>
+            <h2><%= user.firstnameUser %> <%= user.lastnameUser %></h2>
           </div>
 
           <ul>
             <li>
               <strong>Confirmation d’adresse mail : </strong><%=
-              userStudent.emailUser %>
+              process.env.API_URL%>/auth/confirmedemail/?token=<%= token %>
             </li>
           </ul>
         </div>
@@ -137,9 +135,8 @@
       </div>
 
       <p>
-        Merci d’avoir rejoins Paîndemy ! Veuillez trouver ci-dessous les
-        informations sur les cours que vous avez créé, et les étudiants qui se
-        sont désinscrits
+        Merci d’avoir rejoins Paîndemy ! Veuillez cliquer sur le lien ci-dessus
+        pour confirmer votre adresse mail.
       </p>
 
       <div class="course">

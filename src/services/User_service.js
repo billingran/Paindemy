@@ -151,7 +151,12 @@ class UserService extends DbService {
     req,
     res,
     bcrypt,
-    jwt
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
   ) {
     // validation sign up
     const validationResultSignUp = await this.signUpValidation(
@@ -174,13 +179,21 @@ class UserService extends DbService {
 
     // creat jwt token
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "15m",
+      expiresIn: "1m",
     });
 
     // send confirmation email
-    sendConfirmationEmailMailer(payload, token);
+    super.sendConfirmationEmailMailer(
+      nodeMailer,
+      juice,
+      payload,
+      token,
+      fs,
+      path,
+      ejs
+    );
 
-    // res.redirect("/auth/login");
+    res.redirect("/auth/confirmemail");
 
     // save user
     // let studentUser = new this.User(
