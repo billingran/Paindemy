@@ -302,6 +302,53 @@ class DbService {
       return Promise.reject(error);
     }
   }
+
+  // send confirmation email
+  async sendConfirmationEmailMailer(user, token) {
+    const transporter = await nodeMailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.PASSWORD,
+      },
+    });
+
+    // template path of confirm email
+    const templatePathConfirmEmail = path.join(
+      "views",
+      "template_confirm_email.ejs"
+    );
+
+    // Compile and read template of unregister one course student
+    const templateConfirmEmail = fs.readFileSync(
+      templatePathConfirmEmail,
+      "utf8"
+    );
+
+    const htmlContentConfirmEmail = ejs.render(templateConfirmEmail, {
+      user,
+      token,
+    });
+
+    const mailOptions = [
+      {
+        from: process.env.GMAIL_USER,
+        to: user.emailUser,
+        subject: "Confirmation d’adresse mail",
+        html: juice(htmlContentConfirmEmail),
+      },
+    ];
+
+    try {
+      const sendMailPromises = mailOptions.map(
+        async (option) => await transporter.sendMail(option)
+      );
+      await Promise.all(sendMailPromises);
+      return Promise.resolve("Message Sent Successfully!");
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }
 
 module.exports = DbService;

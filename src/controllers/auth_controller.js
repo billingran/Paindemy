@@ -10,6 +10,9 @@ const validator = require("validator");
 // bcrypt
 const bcrypt = require("bcrypt");
 
+// jwt
+const jwt = require("jsonwebtoken");
+
 // sign up
 module.exports.signUp = (req, res) => {
   return res.render("sign_up", {
@@ -39,12 +42,22 @@ module.exports.postSignUp = async (req, res) => {
       validator,
       req,
       res,
-      bcrypt
+      bcrypt,
+      jwt
     );
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);
   }
+};
+
+// confirm email
+module.exports.confirmEmail = (req, res) => {
+  return res.render("confirm_email", {
+    title: "Confirmation d’adresse mail",
+    showHeader: true,
+    authUser: req.user,
+  });
 };
 
 // join us

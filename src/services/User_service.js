@@ -137,6 +137,7 @@ class UserService extends DbService {
       };
     }
 
+    newDataStudentProfile.roleUser = "student";
     return { success: true, newDataStudentProfile };
   }
 
@@ -149,7 +150,8 @@ class UserService extends DbService {
     validator,
     req,
     res,
-    bcrypt
+    bcrypt,
+    jwt
   ) {
     // validation sign up
     const validationResultSignUp = await this.signUpValidation(
@@ -167,17 +169,28 @@ class UserService extends DbService {
       return res.redirect("/auth/signup");
     }
 
-    // // save user
-    validationResultSignUp.newDataStudentProfile.roleUser = "student";
+    // creat payload
+    const payload = validationResultSignUp.newDataStudentProfile;
 
-    let studentUser = new this.User(
-      validationResultSignUp.newDataStudentProfile
-    );
+    // creat jwt token
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "15m",
+    });
 
-    await studentUser.save();
+    // send confirmation email
+    sendConfirmationEmailMailer(payload, token);
 
-    req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
-    res.redirect("/auth/login");
+    // res.redirect("/auth/login");
+
+    // save user
+    // let studentUser = new this.User(
+    //   validationResultSignUp.newDataStudentProfile
+    // );
+
+    // await studentUser.save();
+
+    // req.flash("success_msg", "Félicitations, vous êtes désormais un élève.");
+    // res.redirect("/auth/login");
   }
 
   // validation join us
