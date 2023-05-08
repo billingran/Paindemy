@@ -439,7 +439,7 @@ class UserService extends DbService {
   }
 
   // confirmed email
-  async setConfirmedEmail(token, jwt) {
+  async setConfirmedEmail(token, jwt, req, res) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       // validation of the token
       if (err) {

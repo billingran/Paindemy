@@ -125,7 +125,7 @@ module.exports.confirmedEmail = (req, res) => {
   // get jwt token of confirmed email
   let { token } = req.query;
 
-  userService.setConfirmedEmail(token, jwt);
+  userService.setConfirmedEmail(token, jwt, req, res);
 };
 
 //local login
