@@ -249,6 +249,7 @@ class DbService {
     }
   }
 
+  // unregister one course student
   async unregisterOneCourseMailerStudent(
     nodeMailer,
     juice,
