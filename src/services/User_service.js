@@ -366,15 +366,9 @@ class UserService extends DbService {
           message: "Image, deux images nécessaires.",
         };
       }
+      this.imagesUser = [];
 
-      // img upload
-      const instructorImageName = emailUser.replace("@", "").replace(".", "");
-
-      newDataInstructorProfile.imageUser = await super.uploadImgs(
-        imagesUser,
-        instructorImageName,
-        path
-      );
+      this.imagesUser = imagesUser;
     } else {
       return {
         success: false,
@@ -494,10 +488,32 @@ class UserService extends DbService {
         }
       }
 
-      // resend token
+      // validate email exist
+      const emailFound = await this.User.findOne({
+        emailUser: decodedToken.emailUser,
+      }).exec();
+
+      if (emailFound) {
+        if (role == "instructor") {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Un compte existe déjà avec cet email."
+          );
+          return res.redirect("/auth/login");
+        } else {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Un compte existe déjà avec cet email."
+          );
+          return res.redirect("/auth/login");
+        }
+      }
+
+      // delete extra items of user objet
       delete decodedToken.iat;
       delete decodedToken.exp;
 
+      // resend token
       // creat payload
       const payload = decodedToken;
 
@@ -524,7 +540,7 @@ class UserService extends DbService {
   }
 
   // confirmed email
-  async setConfirmedEmail(token, role, jwt, req, res) {
+  async setConfirmedEmail(token, role, jwt, req, res, path) {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       // validation of the token
       if (err) {
@@ -554,20 +570,39 @@ class UserService extends DbService {
             "error_msg",
             "Incrisption échouée : Un compte existe déjà avec cet email."
           );
-          return res.redirect("/auth/joinus");
+          return res.redirect("/auth/login");
         } else {
           req.flash(
             "error_msg",
             "Incrisption échouée : Un compte existe déjà avec cet email."
           );
-          return res.redirect("/auth/signup");
+          return res.redirect("/auth/login");
         }
       }
 
-      // save user
+      // img upload
+      if (this.imagesUser && this.imagesUser.length > 0) {
+        const imagesUser = this.imagesUser;
+
+        const instructorImageName = decodedToken.emailUser
+          .replace("@", "")
+          .replace(".", "");
+
+        decodedToken.imageUser = await super.uploadImgs(
+          imagesUser,
+          instructorImageName,
+          path
+        );
+      }
+
+      // empty this imagesUser
+      this.imagesUser = [];
+
+      // delete extra items of user objet
       delete decodedToken.iat;
       delete decodedToken.exp;
 
+      // save user
       let User = new this.User(decodedToken);
 
       await User.save();
