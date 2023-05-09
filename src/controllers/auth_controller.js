@@ -121,12 +121,31 @@ module.exports.confirmEmail = (req, res) => {
   // get jwt token of confirme email
   let { token, role } = req.query;
 
-  return res.render("confirm_email", {
-    title: "Confirmation d’adresse mail",
-    showHeader: true,
-    authUser: req.user,
-    token,
-    role,
+  jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+    // validation of the token
+    if (err) {
+      if (role == "instructor") {
+        req.flash(
+          "error_msg",
+          "Incrisption échouée : Le lien n'est plus valid."
+        );
+        return res.redirect("/auth/joinus");
+      } else {
+        req.flash(
+          "error_msg",
+          "Incrisption échouée : Le lien n'est plus valid."
+        );
+        return res.redirect("/auth/signup");
+      }
+    } else {
+      return res.render("confirm_email", {
+        title: "Confirmation d’adresse mail",
+        showHeader: true,
+        authUser: req.user,
+        token,
+        role,
+      });
+    }
   });
 };
 
@@ -189,6 +208,15 @@ module.exports.googleRedirect = (req, res) => {
   }
 
   userService.setGoogleLoginRedirect(user, res);
+};
+
+// reset password
+module.exports.resetPassword = (req, res) => {
+  return res.render("reset_password", {
+    title: "Réinitialisation du mot de passe",
+    showHeader: true,
+    authUser: req.user,
+  });
 };
 
 //logout

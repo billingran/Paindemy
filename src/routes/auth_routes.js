@@ -57,6 +57,9 @@ router.get(
   authController.googleRedirect
 );
 
+// reset password
+router.get("/resetpassword", authController.resetPassword);
+
 // logout
 router.get("/logout", authController.logout);
 
