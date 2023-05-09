@@ -68,43 +68,43 @@ module.exports.postSignUp = async (req, res) => {
 };
 
 // confirm email sign up
-module.exports.confirmEmailSignUp = (req, res) => {
-  // get jwt token of confirme email sign up
-  let { token } = req.query;
+// module.exports.confirmEmailSignUp = (req, res) => {
+//   // get jwt token of confirme email sign up
+//   let { token } = req.query;
 
-  return res.render("confirm_email_signup", {
-    title: "Élève confirmation d’adresse mail",
-    showHeader: true,
-    authUser: req.user,
-    token,
-  });
-};
+//   return res.render("confirm_email_signup", {
+//     title: "Élève confirmation d’adresse mail",
+//     showHeader: true,
+//     authUser: req.user,
+//     token,
+//   });
+// };
 
 // post confirm email sign up
-module.exports.postConfirmEmailSignUp = (req, res) => {
-  // get jwt token of confirme email sign up
-  let { token } = req.body;
+// module.exports.postConfirmEmailSignUp = (req, res) => {
+//   // get jwt token of confirme email sign up
+//   let { token } = req.body;
 
-  userService.setConfirmEmailSignUp(
-    token,
-    req,
-    res,
-    nodeMailer,
-    juice,
-    jwt,
-    fs,
-    path,
-    ejs
-  );
-};
+//   userService.setConfirmEmailSignUp(
+//     token,
+//     req,
+//     res,
+//     nodeMailer,
+//     juice,
+//     jwt,
+//     fs,
+//     path,
+//     ejs
+//   );
+// };
 
 // confirmed email sign up
-module.exports.confirmedEmailSignUp = (req, res) => {
-  // get jwt token of confirmed email sign up
-  let { token } = req.query;
+// module.exports.confirmedEmailSignUp = (req, res) => {
+//   // get jwt token of confirmed email sign up
+//   let { token } = req.query;
 
-  userService.setConfirmedEmailSignUp(token, jwt, req, res);
-};
+//   userService.setConfirmedEmailSignUp(token, jwt, req, res);
+// };
 
 // join us
 module.exports.joinUs = (req, res) => {
@@ -155,26 +155,28 @@ module.exports.postJoinUs = async (req, res) => {
   }
 };
 
-// confirm email join us
-module.exports.confirmEmailJoinUs = (req, res) => {
-  // get jwt token of confirme email join us
-  let { token } = req.query;
+// confirm email
+module.exports.confirmEmail = (req, res) => {
+  // get jwt token of confirme email
+  let { token, role } = req.query;
 
-  return res.render("confirm_email_joinus", {
-    title: "Instructeur confirmation d’adresse mail",
+  return res.render("confirm_email", {
+    title: "Confirmation d’adresse mail",
     showHeader: true,
     authUser: req.user,
     token,
+    role,
   });
 };
 
-// post confirm email join us
-module.exports.postConfirmEmailJoinUs = (req, res) => {
+// post confirm email
+module.exports.postConfirmEmail = (req, res) => {
   // get jwt token of confirme email join us
-  let { token } = req.body;
+  let { token, role } = req.body;
 
-  userService.setConfirmEmailJoinUs(
+  userService.setConfirmEmail(
     token,
+    role,
     req,
     res,
     nodeMailer,
@@ -186,12 +188,12 @@ module.exports.postConfirmEmailJoinUs = (req, res) => {
   );
 };
 
-// confirmed email join us
-module.exports.confirmedEmailJoinUs = (req, res) => {
-  // get jwt token of confirmed email join us
-  let { token } = req.query;
+// confirmed email
+module.exports.confirmedEmail = (req, res) => {
+  // get jwt token of confirmed email
+  let { token, role } = req.query;
 
-  userService.setConfirmedEmailJoinUs(token, jwt, req, res);
+  userService.setConfirmedEmail(token, role, jwt, req, res);
 };
 
 //local login

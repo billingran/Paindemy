@@ -121,8 +121,8 @@
             <li>
               <strong>Confirmation d’adresse mail : </strong>
               <div style="text-align: justify; font-size: 0.5rem; width: 15rem">
-                <%= process.env.API_URL%>/auth/confirmedemailsignup/?token=<%=
-                token %>
+                <%= process.env.API_URL%>/auth/confirmedemail/?token=<%= token
+                %>&role=<%= role %>
               </div>
             </li>
           </ul>

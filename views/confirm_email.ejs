@@ -7,16 +7,17 @@
 </section>
 
 <section class="section_delete">
+  <h2 class="warning_delete">Notification :</h2>
   <%- include("partials/message") %>
 
-  <h2 class="warning_delete">Notification :</h2>
   <div class="content_delete">
     Vérifier votre bôite mail sous 15 min pour confirmer votre adresse mail.
   </div>
 
-  <% if(token) { %>
-  <form action="/auth/confirmemailjoinus" method="POST">
+  <% if(token && role) { %>
+  <form action="/auth/confirmemail" method="POST">
     <input type="hidden" value="<%= token %>" name="token" />
+    <input type="hidden" value="<%= role %>" name="role" />
     <input type="submit" value="Renvoyer" class="btn_delete" />
   </form>
   <% } %>

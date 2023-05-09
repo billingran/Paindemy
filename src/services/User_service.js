@@ -184,104 +184,107 @@ class UserService extends DbService {
     });
 
     // send confirmation email sign up
-    super.sendConfirmationEmailSignUpMailer(
+    super.sendConfirmationEmailMailer(
       nodeMailer,
       juice,
       payloadSignUp,
       tokenSignUp,
+      validationResultSignUp.newDataStudentProfile.roleUser,
       fs,
       path,
       ejs
     );
 
-    res.redirect(`/auth/confirmemailsignup?token=${tokenSignUp}`);
+    res.redirect(
+      `/auth/confirmemail?token=${tokenSignUp}&role=${validationResultSignUp.newDataStudentProfile.roleUser}`
+    );
   }
 
   // post confirm email sign up
-  async setConfirmEmailSignUp(
-    token,
-    req,
-    res,
-    nodeMailer,
-    juice,
-    jwt,
-    fs,
-    path,
-    ejs
-  ) {
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET,
-      async (err, decodedTokenSignUp) => {
-        // validation of the token sign up
-        if (err) {
-          req.flash(
-            "error_msg",
-            "Incrisption échouée : Le lien n'est plus valid."
-          );
-          return res.redirect("/auth/signup");
-        }
+  // async setConfirmEmailSignUp(
+  //   token,
+  //   req,
+  //   res,
+  //   nodeMailer,
+  //   juice,
+  //   jwt,
+  //   fs,
+  //   path,
+  //   ejs
+  // ) {
+  //   jwt.verify(
+  //     token,
+  //     process.env.JWT_SECRET,
+  //     async (err, decodedTokenSignUp) => {
+  //       // validation of the token sign up
+  //       if (err) {
+  //         req.flash(
+  //           "error_msg",
+  //           "Incrisption échouée : Le lien n'est plus valid."
+  //         );
+  //         return res.redirect("/auth/signup");
+  //       }
 
-        // resend token sign up
-        delete decodedTokenSignUp.iat;
-        delete decodedTokenSignUp.exp;
+  //       // resend token sign up
+  //       delete decodedTokenSignUp.iat;
+  //       delete decodedTokenSignUp.exp;
 
-        // creat payload sign up
-        const payloadSignUp = decodedTokenSignUp;
+  //       // creat payload sign up
+  //       const payloadSignUp = decodedTokenSignUp;
 
-        // creat jwt token sign up
-        const tokenSignUp = jwt.sign(payloadSignUp, process.env.JWT_SECRET, {
-          expiresIn: "1m",
-        });
+  //       // creat jwt token sign up
+  //       const tokenSignUp = jwt.sign(payloadSignUp, process.env.JWT_SECRET, {
+  //         expiresIn: "1m",
+  //       });
 
-        // send confirmation email sign up
-        super.sendConfirmationEmailSignUpMailer(
-          nodeMailer,
-          juice,
-          payloadSignUp,
-          tokenSignUp,
-          fs,
-          path,
-          ejs
-        );
+  //       // send confirmation email sign up
+  //       super.sendConfirmationEmailSignUpMailer(
+  //         nodeMailer,
+  //         juice,
+  //         payloadSignUp,
+  //         tokenSignUp,
+  //         fs,
+  //         path,
+  //         ejs
+  //       );
 
-        req.flash("success_msg", "Le lien a été renvoyé avec succès");
-        res.redirect(`/auth/confirmemailsignup?token=${token}`);
-      }
-    );
-  }
+  //       req.flash("success_msg", "Le lien a été renvoyé avec succès");
+  //       res.redirect(`/auth/confirmemailsignup?token=${token}`);
+  //     }
+  //   );
+  // }
 
   // confirmed email sign up
-  async setConfirmedEmailSignUp(token, jwt, req, res) {
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET,
-      async (err, decodedTokenSignUp) => {
-        // validation of the token sign up
-        if (err) {
-          req.flash(
-            "error_msg",
-            "Incrisption échouée : Le lien n'est plus valid."
-          );
-          return res.redirect("/auth/signup");
-        }
+  // async setConfirmedEmailSignUp(token, jwt, req, res) {
+  //   jwt.verify(
+  //     token,
+  //     process.env.JWT_SECRET,
+  //     async (err, decodedTokenSignUp) => {
+  //       // validation of the token sign up
+  //       if (err) {
+  //         req.flash(
+  //           "error_msg",
+  //           "Incrisption échouée : Le lien n'est plus valid."
+  //         );
+  //         return res.redirect("/auth/signup");
+  //       }
 
-        // save user sign up
-        delete decodedTokenSignUp.iat;
-        delete decodedTokenSignUp.exp;
+  //       // save user sign up
+  //       delete decodedTokenSignUp.iat;
+  //       delete decodedTokenSignUp.exp;
 
-        let studentUser = new this.User(decodedTokenSignUp);
+  //       let studentUser = new this.User(decodedTokenSignUp);
 
-        await studentUser.save();
+  //       await studentUser.save();
 
-        req.flash(
-          "success_msg",
-          "Félicitations, vous êtes désormais un élève."
-        );
-        res.redirect("/auth/login");
-      }
-    );
-  }
+  //       req.flash(
+  //         "success_msg",
+  //         "Félicitations, vous êtes désormais un élève."
+  //       );
+  //       res.redirect("/auth/login");
+  //     }
+  //   );
+  // }
 
   // validation join us
   async joinUsValidation(
@@ -529,23 +532,27 @@ class UserService extends DbService {
       expiresIn: "1m",
     });
 
-    // send confirmation email sign up
-    super.sendConfirmationEmailJoinUsMailer(
+    // send confirmation email join us
+    super.sendConfirmationEmailMailer(
       nodeMailer,
       juice,
       payloadJoinUs,
       tokenJoinUs,
+      validationResultJoinUs.newDataInstructorProfile.roleUser,
       fs,
       path,
       ejs
     );
 
-    res.redirect(`/auth/confirmemailjoinus?token=${tokenJoinUs}`);
+    res.redirect(
+      `/auth/confirmemail?token=${tokenJoinUs}&role=${validationResultJoinUs.newDataInstructorProfile.roleUser}`
+    );
   }
 
-  // post confirm email join us
-  async setConfirmEmailJoinUs(
+  // post confirm email
+  async setConfirmEmail(
     token,
+    role,
     req,
     res,
     nodeMailer,
@@ -555,78 +562,116 @@ class UserService extends DbService {
     path,
     ejs
   ) {
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET,
-      async (err, decodedTokenJoinUs) => {
-        // validation of the token join us
-        if (err) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      // validation of the token
+      if (err) {
+        if (role == "instructor") {
           req.flash(
             "error_msg",
             "Incrisption échouée : Le lien n'est plus valid."
           );
           return res.redirect("/auth/joinus");
+        } else {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Le lien n'est plus valid."
+          );
+          return res.redirect("/auth/signup");
         }
-
-        // resend token join us
-        delete decodedTokenJoinUs.iat;
-        delete decodedTokenJoinUs.exp;
-
-        // creat payload join us
-        const payloadJoinUs = decodedTokenJoinUs;
-
-        // creat jwt token join us
-        const tokenJoinUs = jwt.sign(payloadJoinUs, process.env.JWT_SECRET, {
-          expiresIn: "1m",
-        });
-
-        // send confirmation email sign up
-        super.sendConfirmationEmailJoinUsMailer(
-          nodeMailer,
-          juice,
-          payloadJoinUs,
-          tokenJoinUs,
-          fs,
-          path,
-          ejs
-        );
-
-        req.flash("success_msg", "Le lien a été renvoyé avec succès");
-        res.redirect(`/auth/confirmemailjoinus?token=${token}`);
       }
-    );
+
+      // resend token
+      delete decodedToken.iat;
+      delete decodedToken.exp;
+
+      // creat payload
+      const payload = decodedToken;
+
+      // creat jwt token
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1m",
+      });
+
+      // send confirmation email
+      super.sendConfirmationEmailMailer(
+        nodeMailer,
+        juice,
+        payload,
+        token,
+        role,
+        fs,
+        path,
+        ejs
+      );
+
+      req.flash("success_msg", "Le lien a été renvoyé avec succès");
+      res.redirect(`/auth/confirmemail?token=${token}&role=${role}`);
+    });
   }
 
-  // confirmed email join us
-  async setConfirmedEmailJoinUs(token, jwt, req, res) {
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET,
-      async (err, decodedTokenJoinUs) => {
-        // validation of the token join us
-        if (err) {
+  // confirmed email
+  async setConfirmedEmail(token, role, jwt, req, res) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      // validation of the token
+      if (err) {
+        if (role == "instructor") {
           req.flash(
             "error_msg",
             "Incrisption échouée : Le lien n'est plus valid."
           );
           return res.redirect("/auth/joinus");
+        } else {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Le lien n'est plus valid."
+          );
+          return res.redirect("/auth/signup");
         }
+      }
 
-        // save user
-        delete decodedTokenJoinUs.iat;
-        delete decodedTokenJoinUs.exp;
+      // validate email exist
+      const emailFound = await this.User.findOne({
+        emailUser: decodedToken.emailUser,
+      }).exec();
 
-        let instructorUser = new this.User(decodedTokenJoinUs);
+      if (emailFound) {
+        if (role == "instructor") {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Un compte existe déjà avec cet email."
+          );
+          return res.redirect("/auth/joinus");
+        } else {
+          req.flash(
+            "error_msg",
+            "Incrisption échouée : Un compte existe déjà avec cet email."
+          );
+          return res.redirect("/auth/signup");
+        }
+      }
 
-        await instructorUser.save();
+      // save user
+      delete decodedToken.iat;
+      delete decodedToken.exp;
 
+      let User = new this.User(decodedToken);
+
+      await User.save();
+
+      if (role == "instructor") {
         req.flash(
           "success_msg",
           "Félicitations, vous êtes désormais un Intructeur."
         );
         res.redirect("/auth/login");
+      } else {
+        req.flash(
+          "success_msg",
+          "Félicitations, vous êtes désormais un élève."
+        );
+        res.redirect("/auth/login");
       }
-    );
+    });
   }
 
   // local login
