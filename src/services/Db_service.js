@@ -303,64 +303,6 @@ class DbService {
     }
   }
 
-  // send confirmation email sign up
-  // async sendConfirmationEmailSignUpMailer(
-  //   nodeMailer,
-  //   juice,
-  //   payload,
-  //   token,
-  //   fs,
-  //   path,
-  //   ejs
-  // ) {
-  //   const transporter = await nodeMailer.createTransport({
-  //     service: "Gmail",
-  //     auth: {
-  //       user: process.env.GMAIL_USER,
-  //       pass: process.env.PASSWORD,
-  //     },
-  //   });
-
-  //   // template path of confirm email sign up
-  //   const templatePathConfirmEmailSignUp = path.join(
-  //     "views",
-  //     "template_confirmemail_signup.ejs"
-  //   );
-
-  //   // Compile and read template of sign up
-  //   const templateConfirmEmailSignUp = fs.readFileSync(
-  //     templatePathConfirmEmailSignUp,
-  //     "utf8"
-  //   );
-
-  //   const htmlContentConfirmEmailSignUp = ejs.render(
-  //     templateConfirmEmailSignUp,
-  //     {
-  //       payload,
-  //       token,
-  //     }
-  //   );
-
-  //   const mailOptions = [
-  //     {
-  //       from: process.env.GMAIL_USER,
-  //       to: payload.emailUser,
-  //       subject: "Confirmation d’adresse mail",
-  //       html: juice(htmlContentConfirmEmailSignUp),
-  //     },
-  //   ];
-
-  //   try {
-  //     const sendMailPromises = mailOptions.map(
-  //       async (option) => await transporter.sendMail(option)
-  //     );
-  //     await Promise.all(sendMailPromises);
-  //     return Promise.resolve("Message Sent Successfully!");
-  //   } catch (error) {
-  //     return Promise.reject(error);
-  //   }
-  // }
-
   // send confirmation email
   async sendConfirmationEmailMailer(
     nodeMailer,

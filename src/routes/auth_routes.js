@@ -8,15 +8,6 @@ router.get("/signup", authController.signUp);
 // post sign up
 router.post("/signup", authController.postSignUp);
 
-// confirm email sign up
-// router.get("/confirmemailsignup", authController.confirmEmailSignUp);
-
-// post confirm email sign up
-// router.post("/confirmemailsignup", authController.postConfirmEmailSignUp);
-
-// confirmed email sign up
-// router.get("/confirmedemailsignup", authController.confirmedEmailSignUp);
-
 // join us
 router.get("/joinus", authController.joinUs);
 
