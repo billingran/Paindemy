@@ -171,6 +171,16 @@ app.use("/student", authCheckStudent, studentRoutes);
 // Middleware of home page
 app.use("/", homePage);
 
+// route page not found
+
+app.get("*", (req, res) => {
+  return res.status(404).render("error", {
+    title: "Page introuvable",
+    showHeader: false,
+    authUser: req.user,
+  });
+});
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
