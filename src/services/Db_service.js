@@ -304,7 +304,7 @@ class DbService {
     }
   }
 
-  // send confirmation email
+  // send confirmation email sign up and join us
   async sendConfirmationEmailMailer(
     nodeMailer,
     juice,
@@ -323,13 +323,13 @@ class DbService {
       },
     });
 
-    // template path of confirm email join us
+    // template path of confirm email sign up and join us
     const templatePathConfirmEmail = path.join(
       "views",
       "template_confirm_email.ejs"
     );
 
-    // Compile and read template of join us
+    // Compile and read template of sign up and join us
     const templateConfirmEmail = fs.readFileSync(
       templatePathConfirmEmail,
       "utf8"
@@ -347,6 +347,61 @@ class DbService {
         to: payload.emailUser,
         subject: "Confirmation d’adresse mail",
         html: juice(htmlContentConfirmEmail),
+      },
+    ];
+
+    try {
+      const sendMailPromises = mailOptions.map(
+        async (option) => await transporter.sendMail(option)
+      );
+      await Promise.all(sendMailPromises);
+      return Promise.resolve("Message Sent Successfully!");
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  // send confirmation email reset
+  async sendConfirmationEmailResetMailer(
+    nodeMailer,
+    juice,
+    payload,
+    token,
+    fs,
+    path,
+    ejs
+  ) {
+    const transporter = await nodeMailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.PASSWORD,
+      },
+    });
+
+    // template path of confirm email reset
+    const templatePathConfirmEmailReset = path.join(
+      "views",
+      "template_confirmemail_reset.ejs"
+    );
+
+    // Compile and read template of reset
+    const templateConfirmEmailReset = fs.readFileSync(
+      templatePathConfirmEmailReset,
+      "utf8"
+    );
+
+    const htmlContentConfirmEmailReset = ejs.render(templateConfirmEmailReset, {
+      payload,
+      token,
+    });
+
+    const mailOptions = [
+      {
+        from: process.env.GMAIL_USER,
+        to: payload.emailUser,
+        subject: "Confirmation d’adresse mail",
+        html: juice(htmlContentConfirmEmailReset),
       },
     ];
 

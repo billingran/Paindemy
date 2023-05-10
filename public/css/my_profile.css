@@ -27,6 +27,7 @@ h2.title_my_profile {
 .img_list_myProfile .img_minus_btn,
 .img_list_myProfile .img_minus {
   color: var(--C-6C757D);
+  font-weight: 600;
 }
 
 /* /////////////////////////////////////////////// */

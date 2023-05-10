@@ -17,10 +17,10 @@ router.post("/joinus", authController.postJoinUs);
 // confirm email
 router.get("/confirmemail", authController.confirmEmail);
 
-// post confirm email join us
+// post confirm email sign up and join us
 router.post("/confirmemail", authController.postConfirmEmail);
 
-// confirmed email join us
+// confirmed email sign up and join us
 router.get("/confirmedemail", authController.confirmedEmail);
 
 // login
@@ -59,6 +59,21 @@ router.get(
 
 // reset password
 router.get("/resetpassword", authController.resetPassword);
+
+// post reset password
+router.post("/resetpassword", authController.postResetPassword);
+
+// confirm email reset
+router.get("/confirmemailreset", authController.confirmEmailReset);
+
+// post confirm email reset
+router.post("/confirmemailreset", authController.postConfirmEmailReset);
+
+// confirmed email reset
+router.get("/confirmedemailreset", authController.confirmedEmailReset);
+
+// post new password
+router.post("/newpassword", authController.postNewPassword);
 
 // logout
 router.get("/logout", authController.logout);

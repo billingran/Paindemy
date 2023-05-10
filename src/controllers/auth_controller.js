@@ -118,7 +118,7 @@ module.exports.postJoinUs = async (req, res) => {
 
 // confirm email
 module.exports.confirmEmail = (req, res) => {
-  // get jwt token of confirme email
+  // get jwt token of confirme email sign up and join us
   let { token, role } = req.query;
 
   jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
@@ -150,30 +150,40 @@ module.exports.confirmEmail = (req, res) => {
 };
 
 // post confirm email
-module.exports.postConfirmEmail = (req, res) => {
-  // get jwt token of confirme email join us
-  let { token, role } = req.body;
+module.exports.postConfirmEmail = async (req, res) => {
+  try {
+    // get jwt token of confirme email sign up and join us
+    let { token, role } = req.body;
 
-  userService.setConfirmEmail(
-    token,
-    role,
-    req,
-    res,
-    nodeMailer,
-    juice,
-    jwt,
-    fs,
-    path,
-    ejs
-  );
+    userService.setConfirmEmail(
+      token,
+      role,
+      req,
+      res,
+      nodeMailer,
+      juice,
+      jwt,
+      fs,
+      path,
+      ejs
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
 };
 
 // confirmed email
-module.exports.confirmedEmail = (req, res) => {
-  // get jwt token of confirmed email
-  let { token, role } = req.query;
+module.exports.confirmedEmail = async (req, res) => {
+  try {
+    // get jwt token of confirmed email sign up and join us
+    let { token, role } = req.query;
 
-  userService.setConfirmedEmail(token, role, jwt, req, res, path);
+    userService.setConfirmedEmail(token, role, jwt, req, res, path);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
 };
 
 //local login
@@ -217,6 +227,116 @@ module.exports.resetPassword = (req, res) => {
     showHeader: true,
     authUser: req.user,
   });
+};
+
+// post reset password
+module.exports.postResetPassword = async (req, res) => {
+  try {
+    // get email reset password
+    let { emailUser } = req.body;
+
+    userService.setResetPassword(
+      emailUser,
+      req,
+      res,
+      nodeMailer,
+      juice,
+      jwt,
+      fs,
+      path,
+      ejs
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+// confirm email reset
+module.exports.confirmEmailReset = (req, res) => {
+  // get jwt token of confirme email
+  let { token } = req.query;
+
+  jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+    // validation of the token
+    if (err) {
+      req.flash("error_msg", "Le lien n'est plus valid.");
+      return res.redirect("/auth/resetpassword");
+    } else {
+      return res.render("confirm_email_reset", {
+        title: "Confirmation d’adresse mail",
+        showHeader: true,
+        authUser: req.user,
+        token,
+      });
+    }
+  });
+};
+
+// post confirm email reset
+module.exports.postConfirmEmailReset = async (req, res) => {
+  try {
+    // get jwt token of confirme email reset
+    let { token } = req.body;
+
+    userService.setConfirmEmailReset(
+      token,
+      req,
+      res,
+      nodeMailer,
+      juice,
+      jwt,
+      fs,
+      path,
+      ejs
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+// confirmed email reset
+module.exports.confirmedEmailReset = async (req, res) => {
+  try {
+    // get jwt token of confirmed email reset
+    let { token } = req.query;
+
+    userService.setConfirmedEmailReset(token, jwt, req, res, path);
+
+    // return res.render("new_password", {
+    //   title: "Nouveau mot de passe",
+    //   showHeader: true,
+    //   authUser: req.user,
+    // });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+};
+
+// post new password
+module.exports.postNewPassword = async (req, res) => {
+  try {
+    // get jwt token of new password
+    let { token } = req.query;
+
+    // get new password
+    let { passwordUser, confirmPasswordUser } = req.body;
+
+    userService.setNewPassword(
+      token,
+      passwordUser.trim(),
+      confirmPasswordUser.trim(),
+      jwt,
+      req,
+      res,
+      bcrypt
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
 };
 
 //logout

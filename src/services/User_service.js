@@ -494,19 +494,11 @@ class UserService extends DbService {
       }).exec();
 
       if (emailFound) {
-        if (role == "instructor") {
-          req.flash(
-            "error_msg",
-            "Incrisption échouée : Un compte existe déjà avec cet email."
-          );
-          return res.redirect("/auth/login");
-        } else {
-          req.flash(
-            "error_msg",
-            "Incrisption échouée : Un compte existe déjà avec cet email."
-          );
-          return res.redirect("/auth/login");
-        }
+        req.flash(
+          "error_msg",
+          "Incrisption échouée : Un compte existe déjà avec cet email."
+        );
+        return res.redirect("/auth/login");
       }
 
       // delete extra items of user objet
@@ -565,19 +557,11 @@ class UserService extends DbService {
       }).exec();
 
       if (emailFound) {
-        if (role == "instructor") {
-          req.flash(
-            "error_msg",
-            "Incrisption échouée : Un compte existe déjà avec cet email."
-          );
-          return res.redirect("/auth/login");
-        } else {
-          req.flash(
-            "error_msg",
-            "Incrisption échouée : Un compte existe déjà avec cet email."
-          );
-          return res.redirect("/auth/login");
-        }
+        req.flash(
+          "error_msg",
+          "Incrisption échouée : Un compte existe déjà avec cet email."
+        );
+        return res.redirect("/auth/login");
       }
 
       // img upload
@@ -705,6 +689,232 @@ class UserService extends DbService {
     passport.deserializeUser(async (_id, done) => {
       let foundUser = await this.User.findOne({ _id }).exec();
       done(null, foundUser);
+    });
+  }
+
+  // post reset password
+  async setResetPassword(
+    emailUser,
+    req,
+    res,
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
+  ) {
+    // find one user reset password
+    const userTypeResetPassword = { emailUser };
+    const userResetPassword = await this.User.findOne(
+      userTypeResetPassword
+    ).exec();
+
+    // if user found or not found
+    if (!userResetPassword || userResetPassword == null) {
+      req.flash(
+        "error_msg",
+        "Local user : there is no email exist with this account."
+      );
+      return res.redirect("/auth/resetPassword");
+    } else if (userResetPassword && userResetPassword.googleIDUser) {
+      req.flash("error_msg", "Goole user : password is not allowed to change.");
+      return res.redirect("/auth/resetPassword");
+    }
+
+    // creat payload reset password
+    const payloadResetPassword = {
+      _id: userResetPassword._id,
+      firstnameUser: userResetPassword.firstnameUser,
+      lastnameUser: userResetPassword.lastnameUser,
+      emailUser: userResetPassword.emailUser,
+    };
+
+    // creat jwt token reset password
+    const tokenResetPassword = jwt.sign(
+      payloadResetPassword,
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1m",
+      }
+    );
+
+    // send confirmation email reset password
+    super.sendConfirmationEmailResetMailer(
+      nodeMailer,
+      juice,
+      payloadResetPassword,
+      tokenResetPassword,
+      fs,
+      path,
+      ejs
+    );
+
+    res.redirect(`/auth/confirmemailreset?token=${tokenResetPassword}`);
+  }
+
+  // post confirm email reset
+  async setConfirmEmailReset(
+    token,
+    req,
+    res,
+    nodeMailer,
+    juice,
+    jwt,
+    fs,
+    path,
+    ejs
+  ) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      // validation of the token
+      if (err) {
+        req.flash("error_msg", "Le lien n'est plus valid.");
+        return res.redirect("/auth/resetpassword");
+      }
+
+      // validate email exist
+      const emailFound = await this.User.findOne({
+        emailUser: decodedToken.emailUser,
+      }).exec();
+
+      if (!emailFound || emailFound == null) {
+        req.flash(
+          "error_msg",
+          "Local user : there is no email exist with this account."
+        );
+        return res.redirect("/auth/resetPassword");
+      } else if (emailFound && emailFound.googleIDUser) {
+        req.flash(
+          "error_msg",
+          "Goole user : password is not allowed to change."
+        );
+        return res.redirect("/auth/resetPassword");
+      }
+
+      // resend token
+
+      // delete extra items of user objet
+      delete decodedToken.iat;
+      delete decodedToken.exp;
+
+      // creat payload reset password
+      const payload = decodedToken;
+
+      // creat jwt token reset password
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "1m",
+      });
+
+      // send confirmation email reset password
+      super.sendConfirmationEmailResetMailer(
+        nodeMailer,
+        juice,
+        payload,
+        token,
+        fs,
+        path,
+        ejs
+      );
+
+      req.flash("success_msg", "Le lien a été renvoyé avec succès");
+      res.redirect(`/auth/confirmemailreset?token=${token}`);
+    });
+  }
+
+  // confirmed email reset
+  async setConfirmedEmailReset(token, jwt, req, res, path) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      // validation of the token
+      if (err) {
+        req.flash("error_msg", "Le lien n'est plus valid.");
+        return res.redirect("/auth/resetpassword");
+      } else {
+        // validate email exist
+        const emailFound = await this.User.findOne({
+          emailUser: decodedToken.emailUser,
+        }).exec();
+
+        if (!emailFound || emailFound == null) {
+          req.flash(
+            "error_msg",
+            "Local user : there is no email exist with this account."
+          );
+          return res.redirect("/auth/resetPassword");
+        } else if (emailFound && emailFound.googleIDUser) {
+          req.flash(
+            "error_msg",
+            "Goole user : password is not allowed to change."
+          );
+          return res.redirect("/auth/resetPassword");
+        } else {
+          return res.render("new_password", {
+            title: "Nouveau mot de passe",
+            showHeader: false,
+            authUser: req.user,
+            token,
+          });
+        }
+      }
+    });
+  }
+
+  // post new password
+  async setNewPassword(
+    token,
+    passwordUser,
+    confirmPasswordUser,
+    jwt,
+    req,
+    res,
+    bcrypt
+  ) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      // validation of the token
+      if (err) {
+        req.flash("error_msg", "Le lien n'est plus valid.");
+        return res.redirect("/auth/resetpassword");
+      }
+
+      // validate password
+      if (passwordUser && confirmPasswordUser) {
+        if (passwordUser !== confirmPasswordUser) {
+          req.flash(
+            "error_msg",
+            "Mot de passe, Le mot de passe et la confirmation mot de passe ne sont pas les même."
+          );
+          return res.redirect(`/auth/confirmedemailreset?token=${token}`);
+        } else if (passwordUser.trim().length < 8) {
+          req.flash(
+            "error_msg",
+            "Mot de passe, Au moins 8 lettres ou chiffres."
+          );
+          return res.redirect(`/auth/confirmedemailreset?token=${token}`);
+        }
+        const hashValue = await bcrypt.hash(passwordUser, 12);
+        passwordUser = hashValue;
+      } else {
+        req.flash(
+          "error_msg",
+          "Mot de passe et La confirmation mot de passe, Ces cases ne doivent pas être vides."
+        );
+        return res.redirect(`/auth/confirmedemailreset?token=${token}`);
+      }
+
+      // update password user
+      let { _id } = decodedToken;
+      const userTypeNewPassword = { _id };
+
+      await this.User.findOneAndUpdate(
+        userTypeNewPassword,
+        { passwordUser },
+        {
+          new: true,
+          runValidators: true,
+        }
+      ).exec();
+
+      req.flash("success_msg", "Mot de pass mis à jour avec succès.");
+      res.redirect(`/auth/login`);
     });
   }
 

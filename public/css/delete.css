@@ -7,6 +7,8 @@
 .warning_delete {
   font-size: 2.4rem;
   color: var(--C-FF0066);
+
+  margin-top: 2rem;
 }
 
 .content_delete {
