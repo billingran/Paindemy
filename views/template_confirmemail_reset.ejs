@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Élève confirmation d’adresse mail</title>
+    <title>Réinitialisation du mot de passe</title>
 
     <style>
       body {
@@ -97,7 +97,7 @@
   <body>
     <div id="container">
       <div class="logo_title">
-        <h1>Confirmation d’adresse mail !</h1>
+        <h1>Réinitialisation du mot de passe !</h1>
       </div>
 
       <div class="course ctn_logo_registerOneCourse">
@@ -119,7 +119,7 @@
 
           <ul>
             <li>
-              <strong>Confirmation d’adresse mail : </strong>
+              <strong>Le lien de réinitialisation : </strong>
               <div style="text-align: justify; font-size: 0.5rem; width: 15rem">
                 <%= process.env.API_URL%>/auth/confirmedemailreset/?token=<%=
                 token %>

@@ -476,13 +476,13 @@ class UserService extends DbService {
         if (role == "instructor") {
           req.flash(
             "error_msg",
-            "Incrisption échouée : Le lien n'est plus valid."
+            "Incrisption échouée : Le lien d'incrisption n'est plus valide."
           );
           return res.redirect("/auth/joinus");
         } else {
           req.flash(
             "error_msg",
-            "Incrisption échouée : Le lien n'est plus valid."
+            "Incrisption échouée : Le lien d'incrisption n'est plus valide."
           );
           return res.redirect("/auth/signup");
         }
@@ -526,7 +526,10 @@ class UserService extends DbService {
         ejs
       );
 
-      req.flash("success_msg", "Le lien a été renvoyé avec succès");
+      req.flash(
+        "success_msg",
+        "Le lien d'incrisption a été renvoyé avec succès"
+      );
       res.redirect(`/auth/confirmemail?token=${token}&role=${role}`);
     });
   }
@@ -539,13 +542,13 @@ class UserService extends DbService {
         if (role == "instructor") {
           req.flash(
             "error_msg",
-            "Incrisption échouée : Le lien n'est plus valid."
+            "Incrisption échouée : Le lien d'incrisption n'est plus valide."
           );
           return res.redirect("/auth/joinus");
         } else {
           req.flash(
             "error_msg",
-            "Incrisption échouée : Le lien n'est plus valid."
+            "Incrisption échouée : Le lien d'incrisption n'est plus valide."
           );
           return res.redirect("/auth/signup");
         }
@@ -714,11 +717,14 @@ class UserService extends DbService {
     if (!userResetPassword || userResetPassword == null) {
       req.flash(
         "error_msg",
-        "Local user : there is no email exist with this account."
+        "Réinitialisation échouée : Compte inexistant avec ce mail."
       );
       return res.redirect("/auth/resetPassword");
     } else if (userResetPassword && userResetPassword.googleIDUser) {
-      req.flash("error_msg", "Goole user : password is not allowed to change.");
+      req.flash(
+        "error_msg",
+        "Réinitialisation échouée : Utilisateur google non-autorisé à changer le mot de passe."
+      );
       return res.redirect("/auth/resetPassword");
     }
 
@@ -768,7 +774,10 @@ class UserService extends DbService {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       // validation of the token
       if (err) {
-        req.flash("error_msg", "Le lien n'est plus valid.");
+        req.flash(
+          "error_msg",
+          "Réinitialisation échouée : Le lien de réinitialisation n'est plus valide."
+        );
         return res.redirect("/auth/resetpassword");
       }
 
@@ -780,19 +789,18 @@ class UserService extends DbService {
       if (!emailFound || emailFound == null) {
         req.flash(
           "error_msg",
-          "Local user : there is no email exist with this account."
+          "Réinitialisation échouée : Compte inexistant avec ce mail."
         );
         return res.redirect("/auth/resetPassword");
       } else if (emailFound && emailFound.googleIDUser) {
         req.flash(
           "error_msg",
-          "Goole user : password is not allowed to change."
+          "Réinitialisation échouée : Utilisateur google non-autorisé à changer le mot de passe."
         );
         return res.redirect("/auth/resetPassword");
       }
 
       // resend token
-
       // delete extra items of user objet
       delete decodedToken.iat;
       delete decodedToken.exp;
@@ -816,7 +824,10 @@ class UserService extends DbService {
         ejs
       );
 
-      req.flash("success_msg", "Le lien a été renvoyé avec succès");
+      req.flash(
+        "success_msg",
+        "Le lien de réinitialisation a été renvoyé avec succès"
+      );
       res.redirect(`/auth/confirmemailreset?token=${token}`);
     });
   }
@@ -826,7 +837,10 @@ class UserService extends DbService {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       // validation of the token
       if (err) {
-        req.flash("error_msg", "Le lien n'est plus valid.");
+        req.flash(
+          "error_msg",
+          "Réinitialisation échouée : Le lien de réinitialisation n'est plus valide."
+        );
         return res.redirect("/auth/resetpassword");
       } else {
         // validate email exist
@@ -837,18 +851,18 @@ class UserService extends DbService {
         if (!emailFound || emailFound == null) {
           req.flash(
             "error_msg",
-            "Local user : there is no email exist with this account."
+            "Réinitialisation échouée : Compte inexistant avec ce mail."
           );
           return res.redirect("/auth/resetPassword");
         } else if (emailFound && emailFound.googleIDUser) {
           req.flash(
             "error_msg",
-            "Goole user : password is not allowed to change."
+            "Réinitialisation échouée : Utilisateur google non-autorisé à changer le mot de passe."
           );
           return res.redirect("/auth/resetPassword");
         } else {
           return res.render("new_password", {
-            title: "Nouveau mot de passe",
+            title: "Réinitialisation",
             showHeader: false,
             authUser: req.user,
             token,
@@ -871,7 +885,10 @@ class UserService extends DbService {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       // validation of the token
       if (err) {
-        req.flash("error_msg", "Le lien n'est plus valid.");
+        req.flash(
+          "error_msg",
+          "Réinitialisation échouée : Le lien de réinitialisation n'est plus valide."
+        );
         return res.redirect("/auth/resetpassword");
       }
 
@@ -913,7 +930,7 @@ class UserService extends DbService {
         }
       ).exec();
 
-      req.flash("success_msg", "Mot de pass mis à jour avec succès.");
+      req.flash("success_msg", "Mot de passe mis à jour avec succès.");
       res.redirect(`/auth/login`);
     });
   }

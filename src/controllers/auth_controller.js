@@ -127,13 +127,13 @@ module.exports.confirmEmail = (req, res) => {
       if (role == "instructor") {
         req.flash(
           "error_msg",
-          "Incrisption échouée : Le lien n'est plus valid."
+          "Incrisption échouée : Le lien d'incrisption n'est plus valide."
         );
         return res.redirect("/auth/joinus");
       } else {
         req.flash(
           "error_msg",
-          "Incrisption échouée : Le lien n'est plus valid."
+          "Incrisption échouée : Le lien d'incrisption n'est plus valide."
         );
         return res.redirect("/auth/signup");
       }
@@ -260,11 +260,14 @@ module.exports.confirmEmailReset = (req, res) => {
   jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
     // validation of the token
     if (err) {
-      req.flash("error_msg", "Le lien n'est plus valid.");
+      req.flash(
+        "error_msg",
+        "Réinitialisation échouée : Le lien de réinitialisation n'est plus valide."
+      );
       return res.redirect("/auth/resetpassword");
     } else {
       return res.render("confirm_email_reset", {
-        title: "Confirmation d’adresse mail",
+        title: "Réinitialisation du mot de passe",
         showHeader: true,
         authUser: req.user,
         token,

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Élève confirmation d’adresse mail</title>
+    <title>Confirmation d’adresse mail</title>
 
     <style>
       body {
@@ -119,7 +119,7 @@
 
           <ul>
             <li>
-              <strong>Confirmation d’adresse mail : </strong>
+              <strong>Le lien d'inscription : </strong>
               <div style="text-align: justify; font-size: 0.5rem; width: 15rem">
                 <%= process.env.API_URL%>/auth/confirmedemail/?token=<%= token
                 %>&role=<%= role %>
@@ -140,7 +140,7 @@
 
       <p>
         Merci d’avoir rejoins Paîndemy ! Veuillez cliquer sur le lien ci-dessus
-        pour confirmer votre adresse mail.
+        pour réinitialiser le mot de passe.
       </p>
 
       <div class="course">
