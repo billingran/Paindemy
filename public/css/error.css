@@ -1,0 +1,57 @@
+/* /////////////////////////////////////////////// */
+/* error */
+
+/* background image */
+.back_image_error {
+  background-image: url("/images/image_main_error.jpg");
+
+  min-height: 100vh;
+  width: 100%;
+}
+
+.filter_error {
+  height: 100%;
+  width: 100%;
+}
+
+.center_error {
+  width: 34rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* logo footer image */
+.ctn_logo_error {
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.logo_error {
+  width: 18rem;
+  height: 21rem;
+}
+
+/* /////////////////////////////////////////////// */
+/* responive */
+
+@media screen and (max-width: 500px) {
+  .back_image_error,
+  .filter_error {
+    min-height: 80vh;
+  }
+
+  .center_error {
+    width: 95%;
+  }
+
+  h2.title_error {
+    font-size: 10.2vw;
+  }
+
+  .logo_error {
+    width: 13rem;
+    height: 15rem;
+  }
+}

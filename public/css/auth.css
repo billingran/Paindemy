@@ -162,11 +162,13 @@ input[type="submit"]:hover {
   text-align: center;
   font-size: 16px;
   color: var(--C-B3B3B3);
+  font-weight: 600;
 }
 
 .link_auth a {
   color: var(--C-4683C1);
   text-decoration: none;
+  font-weight: 600;
 
   transition: all 0.3s;
 }
