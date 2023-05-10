@@ -25,7 +25,7 @@
 
 /* logo footer image */
 .ctn_logo_error {
-  margin: 1.5rem 0 0.75rem 0;
+  margin: 1.5rem 0 0 0;
 }
 
 .logo_error {
@@ -47,7 +47,7 @@
   }
 
   h2.title_error {
-    font-size: 10.2vw;
+    font-size: 9.8vw;
   }
 
   .logo_error {
