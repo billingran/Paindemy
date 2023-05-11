@@ -175,7 +175,7 @@
     </li>
     <% if (authUser) { %>
     <li>
-      <div class="centralA">
+      <a href="/<%= authUser.roleUser %>/profile/<%= authUser._id %>" class="centralA">
         <% if (authUser.roleUser == 'instructor') { %>
         <iconify-icon
           icon="tabler:chef-hat"
