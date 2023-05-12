@@ -238,4 +238,8 @@
   .ul_imageAddress_course {
     width: 19rem;
   }
+
+  .title_displayCourse {
+    font-size: 1.7rem;
+  }
 }
