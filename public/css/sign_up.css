@@ -30,4 +30,8 @@
   .center_signup {
     width: 95%;
   }
+
+  h2.title_new_password {
+    font-size: 12vw;
+  }
 }

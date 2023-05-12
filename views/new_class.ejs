@@ -128,7 +128,7 @@
       <input type="submit" value="Envoyer" />
       <% if (authUser) { %>
       <div class="link_auth">
-        Retour aux cours de
+        Retour aux cours de <br />
         <a
           title="Instructeur <%= authUser.firstnameUser %> <%= authUser.lastnameUser %>"
           href="/instructor/mycourses/<%= authUser._id %>"

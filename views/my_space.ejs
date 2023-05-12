@@ -301,33 +301,35 @@
     </h2>
 
     <% if(courseFavorite) { %>
-    <div class="mid_info_mySpace">
-      <a title="La base">
-        <i class="uil uil-balance-scale mid_icon_mySpace"></i>
-        1 kg = 1000 g
-      </a>
-      <a
-        title="Nom du cours"
-        href="/course/onecourse/<%= courseFavorite._id %>"
-      >
-        <i class="uil uil-book-alt mid_icon_mySpace"></i>
-        <%= courseFavorite.nameCourse %>
-      </a>
-      <a
-        title="Instructeur/Instructrice du cours"
-        href="/course/instructor/<%= courseFavorite.instructorCourse._id %>"
-      >
-        <iconify-icon
-          icon="tabler:chef-hat"
-          class="mid_icon_mySpace"
-        ></iconify-icon>
-        <%= courseFavorite.instructorCourse.firstnameUser %> <%=
-        courseFavorite.instructorCourse.lastnameUser %>
-      </a>
-      <a title="Catégorie du cours">
-        <i class="uil uil-folder mid_icon_mySpace"></i>
-        <%= courseFavorite.categoryCourse.nameCategory %>
-      </a>
+    <div class="ctn_info_mySpace">
+      <div class="mid_info_mySpace">
+        <a title="La base">
+          <i class="uil uil-balance-scale mid_icon_mySpace"></i>
+          1 kg = 1000 g
+        </a>
+        <a
+          title="Nom du cours"
+          href="/course/onecourse/<%= courseFavorite._id %>"
+        >
+          <i class="uil uil-book-alt mid_icon_mySpace"></i>
+          <%= courseFavorite.nameCourse %>
+        </a>
+        <a
+          title="Instructeur/Instructrice du cours"
+          href="/course/instructor/<%= courseFavorite.instructorCourse._id %>"
+        >
+          <iconify-icon
+            icon="tabler:chef-hat"
+            class="mid_icon_mySpace"
+          ></iconify-icon>
+          <%= courseFavorite.instructorCourse.firstnameUser %> <%=
+          courseFavorite.instructorCourse.lastnameUser %>
+        </a>
+        <a title="Catégorie du cours">
+          <i class="uil uil-folder mid_icon_mySpace"></i>
+          <%= courseFavorite.categoryCourse.nameCategory %>
+        </a>
+      </div>
     </div>
 
     <form
