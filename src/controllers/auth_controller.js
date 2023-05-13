@@ -179,7 +179,7 @@ module.exports.confirmedEmail = async (req, res) => {
     // get jwt token of confirmed email sign up and join us
     let { token, role } = req.query;
 
-    userService.setConfirmedEmail(token, role, jwt, req, res, path);
+    userService.setConfirmedEmail(token, role, jwt, req, res);
   } catch (error) {
     console.log(error);
     return res.status(500).send(error);

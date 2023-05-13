@@ -571,7 +571,7 @@ class UserService extends DbService {
   }
 
   // confirmed email
-  async setConfirmedEmail(token, role, jwt, req, res, path) {
+  async setConfirmedEmail(token, role, jwt, req, res) {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       // validation of the token
       if (err) {
@@ -1394,6 +1394,51 @@ class UserService extends DbService {
     req.session.destroy();
 
     res.redirect("/");
+  }
+
+  //delete email state unchecked users
+  async deleteEmailUncheckedUsers(cron, path, fs) {
+    // delete email state unchecked users every 5 mins
+    cron.schedule("*/1 * * * *", async () => {
+      try {
+        // time for checking token
+        const timeLimit = new Date(Date.now() - 2 * 60 * 1000);
+
+        // find all email state unchecked users
+        const usersEmailUncheckedUser = await this.User.find({
+          emailStateUser: false,
+          createdAt: { $lte: timeLimit },
+        });
+
+        if (usersEmailUncheckedUser && usersEmailUncheckedUser.length > 0) {
+          // delete users images
+          for (const user of usersEmailUncheckedUser) {
+            if (user.roleUser == "instructor") {
+              const instructorImageName = user.emailUser
+                .replace("@", "")
+                .replace(".", "");
+
+              const coursesAndFavoritesImageName = user._id;
+
+              await super.deleteBothImgs(
+                instructorImageName,
+                coursesAndFavoritesImageName,
+                path,
+                fs
+              );
+            }
+          }
+
+          // delete users
+          await this.User.deleteMany({
+            emailStateUser: false,
+            createdAt: { $lte: timeLimit },
+          });
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    });
   }
 
   // Axios //////////////////////////////////////////////////

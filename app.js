@@ -1,6 +1,13 @@
 // dotenv
 const dotenv = require("dotenv").config();
 
+// node-cron
+const cron = require("node-cron");
+
+// image upload
+const path = require("path");
+const fs = require("fs");
+
 // express
 const express = require("express");
 const app = express();
@@ -31,6 +38,8 @@ const CourseService = require("./src/services/Course_service");
 const courseService = new CourseService();
 const FavoriteService = require("./src/services/Favorite_service");
 const favoriteService = new FavoriteService();
+const UserService = require("./src/services/User_service");
+const userService = new UserService();
 
 // routes
 const authRoutes = require("./src/routes/auth_routes");
@@ -184,3 +193,5 @@ app.get("*", (req, res) => {
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
+
+userService.deleteEmailUncheckedUsers(cron, path, fs);
