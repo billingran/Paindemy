@@ -24,6 +24,7 @@ const ejs = require("ejs");
 
 // time controller
 const moment = require("moment");
+const { authorize } = require("passport");
 
 // instrutors
 module.exports.getAllinstructors = async (req, res) => {
@@ -32,7 +33,14 @@ module.exports.getAllinstructors = async (req, res) => {
     // find instructors for carousel and all instructors
 
     const userTypeAllInstructors = { roleUser: "instructor" };
-    let allinstructors = await userService.getAllUsers(userTypeAllInstructors);
+    let allinstructorsUnfiltered = await userService.getAllUsers(
+      userTypeAllInstructors
+    );
+
+    // find authorized instructors
+    let allinstructors = allinstructorsUnfiltered.filter((instructor) => {
+      return instructor.emailStateUser === true;
+    });
 
     return res.render("instructors", {
       title: "Instructors",

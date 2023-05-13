@@ -397,7 +397,6 @@
                 </div>
                 <div>
                   <a
-                    href="#"
                     style="<%= moment(course.dateCourse).isSame(currentDate, 'day') ? 'color: #72b955;' : moment(course.dateCourse).isBefore(currentDate, 'day') ? 'color: #ff0066;' : '' %>"
                     ><%= course.dateCourse %> / <%= course.timeCourse %>
                   </a>
@@ -538,7 +537,7 @@
                   <i class="uil uil-folder icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"><%= favorite.categoryFavorite.nameCategory %> </a>
+                  <a><%= favorite.categoryFavorite.nameCategory %> </a>
                 </div>
               </li>
 
@@ -550,7 +549,7 @@
                   <i class="uil uil-cell icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"
+                  <a
                     ><%= Object.keys(favorite.ingredientsFavorite).length %>
                   </a>
                 </div>
@@ -564,7 +563,7 @@
                   <i class="uil uil-file-alt icon_content_template"></i>
                 </div>
                 <div>
-                  <a href="#"> <%= favorite.noteFavorite %> </a>
+                  <a> <%= favorite.noteFavorite %> </a>
                 </div>
               </li>
 

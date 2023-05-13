@@ -95,12 +95,14 @@ class UserService extends DbService {
       }
 
       // validate email exist
-      const emailFound = await this.User.findOne({ emailUser }).exec();
+      const emailFound = await this.User.findOne({
+        emailUser,
+      }).exec();
 
       if (emailFound) {
         return {
           success: false,
-          message: "Adresse mail, Un compte existe déjà avec cet email.",
+          message: `Adresse mail, Un compte existe déjà avec cet email. (Si vous avez essayé de vous inscrire avec ce mail il y a 15min, mais vous n’avez pas reçu le mail de vérification ou si le lien d'inscription a expiré, réessayez dans 15min ou plus.)`,
         };
       }
 
@@ -176,7 +178,12 @@ class UserService extends DbService {
     }
 
     // creat payload sign up
-    const payloadSignUp = validationResultSignUp.newDataStudentProfile;
+    const emailStateUser = true;
+
+    const payloadSignUp = {
+      emailUser: validationResultSignUp.newDataStudentProfile.emailUser,
+      emailStateUser: emailStateUser,
+    };
 
     // creat jwt token sign up
     const tokenSignUp = jwt.sign(payloadSignUp, process.env.JWT_SECRET, {
@@ -194,6 +201,13 @@ class UserService extends DbService {
       path,
       ejs
     );
+
+    // save user
+    let studentUser = new this.User(
+      validationResultSignUp.newDataStudentProfile
+    );
+
+    await studentUser.save();
 
     res.redirect(
       `/auth/confirmemail?token=${tokenSignUp}&role=${validationResultSignUp.newDataStudentProfile.roleUser}`
@@ -288,12 +302,15 @@ class UserService extends DbService {
       }
 
       // validate email exist
-      const emailFound = await this.User.findOne({ emailUser }).exec();
+      const emailFound = await this.User.findOne({
+        emailUser,
+      }).exec();
 
       if (emailFound) {
         return {
           success: false,
-          message: "Adresse mail, Un compte existe déjà avec cet email.",
+          message:
+            "Adresse mail, Un compte existe déjà avec cet email. (Si vous avez essayé de vous inscrire avec ce mail il y a 15min, mais vous n’avez pas reçu le mail de vérification ou si le lien d'inscription a expiré, réessayez dans 15min ou plus.)",
         };
       }
 
@@ -366,9 +383,15 @@ class UserService extends DbService {
           message: "Image, deux images nécessaires.",
         };
       }
-      this.imagesUser = [];
 
-      this.imagesUser = imagesUser;
+      // img upload
+      const instructorImageName = emailUser.replace("@", "").replace(".", "");
+
+      newDataInstructorProfile.imageUser = await super.uploadImgs(
+        imagesUser,
+        instructorImageName,
+        path
+      );
     } else {
       return {
         success: false,
@@ -433,7 +456,12 @@ class UserService extends DbService {
     }
 
     // creat payload join us
-    const payloadJoinUs = validationResultJoinUs.newDataInstructorProfile;
+    const emailStateUser = true;
+
+    const payloadJoinUs = {
+      emailUser: validationResultJoinUs.newDataInstructorProfile.emailUser,
+      emailStateUser: emailStateUser,
+    };
 
     // creat jwt token join us
     const tokenJoinUs = jwt.sign(payloadJoinUs, process.env.JWT_SECRET, {
@@ -451,6 +479,13 @@ class UserService extends DbService {
       path,
       ejs
     );
+
+    // save user
+    let instructorUser = new this.User(
+      validationResultJoinUs.newDataInstructorProfile
+    );
+
+    await instructorUser.save();
 
     res.redirect(
       `/auth/confirmemail?token=${tokenJoinUs}&role=${validationResultJoinUs.newDataInstructorProfile.roleUser}`
@@ -491,6 +526,7 @@ class UserService extends DbService {
       // validate email exist
       const emailFound = await this.User.findOne({
         emailUser: decodedToken.emailUser,
+        emailStateUser: true,
       }).exec();
 
       if (emailFound) {
@@ -557,6 +593,7 @@ class UserService extends DbService {
       // validate email exist
       const emailFound = await this.User.findOne({
         emailUser: decodedToken.emailUser,
+        emailStateUser: true,
       }).exec();
 
       if (emailFound) {
@@ -567,32 +604,18 @@ class UserService extends DbService {
         return res.redirect("/auth/login");
       }
 
-      // img upload
-      if (this.imagesUser && this.imagesUser.length > 0) {
-        const imagesUser = this.imagesUser;
+      // update email state user
+      const emailUser = { emailUser: decodedToken.emailUser };
+      const emailStateUser = { emailStateUser: decodedToken.emailStateUser };
 
-        const instructorImageName = decodedToken.emailUser
-          .replace("@", "")
-          .replace(".", "");
-
-        decodedToken.imageUser = await super.uploadImgs(
-          imagesUser,
-          instructorImageName,
-          path
-        );
-      }
-
-      // empty this imagesUser
-      this.imagesUser = [];
-
-      // delete extra items of user objet
-      delete decodedToken.iat;
-      delete decodedToken.exp;
-
-      // save user
-      let User = new this.User(decodedToken);
-
-      await User.save();
+      await this.User.findOneAndUpdate(
+        emailUser,
+        { $set: emailStateUser },
+        {
+          new: true,
+          runValidators: true,
+        }
+      ).exec();
 
       if (role == "instructor") {
         req.flash(
@@ -614,6 +637,7 @@ class UserService extends DbService {
   async setLocalLogin(username, bcrypt, password, done) {
     let userFound = await this.User.findOne({
       emailUser: username.trim(),
+      emailStateUser: true,
     }).exec();
 
     if (userFound) {
@@ -662,6 +686,7 @@ class UserService extends DbService {
           googleIDUser: profile.id,
           imageUser: profile.photos[0].value,
           roleUser: "student",
+          emailStateUser: true,
         });
 
         let userGoogle = await userFound.save();
@@ -708,7 +733,7 @@ class UserService extends DbService {
     ejs
   ) {
     // find one user reset password
-    const userTypeResetPassword = { emailUser };
+    const userTypeResetPassword = { emailUser, emailStateUser: true };
     const userResetPassword = await this.User.findOne(
       userTypeResetPassword
     ).exec();
@@ -784,6 +809,7 @@ class UserService extends DbService {
       // validate email exist
       const emailFound = await this.User.findOne({
         emailUser: decodedToken.emailUser,
+        emailStateUser: true,
       }).exec();
 
       if (!emailFound || emailFound == null) {
@@ -846,6 +872,7 @@ class UserService extends DbService {
         // validate email exist
         const emailFound = await this.User.findOne({
           emailUser: decodedToken.emailUser,
+          emailStateUser: true,
         }).exec();
 
         if (!emailFound || emailFound == null) {
@@ -981,7 +1008,10 @@ class UserService extends DbService {
       }
 
       // validate email if the same
-      const emailFound = await this.User.findOne({ emailUser }).exec();
+      const emailFound = await this.User.findOne({
+        emailUser,
+        emailStateUser: true,
+      }).exec();
 
       if (emailFound && emailFound.emailUser == emailUser) {
         return {
@@ -1075,6 +1105,7 @@ class UserService extends DbService {
     objectImagesFile,
     arrayImagesFile,
     validator,
+    req,
     res,
     path,
     bcrypt
@@ -1135,7 +1166,10 @@ class UserService extends DbService {
       }
 
       // validate email if the same
-      const emailFound = await this.User.findOne({ emailUser }).exec();
+      const emailFound = await this.User.findOne({
+        emailUser,
+        emailStateUser: true,
+      }).exec();
 
       if (emailFound && emailFound.emailUser == emailUser) {
         return {
@@ -1200,7 +1234,9 @@ class UserService extends DbService {
       }
 
       // img upload
-      const instructorImageName = emailUser.replace("@", "").replace(".", "");
+      const instructorImageName = req.user.emailUser
+        .replace("@", "")
+        .replace(".", "");
 
       newDataInstructorProfile.imageUser = await super.uploadImgs(
         imagesUser,
@@ -1266,6 +1302,7 @@ class UserService extends DbService {
         objectImagesFile,
         arrayImagesFile,
         validator,
+        req,
         res,
         path,
         bcrypt
@@ -1403,13 +1440,21 @@ class UserService extends DbService {
       }
 
       // get the student added
-      const userTypeStudentAdded = { emailUser };
+      const userTypeStudentAdded = { emailUser, emailStateUser: true };
       const studentAdded = await this.getOneUser(userTypeStudentAdded);
 
       // validation of the student exist or not
       if (studentAdded._id == null) {
         // erro of student doesn't exist
         courseAddOneStudent = "Adresse mail, L’élève n'existe pas.";
+        return res.send(courseAddOneStudent);
+      }
+
+      // validation if it's a student or not
+      if (studentAdded._id !== null && studentAdded.roleUser !== "student") {
+        // erro of student doesn't exist
+        courseAddOneStudent =
+          "Adresse mail, Cette adresse mail n'est pas un compte d’élève.";
         return res.send(courseAddOneStudent);
       }
 

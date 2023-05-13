@@ -50,6 +50,10 @@ const userSchema = new mongoose.Schema({
     enum: ["student", "instructor"],
     required: true,
   },
+  emailStateUser: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

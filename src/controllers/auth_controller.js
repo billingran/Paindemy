@@ -368,7 +368,7 @@ module.exports.postDeleteOneStudent = async (req, res) => {
   }
 };
 
-// post delete one student
+// post add one student
 module.exports.postAddOneStudent = async (req, res) => {
   try {
     // the course id and student email

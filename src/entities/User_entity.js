@@ -11,7 +11,7 @@ class UserEntity {
     this.googleIDUser = "";
     this.imageUser = [];
     this.roleUser = null;
-    this.favoriteUser = [];
+    this.emailStateUser = false;
     this.createdAt = new Date();
 
     for (let prop in user) {
@@ -109,12 +109,12 @@ class UserEntity {
     this.roleUser = roleUser;
   }
 
-  getFavoriteUser() {
-    return this.favoriteUser;
+  getEmailStateUser() {
+    return this.emailStateUser;
   }
 
-  setFavoriteUser(favoriteUser) {
-    this.favoriteUser = favoriteUser;
+  setEmailStateUser(emailStateUser) {
+    this.emailStateUser = emailStateUser;
   }
 
   getCreatedAt() {

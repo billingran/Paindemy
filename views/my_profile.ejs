@@ -162,15 +162,15 @@
         <label for="lastnameUser" class="up_joinus">Nom de famille</label>
       </div>
 
+      <% if (authUser.roleUser == 'student' && !authUser.googleIDUser) { %>
       <div class="txt_field_auth txt_my_profile">
         <input value="<%= authUser.emailUser || "" %>" id="emailUser"
-        type="email" name="emailUser"/>
+        type="text" name="emailUser"/>
         <span></span>
         <i class="uil uil-envelope-alt up_joinus"></i>
         <label for="emailUser" class="up_joinus">Adresse mail</label>
       </div>
 
-      <% if (authUser.roleUser == 'student' && !authUser.googleIDUser) { %>
       <div class="txt_field_auth txt_my_profile">
         <input id="passwordUser" type="password" name="passwordUser" />
         <span></span>

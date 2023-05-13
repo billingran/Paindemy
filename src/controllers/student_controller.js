@@ -45,7 +45,7 @@ module.exports.patchStudentProfile = async (req, res) => {
       await userService.setStudentProfile(
         firstnameUser.trim(),
         lastnameUser.trim(),
-        emailUser.trim(),
+        "",
         "",
         "",
         validator,

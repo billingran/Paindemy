@@ -27,7 +27,9 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        const userTypeGoogle = { googleIDUser: profile.id };
+        const userTypeGoogle = {
+          googleIDUser: profile.id,
+        };
         userService.setGoogleLogin(profile, userTypeGoogle, done);
       } catch (error) {
         res.status(500).send(error);
