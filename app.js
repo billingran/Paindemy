@@ -194,4 +194,5 @@ app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
 
+//delete email state unchecked users
 userService.deleteEmailUncheckedUsers(cron, path, fs);
