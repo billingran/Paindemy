@@ -707,7 +707,7 @@ class UserService extends DbService {
   async serializeUser(passport) {
     passport.serializeUser((user, done) => {
       // func deserializeuser
-      //set req.user = user, req.isAuthenticated() = true, req.logout is generated
+      //set req.isAuthenticated() = true, req.logout is generated
       done(null, user._id);
     });
   }
@@ -716,6 +716,8 @@ class UserService extends DbService {
   async deserializeUser(passport) {
     passport.deserializeUser(async (_id, done) => {
       let foundUser = await this.User.findOne({ _id }).exec();
+
+      // set req.user = user
       done(null, foundUser);
     });
   }
