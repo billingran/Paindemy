@@ -11,6 +11,17 @@ const btnDeleteOneFavorite = document.querySelectorAll(
 async function requestDeleteOneFavorite(e) {
   e.preventDefault();
 
+  // hide and remove favorites template
+  let ctnDeleteOneFavorite =
+    e.target.parentElement.parentElement.parentElement.parentElement
+      .parentElement.parentElement;
+
+  ctnDeleteOneFavorite.addEventListener("animationend", () => {
+    ctnDeleteOneFavorite.remove();
+  });
+
+  ctnDeleteOneFavorite.style.animation = "scaleDown 0.3s forwards";
+
   const _id = e.target.getAttribute("id");
 
   try {
@@ -24,17 +35,6 @@ async function requestDeleteOneFavorite(e) {
       // get new number favorites of user
       ctnNumberAllFavorite.innerHTML = `<div class="new_allFavorites_number">${numberAllFavorites.length}</div>`;
       ctnNumberAllFavoriteSidebar.innerHTML = `<div class="new_allFavoritesNumber_sidebar">${numberAllFavorites.length}</div>`;
-
-      // hide and remove favorites template
-      let ctnDeleteOneFavorite =
-        e.target.parentElement.parentElement.parentElement.parentElement
-          .parentElement.parentElement;
-
-      ctnDeleteOneFavorite.addEventListener("animationend", () => {
-        ctnDeleteOneFavorite.remove();
-      });
-
-      ctnDeleteOneFavorite.style.animation = "scaleDown 0.3s forwards";
     } else if (numberAllFavorites.message) {
       // erro of not a user
       let redirectUrlDeleteOneFavorite = "/auth/login";

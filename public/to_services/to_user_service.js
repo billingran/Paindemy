@@ -13,6 +13,15 @@ const btnDeleteStudents = document.querySelectorAll(
 async function requestDeleteOneStudent(e) {
   e.preventDefault();
 
+  // hide and remove info sutdent deleted
+  let ctnInfoStudentDeleted = e.target.parentElement;
+
+  ctnInfoStudentDeleted.addEventListener("animationend", () => {
+    ctnInfoStudentDeleted.remove();
+  });
+
+  ctnInfoStudentDeleted.style.animation = "scaleDown 0.3s forwards";
+
   const student_id = e.target.getAttribute("student-id");
   const course_id = e.target.getAttribute("course-id");
 
@@ -33,15 +42,6 @@ async function requestDeleteOneStudent(e) {
       ctnNumberStudentAddedOrDeleted.getElementsByTagName("div")[0].remove;
 
       ctnNumberStudentAddedOrDeleted.innerHTML = ` <div class="new_number_myStudents">${numberStudentsMyStudents.studentsCourse.length}</div>`;
-
-      // hide and remove info sutdent deleted
-      let ctnInfoStudentDeleted = e.target.parentElement;
-
-      ctnInfoStudentDeleted.addEventListener("animationend", () => {
-        ctnInfoStudentDeleted.remove();
-      });
-
-      ctnInfoStudentDeleted.style.animation = "scaleDown 0.3s forwards";
     }
   } catch (error) {
     console.log(error);

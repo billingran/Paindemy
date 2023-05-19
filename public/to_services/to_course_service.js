@@ -14,6 +14,15 @@ const btnRegisterOneCourse = document.querySelectorAll(
 async function requestRegisterOneCourse(e) {
   e.preventDefault();
 
+  // hide and remove adding btn
+  let ctnRegisterCourse = e.target.parentElement;
+
+  ctnRegisterCourse.addEventListener("animationend", () => {
+    ctnRegisterCourse.remove();
+  });
+
+  ctnRegisterCourse.style.animation = "scaleDown 0.3s forwards";
+
   const _id = e.target.getAttribute("id");
 
   try {
@@ -27,15 +36,6 @@ async function requestRegisterOneCourse(e) {
       // get new number courses of user student
       ctnNumberCourseRegistered.innerHTML = `<div class="new_course_number">${numberCourseRegistered.length}</div>`;
       ctnNumberCourseRegisteredSidebar.innerHTML = `<div class="new_courseNumber_sidebar">${numberCourseRegistered.length}</div>`;
-
-      // hide and remove adding btn
-      let ctnRegisterCourse = e.target.parentElement;
-
-      ctnRegisterCourse.addEventListener("animationend", () => {
-        ctnRegisterCourse.remove();
-      });
-
-      ctnRegisterCourse.style.animation = "scaleDown 0.3s forwards";
     } else if (typeof numberCourseRegistered == "string") {
       // erro of adding one course twice
       errorAxios.forEach((erro) => {
@@ -66,6 +66,17 @@ const btnUnregisterOneCourse = document.querySelectorAll(
 async function requestUnregisterOneCourse(e) {
   e.preventDefault();
 
+  // hide and remove course unregistered template
+  let ctnUnregisterCourse =
+    e.target.parentElement.parentElement.parentElement.parentElement
+      .parentElement.parentElement;
+
+  ctnUnregisterCourse.addEventListener("animationend", () => {
+    ctnUnregisterCourse.remove();
+  });
+
+  ctnUnregisterCourse.style.animation = "scaleDown 0.3s forwards";
+
   const _id = e.target.getAttribute("id");
 
   try {
@@ -79,17 +90,6 @@ async function requestUnregisterOneCourse(e) {
       // get new number courses of user
       ctnNumberCourseRegistered.innerHTML = `<div class="new_course_number">${numberCourseUnregistered.length}</div>`;
       ctnNumberCourseRegisteredSidebar.innerHTML = `<div class="new_courseNumber_sidebar">${numberCourseUnregistered.length}</div>`;
-
-      // hide and remove course unregistered template
-      let ctnUnregisterCourse =
-        e.target.parentElement.parentElement.parentElement.parentElement
-          .parentElement.parentElement;
-
-      ctnUnregisterCourse.addEventListener("animationend", () => {
-        ctnUnregisterCourse.remove();
-      });
-
-      ctnUnregisterCourse.style.animation = "scaleDown 0.3s forwards";
     } else if (numberCourseUnregistered.message) {
       // erro of not a user
       let redirectUrlUnegisterOneCourse = "/auth/login";
