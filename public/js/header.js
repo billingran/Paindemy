@@ -5,6 +5,11 @@ let formHomeOne = document.querySelector(".form_homeOne");
 let iconSearchHomeOne = document.querySelector(".icon_search_homeOne");
 let midTextHome = document.querySelector(".title_header rect");
 
+// buger;
+let ctnBurger = document.querySelectorAll(".ctn_burger");
+let burger = document.querySelectorAll(".burger");
+let sideBarHeader = document.querySelector(".side_bar_header");
+
 function turnNavColor() {
   if (window.pageYOffset) {
     headerBackground.style =
@@ -20,23 +25,42 @@ function turnNavColor() {
     iconSearchHomeOne.style = "";
     midTextHome.classList.remove("midText_titme_homeOne");
   }
+
+  // scroll the mouse to hide sidebar
+  ctnBurger[0].classList.remove("active");
+  ctnBurger[1].classList.remove("active");
+  sideBarHeader.classList.remove("show_side_bar");
 }
 
 window.addEventListener("scroll", turnNavColor);
 
-// buger;
-let ctnBurger = document.querySelectorAll(".ctn_burger");
-let burger = document.querySelectorAll(".burger");
-let sideBarHeader = document.querySelector(".side_bar_header");
-
+// click burger outside to show sidebar
 burger[0].addEventListener("click", (e) => {
-  ctnBurger[0].classList.toggle("active");
-  ctnBurger[1].classList.toggle("active");
-  sideBarHeader.classList.toggle("show_side_bar");
+  ctnBurger[0].classList.add("active");
+  ctnBurger[1].classList.add("active");
+  sideBarHeader.classList.add("show_side_bar");
 });
 
+// click burger inside to hide sidebar
 burger[1].addEventListener("click", (e) => {
-  ctnBurger[0].classList.toggle("active");
-  ctnBurger[1].classList.toggle("active");
-  sideBarHeader.classList.toggle("show_side_bar");
+  ctnBurger[0].classList.remove("active");
+  ctnBurger[1].classList.remove("active");
+  sideBarHeader.classList.remove("show_side_bar");
+});
+
+// click others to hide sidebar
+window.addEventListener("click", (e) => {
+  // check if the burger was clicked
+  const isBurgerClicked = Array.from(burger).some((burger) =>
+    burger.contains(e.target)
+  );
+  if (
+    !sideBarHeader.contains(e.target) &&
+    e.target !== sideBarHeader &&
+    !isBurgerClicked
+  ) {
+    ctnBurger[0].classList.remove("active");
+    ctnBurger[1].classList.remove("active");
+    sideBarHeader.classList.remove("show_side_bar");
+  }
 });
