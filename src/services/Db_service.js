@@ -1,9 +1,9 @@
 class DbService {
   constructor() {
-    this.Category = require("../models/Category_model");
-    this.Course = require("../models/Course_model");
-    this.User = require("../models/User_model");
-    this.Favorite = require("../models/Favorite_model");
+    this.Category = require("../models/category_model");
+    this.Course = require("../models/course_model");
+    this.User = require("../models/user_model");
+    this.Favorite = require("../models/favorite_model");
   }
 
   // imgs dealer //////////////////////////////////////////////////
