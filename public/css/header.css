@@ -70,6 +70,7 @@ label[for="search_homeOne_sideBar"] {
 .input_homeOne {
   font-family: "Rubik", sans-serif;
   background: none;
+  background-color: rgba(222, 222, 222, 0);
   font-size: 1.2rem;
 
   outline: none;
