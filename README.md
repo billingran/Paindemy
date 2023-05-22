@@ -1,12 +1,10 @@
-# Paîndemy
+# Project Title
 
 A brief description of your project.
 
-<div style="display: flex; flex-wrap: wrap;">
-  <img src="public/images/home_logo.png" alt="Logo Screenshot" style="width: 50%; height: auto;">
-  <div style="width: 50%;">
-  
-  ## Table of Contents
+![Project Screenshot](public/images/home_logo.png)
+
+## Table of Contents
 
 - [Project Description](#project-description)
 - [Installation](#installation)
@@ -14,9 +12,6 @@ A brief description of your project.
 - [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
-  
-  </div>
-</div>
 
 ## Project Description
 
@@ -43,4 +38,3 @@ Explain how others can contribute to your project. Include guidelines for pull r
 Indicate the license under which your project is released. For example:
 
 This project is licensed under the [MIT License](LICENSE).
-
