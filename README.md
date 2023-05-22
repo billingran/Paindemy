@@ -10,6 +10,7 @@ Le projet “Paîndemy” est fait pour tous ceux qui sont intéressés par l’
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Contact](#contact)
 
 ## Project Description
 
@@ -43,12 +44,26 @@ Provide a more detailed overview of your project. Explain what it does, why it i
   
 ## Usage
 
-### Instructor 👨‍🍳 👩‍🍳
-  - you can
+### Instructors, you can 👨‍🍳 👩‍🍳
+  - Create your own account
+  - Open your own courses to share your knowledge 
+  - Customize your own recipes
+  - Calculate the dosage 
+  - Save your own recipes 
 
-### Student 👨‍🎓 👩‍🎓
-  - you can
+### Students, you can 👨‍🎓 👩‍🎓
+  - Create your own account
+  - Register for courses to learn more about baking
+  - Customize your own recipes
+  - Calculate the dosage 
+  - Save your own recipes
 
 ## Features
-  -
+  - Subscription as a member on the website
+  - Open or close courses
+  - Register or unregister for courses
+  - Update information about your account or courses 
+  - Customize and calculate recipes 
 
+## Contact
+  - Email : [billingran@gmail.com](billingran@gmail.com)
