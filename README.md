@@ -1,6 +1,8 @@
-# Project Title
+# Paîndemy
 
 A brief description of your project.
+
+![Project Screenshot](public/images/logo_home.png)
 
 ## Table of Contents
 
