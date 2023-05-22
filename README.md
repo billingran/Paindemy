@@ -19,11 +19,12 @@ Provide a more detailed overview of your project. Explain what it does, why it i
 
 ## Installation
 
-### 🔧 Tools
-  - Node.js [(download)](https://nodejs.org/en)
-  - MongoDB [(download)](https://www.mongodb.com/try/download/community) or - MonDB Alts (Db online) [(sign up)](https://www.mongodb.com/cloud/atlas/register)
-  - MongoDB compass (GUI) [(download)](https://www.mongodb.com/try/download/compass)
-
+1. Tools
+  🔧 Node.js [(download)](https://nodejs.org/en)
+  🔧 MongoDB [(download)](https://www.mongodb.com/try/download/community) or MonDB Alts (Db online) [(sign up)](https://www.mongodb.com/cloud/atlas/register)
+  🔧 MongoDB compass (GUI) [(download)](https://www.mongodb.com/try/download/compass)
+  🔧 Visual Studio Code [(download)](https://code.visualstudio.com/)
+  
 ## Usage
 
 Provide examples or instructions on how to use your project. Include screenshots or code snippets if applicable.
