@@ -65,4 +65,4 @@ The Paîndemy project is made for anyone who is interested in learning about bak
 
 ## Contact
   - Email : [billingran@gmail.com](billingran@gmail.com)
-  - Linkin : [linkin](https://www.linkedin.com/in/teng-wei-huang-215832254/)
+  - Linkedin : [linkedin](https://www.linkedin.com/in/teng-wei-huang-215832254/)
