@@ -2,7 +2,7 @@
 
 A brief description of your project.
 
-![Project Screenshot](public/images/home_logo.png)
+![Project Screenshot](public/images/logo_home.png)
 
 ## Table of Contents
 
