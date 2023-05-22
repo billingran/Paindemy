@@ -1,4 +1,4 @@
-# Project Title
+# [Paîndemy](https://paindemy.herokuapp.com/)
 
 Le projet “Paîndemy” est fait pour tous ceux qui sont intéressés par l’apprentissage de la boulangerie et pâtisserie. Il permet également à ceux qui aiment partager et transmettre des savoirs de pouvoir le faire. Un autre objectif de ce projet est de permettre aux professionnels et débutants de calculer automatiquement les dosages pour les recettes.
 
