@@ -175,7 +175,10 @@
     </li>
     <% if (authUser) { %>
     <li>
-      <a href="/<%= authUser.roleUser %>/profile/<%= authUser._id %>" class="centralA">
+      <a
+        href="/<%= authUser.roleUser %>/profile/<%= authUser._id %>"
+        class="centralA"
+      >
         <% if (authUser.roleUser == 'instructor') { %>
         <iconify-icon
           icon="tabler:chef-hat"
@@ -184,7 +187,7 @@
         <% } %> <% if (authUser.roleUser == 'student') { %>
         <i class="uil uil-graduation-cap icon_header_sidebar"></i>
         <% } %> <%= authUser.firstnameUser %> <%= authUser.lastnameUser %>
-      </div>
+      </a>
     </li>
     <% } %> <% if (!authUser) { %>
     <li
