@@ -412,6 +412,14 @@ class CourseService extends DbService {
         ingredientsCourse = ingredientsCourse.split();
       }
 
+      // check if ingredients are well filled
+      if (ingredientsCourse.some((ingredient) => ingredient === "")) {
+        return {
+          success: false,
+          message: "Ingredients, cette case ne doit pas être vide.",
+        };
+      }
+
       // turn first letter of name ingredients into uppercase
       ingredientsCourse.forEach((ingredient, index, ingredientsCourse) => {
         ingredientsCourse[index] =
@@ -649,6 +657,15 @@ class CourseService extends DbService {
         ingredientsCourse = ingredientsCourse.split();
       }
 
+      // check if ingredients are well filled
+      if (ingredientsCourse.some((ingredient) => ingredient === "")) {
+        return {
+          success: false,
+          message: "Ingredients, cette case ne doit pas être vide.",
+        };
+      }
+
+      // turn first letter of name ingredients into uppercase
       ingredientsCourse.forEach((ingredient, index, ingredientsCourse) => {
         ingredientsCourse[index] =
           ingredient.charAt(0).toUpperCase() +
