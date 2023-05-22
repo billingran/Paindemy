@@ -2,9 +2,11 @@
 
 A brief description of your project.
 
-![Project Screenshot](public/images/logo_home.png)
-
-## Table of Contents
+<div style="display: flex; flex-wrap: wrap;">
+  <img src="public/images/home_logo.png" alt="Logo Screenshot" style="width: 50%; height: auto;">
+  <div style="width: 50%;">
+  
+  ## Table of Contents
 
 - [Project Description](#project-description)
 - [Installation](#installation)
@@ -12,6 +14,9 @@ A brief description of your project.
 - [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
+  
+  </div>
+</div>
 
 ## Project Description
 
