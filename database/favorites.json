@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "646b525155c8929b6156bbdb"
+  },
+  "nameFavorite": "My favorite",
+  "ingredientsFavorite": {
+    "Farine de force": "1",
+    "Oeufs": "0.3",
+    "Sel": "0.018",
+    "Levure": "0.018",
+    "Sucre": "0.013",
+    "Lait": "0.3"
+  },
+  "noteFavorite": "It's my favorites.",
+  "imageFavorite": [
+    "645e817d5d4a17934c4f10aa-1684755025174-pastry.jpg"
+  ],
+  "authorFavorite": {
+    "$oid": "645e817d5d4a17934c4f10aa"
+  },
+  "categoryFavorite": {
+    "$oid": "642b25f3e4f201d77621c6bd"
+  },
+  "createdAt": {
+    "$date": "2023-05-22T11:30:25.184Z"
+  },
+  "__v": 0
+}]

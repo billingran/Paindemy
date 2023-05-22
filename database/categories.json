@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "642b25e9e4f201d77621c6bc"
+  },
+  "nameCategory": "Boulangerie",
+  "imageCategory": "bakery.jpg",
+  "iconCategory": "<iconify-icon icon=\"mdi:bread\"></iconify-icon>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "642b25f3e4f201d77621c6bd"
+  },
+  "nameCategory": "Pâtisserie",
+  "imageCategory": "pastry.jpg",
+  "iconCategory": "<iconify-icon icon=\"mdi:food-croissant\"></iconify-icon>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "642b25fbe4f201d77621c6be"
+  },
+  "nameCategory": "Autre",
+  "imageCategory": "other.jpg",
+  "iconCategory": "<iconify-icon icon=\"ion:pizza\"></iconify-icon>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "642b25fee4f201d77621c6bf"
+  },
+  "nameCategory": "Tout",
+  "imageCategory": "view_all.jpg",
+  "iconCategory": "<i class=\"uil uil-book-alt\"></i>",
+  "__v": 0
+}]
