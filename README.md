@@ -19,10 +19,10 @@ Provide a more detailed overview of your project. Explain what it does, why it i
 
 ## Installation
 
-Provide step-by-step instructions on how to install and set up your project. Be sure to include any dependencies or requirements needed to run the project.
-
 ### 🔧 Tools
   - Node.js [(download)](https://nodejs.org/en)
+  - MongoDB [(download)](https://www.mongodb.com/try/download/community) or - MonDB Alts (Db online) [(sign up)](https://www.mongodb.com/cloud/atlas/register)
+  - MongoDB compass (GUI) [(download)](https://www.mongodb.com/try/download/compass)
 
 ## Usage
 
