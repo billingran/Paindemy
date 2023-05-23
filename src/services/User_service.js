@@ -62,7 +62,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(firstnameUser)) {
         return {
           success: false,
@@ -87,7 +87,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(lastnameUser)) {
         return {
           success: false,
@@ -261,7 +261,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(firstnameUser)) {
         return {
           success: false,
@@ -286,7 +286,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(lastnameUser)) {
         return {
           success: false,
@@ -1025,7 +1025,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(firstnameUser)) {
         return {
           success: false,
@@ -1045,7 +1045,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(lastnameUser)) {
         return {
           success: false,
@@ -1180,7 +1180,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(firstnameUser)) {
         return {
           success: false,
@@ -1200,7 +1200,7 @@ class UserService extends DbService {
         };
       }
 
-      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,<>/?]/;
       if (specialCharsRegex.test(lastnameUser)) {
         return {
           success: false,
