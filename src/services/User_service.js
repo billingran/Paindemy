@@ -61,6 +61,15 @@ class UserService extends DbService {
           message: "Prénom, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(firstnameUser)) {
+        return {
+          success: false,
+          message: "Prénom, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataStudentProfile.firstnameUser = firstnameUser;
     } else {
       return {
@@ -77,6 +86,16 @@ class UserService extends DbService {
           message: "Nom de famille, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(lastnameUser)) {
+        return {
+          success: false,
+          message:
+            "Nom de famille, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataStudentProfile.lastnameUser = lastnameUser;
     } else {
       return {
@@ -241,6 +260,15 @@ class UserService extends DbService {
           message: "Prénom, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(firstnameUser)) {
+        return {
+          success: false,
+          message: "Prénom, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataInstructorProfile.firstnameUser = firstnameUser;
     } else {
       return {
@@ -257,6 +285,16 @@ class UserService extends DbService {
           message: "Nom de famille, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(lastnameUser)) {
+        return {
+          success: false,
+          message:
+            "Nom de famille, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataInstructorProfile.lastnameUser = lastnameUser;
     } else {
       return {
@@ -986,6 +1024,15 @@ class UserService extends DbService {
           message: "Prénom, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(firstnameUser)) {
+        return {
+          success: false,
+          message: "Prénom, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataStudentProfile.firstnameUser = firstnameUser;
     }
 
@@ -997,6 +1044,16 @@ class UserService extends DbService {
           message: "Nom de famille, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(lastnameUser)) {
+        return {
+          success: false,
+          message:
+            "Nom de famille, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataStudentProfile.lastnameUser = lastnameUser;
     }
 
@@ -1122,6 +1179,15 @@ class UserService extends DbService {
           message: "Prénom, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(firstnameUser)) {
+        return {
+          success: false,
+          message: "Prénom, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataInstructorProfile.firstnameUser = firstnameUser;
     }
 
@@ -1133,6 +1199,16 @@ class UserService extends DbService {
           message: "Nom de famille, Première lettre en majuscule.",
         };
       }
+
+      const specialCharsRegex = /[!@#$%^&*()_+\=[\]{};':"\\|,.<>/?]/;
+      if (specialCharsRegex.test(lastnameUser)) {
+        return {
+          success: false,
+          message:
+            "Nom de famille, Les caractères spéciaux ne sont pas autorisés.",
+        };
+      }
+
       newDataInstructorProfile.lastnameUser = lastnameUser;
     }
 
