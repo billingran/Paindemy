@@ -4,7 +4,7 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 
   transition: all 0.3s;
 }
@@ -378,7 +378,7 @@ header .ctn_burger {
   position: fixed;
   top: 0;
   right: -120%;
-  z-index: 1;
+  z-index: 11;
 
   transition: all 0.4s;
 }
