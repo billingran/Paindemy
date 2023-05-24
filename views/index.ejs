@@ -150,7 +150,7 @@
                 </div>
                 <div>
                   <a
-                    href="https://www.google.com/maps?q=<%= courseB.addressCourse %>"
+                    href="https://www.google.com/maps?q=<%= encodeURIComponent(courseB.addressCourse) %>"
                   >
                     <%= courseB.addressCourse %>
                   </a>
@@ -303,7 +303,7 @@
                 </div>
                 <div>
                   <a
-                    href="https://www.google.com/maps?q=<%= courseP.addressCourse %>"
+                    href="https://www.google.com/maps?q=<%= encodeURIComponent(courseP.addressCourse) %>"
                   >
                     <%= courseP.addressCourse %>
                   </a>
@@ -457,7 +457,7 @@
                 </div>
                 <div>
                   <a
-                    href="https://www.google.com/maps?q=<%= courseO.addressCourse %>"
+                    href="https://www.google.com/maps?q=<%= encodeURIComponent(courseO.addressCourse) %>"
                   >
                     <%= courseO.addressCourse %>
                   </a>

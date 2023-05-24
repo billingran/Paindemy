@@ -206,7 +206,7 @@
                 </div>
                 <div>
                   <a
-                    href="https://www.google.com/maps?q=<%= course.addressCourse %>"
+                    href="https://www.google.com/maps?q=<%= encodeURIComponent(course.addressCourse) %>"
                   >
                     <%= course.addressCourse %>
                   </a>
