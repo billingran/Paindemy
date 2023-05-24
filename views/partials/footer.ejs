@@ -94,8 +94,10 @@
         <li class="font_color color_hover" title="Notre address">
           <div><i class="uil uil-map-marker icon_font"></i></div>
           <div>
+            <% let addressEncoded = "8 avenue deCarthage, 13100 Aix en-provence"
+            %>
             <a
-              href="https://www.google.com/maps?q=8 avenue de Carthage, 13100 Aix en-provence"
+              href="https://www.google.com/maps?q=<%= encodeURIComponent(addressEncoded) %>"
               class="font_color color_hover"
               >8 avenue de Carthage,<br />
               13100 Aix en-provence</a
