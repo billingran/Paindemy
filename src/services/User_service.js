@@ -1167,7 +1167,8 @@ class UserService extends DbService {
     req,
     res,
     path,
-    bcrypt
+    bcrypt,
+    fs
   ) {
     let newDataInstructorProfile = {};
 
@@ -1311,6 +1312,14 @@ class UserService extends DbService {
         };
       }
 
+      // delete instructor imgs
+      const userTypeDeleteImage = { _id: req.user._id };
+      const userDeleteImage = await this.getOneUser(userTypeDeleteImage);
+
+      let userImageName = userDeleteImage.imageUser[0].split("-")[1];
+
+      await super.deleteImgs(userImageName, path, fs);
+
       // img upload
       const instructorImageName = req.user.emailUser
         .replace("@", "")
@@ -1352,19 +1361,6 @@ class UserService extends DbService {
 
     if (objectImagesFile) {
       arrayImagesFile = Object.keys(req.files.imageUser);
-
-      if (
-        Array.isArray(objectImagesFile.imageUser) &&
-        objectImagesFile.imageUser.length == 2
-      ) {
-        // delete instructor imgs
-        const userTypeDeleteImage = { _id: req.user._id };
-        const userDeleteImage = await this.getOneUser(userTypeDeleteImage);
-
-        let userImageName = userDeleteImage.imageUser[0].split("-")[1];
-
-        await super.deleteImgs(userImageName, path, fs);
-      }
     }
 
     const validationResultInstructorProfile =
@@ -1383,7 +1379,8 @@ class UserService extends DbService {
         req,
         res,
         path,
-        bcrypt
+        bcrypt,
+        fs
       );
 
     if (!validationResultInstructorProfile.success) {

@@ -544,7 +544,9 @@ class CourseService extends DbService {
     arrayImagesFile,
     moment,
     req,
-    path
+    path,
+    fs,
+    _id
   ) {
     let newDataClass = {};
 
@@ -694,12 +696,20 @@ class CourseService extends DbService {
         };
       }
 
+      // delete courseUpdate imgs
+      const courseTypeDeleteImage = { _id };
+      const courseDeleteImage = await this.getOneCourse(courseTypeDeleteImage);
+
+      let courseImageNameOdd = courseDeleteImage.imageCourse[0].split("-")[1];
+
+      await super.deleteImgs(courseImageNameOdd, path, fs);
+
       //class img upload
-      const courseImageName = req.user._id;
+      const courseImageNameNew = req.user._id;
 
       newDataClass.imageCourse = await super.uploadImgs(
         imagesCourse,
-        courseImageName,
+        courseImageNameNew,
         path
       );
     }
@@ -732,21 +742,6 @@ class CourseService extends DbService {
     let arrayImagesFile;
     if (objectImagesFile) {
       arrayImagesFile = Object.keys(req.files.imageCourse);
-
-      if (
-        Array.isArray(objectImagesFile.imageCourse) &&
-        objectImagesFile.imageCourse.length == 2
-      ) {
-        // delete courseUpdate imgs
-        const courseTypeDeleteImage = { _id };
-        const courseDeleteImage = await this.getOneCourse(
-          courseTypeDeleteImage
-        );
-
-        let courseImageName = courseDeleteImage.imageCourse[0].split("-")[1];
-
-        await super.deleteImgs(courseImageName, path, fs);
-      }
     }
 
     // get old date course
@@ -769,7 +764,9 @@ class CourseService extends DbService {
       arrayImagesFile,
       moment,
       req,
-      path
+      path,
+      fs,
+      _id
     );
 
     if (!validationResultUpdateClass.success) {
