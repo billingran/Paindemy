@@ -12,19 +12,27 @@
       <div class="carousel-item active ctn_carousels">
         <div
           class="carousels"
-          style="background-color: <%= allinstructors[0].themeColorUser %>"
+          style="
+            background-color: <%= allinstructors[allinstructors.length -
+              1].themeColorUser %>;
+          "
         >
           <div class="filter_instructors"></div>
           <div class="left_instructors">
-            <h2>“ <%= allinstructors[0].fathUser %> ”</h2>
+            <h2>
+              “ <%= allinstructors[allinstructors.length - 1].fathUser %> ”
+            </h2>
             <a
-              title="Instructeur/Instructrice <%= allinstructors[0].firstnameUser %> <%=
-              allinstructors[0].lastnameUser %>"
-              href="/course/instructor/<%= allinstructors[0]._id %>"
+              title="Instructeur/Instructrice <%= allinstructors[allinstructors.length -
+              1].firstnameUser %> <%=
+              allinstructors[allinstructors.length -
+              1].lastnameUser %>"
+              href="/course/instructor/<%= allinstructors[allinstructors.length -
+              1]._id %>"
               class="central"
             >
-              -- <%= allinstructors[0].firstnameUser %> <%=
-              allinstructors[0].lastnameUser %>
+              -- <%= allinstructors[allinstructors.length - 1].firstnameUser %>
+              <%= allinstructors[allinstructors.length - 1].lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -33,17 +41,20 @@
           </div>
           <div class="right_instructors">
             <img
-              src="/uploads/<%= allinstructors[0].imageUser[1] %>"
+              src="/uploads/<%= allinstructors[allinstructors.length -
+              1].imageUser[1] %>"
               class="d-block"
-              alt="<%= allinstructors[0].firstnameUser %> <%=
-              allinstructors[0].lastnameUser %>"
+              alt="<%= allinstructors[allinstructors.length -
+              1].firstnameUser %> <%=
+              allinstructors[allinstructors.length -
+              1].lastnameUser %>"
             />
           </div>
         </div>
       </div>
       <% } %> <% if(typeof allinstructors !== 'undefined' && allinstructors !=
       null && allinstructors.length > 0) { %> <%
-      allinstructors.slice(1).forEach(instructor => { %>
+      allinstructors.forEach(instructor => { %>
       <div class="carousel-item ctn_carousel">
         <div
           class="carousels"

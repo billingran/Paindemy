@@ -13,16 +13,17 @@
         <div
           class="carousels"
           style="
-            background-color: <%= allCourses[0].instructorCourse.themeColorUser
-              %>;
+            background-color: <%= allCourses[allCourses.length -
+              1].instructorCourse.themeColorUser %>;
           "
         >
           <div class="left_courses">
             <h2>
-              “ <%= allCourses[0].descriptionCourse.slice(0, 480) %> ...
+              “ <%= allCourses[allCourses.length - 1].descriptionCourse.slice(0,
+              480) %> ...
               <a
                 title="Voir plus"
-                href="/course/onecourse/<%= allCourses[0]._id %>"
+                href="/course/onecourse/<%= allCourses[allCourses.length - 1]._id %>"
               >
                 Voir plus
                 <iconify-icon
@@ -34,11 +35,12 @@
             </h2>
             <a
               title="Instructeur/Instructrice du cours"
-              href="/course/instructor/<%= allCourses[0].instructorCourse._id %>"
+              href="/course/instructor/<%= allCourses[allCourses.length - 1].instructorCourse._id %>"
               class="ctn_icon_carousels"
             >
-              -- <%= allCourses[0].instructorCourse.firstnameUser %> <%=
-              allCourses[0].instructorCourse.lastnameUser %>
+              -- <%= allCourses[allCourses.length -
+              1].instructorCourse.firstnameUser %> <%=
+              allCourses[allCourses.length - 1].instructorCourse.lastnameUser %>
               <iconify-icon
                 icon="mdi:more-circle"
                 class="icon_carousels"
@@ -48,17 +50,16 @@
           <div class="right_courses">
             <div class="ctn_mainImg_courses">
               <img
-                src="/uploads/<%= allCourses[0].imageCourse[1] %>"
+                src="/uploads/<%= allCourses[allCourses.length - 1].imageCourse[1] %>"
                 class="d-block"
-                alt="<%= allCourses[0].nameCourse %>"
+                alt="<%= allCourses[allCourses.length - 1].nameCourse %>"
               />
             </div>
           </div>
         </div>
       </div>
       <% } %> <% if(typeof allCourses !== 'undefined' && allCourses != null &&
-      allCourses.length > 0) { %> <%
-      allCourses.slice(1).forEach(function(course){ %>
+      allCourses.length > 0) { %> <% allCourses.forEach(function(course){ %>
       <div class="carousel-item ctn_carousel">
         <div
           class="carousels"
@@ -207,6 +208,7 @@
                 <div>
                   <a
                     href="https://www.google.com/maps?q=<%= encodeURIComponent(course.addressCourse) %>"
+                    target="_blank"
                   >
                     <%= course.addressCourse %>
                   </a>
