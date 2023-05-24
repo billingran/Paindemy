@@ -45,7 +45,7 @@ module.exports.homePage = async (req, res) => {
     const currentDate = moment().format("YYYY-MM-DD");
 
     return res.render("index", {
-      title: "Menu",
+      title: "Paîndemy",
       showHeader: true,
       authUser: req.user,
       categories,
