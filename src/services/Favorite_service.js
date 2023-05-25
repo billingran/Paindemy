@@ -283,7 +283,8 @@ class FavoriteService extends DbService {
     objectImagesFile,
     arrayImagesFile,
     req,
-    path
+    path,
+    fs
   ) {
     let newDataFavorite = {};
 
@@ -391,6 +392,17 @@ class FavoriteService extends DbService {
         };
       }
 
+      // delete myFavorite imgs
+      const myFavoriteTypeDeleteImage = { _id };
+      const myFavoriteDeleteImage = await this.getOneFavorite(
+        myFavoriteTypeDeleteImage
+      );
+
+      let myFavoriteImageName =
+        myFavoriteDeleteImage.imageFavorite[0].split("-")[1];
+
+      await super.deleteImgs(myFavoriteImageName, path, fs);
+
       //image favorite upload
       const favoriteImageName = req.user._id;
 
@@ -424,19 +436,6 @@ class FavoriteService extends DbService {
     let arrayImagesFile;
     if (objectImagesFile) {
       arrayImagesFile = Object.keys(req.files.imageFavorite);
-
-      if (!Array.isArray(objectImagesFile.imageFavorite)) {
-        // delete myFavorite imgs
-        const myFavoriteTypeDeleteImage = { _id };
-        const myFavoriteDeleteImage = await this.getOneFavorite(
-          myFavoriteTypeDeleteImage
-        );
-
-        let myFavoriteImageName =
-          myFavoriteDeleteImage.imageFavorite[0].split("-")[1];
-
-        await super.deleteImgs(myFavoriteImageName, path, fs);
-      }
     }
 
     const validationResultMyFavorite = await this.myFavoriteValidation(
@@ -449,7 +448,8 @@ class FavoriteService extends DbService {
       objectImagesFile,
       arrayImagesFile,
       req,
-      path
+      path,
+      fs
     );
 
     if (!validationResultMyFavorite.success) {
