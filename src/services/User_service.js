@@ -678,7 +678,7 @@ class UserService extends DbService {
       emailStateUser: true,
     }).exec();
 
-    if (userFound) {
+    if (userFound && userFound.passwordUser) {
       let passwordCompared = await bcrypt.compare(
         password.trim(),
         userFound.passwordUser
