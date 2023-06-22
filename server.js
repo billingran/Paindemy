@@ -181,7 +181,6 @@ app.use("/student", authCheckStudent, studentRoutes);
 app.use("/", homePage);
 
 // route page not found
-
 app.get("*", (req, res) => {
   return res.status(404).render("error", {
     title: "Page introuvable",
